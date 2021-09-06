@@ -7,7 +7,18 @@ namespace A_Level_Computing_Project
     public class Country
     {
         public int Gold, Wood, Stone, Food, Metal;
-        public List<Province> OwnedProvinces;
-        public Army Army, Levy;
+        public bool IsAI;
+        public string Name;
+
+        public Country (bool AI, string n)
+        {
+            IsAI = AI;
+            Name = n;
+            Gold = 500;
+            Wood = 500;
+            Stone = 500;
+            Food = 500;
+            Metal = 500;
+        }
     }
 }

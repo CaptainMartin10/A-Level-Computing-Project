@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 using System;
 using System.Windows;
+
 
 namespace A_Level_Computing_Project
 {
@@ -11,12 +13,14 @@ namespace A_Level_Computing_Project
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[52, 30];
+        public Country[] Countries = new Country[20];
         public int CurrentHexX = 0;
         public int CurrentHexY = 0;
         public string MouseCoords = "Mouse Coordinates: 0 , 0";
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine;
 
+        
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -33,20 +37,70 @@ namespace A_Level_Computing_Project
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
-            for (int i = 0; i < 52; i++)
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < 30; j++)
+                Countries[i] = new Country(true, "Unowned");
+            }
+            Countries[1].Name = "Lindon";
+            Countries[2].Name = "Blue Mountains North";
+            Countries[3].Name = "Blue Mountains South";
+            Countries[4].Name = "Shire";
+            Countries[5].Name = "Rangers of the North";
+            Countries[6].Name = "Rivendell";
+            Countries[7].Name = "Rohan";
+            Countries[8].Name = "Gondor";
+            Countries[9].Name = "Lothlorien";
+            Countries[10].Name = "Woodland Realm";
+            Countries[11].Name = "Durin's Folk";
+            Countries[12].Name = "Dale";
+            Countries[13].Name = "Dorwinion";
+            Countries[14].Name = "Mordor";
+            Countries[15].Name = "Dunland";
+            Countries[16].Name = "Isengard";
+            Countries[17].Name = "Dol Guldur";
+            Countries[18].Name = "Gundabad";
+            Countries[19].Name = "Harondor";
+
+            using (StreamReader sr = new StreamReader("C:/Users/ryanm/Documents/Ryan/School Work/A-Level Computing Project/Content/Provinces.txt"))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
+                    int test = line.Length;
+                    int i = Convert.ToInt32(line.Substring(0, 2));
+                    int j = Convert.ToInt32(line.Substring(2, 4));
+                    int sl = Convert.ToInt32(line.Substring(4, 5));
+                    int sg = Convert.ToInt32(line.Substring(5, 9));
+                    int sp = Convert.ToInt32(line.Substring(9, 13));
+                    string s = (line.Substring(13, 23)).Trim();
+                    string o = (line.Substring(23, 43)).Trim();
+                    string t = (line.Substring(43, 61)).Trim();
+
                     MapArray[i, j] = new Province(i, j);
-                    MapArray[i, j].Terrain = "Grassland";
-                    MapArray[i, j].Structure = "Empty";
-                    MapArray[i, j].StructureLevel = 0;
-                    MapArray[i, j].StructureGarrison = 0;
-                    MapArray[i, j].StructureProduction = 0;
+                    MapArray[i, j].Terrain = t;
+                    MapArray[i, j].Structure = s;
+                    MapArray[i, j].StructureLevel = sl;
+                    MapArray[i, j].StructureGarrison = sg;
+                    MapArray[i, j].StructureProduction = sp;
+                    MapArray[i, j].OwnedBy = Countries[0];
                 }
             }
 
-            base.Initialize();
+                //            for (int i = 0; i < 52; i++)
+                //            {
+                //                for (int j = 0; j < 30; j++)
+                //                {
+                //                    MapArray[i, j] = new Province(i, j);
+                //                    MapArray[i, j].Terrain = "Grassland";
+                //                    MapArray[i, j].Structure = "Empty";
+                //                    MapArray[i, j].StructureLevel = 0;
+                //                    MapArray[i, j].StructureGarrison = 0;
+                //                    MapArray[i, j].StructureProduction = 0;
+                //                    MapArray[i, j].OwnedBy = Countries[0];
+                //                }
+                //            }
+
+                base.Initialize();
         }
 
         protected override void LoadContent()
@@ -187,24 +241,34 @@ namespace A_Level_Computing_Project
                     }
                 }
             }
-            _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + CurrentHexX + " , " + CurrentHexY, new Vector2(1420, 806), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[CurrentHexX, CurrentHexY].Terrain, new Vector2(1420, 845), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + CurrentHexX + " , " + CurrentHexY, new Vector2(1420, 724), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[CurrentHexX, CurrentHexY].OwnedBy).Name, new Vector2(1420, 763), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[CurrentHexX, CurrentHexY].Terrain, new Vector2(1420, 802), Color.White);
             if (MapArray[CurrentHexX, CurrentHexY].Structure != "Empty")
             {
-                _spriteBatch.DrawString(MenuFont, MapArray[CurrentHexX, CurrentHexY].Structure, new Vector2(1420, 884), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[CurrentHexX, CurrentHexY].StructureGarrison, new Vector2(1420, 923), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Producing: " + MapArray[CurrentHexX, CurrentHexY].StructureProduction, new Vector2(1420, 962), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[CurrentHexX, CurrentHexY].StructureLevel, new Vector2(1420, 1001), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(1420, 1040), Color.White);
+                _spriteBatch.DrawString(MenuFont, MapArray[CurrentHexX, CurrentHexY].Structure, new Vector2(1420, 841), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[CurrentHexX, CurrentHexY].StructureGarrison, new Vector2(1420, 880), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Producing: " + MapArray[CurrentHexX, CurrentHexY].StructureProduction, new Vector2(1420, 919), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[CurrentHexX, CurrentHexY].StructureLevel, new Vector2(1420, 958), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(1420, 997), Color.White);
             }
-            if (MapArray[CurrentHexX, CurrentHexY].Structure == "Empty")
+            else if (MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && (MapArray[CurrentHexX, CurrentHexY].OwnedBy).IsAI == false)
             {
-                _spriteBatch.DrawString(MenuFont, "Build Fort", new Vector2(1420, 884), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Build Settlement", new Vector2(1420, 923), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Build Farm", new Vector2(1420, 962), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Build Forester", new Vector2(1420, 1001), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Build Mine", new Vector2(1420, 1040), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Build Fort", new Vector2(1420, 841), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Build Settlement", new Vector2(1420, 880), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Build Farm", new Vector2(1420, 919), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Build Forester", new Vector2(1420, 958), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Build Mine", new Vector2(1420, 997), Color.White);
             }
+            else if ((MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && (MapArray[CurrentHexX, CurrentHexY].OwnedBy).IsAI != false) || MapArray[CurrentHexX, CurrentHexY].Terrain == "Deep Ocean")
+            {
+                _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(1420, 841), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(1420, 880), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(1420, 919), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(1420, 958), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(1420, 997), Color.White);
+            }
+            _spriteBatch.DrawString(MenuFont, "Next Turn", new Vector2(1420, 1040 ), Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);
