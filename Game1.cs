@@ -48,7 +48,7 @@ namespace A_Level_Computing_Project
 
             Countries[Player].IsAI = false;
 
-            using (StreamReader sr = new StreamReader("F:/Project/Content/Provinces.txt"))
+            using (StreamReader sr = new StreamReader(Path.GetFullPath("NewSave.txt")))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
@@ -87,7 +87,9 @@ namespace A_Level_Computing_Project
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
 
             // TODO: Add your update logic here
 
