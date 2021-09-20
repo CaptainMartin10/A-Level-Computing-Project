@@ -21,9 +21,9 @@
 0102000000000     Empty00        Deep Ocean
 0103000000000     Empty00       Shallow Sea
 0104000000000     Empty00       Shallow Sea
-0105000000000     Empty00         Grassland
-0106000000000     Empty00         Grassland
-0107000000000     Empty00         Grassland
+0105000000000     Empty01         Grassland
+0106000000000     Empty01         Grassland
+0107000000000     Empty01         Grassland
 0108000000000     Empty00       Shallow Sea
 0109000000000     Empty00       Shallow Sea
 0110000000000     Empty00       Shallow Sea
@@ -38,13 +38,13 @@
 0201000000000     Empty00        Deep Ocean
 0202000000000     Empty00        Deep Ocean
 0203000000000     Empty00       Shallow Sea
-0204000000000     Empty00         Grassland
-0205000000000     Empty00         Grassland
-0206000000000     Empty00         Grassland
-0207000000000     Empty00         Grassland
+0204000000000     Empty01         Grassland
+0205000000000     Empty01         Grassland
+0206000000000     Empty01         Grassland
+0207000000000     Empty01         Grassland
 0208000000000     Empty00       Shallow Sea
 0209000000000     Empty00       Shallow Sea
-0210000000000     Empty00         Grassland
+0210000000000     Empty01         Grassland
 0211000000000     Empty00       Shallow Sea
 0212000000000     Empty00        Deep Ocean
 0213000000000     Empty00        Deep Ocean
@@ -55,14 +55,14 @@
 0300000000000     Empty00        Deep Ocean
 0301000000000     Empty00       Shallow Sea
 0302000000000     Empty00       Shallow Sea
-0303000000000     Empty00         Grassland
-0304000000000     Empty00         Grassland
-0305000000000     Empty00         Grassland
-0306000000000     Empty00         Grassland
-0307000000000     Empty00         Grassland
+0303000000000     Empty01         Grassland
+0304000000000     Empty01         Grassland
+0305000000000     Empty01         Grassland
+0306000000000     Empty01         Grassland
+0307000000000     Empty01         Grassland
 0308000000000     Empty00       Shallow Sea
-0309000000000     Empty00         Grassland
-0310000000000     Empty00         Grassland
+0309000000000     Empty01         Grassland
+0310000000000     Empty01         Grassland
 0311000000000     Empty00       Shallow Sea
 0312000000000     Empty00       Shallow Sea
 0313000000000     Empty00        Deep Ocean
@@ -72,78 +72,78 @@
 0317000000000     Empty00        Deep Ocean
 0400000000000     Empty00        Deep Ocean
 0401000000000     Empty00       Shallow Sea
-0402000000000     Empty00         Grassland
-0403000000000     Empty00         Grassland
-0404000000000     Empty00         Grassland
-0405000000000     Empty00         Grassland
-0406000000000     Empty00         Grassland
-0407000000000     Empty00         Grassland
+0402000000000     Empty01         Grassland
+0403000000000     Empty01         Grassland
+0404000000000     Empty01         Grassland
+0405000000000     Empty01         Grassland
+0406000000000     Empty01         Grassland
+0407000000000     Empty01         Grassland
 0408000000000     Empty00       Shallow Sea
-0409000000000     Empty00         Grassland
-0410000000000     Empty00         Grassland
-0411000000000     Empty00         Grassland
-0412000000000     Empty00         Grassland
+0409000000000     Empty01         Grassland
+0410000000000     Empty01         Grassland
+0411000000000     Empty01         Grassland
+0412000000000     Empty01         Grassland
 0413000000000     Empty00       Shallow Sea
 0414000000000     Empty00        Deep Ocean
 0415000000000     Empty00        Deep Ocean
 0416000000000     Empty00        Deep Ocean
 0417000000000     Empty00        Deep Ocean
 0500000000000     Empty00       Shallow Sea
-0501000000000     Empty00         Grassland
-0502000000000     Empty00            Forest
-0503000000000     Empty00            Forest
-0504000000000     Empty00         Grassland
-0505000000000     Empty00            Forest
-0506000000000     Empty00            Forest
-0507000000000     Empty00         Grassland
+0501000000000     Empty01         Grassland
+0502000000000     Empty01            Forest
+0503000000000     Empty01            Forest
+0504000000000     Empty01         Grassland
+0505000000000     Empty01            Forest
+0506000000000     Empty01            Forest
+0507000000000     Empty01         Grassland
 0508000000000     Empty00       Shallow Sea
-0509000000000     Empty00             Hills
-0510000000000     Empty00             Hills
-0511000000000     Empty00            Forest
-0512000000000     Empty00         Grassland
+0509000000000     Empty01             Hills
+0510000000000     Empty01             Hills
+0511000000000     Empty01            Forest
+0512000000000     Empty01         Grassland
 0513000000000     Empty00       Shallow Sea
 0514000000000     Empty00        Deep Ocean
 0515000000000     Empty00        Deep Ocean
 0516000000000     Empty00        Deep Ocean
 0517000000000     Empty00        Deep Ocean
 0600000000000     Empty00       Shallow Sea
-0601000000000     Empty00         Grassland
-0602000000000     Empty00         Mountains
-0603000000000     Empty00         Mountains
-0604000000000     Empty00         Mountains
-0605000000000     Empty00         Mountains
-0606000000000     Empty00         Mountains
-0607000000000     Empty00         Mountains
+0601000000000     Empty01         Grassland
+0602000000000     Empty02         Mountains
+0603000000000     Empty02         Mountains
+0604000000000     Empty02         Mountains
+0605000000000     Empty02         Mountains
+0606000000000     Empty02         Mountains
+0607000000000     Empty02         Mountains
 0608000000000     Empty00       Shallow Sea
-0609000000000     Empty00             Hills
-0610000000000     Empty00         Mountains
-0611000000000     Empty00         Mountains
-0612000000000     Empty00            Forest
-0613000000000     Empty00            Forest
+0609000000000     Empty01             Hills
+0610000000000     Empty03         Mountains
+0611000000000     Empty03         Mountains
+0612000000000     Empty01            Forest
+0613000000000     Empty01            Forest
 0614000000000     Empty00       Shallow Sea
 0615000000000     Empty00        Deep Ocean
 0616000000000     Empty00        Deep Ocean
 0617000000000     Empty00        Deep Ocean
-0700000000000     Empty00         Grassland
-0701000000000     Empty00         Mountains
+0700000000000     Empty01         Grassland
+0701000000000     Empty02         Mountains
 0702000000000     Empty00             Hills
-0703000000000     Empty00         Mountains
-0704000000000     Empty00         Mountains
-0705000000000     Empty00         Mountains
-0706000000000     Empty00         Mountains
-0707000000000     Empty00         Mountains
-0708000000000     Empty00             Hills
-0709000000000     Empty00         Mountains
-0710000000000     Empty00         Mountains
-0711000000000     Empty00         Mountains
-0712000000000     Empty00            Forest
-0713000000000     Empty00            Forest
+0703000000000     Empty02         Mountains
+0704000000000     Empty02         Mountains
+0705000000000     Empty02         Mountains
+0706000000000     Empty02         Mountains
+0707000000000     Empty02         Mountains
+0708000000000     Empty01             Hills
+0709000000000     Empty03         Mountains
+0710000000000     Empty03         Mountains
+0711000000000     Empty03         Mountains
+0712000000000     Empty01            Forest
+0713000000000     Empty01            Forest
 0714000000000     Empty00       Shallow Sea
 0715000000000     Empty00        Deep Ocean
 0716000000000     Empty00        Deep Ocean
 0717000000000     Empty00        Deep Ocean
 0800000000000     Empty00       Shallow Sea
-0801000000000     Empty00         Mountains
+0801000000000     Empty02         Mountains
 0802000000000     Empty00         Grassland
 0803000000000     Empty00         Grassland
 0804000000000     Empty00         Grassland
@@ -153,10 +153,10 @@
 0808000000000     Empty00         Grassland
 0809000000000     Empty00             Hills
 0810000000000     Empty00         Grassland
-0811000000000     Empty00         Mountains
-0812000000000     Empty00         Mountains
-0813000000000     Empty00         Mountains
-0814000000000     Empty00            Forest
+0811000000000     Empty03         Mountains
+0812000000000     Empty03         Mountains
+0813000000000     Empty03         Mountains
+0814000000000     Empty01            Forest
 0815000000000     Empty00       Shallow Sea
 0816000000000     Empty00        Deep Ocean
 0817000000000     Empty00        Deep Ocean
@@ -171,7 +171,7 @@
 0908000000000     Empty00         Grassland
 0909000000000     Empty00         Grassland
 0910000000000     Empty00         Grassland
-0911000000000     Empty00             Hills
+0911000000000     Empty03             Hills
 0912000000000     Empty00            Forest
 0913000000000     Empty00            Forest
 0914000000000     Empty00       Shallow Sea
@@ -189,7 +189,7 @@
 1008000000000     Empty00         Grassland
 1009000000000     Empty00         Grassland
 1010000000000     Empty00         Grassland
-1011000000000     Empty00         Mountains
+1011000000000     Empty03         Mountains
 1012000000000     Empty00         Grassland
 1013000000000     Empty00         Grassland
 1014000000000     Empty00         Grassland
@@ -221,8 +221,8 @@
 1204000000000     Empty00             Hills
 1205000000000     Empty00         Grassland
 1206000000000     Empty00         Grassland
-1207000000000     Empty00      Forest Hills
-1208000000000     Empty00             Hills
+1207000000000     Empty04      Forest Hills
+1208000000000     Empty04             Hills
 1209000000000     Empty00         Grassland
 1210000000000     Empty00         Grassland
 1211000000000     Empty00         Grassland
@@ -239,8 +239,8 @@
 1304000000000     Empty00         Grassland
 1305000000000     Empty00         Grassland
 1306000000000     Empty00         Grassland
-1307000000000     Empty00      Forest Hills
-1308000000000     Empty00             Hills
+1307000000000     Empty04      Forest Hills
+1308000000000     Empty04             Hills
 1309000000000     Empty00         Grassland
 1310000000000     Empty00         Grassland
 1311000000000     Empty00         Grassland
@@ -257,9 +257,9 @@
 1404000000000     Empty00             Hills
 1405000000000     Empty00         Grassland
 1406000000000     Empty00         Grassland
-1407000000000     Empty00      Forest Hills
-1408000000000     Empty00      Forest Hills
-1409000000000     Empty00             Hills
+1407000000000     Empty04      Forest Hills
+1408000000000     Empty04      Forest Hills
+1409000000000     Empty04             Hills
 1410000000000     Empty00         Grassland
 1411000000000     Empty00         Grassland
 1412000000000     Empty00         Grassland
@@ -290,11 +290,11 @@
 1601000000000     Empty00         Grassland
 1602000000000     Empty00         Grassland
 1603000000000     Empty00         Grassland
-1604000000000     Empty00             Hills
-1605000000000     Empty00             Hills
-1606000000000     Empty00             Hills
-1607000000000     Empty00             Hills
-1608000000000     Empty00             Hills
+1604000000000     Empty05             Hills
+1605000000000     Empty05             Hills
+1606000000000     Empty05             Hills
+1607000000000     Empty07             Hills
+1608000000000     Empty07             Hills
 1609000000000     Empty00         Grassland
 1610000000000     Empty00         Grassland
 1611000000000     Empty00         Grassland
@@ -308,17 +308,17 @@
 1701000000000     Empty00             Hills
 1702000000000     Empty00         Grassland
 1703000000000     Empty00         Grassland
-1704000000000     Empty00             Hills
-1705000000000     Empty00             Hills
-1706000000000     Empty00         Grassland
-1707000000000     Empty00             Hills
+1704000000000     Empty05             Hills
+1705000000000     Empty05             Hills
+1706000000000     Empty05         Grassland
+1707000000000     Empty07             Hills
 1708000000000     Empty00         Grassland
 1709000000000     Empty00         Grassland
 1710000000000     Empty00         Grassland
 1711000000000     Empty00         Grassland
-1712000000000     Empty00         Grassland
-1713000000000     Empty00         Grassland
-1714000000000     Empty00         Grassland
+1712000000000     Empty08         Grassland
+1713000000000     Empty08         Grassland
+1714000000000     Empty08         Grassland
 1715000000000     Empty00         Grassland
 1716000000000     Empty00         Grassland
 1717000000000     Empty00         Grassland
@@ -327,17 +327,17 @@
 1802000000000     Empty00             Hills
 1803000000000     Empty00         Grassland
 1804000000000     Empty00         Grassland
-1805000000000     Empty00             Hills
-1806000000000     Empty00             Hills
-1807000000000     Empty00      Forest Hills
-1808000000000     Empty00      Forest Hills
+1805000000000     Empty05             Hills
+1806000000000     Empty05             Hills
+1807000000000     Empty05      Forest Hills
+1808000000000     Empty05      Forest Hills
 1809000000000     Empty00         Grassland
 1810000000000     Empty00         Grassland
 1811000000000     Empty00         Grassland
-1812000000000     Empty00            Forest
-1813000000000     Empty00      Forest Hills
-1814000000000     Empty00      Forest Hills
-1815000000000     Empty00            Forest
+1812000000000     Empty08            Forest
+1813000000000     Empty08      Forest Hills
+1814000000000     Empty08      Forest Hills
+1815000000000     Empty08            Forest
 1816000000000     Empty00         Grassland
 1817000000000     Empty00         Grassland
 1900000000000     Empty00         Mountains
@@ -345,17 +345,17 @@
 1902000000000     Empty00         Mountains
 1903000000000     Empty00             Hills
 1904000000000     Empty00         Grassland
-1905000000000     Empty00      Forest Hills
-1906000000000     Empty00      Forest Hills
-1907000000000     Empty00      Forest Hills
+1905000000000     Empty05      Forest Hills
+1906000000000     Empty05      Forest Hills
+1907000000000     Empty05      Forest Hills
 1908000000000     Empty00         Grassland
 1909000000000     Empty00         Grassland
 1910000000000     Empty00         Grassland
-1911000000000     Empty00      Forest Hills
-1912000000000     Empty00      Forest Hills
-1913000000000     Empty00         Mountains
-1914000000000     Empty00      Forest Hills
-1915000000000     Empty00      Forest Hills
+1911000000000     Empty08      Forest Hills
+1912000000000     Empty08      Forest Hills
+1913000000000     Empty08         Mountains
+1914000000000     Empty08      Forest Hills
+1915000000000     Empty08      Forest Hills
 1916000000000     Empty00         Grassland
 1917000000000     Empty00         Grassland
 2000000000000     Empty00         Mountains
@@ -364,7 +364,7 @@
 2003000000000     Empty00         Mountains
 2004000000000     Empty00         Mountains
 2005000000000     Empty00      Forest Hills
-2006000000000     Empty00      Forest Hills
+2006000000000     Empty06      Forest Hills
 2007000000000     Empty00      Forest Hills
 2008000000000     Empty00         Grassland
 2009000000000     Empty00         Grassland
@@ -374,14 +374,14 @@
 2013000000000     Empty00         Mountains
 2014000000000     Empty00         Mountains
 2015000000000     Empty00         Mountains
-2016000000000     Empty00         Mountains
+2016000000000     Empty09         Mountains
 2017000000000     Empty00         Grassland
-2100000000000     Empty00         Mountains
-2101000000000     Empty00         Mountains
+2100000000000     Empty10         Mountains
+2101000000000     Empty10         Mountains
 2102000000000     Empty00         Mountains
 2103000000000     Empty00         Mountains
 2104000000000     Empty00      Forest Hills
-2105000000000     Empty00      Forest Hills
+2105000000000     Empty06      Forest Hills
 2106000000000     Empty00      Forest Hills
 2107000000000     Empty00         Mountains
 2108000000000     Empty00         Mountains
@@ -391,12 +391,12 @@
 2112000000000     Empty00         Mountains
 2113000000000     Empty00         Mountains
 2114000000000     Empty00         Mountains
-2115000000000     Empty00         Mountains
+2115000000000     Empty09         Mountains
 2116000000000     Empty00         Grassland
 2117000000000     Empty00         Mountains
-2200000000000     Empty00         Mountains
-2201000000000     Empty00         Mountains
-2202000000000     Empty00         Mountains
+2200000000000     Empty10         Mountains
+2201000000000     Empty10         Mountains
+2202000000000     Empty10         Mountains
 2203000000000     Empty00         Mountains
 2204000000000     Empty00         Mountains
 2205000000000     Empty00         Mountains
@@ -412,8 +412,8 @@
 2215000000000     Empty00      Dense Forest
 2216000000000     Empty00         Grassland
 2217000000000     Empty00         Mountains
-2300000000000     Empty00         Mountains
-2301000000000     Empty00         Mountains
+2300000000000     Empty10         Mountains
+2301000000000     Empty10         Mountains
 2302000000000     Empty00         Mountains
 2303000000000     Empty00         Mountains
 2304000000000     Empty00         Mountains
