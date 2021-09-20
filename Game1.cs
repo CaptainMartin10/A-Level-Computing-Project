@@ -3,8 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
 using System;
-using System.Windows;
-
 
 namespace A_Level_Computing_Project
 {
@@ -14,14 +12,12 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public int CurrentHexX = 0;
-        public int CurrentHexY = 0;
-        public string MouseCoords = "Mouse Coordinates: 0 , 0";
+        public int CurrentHexX, CurrentHexY = 0;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine;
         public int Player = 7;
         public int Turn = 1;
-        public bool MouseUp = true;
+        public MouseState CurrentMouseState, LastMouseState;
 
         public Game1()
         {
@@ -57,13 +53,16 @@ namespace A_Level_Computing_Project
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))] = new Province(Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2)));
-                    MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureLevel = Convert.ToInt32(line.Substring(4, 1));
-                    MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureGarrison = Convert.ToInt32(line.Substring(5, 4));
-                    MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureProduction = Convert.ToInt32(line.Substring(9, 4));
-                    MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Structure = (line.Substring(13, 10)).Trim();
-                    MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].OwnedBy = Countries[Convert.ToInt32(line.Substring(23, 2))];
-                    MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Terrain = (line.Substring(25, 18)).Trim();
+                    if (line.Length == 43)
+                    {
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))] = new Province(Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2)));
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureLevel = Convert.ToInt32(line.Substring(4, 1));
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureGarrison = Convert.ToInt32(line.Substring(5, 4));
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureProduction = Convert.ToInt32(line.Substring(9, 4));
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Structure = (line.Substring(13, 10)).Trim();
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].OwnedBy = Countries[Convert.ToInt32(line.Substring(23, 2))];
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Terrain = (line.Substring(25, 18)).Trim();
+                    }
                 }
             }
 
@@ -92,53 +91,28 @@ namespace A_Level_Computing_Project
 
             // TODO: Add your update logic here
 
-            var mouseState = Mouse.GetState();
-            Point mousePoint = new Point(mouseState.X, mouseState.Y);
-            MouseCoords = "Mouse Coordinates: " + mouseState.X + " , " + mouseState.Y;
-            if (mouseState.LeftButton == ButtonState.Pressed)
+            CurrentMouseState = Mouse.GetState();
+            Point mousePoint = new Point(CurrentMouseState.X, CurrentMouseState.Y);
+
+            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
                 foreach (Province Hex in MapArray)
                 {
-                    if (Hex.X % 2 == 0)
+                    if (Hex.ContainsMousePointer(mousePoint))
                     {
-                        Rectangle HexBounds1 = new Rectangle((Hex.X * 27) + 9, (Hex.Y * 36), 18, 36);
-                        Rectangle HexBounds2 = new Rectangle((Hex.X * 27) + 8, (Hex.Y * 36) + 1, 20, 34);
-                        Rectangle HexBounds3 = new Rectangle((Hex.X * 27) + 7, (Hex.Y * 36) + 3, 22, 30);
-                        Rectangle HexBounds4 = new Rectangle((Hex.X * 27) + 6, (Hex.Y * 36) + 5, 24, 26);
-                        Rectangle HexBounds5 = new Rectangle((Hex.X * 27) + 5, (Hex.Y * 36) + 7, 26, 22);
-                        Rectangle HexBounds6 = new Rectangle((Hex.X * 27) + 4, (Hex.Y * 36) + 9, 28, 18);
-                        Rectangle HexBounds7 = new Rectangle((Hex.X * 27) + 3, (Hex.Y * 36) + 1, 30, 14);
-                        Rectangle HexBounds8 = new Rectangle((Hex.X * 27) + 2, (Hex.Y * 36) + 3, 32, 10);
-                        Rectangle HexBounds9 = new Rectangle((Hex.X * 27) + 1, (Hex.Y * 36) + 5, 34, 6);
-                        Rectangle HexBounds10 = new Rectangle((Hex.X * 27), (Hex.Y * 36) + 7, 36, 2);
-                        if (HexBounds1.Contains(mousePoint) || HexBounds2.Contains(mousePoint) || HexBounds3.Contains(mousePoint) || HexBounds4.Contains(mousePoint) || HexBounds5.Contains(mousePoint) || HexBounds6.Contains(mousePoint) || HexBounds7.Contains(mousePoint) || HexBounds8.Contains(mousePoint) || HexBounds9.Contains(mousePoint) || HexBounds10.Contains(mousePoint))
-                        {
-                            CurrentHexX = Hex.X;
-                            CurrentHexY = Hex.Y;
-                        }
-                    }
-                    else if (Hex.X % 2 == 1)
-                    {
-                        Rectangle HexBounds1 = new Rectangle((Hex.X * 27) + 9, (Hex.Y * 36) + 18, 18, 36);
-                        Rectangle HexBounds2 = new Rectangle((Hex.X * 27) + 8, (Hex.Y * 36) + 19, 20, 34);
-                        Rectangle HexBounds3 = new Rectangle((Hex.X * 27) + 7, (Hex.Y * 36) + 21, 22, 30);
-                        Rectangle HexBounds4 = new Rectangle((Hex.X * 27) + 6, (Hex.Y * 36) + 23, 24, 26);
-                        Rectangle HexBounds5 = new Rectangle((Hex.X * 27) + 5, (Hex.Y * 36) + 25, 26, 22);
-                        Rectangle HexBounds6 = new Rectangle((Hex.X * 27) + 4, (Hex.Y * 36) + 27, 28, 18);
-                        Rectangle HexBounds7 = new Rectangle((Hex.X * 27) + 3, (Hex.Y * 36) + 29, 30, 14);
-                        Rectangle HexBounds8 = new Rectangle((Hex.X * 27) + 2, (Hex.Y * 36) + 31, 32, 10);
-                        Rectangle HexBounds9 = new Rectangle((Hex.X * 27) + 1, (Hex.Y * 36) + 33, 34, 6);
-                        Rectangle HexBounds10 = new Rectangle((Hex.X * 27), (Hex.Y * 36) + 35, 36, 2);
-                        if (HexBounds1.Contains(mousePoint) || HexBounds2.Contains(mousePoint) || HexBounds3.Contains(mousePoint) || HexBounds4.Contains(mousePoint) || HexBounds5.Contains(mousePoint) || HexBounds6.Contains(mousePoint) || HexBounds7.Contains(mousePoint) || HexBounds8.Contains(mousePoint) || HexBounds9.Contains(mousePoint) || HexBounds10.Contains(mousePoint))
-                        {
-                            CurrentHexX = Hex.X;
-                            CurrentHexY = Hex.Y;
-                        }
+                        CurrentHexX = Hex.X;
+                        CurrentHexY = Hex.Y;
                     }
                 }
 
                 Rectangle NextTurnButton = new Rectangle(663, 624, 498, 36);
+                if (NextTurnButton.Contains(mousePoint))
+                {
+                    Turn++;
+                }
             }
+
+            LastMouseState = CurrentMouseState;
 
             base.Update(gameTime);
         }
@@ -151,7 +125,7 @@ namespace A_Level_Computing_Project
 
             _spriteBatch.Begin();
             _spriteBatch.Draw(Background, new Vector2(0, 0), Color.White);
-            _spriteBatch.DrawString(MenuFont, MouseCoords, new Vector2(666, 5), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Mouse Coordinates: " + CurrentMouseState.X + " , " + CurrentMouseState.Y, new Vector2(666, 5), Color.White);
 
             _spriteBatch.DrawString(MenuFont, "Player: " + Countries[Player].Name, new Vector2(666, 51), Color.White);
             _spriteBatch.DrawString(MenuFont, "Gold: " + Countries[Player].Gold, new Vector2(666, 91), Color.White);
@@ -164,7 +138,7 @@ namespace A_Level_Computing_Project
             _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[CurrentHexX, CurrentHexY].OwnedBy).Name, new Vector2(666, 337), Color.White);
             _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[CurrentHexX, CurrentHexY].Terrain, new Vector2(666, 377), Color.White);
             
-            if (MapArray[CurrentHexX, CurrentHexY].Structure != "Empty")
+            if (MapArray[CurrentHexX, CurrentHexY].Structure != "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == false)
             {
                 _spriteBatch.DrawString(MenuFont, MapArray[CurrentHexX, CurrentHexY].Structure, new Vector2(666, 417), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[CurrentHexX, CurrentHexY].StructureGarrison, new Vector2(666, 457), Color.White);
@@ -172,7 +146,15 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[CurrentHexX, CurrentHexY].StructureLevel, new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(666, 577), Color.White);
             }
-            else if (MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && (MapArray[CurrentHexX, CurrentHexY].OwnedBy).IsAI == false)
+            else if (MapArray[CurrentHexX, CurrentHexY].Structure != "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == true)
+            {
+                _spriteBatch.DrawString(MenuFont, MapArray[CurrentHexX, CurrentHexY].Structure, new Vector2(666, 417), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[CurrentHexX, CurrentHexY].StructureGarrison, new Vector2(666, 457), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Producing: " + MapArray[CurrentHexX, CurrentHexY].StructureProduction, new Vector2(666, 497), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[CurrentHexX, CurrentHexY].StructureLevel, new Vector2(666, 537), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Cannot Upgrade", new Vector2(666, 577), Color.White);
+            }
+            else if (MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == false)
             {
                 _spriteBatch.DrawString(MenuFont, "Build Fort", new Vector2(666, 417), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Build Settlement", new Vector2(666, 457), Color.White);
@@ -180,7 +162,7 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Build Forester", new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Build Mine", new Vector2(666, 577), Color.White);
             }
-            else if ((MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && (MapArray[CurrentHexX, CurrentHexY].OwnedBy).IsAI != false) || MapArray[CurrentHexX, CurrentHexY].Terrain == "Deep Ocean")
+            else if (MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == true)
             {
                 _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 417), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 457), Color.White);
