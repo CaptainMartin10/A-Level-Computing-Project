@@ -1,1534 +1,432 @@
-00	00	0	0000	0000	     Empty	             Unowned	         Grassland
-00	01	0	0000	0000	     Empty	             Unowned	         Grassland
-00	02	0	0000	0000	     Empty	             Unowned	         Grassland
-00	03	0	0000	0000	     Empty	             Unowned	         Grassland
-00	04	0	0000	0000	     Empty	             Unowned	         Grassland
-00	05	0	0000	0000	     Empty	             Unowned	         Grassland
-00	06	0	0000	0000	     Empty	             Unowned	         Grassland
-00	07	0	0000	0000	     Empty	             Unowned	         Grassland
-00	08	0	0000	0000	     Empty	             Unowned	         Grassland
-00	09	0	0000	0000	     Empty	             Unowned	         Grassland
-00	10	0	0000	0000	     Empty	             Unowned	         Grassland
-00	11	0	0000	0000	     Empty	             Unowned	         Grassland
-00	12	0	0000	0000	     Empty	             Unowned	         Grassland
-00	13	0	0000	0000	     Empty	             Unowned	         Grassland
-00	14	0	0000	0000	     Empty	             Unowned	         Grassland
-00	15	0	0000	0000	     Empty	             Unowned	         Grassland
-00	16	0	0000	0000	     Empty	             Unowned	         Grassland
-00	17	0	0000	0000	     Empty	             Unowned	         Grassland
-00	18	0	0000	0000	     Empty	             Unowned	         Grassland
-00	19	0	0000	0000	     Empty	             Unowned	         Grassland
-00	20	0	0000	0000	     Empty	             Unowned	         Grassland
-00	21	0	0000	0000	     Empty	             Unowned	         Grassland
-00	22	0	0000	0000	     Empty	             Unowned	         Grassland
-00	23	0	0000	0000	     Empty	             Unowned	         Grassland
-00	24	0	0000	0000	     Empty	             Unowned	         Grassland
-00	25	0	0000	0000	     Empty	             Unowned	         Grassland
-00	26	0	0000	0000	     Empty	             Unowned	         Grassland
-00	27	0	0000	0000	     Empty	             Unowned	         Grassland
-00	28	0	0000	0000	     Empty	             Unowned	         Grassland
-00	29	0	0000	0000	     Empty	             Unowned	         Grassland
-01	00	0	0000	0000	     Empty	             Unowned	         Grassland
-01	01	0	0000	0000	     Empty	             Unowned	         Grassland
-01	02	0	0000	0000	     Empty	             Unowned	         Grassland
-01	03	0	0000	0000	     Empty	             Unowned	         Grassland
-01	04	0	0000	0000	     Empty	             Unowned	         Grassland
-01	05	0	0000	0000	     Empty	             Unowned	         Grassland
-01	06	0	0000	0000	     Empty	             Unowned	         Grassland
-01	07	0	0000	0000	     Empty	             Unowned	         Grassland
-01	08	0	0000	0000	     Empty	             Unowned	         Grassland
-01	09	0	0000	0000	     Empty	             Unowned	         Grassland
-01	10	0	0000	0000	     Empty	             Unowned	         Grassland
-01	11	0	0000	0000	     Empty	             Unowned	         Grassland
-01	12	0	0000	0000	     Empty	             Unowned	         Grassland
-01	13	0	0000	0000	     Empty	             Unowned	         Grassland
-01	14	0	0000	0000	     Empty	             Unowned	         Grassland
-01	15	0	0000	0000	     Empty	             Unowned	         Grassland
-01	16	0	0000	0000	     Empty	             Unowned	         Grassland
-01	17	0	0000	0000	     Empty	             Unowned	         Grassland
-01	18	0	0000	0000	     Empty	             Unowned	         Grassland
-01	19	0	0000	0000	     Empty	             Unowned	         Grassland
-01	20	0	0000	0000	     Empty	             Unowned	         Grassland
-01	21	0	0000	0000	     Empty	             Unowned	         Grassland
-01	22	0	0000	0000	     Empty	             Unowned	         Grassland
-01	23	0	0000	0000	     Empty	             Unowned	         Grassland
-01	24	0	0000	0000	     Empty	             Unowned	         Grassland
-01	25	0	0000	0000	     Empty	             Unowned	         Grassland
-01	26	0	0000	0000	     Empty	             Unowned	         Grassland
-01	27	0	0000	0000	     Empty	             Unowned	         Grassland
-01	28	0	0000	0000	     Empty	             Unowned	         Grassland
-02	00	0	0000	0000	     Empty	             Unowned	         Grassland
-02	01	0	0000	0000	     Empty	             Unowned	         Grassland
-02	02	0	0000	0000	     Empty	             Unowned	         Grassland
-02	03	0	0000	0000	     Empty	             Unowned	         Grassland
-02	04	0	0000	0000	     Empty	             Unowned	         Grassland
-02	05	0	0000	0000	     Empty	             Unowned	         Grassland
-02	06	0	0000	0000	     Empty	             Unowned	         Grassland
-02	07	0	0000	0000	     Empty	             Unowned	         Grassland
-02	08	0	0000	0000	     Empty	             Unowned	         Grassland
-02	09	0	0000	0000	     Empty	             Unowned	         Grassland
-02	10	0	0000	0000	     Empty	             Unowned	         Grassland
-02	11	0	0000	0000	     Empty	             Unowned	         Grassland
-02	12	0	0000	0000	     Empty	             Unowned	         Grassland
-02	13	0	0000	0000	     Empty	             Unowned	         Grassland
-02	14	0	0000	0000	     Empty	             Unowned	         Grassland
-02	15	0	0000	0000	     Empty	             Unowned	         Grassland
-02	16	0	0000	0000	     Empty	             Unowned	         Grassland
-02	17	0	0000	0000	     Empty	             Unowned	         Grassland
-02	18	0	0000	0000	     Empty	             Unowned	         Grassland
-02	19	0	0000	0000	     Empty	             Unowned	         Grassland
-02	20	0	0000	0000	     Empty	             Unowned	         Grassland
-02	21	0	0000	0000	     Empty	             Unowned	         Grassland
-02	22	0	0000	0000	     Empty	             Unowned	         Grassland
-02	23	0	0000	0000	     Empty	             Unowned	         Grassland
-02	24	0	0000	0000	     Empty	             Unowned	         Grassland
-02	25	0	0000	0000	     Empty	             Unowned	         Grassland
-02	26	0	0000	0000	     Empty	             Unowned	         Grassland
-02	27	0	0000	0000	     Empty	             Unowned	         Grassland
-02	28	0	0000	0000	     Empty	             Unowned	         Grassland
-02	29	0	0000	0000	     Empty	             Unowned	         Grassland
-03	00	0	0000	0000	     Empty	             Unowned	         Grassland
-03	01	0	0000	0000	     Empty	             Unowned	         Grassland
-03	02	0	0000	0000	     Empty	             Unowned	         Grassland
-03	03	0	0000	0000	     Empty	             Unowned	         Grassland
-03	04	0	0000	0000	     Empty	             Unowned	         Grassland
-03	05	0	0000	0000	     Empty	             Unowned	         Grassland
-03	06	0	0000	0000	     Empty	             Unowned	         Grassland
-03	07	0	0000	0000	     Empty	             Unowned	         Grassland
-03	08	0	0000	0000	     Empty	             Unowned	         Grassland
-03	09	0	0000	0000	     Empty	             Unowned	         Grassland
-03	10	0	0000	0000	     Empty	             Unowned	         Grassland
-03	11	0	0000	0000	     Empty	             Unowned	         Grassland
-03	12	0	0000	0000	     Empty	             Unowned	         Grassland
-03	13	0	0000	0000	     Empty	             Unowned	         Grassland
-03	14	0	0000	0000	     Empty	             Unowned	         Grassland
-03	15	0	0000	0000	     Empty	             Unowned	         Grassland
-03	16	0	0000	0000	     Empty	             Unowned	         Grassland
-03	17	0	0000	0000	     Empty	             Unowned	         Grassland
-03	18	0	0000	0000	     Empty	             Unowned	         Grassland
-03	19	0	0000	0000	     Empty	             Unowned	         Grassland
-03	20	0	0000	0000	     Empty	             Unowned	         Grassland
-03	21	0	0000	0000	     Empty	             Unowned	         Grassland
-03	22	0	0000	0000	     Empty	             Unowned	         Grassland
-03	23	0	0000	0000	     Empty	             Unowned	         Grassland
-03	24	0	0000	0000	     Empty	             Unowned	         Grassland
-03	25	0	0000	0000	     Empty	             Unowned	         Grassland
-03	26	0	0000	0000	     Empty	             Unowned	         Grassland
-03	27	0	0000	0000	     Empty	             Unowned	         Grassland
-03	28	0	0000	0000	     Empty	             Unowned	         Grassland
-04	00	0	0000	0000	     Empty	             Unowned	         Grassland
-04	01	0	0000	0000	     Empty	             Unowned	         Grassland
-04	02	0	0000	0000	     Empty	             Unowned	         Grassland
-04	03	0	0000	0000	     Empty	             Unowned	         Grassland
-04	04	0	0000	0000	     Empty	             Unowned	         Grassland
-04	05	0	0000	0000	     Empty	             Unowned	         Grassland
-04	06	0	0000	0000	     Empty	             Unowned	         Grassland
-04	07	0	0000	0000	     Empty	             Unowned	         Grassland
-04	08	0	0000	0000	     Empty	             Unowned	         Grassland
-04	09	0	0000	0000	     Empty	             Unowned	         Grassland
-04	10	0	0000	0000	     Empty	             Unowned	         Grassland
-04	11	0	0000	0000	     Empty	             Unowned	         Grassland
-04	12	0	0000	0000	     Empty	             Unowned	         Grassland
-04	13	0	0000	0000	     Empty	             Unowned	         Grassland
-04	14	0	0000	0000	     Empty	             Unowned	         Grassland
-04	15	0	0000	0000	     Empty	             Unowned	         Grassland
-04	16	0	0000	0000	     Empty	             Unowned	         Grassland
-04	17	0	0000	0000	     Empty	             Unowned	         Grassland
-04	18	0	0000	0000	     Empty	             Unowned	         Grassland
-04	19	0	0000	0000	     Empty	             Unowned	         Grassland
-04	20	0	0000	0000	     Empty	             Unowned	         Grassland
-04	21	0	0000	0000	     Empty	             Unowned	         Grassland
-04	22	0	0000	0000	     Empty	             Unowned	         Grassland
-04	23	0	0000	0000	     Empty	             Unowned	         Grassland
-04	24	0	0000	0000	     Empty	             Unowned	         Grassland
-04	25	0	0000	0000	     Empty	             Unowned	         Grassland
-04	26	0	0000	0000	     Empty	             Unowned	         Grassland
-04	27	0	0000	0000	     Empty	             Unowned	         Grassland
-04	28	0	0000	0000	     Empty	             Unowned	         Grassland
-04	29	0	0000	0000	     Empty	             Unowned	         Grassland
-05	00	0	0000	0000	     Empty	             Unowned	         Grassland
-05	01	0	0000	0000	     Empty	             Unowned	         Grassland
-05	02	0	0000	0000	     Empty	             Unowned	         Grassland
-05	03	0	0000	0000	     Empty	             Unowned	         Grassland
-05	04	0	0000	0000	     Empty	             Unowned	         Grassland
-05	05	0	0000	0000	     Empty	             Unowned	         Grassland
-05	06	0	0000	0000	     Empty	             Unowned	         Grassland
-05	07	0	0000	0000	     Empty	             Unowned	         Grassland
-05	08	0	0000	0000	     Empty	             Unowned	         Grassland
-05	09	0	0000	0000	     Empty	             Unowned	         Grassland
-05	10	0	0000	0000	     Empty	             Unowned	         Grassland
-05	11	0	0000	0000	     Empty	             Unowned	         Grassland
-05	12	0	0000	0000	     Empty	             Unowned	         Grassland
-05	13	0	0000	0000	     Empty	             Unowned	         Grassland
-05	14	0	0000	0000	     Empty	             Unowned	         Grassland
-05	15	0	0000	0000	     Empty	             Unowned	         Grassland
-05	16	0	0000	0000	     Empty	             Unowned	         Grassland
-05	17	0	0000	0000	     Empty	             Unowned	         Grassland
-05	18	0	0000	0000	     Empty	             Unowned	         Grassland
-05	19	0	0000	0000	     Empty	             Unowned	         Grassland
-05	20	0	0000	0000	     Empty	             Unowned	         Grassland
-05	21	0	0000	0000	     Empty	             Unowned	         Grassland
-05	22	0	0000	0000	     Empty	             Unowned	         Grassland
-05	23	0	0000	0000	     Empty	             Unowned	         Grassland
-05	24	0	0000	0000	     Empty	             Unowned	         Grassland
-05	25	0	0000	0000	     Empty	             Unowned	         Grassland
-05	26	0	0000	0000	     Empty	             Unowned	         Grassland
-05	27	0	0000	0000	     Empty	             Unowned	         Grassland
-05	28	0	0000	0000	     Empty	             Unowned	         Grassland
-06	00	0	0000	0000	     Empty	             Unowned	         Grassland
-06	01	0	0000	0000	     Empty	             Unowned	         Grassland
-06	02	0	0000	0000	     Empty	             Unowned	         Grassland
-06	03	0	0000	0000	     Empty	             Unowned	         Grassland
-06	04	0	0000	0000	     Empty	             Unowned	         Grassland
-06	05	0	0000	0000	     Empty	             Unowned	         Grassland
-06	06	0	0000	0000	     Empty	             Unowned	         Grassland
-06	07	0	0000	0000	     Empty	             Unowned	         Grassland
-06	08	0	0000	0000	     Empty	             Unowned	         Grassland
-06	09	0	0000	0000	     Empty	             Unowned	         Grassland
-06	10	0	0000	0000	     Empty	             Unowned	         Grassland
-06	11	0	0000	0000	     Empty	             Unowned	         Grassland
-06	12	0	0000	0000	     Empty	             Unowned	         Grassland
-06	13	0	0000	0000	     Empty	             Unowned	         Grassland
-06	14	0	0000	0000	     Empty	             Unowned	         Grassland
-06	15	0	0000	0000	     Empty	             Unowned	         Grassland
-06	16	0	0000	0000	     Empty	             Unowned	         Grassland
-06	17	0	0000	0000	     Empty	             Unowned	         Grassland
-06	18	0	0000	0000	     Empty	             Unowned	         Grassland
-06	19	0	0000	0000	     Empty	             Unowned	         Grassland
-06	20	0	0000	0000	     Empty	             Unowned	         Grassland
-06	21	0	0000	0000	     Empty	             Unowned	         Grassland
-06	22	0	0000	0000	     Empty	             Unowned	         Grassland
-06	23	0	0000	0000	     Empty	             Unowned	         Grassland
-06	24	0	0000	0000	     Empty	             Unowned	         Grassland
-06	25	0	0000	0000	     Empty	             Unowned	         Grassland
-06	26	0	0000	0000	     Empty	             Unowned	         Grassland
-06	27	0	0000	0000	     Empty	             Unowned	         Grassland
-06	28	0	0000	0000	     Empty	             Unowned	         Grassland
-06	29	0	0000	0000	     Empty	             Unowned	         Grassland
-07	00	0	0000	0000	     Empty	             Unowned	         Grassland
-07	01	0	0000	0000	     Empty	             Unowned	         Grassland
-07	02	0	0000	0000	     Empty	             Unowned	         Grassland
-07	03	0	0000	0000	     Empty	             Unowned	         Grassland
-07	04	0	0000	0000	     Empty	             Unowned	         Grassland
-07	05	0	0000	0000	     Empty	             Unowned	         Grassland
-07	06	0	0000	0000	     Empty	             Unowned	         Grassland
-07	07	0	0000	0000	     Empty	             Unowned	         Grassland
-07	08	0	0000	0000	     Empty	             Unowned	         Grassland
-07	09	0	0000	0000	     Empty	             Unowned	         Grassland
-07	10	0	0000	0000	     Empty	             Unowned	         Grassland
-07	11	0	0000	0000	     Empty	             Unowned	         Grassland
-07	12	0	0000	0000	     Empty	             Unowned	         Grassland
-07	13	0	0000	0000	     Empty	             Unowned	         Grassland
-07	14	0	0000	0000	     Empty	             Unowned	         Grassland
-07	15	0	0000	0000	     Empty	             Unowned	         Grassland
-07	16	0	0000	0000	     Empty	             Unowned	         Grassland
-07	17	0	0000	0000	     Empty	             Unowned	         Grassland
-07	18	0	0000	0000	     Empty	             Unowned	         Grassland
-07	19	0	0000	0000	     Empty	             Unowned	         Grassland
-07	20	0	0000	0000	     Empty	             Unowned	         Grassland
-07	21	0	0000	0000	     Empty	             Unowned	         Grassland
-07	22	0	0000	0000	     Empty	             Unowned	         Grassland
-07	23	0	0000	0000	     Empty	             Unowned	         Grassland
-07	24	0	0000	0000	     Empty	             Unowned	         Grassland
-07	25	0	0000	0000	     Empty	             Unowned	         Grassland
-07	26	0	0000	0000	     Empty	             Unowned	         Grassland
-07	27	0	0000	0000	     Empty	             Unowned	         Grassland
-07	28	0	0000	0000	     Empty	             Unowned	         Grassland
-08	00	0	0000	0000	     Empty	             Unowned	         Grassland
-08	01	0	0000	0000	     Empty	             Unowned	         Grassland
-08	02	0	0000	0000	     Empty	             Unowned	         Grassland
-08	03	0	0000	0000	     Empty	             Unowned	         Grassland
-08	04	0	0000	0000	     Empty	             Unowned	         Grassland
-08	05	0	0000	0000	     Empty	             Unowned	         Grassland
-08	06	0	0000	0000	     Empty	             Unowned	         Grassland
-08	07	0	0000	0000	     Empty	             Unowned	         Grassland
-08	08	0	0000	0000	     Empty	             Unowned	         Grassland
-08	09	0	0000	0000	     Empty	             Unowned	         Grassland
-08	10	0	0000	0000	     Empty	             Unowned	         Grassland
-08	11	0	0000	0000	     Empty	             Unowned	         Grassland
-08	12	0	0000	0000	     Empty	             Unowned	         Grassland
-08	13	0	0000	0000	     Empty	             Unowned	         Grassland
-08	14	0	0000	0000	     Empty	             Unowned	         Grassland
-08	15	0	0000	0000	     Empty	             Unowned	         Grassland
-08	16	0	0000	0000	     Empty	             Unowned	         Grassland
-08	17	0	0000	0000	     Empty	             Unowned	         Grassland
-08	18	0	0000	0000	     Empty	             Unowned	         Grassland
-08	19	0	0000	0000	     Empty	             Unowned	         Grassland
-08	20	0	0000	0000	     Empty	             Unowned	         Grassland
-08	21	0	0000	0000	     Empty	             Unowned	         Grassland
-08	22	0	0000	0000	     Empty	             Unowned	         Grassland
-08	23	0	0000	0000	     Empty	             Unowned	         Grassland
-08	24	0	0000	0000	     Empty	             Unowned	         Grassland
-08	25	0	0000	0000	     Empty	             Unowned	         Grassland
-08	26	0	0000	0000	     Empty	             Unowned	         Grassland
-08	27	0	0000	0000	     Empty	             Unowned	         Grassland
-08	28	0	0000	0000	     Empty	             Unowned	         Grassland
-08	29	0	0000	0000	     Empty	             Unowned	         Grassland
-09	00	0	0000	0000	     Empty	             Unowned	         Grassland
-09	01	0	0000	0000	     Empty	             Unowned	         Grassland
-09	02	0	0000	0000	     Empty	             Unowned	         Grassland
-09	03	0	0000	0000	     Empty	             Unowned	         Grassland
-09	04	0	0000	0000	     Empty	             Unowned	         Grassland
-09	05	0	0000	0000	     Empty	             Unowned	         Grassland
-09	06	0	0000	0000	     Empty	             Unowned	         Grassland
-09	07	0	0000	0000	     Empty	             Unowned	         Grassland
-09	08	0	0000	0000	     Empty	             Unowned	         Grassland
-09	09	0	0000	0000	     Empty	             Unowned	         Grassland
-09	10	0	0000	0000	     Empty	             Unowned	         Grassland
-09	11	0	0000	0000	     Empty	             Unowned	         Grassland
-09	12	0	0000	0000	     Empty	             Unowned	         Grassland
-09	13	0	0000	0000	     Empty	             Unowned	         Grassland
-09	14	0	0000	0000	     Empty	             Unowned	         Grassland
-09	15	0	0000	0000	     Empty	             Unowned	         Grassland
-09	16	0	0000	0000	     Empty	             Unowned	         Grassland
-09	17	0	0000	0000	     Empty	             Unowned	         Grassland
-09	18	0	0000	0000	     Empty	             Unowned	         Grassland
-09	19	0	0000	0000	     Empty	             Unowned	         Grassland
-09	20	0	0000	0000	     Empty	             Unowned	         Grassland
-09	21	0	0000	0000	     Empty	             Unowned	         Grassland
-09	22	0	0000	0000	     Empty	             Unowned	         Grassland
-09	23	0	0000	0000	     Empty	             Unowned	         Grassland
-09	24	0	0000	0000	     Empty	             Unowned	         Grassland
-09	25	0	0000	0000	     Empty	             Unowned	         Grassland
-09	26	0	0000	0000	     Empty	             Unowned	         Grassland
-09	27	0	0000	0000	     Empty	             Unowned	         Grassland
-09	28	0	0000	0000	     Empty	             Unowned	         Grassland
-10	00	0	0000	0000	     Empty	             Unowned	         Grassland
-10	01	0	0000	0000	     Empty	             Unowned	         Grassland
-10	02	0	0000	0000	     Empty	             Unowned	         Grassland
-10	03	0	0000	0000	     Empty	             Unowned	         Grassland
-10	04	0	0000	0000	     Empty	             Unowned	         Grassland
-10	05	0	0000	0000	     Empty	             Unowned	         Grassland
-10	06	0	0000	0000	     Empty	             Unowned	         Grassland
-10	07	0	0000	0000	     Empty	             Unowned	         Grassland
-10	08	0	0000	0000	     Empty	             Unowned	         Grassland
-10	09	0	0000	0000	     Empty	             Unowned	         Grassland
-10	10	0	0000	0000	     Empty	             Unowned	         Grassland
-10	11	0	0000	0000	     Empty	             Unowned	         Grassland
-10	12	0	0000	0000	     Empty	             Unowned	         Grassland
-10	13	0	0000	0000	     Empty	             Unowned	         Grassland
-10	14	0	0000	0000	     Empty	             Unowned	         Grassland
-10	15	0	0000	0000	     Empty	             Unowned	         Grassland
-10	16	0	0000	0000	     Empty	             Unowned	         Grassland
-10	17	0	0000	0000	     Empty	             Unowned	         Grassland
-10	18	0	0000	0000	     Empty	             Unowned	         Grassland
-10	19	0	0000	0000	     Empty	             Unowned	         Grassland
-10	20	0	0000	0000	     Empty	             Unowned	         Grassland
-10	21	0	0000	0000	     Empty	             Unowned	         Grassland
-10	22	0	0000	0000	     Empty	             Unowned	         Grassland
-10	23	0	0000	0000	     Empty	             Unowned	         Grassland
-10	24	0	0000	0000	     Empty	             Unowned	         Grassland
-10	25	0	0000	0000	     Empty	             Unowned	         Grassland
-10	26	0	0000	0000	     Empty	             Unowned	         Grassland
-10	27	0	0000	0000	     Empty	             Unowned	         Grassland
-10	28	0	0000	0000	     Empty	             Unowned	         Grassland
-10	29	0	0000	0000	     Empty	             Unowned	         Grassland
-11	00	0	0000	0000	     Empty	             Unowned	         Grassland
-11	01	0	0000	0000	     Empty	             Unowned	         Grassland
-11	02	0	0000	0000	     Empty	             Unowned	         Grassland
-11	03	0	0000	0000	     Empty	             Unowned	         Grassland
-11	04	0	0000	0000	     Empty	             Unowned	         Grassland
-11	05	0	0000	0000	     Empty	             Unowned	         Grassland
-11	06	0	0000	0000	     Empty	             Unowned	         Grassland
-11	07	0	0000	0000	     Empty	             Unowned	         Grassland
-11	08	0	0000	0000	     Empty	             Unowned	         Grassland
-11	09	0	0000	0000	     Empty	             Unowned	         Grassland
-11	10	0	0000	0000	     Empty	             Unowned	         Grassland
-11	11	0	0000	0000	     Empty	             Unowned	         Grassland
-11	12	0	0000	0000	     Empty	             Unowned	         Grassland
-11	13	0	0000	0000	     Empty	             Unowned	         Grassland
-11	14	0	0000	0000	     Empty	             Unowned	         Grassland
-11	15	0	0000	0000	     Empty	             Unowned	         Grassland
-11	16	0	0000	0000	     Empty	             Unowned	         Grassland
-11	17	0	0000	0000	     Empty	             Unowned	         Grassland
-11	18	0	0000	0000	     Empty	             Unowned	         Grassland
-11	19	0	0000	0000	     Empty	             Unowned	         Grassland
-11	20	0	0000	0000	     Empty	             Unowned	         Grassland
-11	21	0	0000	0000	     Empty	             Unowned	         Grassland
-11	22	0	0000	0000	     Empty	             Unowned	         Grassland
-11	23	0	0000	0000	     Empty	             Unowned	         Grassland
-11	24	0	0000	0000	     Empty	             Unowned	         Grassland
-11	25	0	0000	0000	     Empty	             Unowned	         Grassland
-11	26	0	0000	0000	     Empty	             Unowned	         Grassland
-11	27	0	0000	0000	     Empty	             Unowned	         Grassland
-11	28	0	0000	0000	     Empty	             Unowned	         Grassland
-12	00	0	0000	0000	     Empty	             Unowned	         Grassland
-12	01	0	0000	0000	     Empty	             Unowned	         Grassland
-12	02	0	0000	0000	     Empty	             Unowned	         Grassland
-12	03	0	0000	0000	     Empty	             Unowned	         Grassland
-12	04	0	0000	0000	     Empty	             Unowned	         Grassland
-12	05	0	0000	0000	     Empty	             Unowned	         Grassland
-12	06	0	0000	0000	     Empty	             Unowned	         Grassland
-12	07	0	0000	0000	     Empty	             Unowned	         Grassland
-12	08	0	0000	0000	     Empty	             Unowned	         Grassland
-12	09	0	0000	0000	     Empty	             Unowned	         Grassland
-12	10	0	0000	0000	     Empty	             Unowned	         Grassland
-12	11	0	0000	0000	     Empty	             Unowned	         Grassland
-12	12	0	0000	0000	     Empty	             Unowned	         Grassland
-12	13	0	0000	0000	     Empty	             Unowned	         Grassland
-12	14	0	0000	0000	     Empty	             Unowned	         Grassland
-12	15	0	0000	0000	     Empty	             Unowned	         Grassland
-12	16	0	0000	0000	     Empty	             Unowned	         Grassland
-12	17	0	0000	0000	     Empty	             Unowned	         Grassland
-12	18	0	0000	0000	     Empty	             Unowned	         Grassland
-12	19	0	0000	0000	     Empty	             Unowned	         Grassland
-12	20	0	0000	0000	     Empty	             Unowned	         Grassland
-12	21	0	0000	0000	     Empty	             Unowned	         Grassland
-12	22	0	0000	0000	     Empty	             Unowned	         Grassland
-12	23	0	0000	0000	     Empty	             Unowned	         Grassland
-12	24	0	0000	0000	     Empty	             Unowned	         Grassland
-12	25	0	0000	0000	     Empty	             Unowned	         Grassland
-12	26	0	0000	0000	     Empty	             Unowned	         Grassland
-12	27	0	0000	0000	     Empty	             Unowned	         Grassland
-12	28	0	0000	0000	     Empty	             Unowned	         Grassland
-12	29	0	0000	0000	     Empty	             Unowned	         Grassland
-13	00	0	0000	0000	     Empty	             Unowned	         Grassland
-13	01	0	0000	0000	     Empty	             Unowned	         Grassland
-13	02	0	0000	0000	     Empty	             Unowned	         Grassland
-13	03	0	0000	0000	     Empty	             Unowned	         Grassland
-13	04	0	0000	0000	     Empty	             Unowned	         Grassland
-13	05	0	0000	0000	     Empty	             Unowned	         Grassland
-13	06	0	0000	0000	     Empty	             Unowned	         Grassland
-13	07	0	0000	0000	     Empty	             Unowned	         Grassland
-13	08	0	0000	0000	     Empty	             Unowned	         Grassland
-13	09	0	0000	0000	     Empty	             Unowned	         Grassland
-13	10	0	0000	0000	     Empty	             Unowned	         Grassland
-13	11	0	0000	0000	     Empty	             Unowned	         Grassland
-13	12	0	0000	0000	     Empty	             Unowned	         Grassland
-13	13	0	0000	0000	     Empty	             Unowned	         Grassland
-13	14	0	0000	0000	     Empty	             Unowned	         Grassland
-13	15	0	0000	0000	     Empty	             Unowned	         Grassland
-13	16	0	0000	0000	     Empty	             Unowned	         Grassland
-13	17	0	0000	0000	     Empty	             Unowned	         Grassland
-13	18	0	0000	0000	     Empty	             Unowned	         Grassland
-13	19	0	0000	0000	     Empty	             Unowned	         Grassland
-13	20	0	0000	0000	     Empty	             Unowned	         Grassland
-13	21	0	0000	0000	     Empty	             Unowned	         Grassland
-13	22	0	0000	0000	     Empty	             Unowned	         Grassland
-13	23	0	0000	0000	     Empty	             Unowned	         Grassland
-13	24	0	0000	0000	     Empty	             Unowned	         Grassland
-13	25	0	0000	0000	     Empty	             Unowned	         Grassland
-13	26	0	0000	0000	     Empty	             Unowned	         Grassland
-13	27	0	0000	0000	     Empty	             Unowned	         Grassland
-13	28	0	0000	0000	     Empty	             Unowned	         Grassland
-14	00	0	0000	0000	     Empty	             Unowned	         Grassland
-14	01	0	0000	0000	     Empty	             Unowned	         Grassland
-14	02	0	0000	0000	     Empty	             Unowned	         Grassland
-14	03	0	0000	0000	     Empty	             Unowned	         Grassland
-14	04	0	0000	0000	     Empty	             Unowned	         Grassland
-14	05	0	0000	0000	     Empty	             Unowned	         Grassland
-14	06	0	0000	0000	     Empty	             Unowned	         Grassland
-14	07	0	0000	0000	     Empty	             Unowned	         Grassland
-14	08	0	0000	0000	     Empty	             Unowned	         Grassland
-14	09	0	0000	0000	     Empty	             Unowned	         Grassland
-14	10	0	0000	0000	     Empty	             Unowned	         Grassland
-14	11	0	0000	0000	     Empty	             Unowned	         Grassland
-14	12	0	0000	0000	     Empty	             Unowned	         Grassland
-14	13	0	0000	0000	     Empty	             Unowned	         Grassland
-14	14	0	0000	0000	     Empty	             Unowned	         Grassland
-14	15	0	0000	0000	     Empty	             Unowned	         Grassland
-14	16	0	0000	0000	     Empty	             Unowned	         Grassland
-14	17	0	0000	0000	     Empty	             Unowned	         Grassland
-14	18	0	0000	0000	     Empty	             Unowned	         Grassland
-14	19	0	0000	0000	     Empty	             Unowned	         Grassland
-14	20	0	0000	0000	     Empty	             Unowned	         Grassland
-14	21	0	0000	0000	     Empty	             Unowned	         Grassland
-14	22	0	0000	0000	     Empty	             Unowned	         Grassland
-14	23	0	0000	0000	     Empty	             Unowned	         Grassland
-14	24	0	0000	0000	     Empty	             Unowned	         Grassland
-14	25	0	0000	0000	     Empty	             Unowned	         Grassland
-14	26	0	0000	0000	     Empty	             Unowned	         Grassland
-14	27	0	0000	0000	     Empty	             Unowned	         Grassland
-14	28	0	0000	0000	     Empty	             Unowned	         Grassland
-14	29	0	0000	0000	     Empty	             Unowned	         Grassland
-15	00	0	0000	0000	     Empty	             Unowned	         Grassland
-15	01	0	0000	0000	     Empty	             Unowned	         Grassland
-15	02	0	0000	0000	     Empty	             Unowned	         Grassland
-15	03	0	0000	0000	     Empty	             Unowned	         Grassland
-15	04	0	0000	0000	     Empty	             Unowned	         Grassland
-15	05	0	0000	0000	     Empty	             Unowned	         Grassland
-15	06	0	0000	0000	     Empty	             Unowned	         Grassland
-15	07	0	0000	0000	     Empty	             Unowned	         Grassland
-15	08	0	0000	0000	     Empty	             Unowned	         Grassland
-15	09	0	0000	0000	     Empty	             Unowned	         Grassland
-15	10	0	0000	0000	     Empty	             Unowned	         Grassland
-15	11	0	0000	0000	     Empty	             Unowned	         Grassland
-15	12	0	0000	0000	     Empty	             Unowned	         Grassland
-15	13	0	0000	0000	     Empty	             Unowned	         Grassland
-15	14	0	0000	0000	     Empty	             Unowned	         Grassland
-15	15	0	0000	0000	     Empty	             Unowned	         Grassland
-15	16	0	0000	0000	     Empty	             Unowned	         Grassland
-15	17	0	0000	0000	     Empty	             Unowned	         Grassland
-15	18	0	0000	0000	     Empty	             Unowned	         Grassland
-15	19	0	0000	0000	     Empty	             Unowned	         Grassland
-15	20	0	0000	0000	     Empty	             Unowned	         Grassland
-15	21	0	0000	0000	     Empty	             Unowned	         Grassland
-15	22	0	0000	0000	     Empty	             Unowned	         Grassland
-15	23	0	0000	0000	     Empty	             Unowned	         Grassland
-15	24	0	0000	0000	     Empty	             Unowned	         Grassland
-15	25	0	0000	0000	     Empty	             Unowned	         Grassland
-15	26	0	0000	0000	     Empty	             Unowned	         Grassland
-15	27	0	0000	0000	     Empty	             Unowned	         Grassland
-15	28	0	0000	0000	     Empty	             Unowned	         Grassland
-16	00	0	0000	0000	     Empty	             Unowned	         Grassland
-16	01	0	0000	0000	     Empty	             Unowned	         Grassland
-16	02	0	0000	0000	     Empty	             Unowned	         Grassland
-16	03	0	0000	0000	     Empty	             Unowned	         Grassland
-16	04	0	0000	0000	     Empty	             Unowned	         Grassland
-16	05	0	0000	0000	     Empty	             Unowned	         Grassland
-16	06	0	0000	0000	     Empty	             Unowned	         Grassland
-16	07	0	0000	0000	     Empty	             Unowned	         Grassland
-16	08	0	0000	0000	     Empty	             Unowned	         Grassland
-16	09	0	0000	0000	     Empty	             Unowned	         Grassland
-16	10	0	0000	0000	     Empty	             Unowned	         Grassland
-16	11	0	0000	0000	     Empty	             Unowned	         Grassland
-16	12	0	0000	0000	     Empty	             Unowned	         Grassland
-16	13	0	0000	0000	     Empty	             Unowned	         Grassland
-16	14	0	0000	0000	     Empty	             Unowned	         Grassland
-16	15	0	0000	0000	     Empty	             Unowned	         Grassland
-16	16	0	0000	0000	     Empty	             Unowned	         Grassland
-16	17	0	0000	0000	     Empty	             Unowned	         Grassland
-16	18	0	0000	0000	     Empty	             Unowned	         Grassland
-16	19	0	0000	0000	     Empty	             Unowned	         Grassland
-16	20	0	0000	0000	     Empty	             Unowned	         Grassland
-16	21	0	0000	0000	     Empty	             Unowned	         Grassland
-16	22	0	0000	0000	     Empty	             Unowned	         Grassland
-16	23	0	0000	0000	     Empty	             Unowned	         Grassland
-16	24	0	0000	0000	     Empty	             Unowned	         Grassland
-16	25	0	0000	0000	     Empty	             Unowned	         Grassland
-16	26	0	0000	0000	     Empty	             Unowned	         Grassland
-16	27	0	0000	0000	     Empty	             Unowned	         Grassland
-16	28	0	0000	0000	     Empty	             Unowned	         Grassland
-16	29	0	0000	0000	     Empty	             Unowned	         Grassland
-17	00	0	0000	0000	     Empty	             Unowned	         Grassland
-17	01	0	0000	0000	     Empty	             Unowned	         Grassland
-17	02	0	0000	0000	     Empty	             Unowned	         Grassland
-17	03	0	0000	0000	     Empty	             Unowned	         Grassland
-17	04	0	0000	0000	     Empty	             Unowned	         Grassland
-17	05	0	0000	0000	     Empty	             Unowned	         Grassland
-17	06	0	0000	0000	     Empty	             Unowned	         Grassland
-17	07	0	0000	0000	     Empty	             Unowned	         Grassland
-17	08	0	0000	0000	     Empty	             Unowned	         Grassland
-17	09	0	0000	0000	     Empty	             Unowned	         Grassland
-17	10	0	0000	0000	     Empty	             Unowned	         Grassland
-17	11	0	0000	0000	     Empty	             Unowned	         Grassland
-17	12	0	0000	0000	     Empty	             Unowned	         Grassland
-17	13	0	0000	0000	     Empty	             Unowned	         Grassland
-17	14	0	0000	0000	     Empty	             Unowned	         Grassland
-17	15	0	0000	0000	     Empty	             Unowned	         Grassland
-17	16	0	0000	0000	     Empty	             Unowned	         Grassland
-17	17	0	0000	0000	     Empty	             Unowned	         Grassland
-17	18	0	0000	0000	     Empty	             Unowned	         Grassland
-17	19	0	0000	0000	     Empty	             Unowned	         Grassland
-17	20	0	0000	0000	     Empty	             Unowned	         Grassland
-17	21	0	0000	0000	     Empty	             Unowned	         Grassland
-17	22	0	0000	0000	     Empty	             Unowned	         Grassland
-17	23	0	0000	0000	     Empty	             Unowned	         Grassland
-17	24	0	0000	0000	     Empty	             Unowned	         Grassland
-17	25	0	0000	0000	     Empty	             Unowned	         Grassland
-17	26	0	0000	0000	     Empty	             Unowned	         Grassland
-17	27	0	0000	0000	     Empty	             Unowned	         Grassland
-17	28	0	0000	0000	     Empty	             Unowned	         Grassland
-18	00	0	0000	0000	     Empty	             Unowned	         Grassland
-18	01	0	0000	0000	     Empty	             Unowned	         Grassland
-18	02	0	0000	0000	     Empty	             Unowned	         Grassland
-18	03	0	0000	0000	     Empty	             Unowned	         Grassland
-18	04	0	0000	0000	     Empty	             Unowned	         Grassland
-18	05	0	0000	0000	     Empty	             Unowned	         Grassland
-18	06	0	0000	0000	     Empty	             Unowned	         Grassland
-18	07	0	0000	0000	     Empty	             Unowned	         Grassland
-18	08	0	0000	0000	     Empty	             Unowned	         Grassland
-18	09	0	0000	0000	     Empty	             Unowned	         Grassland
-18	10	0	0000	0000	     Empty	             Unowned	         Grassland
-18	11	0	0000	0000	     Empty	             Unowned	         Grassland
-18	12	0	0000	0000	     Empty	             Unowned	         Grassland
-18	13	0	0000	0000	     Empty	             Unowned	         Grassland
-18	14	0	0000	0000	     Empty	             Unowned	         Grassland
-18	15	0	0000	0000	     Empty	             Unowned	         Grassland
-18	16	0	0000	0000	     Empty	             Unowned	         Grassland
-18	17	0	0000	0000	     Empty	             Unowned	         Grassland
-18	18	0	0000	0000	     Empty	             Unowned	         Grassland
-18	19	0	0000	0000	     Empty	             Unowned	         Grassland
-18	20	0	0000	0000	     Empty	             Unowned	         Grassland
-18	21	0	0000	0000	     Empty	             Unowned	         Grassland
-18	22	0	0000	0000	     Empty	             Unowned	         Grassland
-18	23	0	0000	0000	     Empty	             Unowned	         Grassland
-18	24	0	0000	0000	     Empty	             Unowned	         Grassland
-18	25	0	0000	0000	     Empty	             Unowned	         Grassland
-18	26	0	0000	0000	     Empty	             Unowned	         Grassland
-18	27	0	0000	0000	     Empty	             Unowned	         Grassland
-18	28	0	0000	0000	     Empty	             Unowned	         Grassland
-18	29	0	0000	0000	     Empty	             Unowned	         Grassland
-19	00	0	0000	0000	     Empty	             Unowned	         Grassland
-19	01	0	0000	0000	     Empty	             Unowned	         Grassland
-19	02	0	0000	0000	     Empty	             Unowned	         Grassland
-19	03	0	0000	0000	     Empty	             Unowned	         Grassland
-19	04	0	0000	0000	     Empty	             Unowned	         Grassland
-19	05	0	0000	0000	     Empty	             Unowned	         Grassland
-19	06	0	0000	0000	     Empty	             Unowned	         Grassland
-19	07	0	0000	0000	     Empty	             Unowned	         Grassland
-19	08	0	0000	0000	     Empty	             Unowned	         Grassland
-19	09	0	0000	0000	     Empty	             Unowned	         Grassland
-19	10	0	0000	0000	     Empty	             Unowned	         Grassland
-19	11	0	0000	0000	     Empty	             Unowned	         Grassland
-19	12	0	0000	0000	     Empty	             Unowned	         Grassland
-19	13	0	0000	0000	     Empty	             Unowned	         Grassland
-19	14	0	0000	0000	     Empty	             Unowned	         Grassland
-19	15	0	0000	0000	     Empty	             Unowned	         Grassland
-19	16	0	0000	0000	     Empty	             Unowned	         Grassland
-19	17	0	0000	0000	     Empty	             Unowned	         Grassland
-19	18	0	0000	0000	     Empty	             Unowned	         Grassland
-19	19	0	0000	0000	     Empty	             Unowned	         Grassland
-19	20	0	0000	0000	     Empty	             Unowned	         Grassland
-19	21	0	0000	0000	     Empty	             Unowned	         Grassland
-19	22	0	0000	0000	     Empty	             Unowned	         Grassland
-19	23	0	0000	0000	     Empty	             Unowned	         Grassland
-19	24	0	0000	0000	     Empty	             Unowned	         Grassland
-19	25	0	0000	0000	     Empty	             Unowned	         Grassland
-19	26	0	0000	0000	     Empty	             Unowned	         Grassland
-19	27	0	0000	0000	     Empty	             Unowned	         Grassland
-19	28	0	0000	0000	     Empty	             Unowned	         Grassland
-20	00	0	0000	0000	     Empty	             Unowned	         Grassland
-20	01	0	0000	0000	     Empty	             Unowned	         Grassland
-20	02	0	0000	0000	     Empty	             Unowned	         Grassland
-20	03	0	0000	0000	     Empty	             Unowned	         Grassland
-20	04	0	0000	0000	     Empty	             Unowned	         Grassland
-20	05	0	0000	0000	     Empty	             Unowned	         Grassland
-20	06	0	0000	0000	     Empty	             Unowned	         Grassland
-20	07	0	0000	0000	     Empty	             Unowned	         Grassland
-20	08	0	0000	0000	     Empty	             Unowned	         Grassland
-20	09	0	0000	0000	     Empty	             Unowned	         Grassland
-20	10	0	0000	0000	     Empty	             Unowned	         Grassland
-20	11	0	0000	0000	     Empty	             Unowned	         Grassland
-20	12	0	0000	0000	     Empty	             Unowned	         Grassland
-20	13	0	0000	0000	     Empty	             Unowned	         Grassland
-20	14	0	0000	0000	     Empty	             Unowned	         Grassland
-20	15	0	0000	0000	     Empty	             Unowned	         Grassland
-20	16	0	0000	0000	     Empty	             Unowned	         Grassland
-20	17	0	0000	0000	     Empty	             Unowned	         Grassland
-20	18	0	0000	0000	     Empty	             Unowned	         Grassland
-20	19	0	0000	0000	     Empty	             Unowned	         Grassland
-20	20	0	0000	0000	     Empty	             Unowned	         Grassland
-20	21	0	0000	0000	     Empty	             Unowned	         Grassland
-20	22	0	0000	0000	     Empty	             Unowned	         Grassland
-20	23	0	0000	0000	     Empty	             Unowned	         Grassland
-20	24	0	0000	0000	     Empty	             Unowned	         Grassland
-20	25	0	0000	0000	     Empty	             Unowned	         Grassland
-20	26	0	0000	0000	     Empty	             Unowned	         Grassland
-20	27	0	0000	0000	     Empty	             Unowned	         Grassland
-20	28	0	0000	0000	     Empty	             Unowned	         Grassland
-20	29	0	0000	0000	     Empty	             Unowned	         Grassland
-21	00	0	0000	0000	     Empty	             Unowned	         Grassland
-21	01	0	0000	0000	     Empty	             Unowned	         Grassland
-21	02	0	0000	0000	     Empty	             Unowned	         Grassland
-21	03	0	0000	0000	     Empty	             Unowned	         Grassland
-21	04	0	0000	0000	     Empty	             Unowned	         Grassland
-21	05	0	0000	0000	     Empty	             Unowned	         Grassland
-21	06	0	0000	0000	     Empty	             Unowned	         Grassland
-21	07	0	0000	0000	     Empty	             Unowned	         Grassland
-21	08	0	0000	0000	     Empty	             Unowned	         Grassland
-21	09	0	0000	0000	     Empty	             Unowned	         Grassland
-21	10	0	0000	0000	     Empty	             Unowned	         Grassland
-21	11	0	0000	0000	     Empty	             Unowned	         Grassland
-21	12	0	0000	0000	     Empty	             Unowned	         Grassland
-21	13	0	0000	0000	     Empty	             Unowned	         Grassland
-21	14	0	0000	0000	     Empty	             Unowned	         Grassland
-21	15	0	0000	0000	     Empty	             Unowned	         Grassland
-21	16	0	0000	0000	     Empty	             Unowned	         Grassland
-21	17	0	0000	0000	     Empty	             Unowned	         Grassland
-21	18	0	0000	0000	     Empty	             Unowned	         Grassland
-21	19	0	0000	0000	     Empty	             Unowned	         Grassland
-21	20	0	0000	0000	     Empty	             Unowned	         Grassland
-21	21	0	0000	0000	     Empty	             Unowned	         Grassland
-21	22	0	0000	0000	     Empty	             Unowned	         Grassland
-21	23	0	0000	0000	     Empty	             Unowned	         Grassland
-21	24	0	0000	0000	     Empty	             Unowned	         Grassland
-21	25	0	0000	0000	     Empty	             Unowned	         Grassland
-21	26	0	0000	0000	     Empty	             Unowned	         Grassland
-21	27	0	0000	0000	     Empty	             Unowned	         Grassland
-21	28	0	0000	0000	     Empty	             Unowned	         Grassland
-22	00	0	0000	0000	     Empty	             Unowned	         Grassland
-22	01	0	0000	0000	     Empty	             Unowned	         Grassland
-22	02	0	0000	0000	     Empty	             Unowned	         Grassland
-22	03	0	0000	0000	     Empty	             Unowned	         Grassland
-22	04	0	0000	0000	     Empty	             Unowned	         Grassland
-22	05	0	0000	0000	     Empty	             Unowned	         Grassland
-22	06	0	0000	0000	     Empty	             Unowned	         Grassland
-22	07	0	0000	0000	     Empty	             Unowned	         Grassland
-22	08	0	0000	0000	     Empty	             Unowned	         Grassland
-22	09	0	0000	0000	     Empty	             Unowned	         Grassland
-22	10	0	0000	0000	     Empty	             Unowned	         Grassland
-22	11	0	0000	0000	     Empty	             Unowned	         Grassland
-22	12	0	0000	0000	     Empty	             Unowned	         Grassland
-22	13	0	0000	0000	     Empty	             Unowned	         Grassland
-22	14	0	0000	0000	     Empty	             Unowned	         Grassland
-22	15	0	0000	0000	     Empty	             Unowned	         Grassland
-22	16	0	0000	0000	     Empty	             Unowned	         Grassland
-22	17	0	0000	0000	     Empty	             Unowned	         Grassland
-22	18	0	0000	0000	     Empty	             Unowned	         Grassland
-22	19	0	0000	0000	     Empty	             Unowned	         Grassland
-22	20	0	0000	0000	     Empty	             Unowned	         Grassland
-22	21	0	0000	0000	     Empty	             Unowned	         Grassland
-22	22	0	0000	0000	     Empty	             Unowned	         Grassland
-22	23	0	0000	0000	     Empty	             Unowned	         Grassland
-22	24	0	0000	0000	     Empty	             Unowned	         Grassland
-22	25	0	0000	0000	     Empty	             Unowned	         Grassland
-22	26	0	0000	0000	     Empty	             Unowned	         Grassland
-22	27	0	0000	0000	     Empty	             Unowned	         Grassland
-22	28	0	0000	0000	     Empty	             Unowned	         Grassland
-22	29	0	0000	0000	     Empty	             Unowned	         Grassland
-23	00	0	0000	0000	     Empty	             Unowned	         Grassland
-23	01	0	0000	0000	     Empty	             Unowned	         Grassland
-23	02	0	0000	0000	     Empty	             Unowned	         Grassland
-23	03	0	0000	0000	     Empty	             Unowned	         Grassland
-23	04	0	0000	0000	     Empty	             Unowned	         Grassland
-23	05	0	0000	0000	     Empty	             Unowned	         Grassland
-23	06	0	0000	0000	     Empty	             Unowned	         Grassland
-23	07	0	0000	0000	     Empty	             Unowned	         Grassland
-23	08	0	0000	0000	     Empty	             Unowned	         Grassland
-23	09	0	0000	0000	     Empty	             Unowned	         Grassland
-23	10	0	0000	0000	     Empty	             Unowned	         Grassland
-23	11	0	0000	0000	     Empty	             Unowned	         Grassland
-23	12	0	0000	0000	     Empty	             Unowned	         Grassland
-23	13	0	0000	0000	     Empty	             Unowned	         Grassland
-23	14	0	0000	0000	     Empty	             Unowned	         Grassland
-23	15	0	0000	0000	     Empty	             Unowned	         Grassland
-23	16	0	0000	0000	     Empty	             Unowned	         Grassland
-23	17	0	0000	0000	     Empty	             Unowned	         Grassland
-23	18	0	0000	0000	     Empty	             Unowned	         Grassland
-23	19	0	0000	0000	     Empty	             Unowned	         Grassland
-23	20	0	0000	0000	     Empty	             Unowned	         Grassland
-23	21	0	0000	0000	     Empty	             Unowned	         Grassland
-23	22	0	0000	0000	     Empty	             Unowned	         Grassland
-23	23	0	0000	0000	     Empty	             Unowned	         Grassland
-23	24	0	0000	0000	     Empty	             Unowned	         Grassland
-23	25	0	0000	0000	     Empty	             Unowned	         Grassland
-23	26	0	0000	0000	     Empty	             Unowned	         Grassland
-23	27	0	0000	0000	     Empty	             Unowned	         Grassland
-23	28	0	0000	0000	     Empty	             Unowned	         Grassland
-24	00	0	0000	0000	     Empty	             Unowned	         Grassland
-24	01	0	0000	0000	     Empty	             Unowned	         Grassland
-24	02	0	0000	0000	     Empty	             Unowned	         Grassland
-24	03	0	0000	0000	     Empty	             Unowned	         Grassland
-24	04	0	0000	0000	     Empty	             Unowned	         Grassland
-24	05	0	0000	0000	     Empty	             Unowned	         Grassland
-24	06	0	0000	0000	     Empty	             Unowned	         Grassland
-24	07	0	0000	0000	     Empty	             Unowned	         Grassland
-24	08	0	0000	0000	     Empty	             Unowned	         Grassland
-24	09	0	0000	0000	     Empty	             Unowned	         Grassland
-24	10	0	0000	0000	     Empty	             Unowned	         Grassland
-24	11	0	0000	0000	     Empty	             Unowned	         Grassland
-24	12	0	0000	0000	     Empty	             Unowned	         Grassland
-24	13	0	0000	0000	     Empty	             Unowned	         Grassland
-24	14	0	0000	0000	     Empty	             Unowned	         Grassland
-24	15	0	0000	0000	     Empty	             Unowned	         Grassland
-24	16	0	0000	0000	     Empty	             Unowned	         Grassland
-24	17	0	0000	0000	     Empty	             Unowned	         Grassland
-24	18	0	0000	0000	     Empty	             Unowned	         Grassland
-24	19	0	0000	0000	     Empty	             Unowned	         Grassland
-24	20	0	0000	0000	     Empty	             Unowned	         Grassland
-24	21	0	0000	0000	     Empty	             Unowned	         Grassland
-24	22	0	0000	0000	     Empty	             Unowned	         Grassland
-24	23	0	0000	0000	     Empty	             Unowned	         Grassland
-24	24	0	0000	0000	     Empty	             Unowned	         Grassland
-24	25	0	0000	0000	     Empty	             Unowned	         Grassland
-24	26	0	0000	0000	     Empty	             Unowned	         Grassland
-24	27	0	0000	0000	     Empty	             Unowned	         Grassland
-24	28	0	0000	0000	     Empty	             Unowned	         Grassland
-24	29	0	0000	0000	     Empty	             Unowned	         Grassland
-25	00	0	0000	0000	     Empty	             Unowned	         Grassland
-25	01	0	0000	0000	     Empty	             Unowned	         Grassland
-25	02	0	0000	0000	     Empty	             Unowned	         Grassland
-25	03	0	0000	0000	     Empty	             Unowned	         Grassland
-25	04	0	0000	0000	     Empty	             Unowned	         Grassland
-25	05	0	0000	0000	     Empty	             Unowned	         Grassland
-25	06	0	0000	0000	     Empty	             Unowned	         Grassland
-25	07	0	0000	0000	     Empty	             Unowned	         Grassland
-25	08	0	0000	0000	     Empty	             Unowned	         Grassland
-25	09	0	0000	0000	     Empty	             Unowned	         Grassland
-25	10	0	0000	0000	     Empty	             Unowned	         Grassland
-25	11	0	0000	0000	     Empty	             Unowned	         Grassland
-25	12	0	0000	0000	     Empty	             Unowned	         Grassland
-25	13	0	0000	0000	     Empty	             Unowned	         Grassland
-25	14	0	0000	0000	     Empty	             Unowned	         Grassland
-25	15	0	0000	0000	     Empty	             Unowned	         Grassland
-25	16	0	0000	0000	     Empty	             Unowned	         Grassland
-25	17	0	0000	0000	     Empty	             Unowned	         Grassland
-25	18	0	0000	0000	     Empty	             Unowned	         Grassland
-25	19	0	0000	0000	     Empty	             Unowned	         Grassland
-25	20	0	0000	0000	     Empty	             Unowned	         Grassland
-25	21	0	0000	0000	     Empty	             Unowned	         Grassland
-25	22	0	0000	0000	     Empty	             Unowned	         Grassland
-25	23	0	0000	0000	     Empty	             Unowned	         Grassland
-25	24	0	0000	0000	     Empty	             Unowned	         Grassland
-25	25	0	0000	0000	     Empty	             Unowned	         Grassland
-25	26	0	0000	0000	     Empty	             Unowned	         Grassland
-25	27	0	0000	0000	     Empty	             Unowned	         Grassland
-25	28	0	0000	0000	     Empty	             Unowned	         Grassland
-26	00	0	0000	0000	     Empty	             Unowned	         Grassland
-26	01	0	0000	0000	     Empty	             Unowned	         Grassland
-26	02	0	0000	0000	     Empty	             Unowned	         Grassland
-26	03	0	0000	0000	     Empty	             Unowned	         Grassland
-26	04	0	0000	0000	     Empty	             Unowned	         Grassland
-26	05	0	0000	0000	     Empty	             Unowned	         Grassland
-26	06	0	0000	0000	     Empty	             Unowned	         Grassland
-26	07	0	0000	0000	     Empty	             Unowned	         Grassland
-26	08	0	0000	0000	     Empty	             Unowned	         Grassland
-26	09	0	0000	0000	     Empty	             Unowned	         Grassland
-26	10	0	0000	0000	     Empty	             Unowned	         Grassland
-26	11	0	0000	0000	     Empty	             Unowned	         Grassland
-26	12	0	0000	0000	     Empty	             Unowned	         Grassland
-26	13	0	0000	0000	     Empty	             Unowned	         Grassland
-26	14	0	0000	0000	     Empty	             Unowned	         Grassland
-26	15	0	0000	0000	     Empty	             Unowned	         Grassland
-26	16	0	0000	0000	     Empty	             Unowned	         Grassland
-26	17	0	0000	0000	     Empty	             Unowned	         Grassland
-26	18	0	0000	0000	     Empty	             Unowned	         Grassland
-26	19	0	0000	0000	     Empty	             Unowned	         Grassland
-26	20	0	0000	0000	     Empty	             Unowned	         Grassland
-26	21	0	0000	0000	     Empty	             Unowned	         Grassland
-26	22	0	0000	0000	     Empty	             Unowned	         Grassland
-26	23	0	0000	0000	     Empty	             Unowned	         Grassland
-26	24	0	0000	0000	     Empty	             Unowned	         Grassland
-26	25	0	0000	0000	     Empty	             Unowned	         Grassland
-26	26	0	0000	0000	     Empty	             Unowned	         Grassland
-26	27	0	0000	0000	     Empty	             Unowned	         Grassland
-26	28	0	0000	0000	     Empty	             Unowned	         Grassland
-26	29	0	0000	0000	     Empty	             Unowned	         Grassland
-27	00	0	0000	0000	     Empty	             Unowned	         Grassland
-27	01	0	0000	0000	     Empty	             Unowned	         Grassland
-27	02	0	0000	0000	     Empty	             Unowned	         Grassland
-27	03	0	0000	0000	     Empty	             Unowned	         Grassland
-27	04	0	0000	0000	     Empty	             Unowned	         Grassland
-27	05	0	0000	0000	     Empty	             Unowned	         Grassland
-27	06	0	0000	0000	     Empty	             Unowned	         Grassland
-27	07	0	0000	0000	     Empty	             Unowned	         Grassland
-27	08	0	0000	0000	     Empty	             Unowned	         Grassland
-27	09	0	0000	0000	     Empty	             Unowned	         Grassland
-27	10	0	0000	0000	     Empty	             Unowned	         Grassland
-27	11	0	0000	0000	     Empty	             Unowned	         Grassland
-27	12	0	0000	0000	     Empty	             Unowned	         Grassland
-27	13	0	0000	0000	     Empty	             Unowned	         Grassland
-27	14	0	0000	0000	     Empty	             Unowned	         Grassland
-27	15	0	0000	0000	     Empty	             Unowned	         Grassland
-27	16	0	0000	0000	     Empty	             Unowned	         Grassland
-27	17	0	0000	0000	     Empty	             Unowned	         Grassland
-27	18	0	0000	0000	     Empty	             Unowned	         Grassland
-27	19	0	0000	0000	     Empty	             Unowned	         Grassland
-27	20	0	0000	0000	     Empty	             Unowned	         Grassland
-27	21	0	0000	0000	     Empty	             Unowned	         Grassland
-27	22	0	0000	0000	     Empty	             Unowned	         Grassland
-27	23	0	0000	0000	     Empty	             Unowned	         Grassland
-27	24	0	0000	0000	     Empty	             Unowned	         Grassland
-27	25	0	0000	0000	     Empty	             Unowned	         Grassland
-27	26	0	0000	0000	     Empty	             Unowned	         Grassland
-27	27	0	0000	0000	     Empty	             Unowned	         Grassland
-27	28	0	0000	0000	     Empty	             Unowned	         Grassland
-27	00	0	0000	0000	     Empty	             Unowned	         Grassland
-28	01	0	0000	0000	     Empty	             Unowned	         Grassland
-28	02	0	0000	0000	     Empty	             Unowned	         Grassland
-28	03	0	0000	0000	     Empty	             Unowned	         Grassland
-28	04	0	0000	0000	     Empty	             Unowned	         Grassland
-28	05	0	0000	0000	     Empty	             Unowned	         Grassland
-28	06	0	0000	0000	     Empty	             Unowned	         Grassland
-28	07	0	0000	0000	     Empty	             Unowned	         Grassland
-28	08	0	0000	0000	     Empty	             Unowned	         Grassland
-28	09	0	0000	0000	     Empty	             Unowned	         Grassland
-28	10	0	0000	0000	     Empty	             Unowned	         Grassland
-28	11	0	0000	0000	     Empty	             Unowned	         Grassland
-28	12	0	0000	0000	     Empty	             Unowned	         Grassland
-28	13	0	0000	0000	     Empty	             Unowned	         Grassland
-28	14	0	0000	0000	     Empty	             Unowned	         Grassland
-28	15	0	0000	0000	     Empty	             Unowned	         Grassland
-28	16	0	0000	0000	     Empty	             Unowned	         Grassland
-28	17	0	0000	0000	     Empty	             Unowned	         Grassland
-28	18	0	0000	0000	     Empty	             Unowned	         Grassland
-28	19	0	0000	0000	     Empty	             Unowned	         Grassland
-28	20	0	0000	0000	     Empty	             Unowned	         Grassland
-28	21	0	0000	0000	     Empty	             Unowned	         Grassland
-28	22	0	0000	0000	     Empty	             Unowned	         Grassland
-28	23	0	0000	0000	     Empty	             Unowned	         Grassland
-28	24	0	0000	0000	     Empty	             Unowned	         Grassland
-28	25	0	0000	0000	     Empty	             Unowned	         Grassland
-28	26	0	0000	0000	     Empty	             Unowned	         Grassland
-28	27	0	0000	0000	     Empty	             Unowned	         Grassland
-28	28	0	0000	0000	     Empty	             Unowned	         Grassland
-28	29	0	0000	0000	     Empty	             Unowned	         Grassland
-29	00	0	0000	0000	     Empty	             Unowned	         Grassland
-29	01	0	0000	0000	     Empty	             Unowned	         Grassland
-29	02	0	0000	0000	     Empty	             Unowned	         Grassland
-29	03	0	0000	0000	     Empty	             Unowned	         Grassland
-29	04	0	0000	0000	     Empty	             Unowned	         Grassland
-29	05	0	0000	0000	     Empty	             Unowned	         Grassland
-29	06	0	0000	0000	     Empty	             Unowned	         Grassland
-29	07	0	0000	0000	     Empty	             Unowned	         Grassland
-29	08	0	0000	0000	     Empty	             Unowned	         Grassland
-29	09	0	0000	0000	     Empty	             Unowned	         Grassland
-29	10	0	0000	0000	     Empty	             Unowned	         Grassland
-29	11	0	0000	0000	     Empty	             Unowned	         Grassland
-29	12	0	0000	0000	     Empty	             Unowned	         Grassland
-29	13	0	0000	0000	     Empty	             Unowned	         Grassland
-29	14	0	0000	0000	     Empty	             Unowned	         Grassland
-29	15	0	0000	0000	     Empty	             Unowned	         Grassland
-29	16	0	0000	0000	     Empty	             Unowned	         Grassland
-29	17	0	0000	0000	     Empty	             Unowned	         Grassland
-29	18	0	0000	0000	     Empty	             Unowned	         Grassland
-29	19	0	0000	0000	     Empty	             Unowned	         Grassland
-29	20	0	0000	0000	     Empty	             Unowned	         Grassland
-29	21	0	0000	0000	     Empty	             Unowned	         Grassland
-29	22	0	0000	0000	     Empty	             Unowned	         Grassland
-29	23	0	0000	0000	     Empty	             Unowned	         Grassland
-29	24	0	0000	0000	     Empty	             Unowned	         Grassland
-29	25	0	0000	0000	     Empty	             Unowned	         Grassland
-29	26	0	0000	0000	     Empty	             Unowned	         Grassland
-29	27	0	0000	0000	     Empty	             Unowned	         Grassland
-29	28	0	0000	0000	     Empty	             Unowned	         Grassland
-30	00	0	0000	0000	     Empty	             Unowned	         Grassland
-30	01	0	0000	0000	     Empty	             Unowned	         Grassland
-30	02	0	0000	0000	     Empty	             Unowned	         Grassland
-30	03	0	0000	0000	     Empty	             Unowned	         Grassland
-30	04	0	0000	0000	     Empty	             Unowned	         Grassland
-30	05	0	0000	0000	     Empty	             Unowned	         Grassland
-30	06	0	0000	0000	     Empty	             Unowned	         Grassland
-30	07	0	0000	0000	     Empty	             Unowned	         Grassland
-30	08	0	0000	0000	     Empty	             Unowned	         Grassland
-30	09	0	0000	0000	     Empty	             Unowned	         Grassland
-30	10	0	0000	0000	     Empty	             Unowned	         Grassland
-30	11	0	0000	0000	     Empty	             Unowned	         Grassland
-30	12	0	0000	0000	     Empty	             Unowned	         Grassland
-30	13	0	0000	0000	     Empty	             Unowned	         Grassland
-30	14	0	0000	0000	     Empty	             Unowned	         Grassland
-30	15	0	0000	0000	     Empty	             Unowned	         Grassland
-30	16	0	0000	0000	     Empty	             Unowned	         Grassland
-30	17	0	0000	0000	     Empty	             Unowned	         Grassland
-30	18	0	0000	0000	     Empty	             Unowned	         Grassland
-30	19	0	0000	0000	     Empty	             Unowned	         Grassland
-30	20	0	0000	0000	     Empty	             Unowned	         Grassland
-30	21	0	0000	0000	     Empty	             Unowned	         Grassland
-30	22	0	0000	0000	     Empty	             Unowned	         Grassland
-30	23	0	0000	0000	     Empty	             Unowned	         Grassland
-30	24	0	0000	0000	     Empty	             Unowned	         Grassland
-30	25	0	0000	0000	     Empty	             Unowned	         Grassland
-30	26	0	0000	0000	     Empty	             Unowned	         Grassland
-30	27	0	0000	0000	     Empty	             Unowned	         Grassland
-30	28	0	0000	0000	     Empty	             Unowned	         Grassland
-30	29	0	0000	0000	     Empty	             Unowned	         Grassland
-31	00	0	0000	0000	     Empty	             Unowned	         Grassland
-31	01	0	0000	0000	     Empty	             Unowned	         Grassland
-31	02	0	0000	0000	     Empty	             Unowned	         Grassland
-31	03	0	0000	0000	     Empty	             Unowned	         Grassland
-31	04	0	0000	0000	     Empty	             Unowned	         Grassland
-31	05	0	0000	0000	     Empty	             Unowned	         Grassland
-31	06	0	0000	0000	     Empty	             Unowned	         Grassland
-31	07	0	0000	0000	     Empty	             Unowned	         Grassland
-31	08	0	0000	0000	     Empty	             Unowned	         Grassland
-31	09	0	0000	0000	     Empty	             Unowned	         Grassland
-31	10	0	0000	0000	     Empty	             Unowned	         Grassland
-31	11	0	0000	0000	     Empty	             Unowned	         Grassland
-31	12	0	0000	0000	     Empty	             Unowned	         Grassland
-31	13	0	0000	0000	     Empty	             Unowned	         Grassland
-31	14	0	0000	0000	     Empty	             Unowned	         Grassland
-31	15	0	0000	0000	     Empty	             Unowned	         Grassland
-31	16	0	0000	0000	     Empty	             Unowned	         Grassland
-31	17	0	0000	0000	     Empty	             Unowned	         Grassland
-31	18	0	0000	0000	     Empty	             Unowned	         Grassland
-31	19	0	0000	0000	     Empty	             Unowned	         Grassland
-31	20	0	0000	0000	     Empty	             Unowned	         Grassland
-31	21	0	0000	0000	     Empty	             Unowned	         Grassland
-31	22	0	0000	0000	     Empty	             Unowned	         Grassland
-31	23	0	0000	0000	     Empty	             Unowned	         Grassland
-31	24	0	0000	0000	     Empty	             Unowned	         Grassland
-31	25	0	0000	0000	     Empty	             Unowned	         Grassland
-31	26	0	0000	0000	     Empty	             Unowned	         Grassland
-31	27	0	0000	0000	     Empty	             Unowned	         Grassland
-31	28	0	0000	0000	     Empty	             Unowned	         Grassland
-32	00	0	0000	0000	     Empty	             Unowned	         Grassland
-32	01	0	0000	0000	     Empty	             Unowned	         Grassland
-32	02	0	0000	0000	     Empty	             Unowned	         Grassland
-32	03	0	0000	0000	     Empty	             Unowned	         Grassland
-32	04	0	0000	0000	     Empty	             Unowned	         Grassland
-32	05	0	0000	0000	     Empty	             Unowned	         Grassland
-32	06	0	0000	0000	     Empty	             Unowned	         Grassland
-32	07	0	0000	0000	     Empty	             Unowned	         Grassland
-32	08	0	0000	0000	     Empty	             Unowned	         Grassland
-32	09	0	0000	0000	     Empty	             Unowned	         Grassland
-32	10	0	0000	0000	     Empty	             Unowned	         Grassland
-32	11	0	0000	0000	     Empty	             Unowned	         Grassland
-32	12	0	0000	0000	     Empty	             Unowned	         Grassland
-32	13	0	0000	0000	     Empty	             Unowned	         Grassland
-32	14	0	0000	0000	     Empty	             Unowned	         Grassland
-32	15	0	0000	0000	     Empty	             Unowned	         Grassland
-32	16	0	0000	0000	     Empty	             Unowned	         Grassland
-32	17	0	0000	0000	     Empty	             Unowned	         Grassland
-32	18	0	0000	0000	     Empty	             Unowned	         Grassland
-32	19	0	0000	0000	     Empty	             Unowned	         Grassland
-32	20	0	0000	0000	     Empty	             Unowned	         Grassland
-32	21	0	0000	0000	     Empty	             Unowned	         Grassland
-32	22	0	0000	0000	     Empty	             Unowned	         Grassland
-32	23	0	0000	0000	     Empty	             Unowned	         Grassland
-32	24	0	0000	0000	     Empty	             Unowned	         Grassland
-32	25	0	0000	0000	     Empty	             Unowned	         Grassland
-32	26	0	0000	0000	     Empty	             Unowned	         Grassland
-32	27	0	0000	0000	     Empty	             Unowned	         Grassland
-32	28	0	0000	0000	     Empty	             Unowned	         Grassland
-32	29	0	0000	0000	     Empty	             Unowned	         Grassland
-33	00	0	0000	0000	     Empty	             Unowned	         Grassland
-33	01	0	0000	0000	     Empty	             Unowned	         Grassland
-33	02	0	0000	0000	     Empty	             Unowned	         Grassland
-33	03	0	0000	0000	     Empty	             Unowned	         Grassland
-33	04	0	0000	0000	     Empty	             Unowned	         Grassland
-33	05	0	0000	0000	     Empty	             Unowned	         Grassland
-33	06	0	0000	0000	     Empty	             Unowned	         Grassland
-33	07	0	0000	0000	     Empty	             Unowned	         Grassland
-33	08	0	0000	0000	     Empty	             Unowned	         Grassland
-33	09	0	0000	0000	     Empty	             Unowned	         Grassland
-33	10	0	0000	0000	     Empty	             Unowned	         Grassland
-33	11	0	0000	0000	     Empty	             Unowned	         Grassland
-33	12	0	0000	0000	     Empty	             Unowned	         Grassland
-33	13	0	0000	0000	     Empty	             Unowned	         Grassland
-33	14	0	0000	0000	     Empty	             Unowned	         Grassland
-33	15	0	0000	0000	     Empty	             Unowned	         Grassland
-33	16	0	0000	0000	     Empty	             Unowned	         Grassland
-33	17	0	0000	0000	     Empty	             Unowned	         Grassland
-33	18	0	0000	0000	     Empty	             Unowned	         Grassland
-33	19	0	0000	0000	     Empty	             Unowned	         Grassland
-33	20	0	0000	0000	     Empty	             Unowned	         Grassland
-33	21	0	0000	0000	     Empty	             Unowned	         Grassland
-33	22	0	0000	0000	     Empty	             Unowned	         Grassland
-33	23	0	0000	0000	     Empty	             Unowned	         Grassland
-33	24	0	0000	0000	     Empty	             Unowned	         Grassland
-33	25	0	0000	0000	     Empty	             Unowned	         Grassland
-33	26	0	0000	0000	     Empty	             Unowned	         Grassland
-33	27	0	0000	0000	     Empty	             Unowned	         Grassland
-33	28	0	0000	0000	     Empty	             Unowned	         Grassland
-34	00	0	0000	0000	     Empty	             Unowned	         Grassland
-34	01	0	0000	0000	     Empty	             Unowned	         Grassland
-34	02	0	0000	0000	     Empty	             Unowned	         Grassland
-34	03	0	0000	0000	     Empty	             Unowned	         Grassland
-34	04	0	0000	0000	     Empty	             Unowned	         Grassland
-34	05	0	0000	0000	     Empty	             Unowned	         Grassland
-34	06	0	0000	0000	     Empty	             Unowned	         Grassland
-34	07	0	0000	0000	     Empty	             Unowned	         Grassland
-34	08	0	0000	0000	     Empty	             Unowned	         Grassland
-34	09	0	0000	0000	     Empty	             Unowned	         Grassland
-34	10	0	0000	0000	     Empty	             Unowned	         Grassland
-34	11	0	0000	0000	     Empty	             Unowned	         Grassland
-34	12	0	0000	0000	     Empty	             Unowned	         Grassland
-34	13	0	0000	0000	     Empty	             Unowned	         Grassland
-34	14	0	0000	0000	     Empty	             Unowned	         Grassland
-34	15	0	0000	0000	     Empty	             Unowned	         Grassland
-34	16	0	0000	0000	     Empty	             Unowned	         Grassland
-34	17	0	0000	0000	     Empty	             Unowned	         Grassland
-34	18	0	0000	0000	     Empty	             Unowned	         Grassland
-34	19	0	0000	0000	     Empty	             Unowned	         Grassland
-34	20	0	0000	0000	     Empty	             Unowned	         Grassland
-34	21	0	0000	0000	     Empty	             Unowned	         Grassland
-34	22	0	0000	0000	     Empty	             Unowned	         Grassland
-34	23	0	0000	0000	     Empty	             Unowned	         Grassland
-34	24	0	0000	0000	     Empty	             Unowned	         Grassland
-34	25	0	0000	0000	     Empty	             Unowned	         Grassland
-34	26	0	0000	0000	     Empty	             Unowned	         Grassland
-34	27	0	0000	0000	     Empty	             Unowned	         Grassland
-34	28	0	0000	0000	     Empty	             Unowned	         Grassland
-34	29	0	0000	0000	     Empty	             Unowned	         Grassland
-35	00	0	0000	0000	     Empty	             Unowned	         Grassland
-35	01	0	0000	0000	     Empty	             Unowned	         Grassland
-35	02	0	0000	0000	     Empty	             Unowned	         Grassland
-35	03	0	0000	0000	     Empty	             Unowned	         Grassland
-35	04	0	0000	0000	     Empty	             Unowned	         Grassland
-35	05	0	0000	0000	     Empty	             Unowned	         Grassland
-35	06	0	0000	0000	     Empty	             Unowned	         Grassland
-35	07	0	0000	0000	     Empty	             Unowned	         Grassland
-35	08	0	0000	0000	     Empty	             Unowned	         Grassland
-35	09	0	0000	0000	     Empty	             Unowned	         Grassland
-35	10	0	0000	0000	     Empty	             Unowned	         Grassland
-35	11	0	0000	0000	     Empty	             Unowned	         Grassland
-35	12	0	0000	0000	     Empty	             Unowned	         Grassland
-35	13	0	0000	0000	     Empty	             Unowned	         Grassland
-35	14	0	0000	0000	     Empty	             Unowned	         Grassland
-35	15	0	0000	0000	     Empty	             Unowned	         Grassland
-35	16	0	0000	0000	     Empty	             Unowned	         Grassland
-35	17	0	0000	0000	     Empty	             Unowned	         Grassland
-35	18	0	0000	0000	     Empty	             Unowned	         Grassland
-35	19	0	0000	0000	     Empty	             Unowned	         Grassland
-35	20	0	0000	0000	     Empty	             Unowned	         Grassland
-35	21	0	0000	0000	     Empty	             Unowned	         Grassland
-35	22	0	0000	0000	     Empty	             Unowned	         Grassland
-35	23	0	0000	0000	     Empty	             Unowned	         Grassland
-35	24	0	0000	0000	     Empty	             Unowned	         Grassland
-35	25	0	0000	0000	     Empty	             Unowned	         Grassland
-35	26	0	0000	0000	     Empty	             Unowned	         Grassland
-35	27	0	0000	0000	     Empty	             Unowned	         Grassland
-35	28	0	0000	0000	     Empty	             Unowned	         Grassland
-36	00	0	0000	0000	     Empty	             Unowned	         Grassland
-36	01	0	0000	0000	     Empty	             Unowned	         Grassland
-36	02	0	0000	0000	     Empty	             Unowned	         Grassland
-36	03	0	0000	0000	     Empty	             Unowned	         Grassland
-36	04	0	0000	0000	     Empty	             Unowned	         Grassland
-36	05	0	0000	0000	     Empty	             Unowned	         Grassland
-36	06	0	0000	0000	     Empty	             Unowned	         Grassland
-36	07	0	0000	0000	     Empty	             Unowned	         Grassland
-36	08	0	0000	0000	     Empty	             Unowned	         Grassland
-36	09	0	0000	0000	     Empty	             Unowned	         Grassland
-36	10	0	0000	0000	     Empty	             Unowned	         Grassland
-36	11	0	0000	0000	     Empty	             Unowned	         Grassland
-36	12	0	0000	0000	     Empty	             Unowned	         Grassland
-36	13	0	0000	0000	     Empty	             Unowned	         Grassland
-36	14	0	0000	0000	     Empty	             Unowned	         Grassland
-36	15	0	0000	0000	     Empty	             Unowned	         Grassland
-36	16	0	0000	0000	     Empty	             Unowned	         Grassland
-36	17	0	0000	0000	     Empty	             Unowned	         Grassland
-36	18	0	0000	0000	     Empty	             Unowned	         Grassland
-36	19	0	0000	0000	     Empty	             Unowned	         Grassland
-36	20	0	0000	0000	     Empty	             Unowned	         Grassland
-36	21	0	0000	0000	     Empty	             Unowned	         Grassland
-36	22	0	0000	0000	     Empty	             Unowned	         Grassland
-36	23	0	0000	0000	     Empty	             Unowned	         Grassland
-36	24	0	0000	0000	     Empty	             Unowned	         Grassland
-36	25	0	0000	0000	     Empty	             Unowned	         Grassland
-36	26	0	0000	0000	     Empty	             Unowned	         Grassland
-36	27	0	0000	0000	     Empty	             Unowned	         Grassland
-36	28	0	0000	0000	     Empty	             Unowned	         Grassland
-36	29	0	0000	0000	     Empty	             Unowned	         Grassland
-37	00	0	0000	0000	     Empty	             Unowned	         Grassland
-37	01	0	0000	0000	     Empty	             Unowned	         Grassland
-37	02	0	0000	0000	     Empty	             Unowned	         Grassland
-37	03	0	0000	0000	     Empty	             Unowned	         Grassland
-37	04	0	0000	0000	     Empty	             Unowned	         Grassland
-37	05	0	0000	0000	     Empty	             Unowned	         Grassland
-37	06	0	0000	0000	     Empty	             Unowned	         Grassland
-37	07	0	0000	0000	     Empty	             Unowned	         Grassland
-37	08	0	0000	0000	     Empty	             Unowned	         Grassland
-37	09	0	0000	0000	     Empty	             Unowned	         Grassland
-37	10	0	0000	0000	     Empty	             Unowned	         Grassland
-37	11	0	0000	0000	     Empty	             Unowned	         Grassland
-37	12	0	0000	0000	     Empty	             Unowned	         Grassland
-37	13	0	0000	0000	     Empty	             Unowned	         Grassland
-37	14	0	0000	0000	     Empty	             Unowned	         Grassland
-37	15	0	0000	0000	     Empty	             Unowned	         Grassland
-37	16	0	0000	0000	     Empty	             Unowned	         Grassland
-37	17	0	0000	0000	     Empty	             Unowned	         Grassland
-37	18	0	0000	0000	     Empty	             Unowned	         Grassland
-37	19	0	0000	0000	     Empty	             Unowned	         Grassland
-37	20	0	0000	0000	     Empty	             Unowned	         Grassland
-37	21	0	0000	0000	     Empty	             Unowned	         Grassland
-37	22	0	0000	0000	     Empty	             Unowned	         Grassland
-37	23	0	0000	0000	     Empty	             Unowned	         Grassland
-37	24	0	0000	0000	     Empty	             Unowned	         Grassland
-37	25	0	0000	0000	     Empty	             Unowned	         Grassland
-37	26	0	0000	0000	     Empty	             Unowned	         Grassland
-37	27	0	0000	0000	     Empty	             Unowned	         Grassland
-37	28	0	0000	0000	     Empty	             Unowned	         Grassland
-38	00	0	0000	0000	     Empty	             Unowned	         Grassland
-38	01	0	0000	0000	     Empty	             Unowned	         Grassland
-38	02	0	0000	0000	     Empty	             Unowned	         Grassland
-38	03	0	0000	0000	     Empty	             Unowned	         Grassland
-38	04	0	0000	0000	     Empty	             Unowned	         Grassland
-38	05	0	0000	0000	     Empty	             Unowned	         Grassland
-38	06	0	0000	0000	     Empty	             Unowned	         Grassland
-38	07	0	0000	0000	     Empty	             Unowned	         Grassland
-38	08	0	0000	0000	     Empty	             Unowned	         Grassland
-38	09	0	0000	0000	     Empty	             Unowned	         Grassland
-38	10	0	0000	0000	     Empty	             Unowned	         Grassland
-38	11	0	0000	0000	     Empty	             Unowned	         Grassland
-38	12	0	0000	0000	     Empty	             Unowned	         Grassland
-38	13	0	0000	0000	     Empty	             Unowned	         Grassland
-38	14	0	0000	0000	     Empty	             Unowned	         Grassland
-38	15	0	0000	0000	     Empty	             Unowned	         Grassland
-38	16	0	0000	0000	     Empty	             Unowned	         Grassland
-38	17	0	0000	0000	     Empty	             Unowned	         Grassland
-38	18	0	0000	0000	     Empty	             Unowned	         Grassland
-38	19	0	0000	0000	     Empty	             Unowned	         Grassland
-38	20	0	0000	0000	     Empty	             Unowned	         Grassland
-38	21	0	0000	0000	     Empty	             Unowned	         Grassland
-38	22	0	0000	0000	     Empty	             Unowned	         Grassland
-38	23	0	0000	0000	     Empty	             Unowned	         Grassland
-38	24	0	0000	0000	     Empty	             Unowned	         Grassland
-38	25	0	0000	0000	     Empty	             Unowned	         Grassland
-38	26	0	0000	0000	     Empty	             Unowned	         Grassland
-38	27	0	0000	0000	     Empty	             Unowned	         Grassland
-38	28	0	0000	0000	     Empty	             Unowned	         Grassland
-38	29	0	0000	0000	     Empty	             Unowned	         Grassland
-39	00	0	0000	0000	     Empty	             Unowned	         Grassland
-39	01	0	0000	0000	     Empty	             Unowned	         Grassland
-39	02	0	0000	0000	     Empty	             Unowned	         Grassland
-39	03	0	0000	0000	     Empty	             Unowned	         Grassland
-39	04	0	0000	0000	     Empty	             Unowned	         Grassland
-39	05	0	0000	0000	     Empty	             Unowned	         Grassland
-39	06	0	0000	0000	     Empty	             Unowned	         Grassland
-39	07	0	0000	0000	     Empty	             Unowned	         Grassland
-39	08	0	0000	0000	     Empty	             Unowned	         Grassland
-39	09	0	0000	0000	     Empty	             Unowned	         Grassland
-39	10	0	0000	0000	     Empty	             Unowned	         Grassland
-39	11	0	0000	0000	     Empty	             Unowned	         Grassland
-39	12	0	0000	0000	     Empty	             Unowned	         Grassland
-39	13	0	0000	0000	     Empty	             Unowned	         Grassland
-39	14	0	0000	0000	     Empty	             Unowned	         Grassland
-39	15	0	0000	0000	     Empty	             Unowned	         Grassland
-39	16	0	0000	0000	     Empty	             Unowned	         Grassland
-39	17	0	0000	0000	     Empty	             Unowned	         Grassland
-39	18	0	0000	0000	     Empty	             Unowned	         Grassland
-39	19	0	0000	0000	     Empty	             Unowned	         Grassland
-39	20	0	0000	0000	     Empty	             Unowned	         Grassland
-39	21	0	0000	0000	     Empty	             Unowned	         Grassland
-39	22	0	0000	0000	     Empty	             Unowned	         Grassland
-39	23	0	0000	0000	     Empty	             Unowned	         Grassland
-39	24	0	0000	0000	     Empty	             Unowned	         Grassland
-39	25	0	0000	0000	     Empty	             Unowned	         Grassland
-39	26	0	0000	0000	     Empty	             Unowned	         Grassland
-39	27	0	0000	0000	     Empty	             Unowned	         Grassland
-39	28	0	0000	0000	     Empty	             Unowned	         Grassland
-40	00	0	0000	0000	     Empty	             Unowned	         Grassland
-40	01	0	0000	0000	     Empty	             Unowned	         Grassland
-40	02	0	0000	0000	     Empty	             Unowned	         Grassland
-40	03	0	0000	0000	     Empty	             Unowned	         Grassland
-40	04	0	0000	0000	     Empty	             Unowned	         Grassland
-40	05	0	0000	0000	     Empty	             Unowned	         Grassland
-40	06	0	0000	0000	     Empty	             Unowned	         Grassland
-40	07	0	0000	0000	     Empty	             Unowned	         Grassland
-40	08	0	0000	0000	     Empty	             Unowned	         Grassland
-40	09	0	0000	0000	     Empty	             Unowned	         Grassland
-40	10	0	0000	0000	     Empty	             Unowned	         Grassland
-40	11	0	0000	0000	     Empty	             Unowned	         Grassland
-40	12	0	0000	0000	     Empty	             Unowned	         Grassland
-40	13	0	0000	0000	     Empty	             Unowned	         Grassland
-40	14	0	0000	0000	     Empty	             Unowned	         Grassland
-40	15	0	0000	0000	     Empty	             Unowned	         Grassland
-40	16	0	0000	0000	     Empty	             Unowned	         Grassland
-40	17	0	0000	0000	     Empty	             Unowned	         Grassland
-40	18	0	0000	0000	     Empty	             Unowned	         Grassland
-40	19	0	0000	0000	     Empty	             Unowned	         Grassland
-40	20	0	0000	0000	     Empty	             Unowned	         Grassland
-40	21	0	0000	0000	     Empty	             Unowned	         Grassland
-40	22	0	0000	0000	     Empty	             Unowned	         Grassland
-40	23	0	0000	0000	     Empty	             Unowned	         Grassland
-40	24	0	0000	0000	     Empty	             Unowned	         Grassland
-40	25	0	0000	0000	     Empty	             Unowned	         Grassland
-40	26	0	0000	0000	     Empty	             Unowned	         Grassland
-40	27	0	0000	0000	     Empty	             Unowned	         Grassland
-40	28	0	0000	0000	     Empty	             Unowned	         Grassland
-40	29	0	0000	0000	     Empty	             Unowned	         Grassland
-41	00	0	0000	0000	     Empty	             Unowned	         Grassland
-41	01	0	0000	0000	     Empty	             Unowned	         Grassland
-41	02	0	0000	0000	     Empty	             Unowned	         Grassland
-41	03	0	0000	0000	     Empty	             Unowned	         Grassland
-41	04	0	0000	0000	     Empty	             Unowned	         Grassland
-41	05	0	0000	0000	     Empty	             Unowned	         Grassland
-41	06	0	0000	0000	     Empty	             Unowned	         Grassland
-41	07	0	0000	0000	     Empty	             Unowned	         Grassland
-41	08	0	0000	0000	     Empty	             Unowned	         Grassland
-41	09	0	0000	0000	     Empty	             Unowned	         Grassland
-41	10	0	0000	0000	     Empty	             Unowned	         Grassland
-41	11	0	0000	0000	     Empty	             Unowned	         Grassland
-41	12	0	0000	0000	     Empty	             Unowned	         Grassland
-41	13	0	0000	0000	     Empty	             Unowned	         Grassland
-41	14	0	0000	0000	     Empty	             Unowned	         Grassland
-41	15	0	0000	0000	     Empty	             Unowned	         Grassland
-41	16	0	0000	0000	     Empty	             Unowned	         Grassland
-41	17	0	0000	0000	     Empty	             Unowned	         Grassland
-41	18	0	0000	0000	     Empty	             Unowned	         Grassland
-41	19	0	0000	0000	     Empty	             Unowned	         Grassland
-41	20	0	0000	0000	     Empty	             Unowned	         Grassland
-41	21	0	0000	0000	     Empty	             Unowned	         Grassland
-41	22	0	0000	0000	     Empty	             Unowned	         Grassland
-41	23	0	0000	0000	     Empty	             Unowned	         Grassland
-41	24	0	0000	0000	     Empty	             Unowned	         Grassland
-41	25	0	0000	0000	     Empty	             Unowned	         Grassland
-41	26	0	0000	0000	     Empty	             Unowned	         Grassland
-41	27	0	0000	0000	     Empty	             Unowned	         Grassland
-41	28	0	0000	0000	     Empty	             Unowned	         Grassland
-42	00	0	0000	0000	     Empty	             Unowned	         Grassland
-42	01	0	0000	0000	     Empty	             Unowned	         Grassland
-42	02	0	0000	0000	     Empty	             Unowned	         Grassland
-42	03	0	0000	0000	     Empty	             Unowned	         Grassland
-42	04	0	0000	0000	     Empty	             Unowned	         Grassland
-42	05	0	0000	0000	     Empty	             Unowned	         Grassland
-42	06	0	0000	0000	     Empty	             Unowned	         Grassland
-42	07	0	0000	0000	     Empty	             Unowned	         Grassland
-42	08	0	0000	0000	     Empty	             Unowned	         Grassland
-42	09	0	0000	0000	     Empty	             Unowned	         Grassland
-42	10	0	0000	0000	     Empty	             Unowned	         Grassland
-42	11	0	0000	0000	     Empty	             Unowned	         Grassland
-42	12	0	0000	0000	     Empty	             Unowned	         Grassland
-42	13	0	0000	0000	     Empty	             Unowned	         Grassland
-42	14	0	0000	0000	     Empty	             Unowned	         Grassland
-42	15	0	0000	0000	     Empty	             Unowned	         Grassland
-42	16	0	0000	0000	     Empty	             Unowned	         Grassland
-42	17	0	0000	0000	     Empty	             Unowned	         Grassland
-42	18	0	0000	0000	     Empty	             Unowned	         Grassland
-42	19	0	0000	0000	     Empty	             Unowned	         Grassland
-42	20	0	0000	0000	     Empty	             Unowned	         Grassland
-42	21	0	0000	0000	     Empty	             Unowned	         Grassland
-42	22	0	0000	0000	     Empty	             Unowned	         Grassland
-42	23	0	0000	0000	     Empty	             Unowned	         Grassland
-42	24	0	0000	0000	     Empty	             Unowned	         Grassland
-42	25	0	0000	0000	     Empty	             Unowned	         Grassland
-42	26	0	0000	0000	     Empty	             Unowned	         Grassland
-42	27	0	0000	0000	     Empty	             Unowned	         Grassland
-42	28	0	0000	0000	     Empty	             Unowned	         Grassland
-42	29	0	0000	0000	     Empty	             Unowned	         Grassland
-43	00	0	0000	0000	     Empty	             Unowned	         Grassland
-43	01	0	0000	0000	     Empty	             Unowned	         Grassland
-43	02	0	0000	0000	     Empty	             Unowned	         Grassland
-43	03	0	0000	0000	     Empty	             Unowned	         Grassland
-43	04	0	0000	0000	     Empty	             Unowned	         Grassland
-43	05	0	0000	0000	     Empty	             Unowned	         Grassland
-43	06	0	0000	0000	     Empty	             Unowned	         Grassland
-43	07	0	0000	0000	     Empty	             Unowned	         Grassland
-43	08	0	0000	0000	     Empty	             Unowned	         Grassland
-43	09	0	0000	0000	     Empty	             Unowned	         Grassland
-43	10	0	0000	0000	     Empty	             Unowned	         Grassland
-43	11	0	0000	0000	     Empty	             Unowned	         Grassland
-43	12	0	0000	0000	     Empty	             Unowned	         Grassland
-43	13	0	0000	0000	     Empty	             Unowned	         Grassland
-43	14	0	0000	0000	     Empty	             Unowned	         Grassland
-43	15	0	0000	0000	     Empty	             Unowned	         Grassland
-43	16	0	0000	0000	     Empty	             Unowned	         Grassland
-43	17	0	0000	0000	     Empty	             Unowned	         Grassland
-43	18	0	0000	0000	     Empty	             Unowned	         Grassland
-43	19	0	0000	0000	     Empty	             Unowned	         Grassland
-43	20	0	0000	0000	     Empty	             Unowned	         Grassland
-43	21	0	0000	0000	     Empty	             Unowned	         Grassland
-43	22	0	0000	0000	     Empty	             Unowned	         Grassland
-43	23	0	0000	0000	     Empty	             Unowned	         Grassland
-43	24	0	0000	0000	     Empty	             Unowned	         Grassland
-43	25	0	0000	0000	     Empty	             Unowned	         Grassland
-43	26	0	0000	0000	     Empty	             Unowned	         Grassland
-43	27	0	0000	0000	     Empty	             Unowned	         Grassland
-43	28	0	0000	0000	     Empty	             Unowned	         Grassland
-44	00	0	0000	0000	     Empty	             Unowned	         Grassland
-44	01	0	0000	0000	     Empty	             Unowned	         Grassland
-44	02	0	0000	0000	     Empty	             Unowned	         Grassland
-44	03	0	0000	0000	     Empty	             Unowned	         Grassland
-44	04	0	0000	0000	     Empty	             Unowned	         Grassland
-44	05	0	0000	0000	     Empty	             Unowned	         Grassland
-44	06	0	0000	0000	     Empty	             Unowned	         Grassland
-44	07	0	0000	0000	     Empty	             Unowned	         Grassland
-44	08	0	0000	0000	     Empty	             Unowned	         Grassland
-44	09	0	0000	0000	     Empty	             Unowned	         Grassland
-44	10	0	0000	0000	     Empty	             Unowned	         Grassland
-44	11	0	0000	0000	     Empty	             Unowned	         Grassland
-44	12	0	0000	0000	     Empty	             Unowned	         Grassland
-44	13	0	0000	0000	     Empty	             Unowned	         Grassland
-44	14	0	0000	0000	     Empty	             Unowned	         Grassland
-44	15	0	0000	0000	     Empty	             Unowned	         Grassland
-44	16	0	0000	0000	     Empty	             Unowned	         Grassland
-44	17	0	0000	0000	     Empty	             Unowned	         Grassland
-44	18	0	0000	0000	     Empty	             Unowned	         Grassland
-44	19	0	0000	0000	     Empty	             Unowned	         Grassland
-44	20	0	0000	0000	     Empty	             Unowned	         Grassland
-44	21	0	0000	0000	     Empty	             Unowned	         Grassland
-44	22	0	0000	0000	     Empty	             Unowned	         Grassland
-44	23	0	0000	0000	     Empty	             Unowned	         Grassland
-44	24	0	0000	0000	     Empty	             Unowned	         Grassland
-44	25	0	0000	0000	     Empty	             Unowned	         Grassland
-44	26	0	0000	0000	     Empty	             Unowned	         Grassland
-44	27	0	0000	0000	     Empty	             Unowned	         Grassland
-44	28	0	0000	0000	     Empty	             Unowned	         Grassland
-44	29	0	0000	0000	     Empty	             Unowned	         Grassland
-45	00	0	0000	0000	     Empty	             Unowned	         Grassland
-45	01	0	0000	0000	     Empty	             Unowned	         Grassland
-45	02	0	0000	0000	     Empty	             Unowned	         Grassland
-45	03	0	0000	0000	     Empty	             Unowned	         Grassland
-45	04	0	0000	0000	     Empty	             Unowned	         Grassland
-45	05	0	0000	0000	     Empty	             Unowned	         Grassland
-45	06	0	0000	0000	     Empty	             Unowned	         Grassland
-45	07	0	0000	0000	     Empty	             Unowned	         Grassland
-45	08	0	0000	0000	     Empty	             Unowned	         Grassland
-45	09	0	0000	0000	     Empty	             Unowned	         Grassland
-45	10	0	0000	0000	     Empty	             Unowned	         Grassland
-45	11	0	0000	0000	     Empty	             Unowned	         Grassland
-45	12	0	0000	0000	     Empty	             Unowned	         Grassland
-45	13	0	0000	0000	     Empty	             Unowned	         Grassland
-45	14	0	0000	0000	     Empty	             Unowned	         Grassland
-45	15	0	0000	0000	     Empty	             Unowned	         Grassland
-45	16	0	0000	0000	     Empty	             Unowned	         Grassland
-45	17	0	0000	0000	     Empty	             Unowned	         Grassland
-45	18	0	0000	0000	     Empty	             Unowned	         Grassland
-45	19	0	0000	0000	     Empty	             Unowned	         Grassland
-45	20	0	0000	0000	     Empty	             Unowned	         Grassland
-45	21	0	0000	0000	     Empty	             Unowned	         Grassland
-45	22	0	0000	0000	     Empty	             Unowned	         Grassland
-45	23	0	0000	0000	     Empty	             Unowned	         Grassland
-45	24	0	0000	0000	     Empty	             Unowned	         Grassland
-45	25	0	0000	0000	     Empty	             Unowned	         Grassland
-45	26	0	0000	0000	     Empty	             Unowned	         Grassland
-45	27	0	0000	0000	     Empty	             Unowned	         Grassland
-45	28	0	0000	0000	     Empty	             Unowned	         Grassland
-46	00	0	0000	0000	     Empty	             Unowned	         Grassland
-46	01	0	0000	0000	     Empty	             Unowned	         Grassland
-46	02	0	0000	0000	     Empty	             Unowned	         Grassland
-46	03	0	0000	0000	     Empty	             Unowned	         Grassland
-46	04	0	0000	0000	     Empty	             Unowned	         Grassland
-46	05	0	0000	0000	     Empty	             Unowned	         Grassland
-46	06	0	0000	0000	     Empty	             Unowned	         Grassland
-46	07	0	0000	0000	     Empty	             Unowned	         Grassland
-46	08	0	0000	0000	     Empty	             Unowned	         Grassland
-46	09	0	0000	0000	     Empty	             Unowned	         Grassland
-46	10	0	0000	0000	     Empty	             Unowned	         Grassland
-46	11	0	0000	0000	     Empty	             Unowned	         Grassland
-46	12	0	0000	0000	     Empty	             Unowned	         Grassland
-46	13	0	0000	0000	     Empty	             Unowned	         Grassland
-46	14	0	0000	0000	     Empty	             Unowned	         Grassland
-46	15	0	0000	0000	     Empty	             Unowned	         Grassland
-46	16	0	0000	0000	     Empty	             Unowned	         Grassland
-46	17	0	0000	0000	     Empty	             Unowned	         Grassland
-46	18	0	0000	0000	     Empty	             Unowned	         Grassland
-46	19	0	0000	0000	     Empty	             Unowned	         Grassland
-46	20	0	0000	0000	     Empty	             Unowned	         Grassland
-46	21	0	0000	0000	     Empty	             Unowned	         Grassland
-46	22	0	0000	0000	     Empty	             Unowned	         Grassland
-46	23	0	0000	0000	     Empty	             Unowned	         Grassland
-46	24	0	0000	0000	     Empty	             Unowned	         Grassland
-46	25	0	0000	0000	     Empty	             Unowned	         Grassland
-46	26	0	0000	0000	     Empty	             Unowned	         Grassland
-46	27	0	0000	0000	     Empty	             Unowned	         Grassland
-46	28	0	0000	0000	     Empty	             Unowned	         Grassland
-46	29	0	0000	0000	     Empty	             Unowned	         Grassland
-47	00	0	0000	0000	     Empty	             Unowned	         Grassland
-47	01	0	0000	0000	     Empty	             Unowned	         Grassland
-47	02	0	0000	0000	     Empty	             Unowned	         Grassland
-47	03	0	0000	0000	     Empty	             Unowned	         Grassland
-47	04	0	0000	0000	     Empty	             Unowned	         Grassland
-47	05	0	0000	0000	     Empty	             Unowned	         Grassland
-47	06	0	0000	0000	     Empty	             Unowned	         Grassland
-47	07	0	0000	0000	     Empty	             Unowned	         Grassland
-47	08	0	0000	0000	     Empty	             Unowned	         Grassland
-47	09	0	0000	0000	     Empty	             Unowned	         Grassland
-47	10	0	0000	0000	     Empty	             Unowned	         Grassland
-47	11	0	0000	0000	     Empty	             Unowned	         Grassland
-47	12	0	0000	0000	     Empty	             Unowned	         Grassland
-47	13	0	0000	0000	     Empty	             Unowned	         Grassland
-47	14	0	0000	0000	     Empty	             Unowned	         Grassland
-47	15	0	0000	0000	     Empty	             Unowned	         Grassland
-47	16	0	0000	0000	     Empty	             Unowned	         Grassland
-47	17	0	0000	0000	     Empty	             Unowned	         Grassland
-47	18	0	0000	0000	     Empty	             Unowned	         Grassland
-47	19	0	0000	0000	     Empty	             Unowned	         Grassland
-47	20	0	0000	0000	     Empty	             Unowned	         Grassland
-47	21	0	0000	0000	     Empty	             Unowned	         Grassland
-47	22	0	0000	0000	     Empty	             Unowned	         Grassland
-47	23	0	0000	0000	     Empty	             Unowned	         Grassland
-47	24	0	0000	0000	     Empty	             Unowned	         Grassland
-47	25	0	0000	0000	     Empty	             Unowned	         Grassland
-47	26	0	0000	0000	     Empty	             Unowned	         Grassland
-47	27	0	0000	0000	     Empty	             Unowned	         Grassland
-47	28	0	0000	0000	     Empty	             Unowned	         Grassland
-48	00	0	0000	0000	     Empty	             Unowned	         Grassland
-48	01	0	0000	0000	     Empty	             Unowned	         Grassland
-48	02	0	0000	0000	     Empty	             Unowned	         Grassland
-48	03	0	0000	0000	     Empty	             Unowned	         Grassland
-48	04	0	0000	0000	     Empty	             Unowned	         Grassland
-48	05	0	0000	0000	     Empty	             Unowned	         Grassland
-48	06	0	0000	0000	     Empty	             Unowned	         Grassland
-48	07	0	0000	0000	     Empty	             Unowned	         Grassland
-48	08	0	0000	0000	     Empty	             Unowned	         Grassland
-48	09	0	0000	0000	     Empty	             Unowned	         Grassland
-48	10	0	0000	0000	     Empty	             Unowned	         Grassland
-48	11	0	0000	0000	     Empty	             Unowned	         Grassland
-48	12	0	0000	0000	     Empty	             Unowned	         Grassland
-48	13	0	0000	0000	     Empty	             Unowned	         Grassland
-48	14	0	0000	0000	     Empty	             Unowned	         Grassland
-48	15	0	0000	0000	     Empty	             Unowned	         Grassland
-48	16	0	0000	0000	     Empty	             Unowned	         Grassland
-48	17	0	0000	0000	     Empty	             Unowned	         Grassland
-48	18	0	0000	0000	     Empty	             Unowned	         Grassland
-48	19	0	0000	0000	     Empty	             Unowned	         Grassland
-48	20	0	0000	0000	     Empty	             Unowned	         Grassland
-48	21	0	0000	0000	     Empty	             Unowned	         Grassland
-48	22	0	0000	0000	     Empty	             Unowned	         Grassland
-48	23	0	0000	0000	     Empty	             Unowned	         Grassland
-48	24	0	0000	0000	     Empty	             Unowned	         Grassland
-48	25	0	0000	0000	     Empty	             Unowned	         Grassland
-48	26	0	0000	0000	     Empty	             Unowned	         Grassland
-48	27	0	0000	0000	     Empty	             Unowned	         Grassland
-48	28	0	0000	0000	     Empty	             Unowned	         Grassland
-48	29	0	0000	0000	     Empty	             Unowned	         Grassland
-49	00	0	0000	0000	     Empty	             Unowned	         Grassland
-49	01	0	0000	0000	     Empty	             Unowned	         Grassland
-49	02	0	0000	0000	     Empty	             Unowned	         Grassland
-49	03	0	0000	0000	     Empty	             Unowned	         Grassland
-49	04	0	0000	0000	     Empty	             Unowned	         Grassland
-49	05	0	0000	0000	     Empty	             Unowned	         Grassland
-49	06	0	0000	0000	     Empty	             Unowned	         Grassland
-49	07	0	0000	0000	     Empty	             Unowned	         Grassland
-49	08	0	0000	0000	     Empty	             Unowned	         Grassland
-49	09	0	0000	0000	     Empty	             Unowned	         Grassland
-49	10	0	0000	0000	     Empty	             Unowned	         Grassland
-49	11	0	0000	0000	     Empty	             Unowned	         Grassland
-49	12	0	0000	0000	     Empty	             Unowned	         Grassland
-49	13	0	0000	0000	     Empty	             Unowned	         Grassland
-49	14	0	0000	0000	     Empty	             Unowned	         Grassland
-49	15	0	0000	0000	     Empty	             Unowned	         Grassland
-49	16	0	0000	0000	     Empty	             Unowned	         Grassland
-49	17	0	0000	0000	     Empty	             Unowned	         Grassland
-49	18	0	0000	0000	     Empty	             Unowned	         Grassland
-49	19	0	0000	0000	     Empty	             Unowned	         Grassland
-49	20	0	0000	0000	     Empty	             Unowned	         Grassland
-49	21	0	0000	0000	     Empty	             Unowned	         Grassland
-49	22	0	0000	0000	     Empty	             Unowned	         Grassland
-49	23	0	0000	0000	     Empty	             Unowned	         Grassland
-49	24	0	0000	0000	     Empty	             Unowned	         Grassland
-49	25	0	0000	0000	     Empty	             Unowned	         Grassland
-49	26	0	0000	0000	     Empty	             Unowned	         Grassland
-49	27	0	0000	0000	     Empty	             Unowned	         Grassland
-49	28	0	0000	0000	     Empty	             Unowned	         Grassland
-50	00	0	0000	0000	     Empty	             Unowned	         Grassland
-50	01	0	0000	0000	     Empty	             Unowned	         Grassland
-50	02	0	0000	0000	     Empty	             Unowned	         Grassland
-50	03	0	0000	0000	     Empty	             Unowned	         Grassland
-50	04	0	0000	0000	     Empty	             Unowned	         Grassland
-50	05	0	0000	0000	     Empty	             Unowned	         Grassland
-50	06	0	0000	0000	     Empty	             Unowned	         Grassland
-50	07	0	0000	0000	     Empty	             Unowned	         Grassland
-50	08	0	0000	0000	     Empty	             Unowned	         Grassland
-50	09	0	0000	0000	     Empty	             Unowned	         Grassland
-50	10	0	0000	0000	     Empty	             Unowned	         Grassland
-50	11	0	0000	0000	     Empty	             Unowned	         Grassland
-50	12	0	0000	0000	     Empty	             Unowned	         Grassland
-50	13	0	0000	0000	     Empty	             Unowned	         Grassland
-50	14	0	0000	0000	     Empty	             Unowned	         Grassland
-50	15	0	0000	0000	     Empty	             Unowned	         Grassland
-50	16	0	0000	0000	     Empty	             Unowned	         Grassland
-50	17	0	0000	0000	     Empty	             Unowned	         Grassland
-50	18	0	0000	0000	     Empty	             Unowned	         Grassland
-50	19	0	0000	0000	     Empty	             Unowned	         Grassland
-50	20	0	0000	0000	     Empty	             Unowned	         Grassland
-50	21	0	0000	0000	     Empty	             Unowned	         Grassland
-50	22	0	0000	0000	     Empty	             Unowned	         Grassland
-50	23	0	0000	0000	     Empty	             Unowned	         Grassland
-50	24	0	0000	0000	     Empty	             Unowned	         Grassland
-50	25	0	0000	0000	     Empty	             Unowned	         Grassland
-50	26	0	0000	0000	     Empty	             Unowned	         Grassland
-50	27	0	0000	0000	     Empty	             Unowned	         Grassland
-50	28	0	0000	0000	     Empty	             Unowned	         Grassland
-50	29	0	0000	0000	     Empty	             Unowned	         Grassland
-51	00	0	0000	0000	     Empty	             Unowned	         Grassland
-51	01	0	0000	0000	     Empty	             Unowned	         Grassland
-51	02	0	0000	0000	     Empty	             Unowned	         Grassland
-51	03	0	0000	0000	     Empty	             Unowned	         Grassland
-51	04	0	0000	0000	     Empty	             Unowned	         Grassland
-51	05	0	0000	0000	     Empty	             Unowned	         Grassland
-51	06	0	0000	0000	     Empty	             Unowned	         Grassland
-51	07	0	0000	0000	     Empty	             Unowned	         Grassland
-51	08	0	0000	0000	     Empty	             Unowned	         Grassland
-51	09	0	0000	0000	     Empty	             Unowned	         Grassland
-51	10	0	0000	0000	     Empty	             Unowned	         Grassland
-51	11	0	0000	0000	     Empty	             Unowned	         Grassland
-51	12	0	0000	0000	     Empty	             Unowned	         Grassland
-51	13	0	0000	0000	     Empty	             Unowned	         Grassland
-51	14	0	0000	0000	     Empty	             Unowned	         Grassland
-51	15	0	0000	0000	     Empty	             Unowned	         Grassland
-51	16	0	0000	0000	     Empty	             Unowned	         Grassland
-51	17	0	0000	0000	     Empty	             Unowned	         Grassland
-51	18	0	0000	0000	     Empty	             Unowned	         Grassland
-51	19	0	0000	0000	     Empty	             Unowned	         Grassland
-51	20	0	0000	0000	     Empty	             Unowned	         Grassland
-51	21	0	0000	0000	     Empty	             Unowned	         Grassland
-51	22	0	0000	0000	     Empty	             Unowned	         Grassland
-51	23	0	0000	0000	     Empty	             Unowned	         Grassland
-51	24	0	0000	0000	     Empty	             Unowned	         Grassland
-51	25	0	0000	0000	     Empty	             Unowned	         Grassland
-51	26	0	0000	0000	     Empty	             Unowned	         Grassland
-51	27	0	0000	0000	     Empty	             Unowned	         Grassland
-51	28	0	0000	0000	     Empty	             Unowned	         Grassland
+0000000000000     Empty00        Deep Ocean
+0001000000000     Empty00        Deep Ocean
+0002000000000     Empty00        Deep Ocean
+0003000000000     Empty00        Deep Ocean
+0004000000000     Empty00        Deep Ocean
+0005000000000     Empty00       Shallow Sea
+0006000000000     Empty00       Shallow Sea
+0007000000000     Empty00       Shallow Sea
+0008000000000     Empty00       Shallow Sea
+0009000000000     Empty00        Deep Ocean
+0010000000000     Empty00        Deep Ocean
+0011000000000     Empty00        Deep Ocean
+0012000000000     Empty00        Deep Ocean
+0013000000000     Empty00        Deep Ocean
+0014000000000     Empty00        Deep Ocean
+0015000000000     Empty00        Deep Ocean
+0016000000000     Empty00        Deep Ocean
+0017000000000     Empty00        Deep Ocean
+0100000000000     Empty00        Deep Ocean
+0101000000000     Empty00        Deep Ocean
+0102000000000     Empty00        Deep Ocean
+0103000000000     Empty00       Shallow Sea
+0104000000000     Empty00       Shallow Sea
+0105000000000     Empty00         Grassland
+0106000000000     Empty00         Grassland
+0107000000000     Empty00         Grassland
+0108000000000     Empty00       Shallow Sea
+0109000000000     Empty00       Shallow Sea
+0110000000000     Empty00       Shallow Sea
+0111000000000     Empty00        Deep Ocean
+0112000000000     Empty00        Deep Ocean
+0113000000000     Empty00        Deep Ocean
+0114000000000     Empty00        Deep Ocean
+0115000000000     Empty00        Deep Ocean
+0116000000000     Empty00        Deep Ocean
+0117000000000     Empty00        Deep Ocean
+0200000000000     Empty00        Deep Ocean
+0201000000000     Empty00        Deep Ocean
+0202000000000     Empty00        Deep Ocean
+0203000000000     Empty00       Shallow Sea
+0204000000000     Empty00         Grassland
+0205000000000     Empty00         Grassland
+0206000000000     Empty00         Grassland
+0207000000000     Empty00         Grassland
+0208000000000     Empty00       Shallow Sea
+0209000000000     Empty00       Shallow Sea
+0210000000000     Empty00         Grassland
+0211000000000     Empty00       Shallow Sea
+0212000000000     Empty00        Deep Ocean
+0213000000000     Empty00        Deep Ocean
+0214000000000     Empty00        Deep Ocean
+0215000000000     Empty00        Deep Ocean
+0216000000000     Empty00        Deep Ocean
+0217000000000     Empty00        Deep Ocean
+0300000000000     Empty00        Deep Ocean
+0301000000000     Empty00       Shallow Sea
+0302000000000     Empty00       Shallow Sea
+0303000000000     Empty00         Grassland
+0304000000000     Empty00         Grassland
+0305000000000     Empty00         Grassland
+0306000000000     Empty00         Grassland
+0307000000000     Empty00         Grassland
+0308000000000     Empty00       Shallow Sea
+0309000000000     Empty00         Grassland
+0310000000000     Empty00         Grassland
+0311000000000     Empty00       Shallow Sea
+0312000000000     Empty00       Shallow Sea
+0313000000000     Empty00        Deep Ocean
+0314000000000     Empty00        Deep Ocean
+0315000000000     Empty00        Deep Ocean
+0316000000000     Empty00        Deep Ocean
+0317000000000     Empty00        Deep Ocean
+0400000000000     Empty00        Deep Ocean
+0401000000000     Empty00       Shallow Sea
+0402000000000     Empty00         Grassland
+0403000000000     Empty00         Grassland
+0404000000000     Empty00         Grassland
+0405000000000     Empty00         Grassland
+0406000000000     Empty00         Grassland
+0407000000000     Empty00         Grassland
+0408000000000     Empty00       Shallow Sea
+0409000000000     Empty00         Grassland
+0410000000000     Empty00         Grassland
+0411000000000     Empty00         Grassland
+0412000000000     Empty00         Grassland
+0413000000000     Empty00       Shallow Sea
+0414000000000     Empty00        Deep Ocean
+0415000000000     Empty00        Deep Ocean
+0416000000000     Empty00        Deep Ocean
+0417000000000     Empty00        Deep Ocean
+0500000000000     Empty00       Shallow Sea
+0501000000000     Empty00         Grassland
+0502000000000     Empty00            Forest
+0503000000000     Empty00            Forest
+0504000000000     Empty00         Grassland
+0505000000000     Empty00            Forest
+0506000000000     Empty00            Forest
+0507000000000     Empty00         Grassland
+0508000000000     Empty00       Shallow Sea
+0509000000000     Empty00             Hills
+0510000000000     Empty00             Hills
+0511000000000     Empty00            Forest
+0512000000000     Empty00         Grassland
+0513000000000     Empty00       Shallow Sea
+0514000000000     Empty00        Deep Ocean
+0515000000000     Empty00        Deep Ocean
+0516000000000     Empty00        Deep Ocean
+0517000000000     Empty00        Deep Ocean
+0600000000000     Empty00       Shallow Sea
+0601000000000     Empty00         Grassland
+0602000000000     Empty00         Mountains
+0603000000000     Empty00         Mountains
+0604000000000     Empty00         Mountains
+0605000000000     Empty00         Mountains
+0606000000000     Empty00         Mountains
+0607000000000     Empty00         Mountains
+0608000000000     Empty00       Shallow Sea
+0609000000000     Empty00             Hills
+0610000000000     Empty00         Mountains
+0611000000000     Empty00         Mountains
+0612000000000     Empty00            Forest
+0613000000000     Empty00            Forest
+0614000000000     Empty00       Shallow Sea
+0615000000000     Empty00        Deep Ocean
+0616000000000     Empty00        Deep Ocean
+0617000000000     Empty00        Deep Ocean
+0700000000000     Empty00         Grassland
+0701000000000     Empty00         Mountains
+0702000000000     Empty00             Hills
+0703000000000     Empty00         Mountains
+0704000000000     Empty00         Mountains
+0705000000000     Empty00         Mountains
+0706000000000     Empty00         Mountains
+0707000000000     Empty00         Mountains
+0708000000000     Empty00             Hills
+0709000000000     Empty00         Mountains
+0710000000000     Empty00         Mountains
+0711000000000     Empty00         Mountains
+0712000000000     Empty00            Forest
+0713000000000     Empty00            Forest
+0714000000000     Empty00       Shallow Sea
+0715000000000     Empty00        Deep Ocean
+0716000000000     Empty00        Deep Ocean
+0717000000000     Empty00        Deep Ocean
+0800000000000     Empty00       Shallow Sea
+0801000000000     Empty00         Mountains
+0802000000000     Empty00         Grassland
+0803000000000     Empty00         Grassland
+0804000000000     Empty00         Grassland
+0805000000000     Empty00         Grassland
+0806000000000     Empty00         Grassland
+0807000000000     Empty00         Grassland
+0808000000000     Empty00         Grassland
+0809000000000     Empty00             Hills
+0810000000000     Empty00         Grassland
+0811000000000     Empty00         Mountains
+0812000000000     Empty00         Mountains
+0813000000000     Empty00         Mountains
+0814000000000     Empty00            Forest
+0815000000000     Empty00       Shallow Sea
+0816000000000     Empty00        Deep Ocean
+0817000000000     Empty00        Deep Ocean
+0900000000000     Empty00             Hills
+0901000000000     Empty00         Grassland
+0902000000000     Empty00         Grassland
+0903000000000     Empty00         Grassland
+0904000000000     Empty00         Grassland
+0905000000000     Empty00         Grassland
+0906000000000     Empty00             Hills
+0907000000000     Empty00             Hills
+0908000000000     Empty00         Grassland
+0909000000000     Empty00         Grassland
+0910000000000     Empty00         Grassland
+0911000000000     Empty00             Hills
+0912000000000     Empty00            Forest
+0913000000000     Empty00            Forest
+0914000000000     Empty00       Shallow Sea
+0915000000000     Empty00       Shallow Sea
+0916000000000     Empty00        Deep Ocean
+0917000000000     Empty00        Deep Ocean
+1000000000000     Empty00       Shallow Sea
+1001000000000     Empty00       Shallow Sea
+1002000000000     Empty00         Grassland
+1003000000000     Empty00         Grassland
+1004000000000     Empty00         Grassland
+1005000000000     Empty00             Hills
+1006000000000     Empty00             Hills
+1007000000000     Empty00             Hills
+1008000000000     Empty00         Grassland
+1009000000000     Empty00         Grassland
+1010000000000     Empty00         Grassland
+1011000000000     Empty00         Mountains
+1012000000000     Empty00         Grassland
+1013000000000     Empty00         Grassland
+1014000000000     Empty00         Grassland
+1015000000000     Empty00         Grassland
+1016000000000     Empty00       Shallow Sea
+1017000000000     Empty00       Shallow Sea
+1100000000000     Empty00       Shallow Sea
+1101000000000     Empty00       Shallow Sea
+1102000000000     Empty00         Grassland
+1103000000000     Empty00             Hills
+1104000000000     Empty00             Hills
+1105000000000     Empty00             Hills
+1106000000000     Empty00         Grassland
+1107000000000     Empty00         Grassland
+1108000000000     Empty00         Grassland
+1109000000000     Empty00         Grassland
+1110000000000     Empty00         Grassland
+1111000000000     Empty00         Grassland
+1112000000000     Empty00         Grassland
+1113000000000     Empty00         Grassland
+1114000000000     Empty00         Grassland
+1115000000000     Empty00         Grassland
+1116000000000     Empty00         Grassland
+1117000000000     Empty00       Shallow Sea
+1200000000000     Empty00       Shallow Sea
+1201000000000     Empty00       Shallow Sea
+1202000000000     Empty00         Grassland
+1203000000000     Empty00             Hills
+1204000000000     Empty00             Hills
+1205000000000     Empty00         Grassland
+1206000000000     Empty00         Grassland
+1207000000000     Empty00      Forest Hills
+1208000000000     Empty00             Hills
+1209000000000     Empty00         Grassland
+1210000000000     Empty00         Grassland
+1211000000000     Empty00         Grassland
+1212000000000     Empty00         Grassland
+1213000000000     Empty00         Grassland
+1214000000000     Empty00         Grassland
+1215000000000     Empty00         Grassland
+1216000000000     Empty00         Grassland
+1217000000000     Empty00       Shallow Sea
+1300000000000     Empty00         Grassland
+1301000000000     Empty00         Grassland
+1302000000000     Empty00         Grassland
+1303000000000     Empty00         Grassland
+1304000000000     Empty00         Grassland
+1305000000000     Empty00         Grassland
+1306000000000     Empty00         Grassland
+1307000000000     Empty00      Forest Hills
+1308000000000     Empty00             Hills
+1309000000000     Empty00         Grassland
+1310000000000     Empty00         Grassland
+1311000000000     Empty00         Grassland
+1312000000000     Empty00         Grassland
+1313000000000     Empty00         Grassland
+1314000000000     Empty00         Grassland
+1315000000000     Empty00         Grassland
+1316000000000     Empty00         Grassland
+1317000000000     Empty00         Grassland
+1400000000000     Empty00         Grassland
+1401000000000     Empty00         Grassland
+1402000000000     Empty00             Hills
+1403000000000     Empty00             Hills
+1404000000000     Empty00             Hills
+1405000000000     Empty00         Grassland
+1406000000000     Empty00         Grassland
+1407000000000     Empty00      Forest Hills
+1408000000000     Empty00      Forest Hills
+1409000000000     Empty00             Hills
+1410000000000     Empty00         Grassland
+1411000000000     Empty00         Grassland
+1412000000000     Empty00         Grassland
+1413000000000     Empty00         Grassland
+1414000000000     Empty00         Grassland
+1415000000000     Empty00         Grassland
+1416000000000     Empty00         Grassland
+1417000000000     Empty00         Grassland
+1500000000000     Empty00         Grassland
+1501000000000     Empty00             Hills
+1502000000000     Empty00             Hills
+1503000000000     Empty00             Hills
+1504000000000     Empty00             Hills
+1505000000000     Empty00         Grassland
+1506000000000     Empty00         Grassland
+1507000000000     Empty00             Hills
+1508000000000     Empty00         Grassland
+1509000000000     Empty00         Grassland
+1510000000000     Empty00         Grassland
+1511000000000     Empty00         Grassland
+1512000000000     Empty00         Grassland
+1513000000000     Empty00         Grassland
+1514000000000     Empty00         Grassland
+1515000000000     Empty00         Grassland
+1516000000000     Empty00         Grassland
+1517000000000     Empty00         Grassland
+1600000000000     Empty00         Grassland
+1601000000000     Empty00         Grassland
+1602000000000     Empty00         Grassland
+1603000000000     Empty00         Grassland
+1604000000000     Empty00             Hills
+1605000000000     Empty00             Hills
+1606000000000     Empty00             Hills
+1607000000000     Empty00             Hills
+1608000000000     Empty00             Hills
+1609000000000     Empty00         Grassland
+1610000000000     Empty00         Grassland
+1611000000000     Empty00         Grassland
+1612000000000     Empty00         Grassland
+1613000000000     Empty00         Grassland
+1614000000000     Empty00         Grassland
+1615000000000     Empty00         Grassland
+1616000000000     Empty00         Grassland
+1617000000000     Empty00         Grassland
+1700000000000     Empty00         Mountains
+1701000000000     Empty00             Hills
+1702000000000     Empty00         Grassland
+1703000000000     Empty00         Grassland
+1704000000000     Empty00             Hills
+1705000000000     Empty00             Hills
+1706000000000     Empty00         Grassland
+1707000000000     Empty00             Hills
+1708000000000     Empty00         Grassland
+1709000000000     Empty00         Grassland
+1710000000000     Empty00         Grassland
+1711000000000     Empty00         Grassland
+1712000000000     Empty00         Grassland
+1713000000000     Empty00         Grassland
+1714000000000     Empty00         Grassland
+1715000000000     Empty00         Grassland
+1716000000000     Empty00         Grassland
+1717000000000     Empty00         Grassland
+1800000000000     Empty00         Mountains
+1801000000000     Empty00         Mountains
+1802000000000     Empty00             Hills
+1803000000000     Empty00         Grassland
+1804000000000     Empty00         Grassland
+1805000000000     Empty00             Hills
+1806000000000     Empty00             Hills
+1807000000000     Empty00      Forest Hills
+1808000000000     Empty00      Forest Hills
+1809000000000     Empty00         Grassland
+1810000000000     Empty00         Grassland
+1811000000000     Empty00         Grassland
+1812000000000     Empty00            Forest
+1813000000000     Empty00      Forest Hills
+1814000000000     Empty00      Forest Hills
+1815000000000     Empty00            Forest
+1816000000000     Empty00         Grassland
+1817000000000     Empty00         Grassland
+1900000000000     Empty00         Mountains
+1901000000000     Empty00             Hills
+1902000000000     Empty00         Mountains
+1903000000000     Empty00             Hills
+1904000000000     Empty00         Grassland
+1905000000000     Empty00      Forest Hills
+1906000000000     Empty00      Forest Hills
+1907000000000     Empty00      Forest Hills
+1908000000000     Empty00         Grassland
+1909000000000     Empty00         Grassland
+1910000000000     Empty00         Grassland
+1911000000000     Empty00      Forest Hills
+1912000000000     Empty00      Forest Hills
+1913000000000     Empty00         Mountains
+1914000000000     Empty00      Forest Hills
+1915000000000     Empty00      Forest Hills
+1916000000000     Empty00         Grassland
+1917000000000     Empty00         Grassland
+2000000000000     Empty00         Mountains
+2001000000000     Empty00         Mountains
+2002000000000     Empty00         Mountains
+2003000000000     Empty00         Mountains
+2004000000000     Empty00         Mountains
+2005000000000     Empty00      Forest Hills
+2006000000000     Empty00      Forest Hills
+2007000000000     Empty00      Forest Hills
+2008000000000     Empty00         Grassland
+2009000000000     Empty00         Grassland
+2010000000000     Empty00         Mountains
+2011000000000     Empty00         Mountains
+2012000000000     Empty00         Mountains
+2013000000000     Empty00         Mountains
+2014000000000     Empty00         Mountains
+2015000000000     Empty00         Mountains
+2016000000000     Empty00         Mountains
+2017000000000     Empty00         Grassland
+2100000000000     Empty00         Mountains
+2101000000000     Empty00         Mountains
+2102000000000     Empty00         Mountains
+2103000000000     Empty00         Mountains
+2104000000000     Empty00      Forest Hills
+2105000000000     Empty00      Forest Hills
+2106000000000     Empty00      Forest Hills
+2107000000000     Empty00         Mountains
+2108000000000     Empty00         Mountains
+2109000000000     Empty00         Mountains
+2110000000000     Empty00         Mountains
+2111000000000     Empty00         Mountains
+2112000000000     Empty00         Mountains
+2113000000000     Empty00         Mountains
+2114000000000     Empty00         Mountains
+2115000000000     Empty00         Mountains
+2116000000000     Empty00         Grassland
+2117000000000     Empty00         Mountains
+2200000000000     Empty00         Mountains
+2201000000000     Empty00         Mountains
+2202000000000     Empty00         Mountains
+2203000000000     Empty00         Mountains
+2204000000000     Empty00         Mountains
+2205000000000     Empty00         Mountains
+2206000000000     Empty00         Mountains
+2207000000000     Empty00         Mountains
+2208000000000     Empty00         Mountains
+2209000000000     Empty00         Mountains
+2210000000000     Empty00         Mountains
+2211000000000     Empty00         Mountains
+2212000000000     Empty00      Dense Forest
+2213000000000     Empty00      Dense Forest
+2214000000000     Empty00      Dense Forest
+2215000000000     Empty00      Dense Forest
+2216000000000     Empty00         Grassland
+2217000000000     Empty00         Mountains
+2300000000000     Empty00         Mountains
+2301000000000     Empty00         Mountains
+2302000000000     Empty00         Mountains
+2303000000000     Empty00         Mountains
+2304000000000     Empty00         Mountains
+2305000000000     Empty00         Mountains
+2306000000000     Empty00         Mountains
+2307000000000     Empty00         Mountains
+2308000000000     Empty00         Mountains
+2309000000000     Empty00         Grassland
+2310000000000     Empty00      Dense Forest
+2311000000000     Empty00         Grassland
+2312000000000     Empty00      Dense Forest
+2313000000000     Empty00      Dense Forest
+2314000000000     Empty00      Dense Forest
+2315000000000     Empty00         Grassland
+2316000000000     Empty00         Grassland
+2317000000000     Empty00         Mountains
