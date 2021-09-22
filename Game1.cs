@@ -15,7 +15,7 @@ namespace A_Level_Computing_Project
         public int CurrentHexX, CurrentHexY = 0;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine;
-        public int Player = 7;
+        public int Player = 8;
         public int Turn = 1;
         public MouseState CurrentMouseState, LastMouseState;
 
@@ -55,7 +55,7 @@ namespace A_Level_Computing_Project
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Length == 43)
+                    if (line.Length == 35)
                     {
                         MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))] = new Province(Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2)));
                         MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureLevel = Convert.ToInt32(line.Substring(4, 1));

@@ -1,0 +1,432 @@
+00000     Empty00        Deep Ocean
+00010     Empty00        Deep Ocean
+00020     Empty00        Deep Ocean
+00030     Empty00        Deep Ocean
+00040     Empty00        Deep Ocean
+00050     Empty00       Shallow Sea
+00060     Empty00       Shallow Sea
+00070     Empty00       Shallow Sea
+00080     Empty00       Shallow Sea
+00090     Empty00        Deep Ocean
+00100     Empty00        Deep Ocean
+00110     Empty00        Deep Ocean
+00120     Empty00        Deep Ocean
+00130     Empty00        Deep Ocean
+00140     Empty00        Deep Ocean
+00150     Empty00        Deep Ocean
+00160     Empty00        Deep Ocean
+00170     Empty00        Deep Ocean
+01000     Empty00        Deep Ocean
+01010     Empty00        Deep Ocean
+01020     Empty00        Deep Ocean
+01030     Empty00       Shallow Sea
+01040     Empty00       Shallow Sea
+01050     Empty01         Grassland
+01060     Empty01         Grassland
+01070     Empty01         Grassland
+01080     Empty00       Shallow Sea
+01090     Empty00       Shallow Sea
+01100     Empty00       Shallow Sea
+01110     Empty00        Deep Ocean
+01120     Empty00        Deep Ocean
+01130     Empty00        Deep Ocean
+01140     Empty00        Deep Ocean
+01150     Empty00        Deep Ocean
+01160     Empty00        Deep Ocean
+01170     Empty00        Deep Ocean
+02000     Empty00        Deep Ocean
+02010     Empty00        Deep Ocean
+02020     Empty00        Deep Ocean
+02030     Empty00       Shallow Sea
+02040     Empty01         Grassland
+02050     Empty01         Grassland
+02060     Empty01         Grassland
+02070     Empty01         Grassland
+02080     Empty00       Shallow Sea
+02090     Empty00       Shallow Sea
+02100     Empty01         Grassland
+02110     Empty00       Shallow Sea
+02120     Empty00        Deep Ocean
+02130     Empty00        Deep Ocean
+02140     Empty00        Deep Ocean
+02150     Empty00        Deep Ocean
+02160     Empty00        Deep Ocean
+02170     Empty00        Deep Ocean
+03000     Empty00        Deep Ocean
+03010     Empty00       Shallow Sea
+03020     Empty00       Shallow Sea
+03030     Empty01         Grassland
+03040     Empty01         Grassland
+03050     Empty01         Grassland
+03060     Empty01         Grassland
+03070     Empty01         Grassland
+03080     Empty00       Shallow Sea
+03090     Empty01         Grassland
+03100     Empty01         Grassland
+03110     Empty00       Shallow Sea
+03120     Empty00       Shallow Sea
+03130     Empty00        Deep Ocean
+03140     Empty00        Deep Ocean
+03150     Empty00        Deep Ocean
+03160     Empty00        Deep Ocean
+03170     Empty00        Deep Ocean
+04000     Empty00        Deep Ocean
+04010     Empty00       Shallow Sea
+04020     Empty01         Grassland
+04030     Empty01         Grassland
+04040     Empty01         Grassland
+04050     Empty01         Grassland
+04060     Empty01         Grassland
+04070     Empty01         Grassland
+04080     Empty00       Shallow Sea
+04090     Empty01         Grassland
+04100     Empty01         Grassland
+04110     Empty01         Grassland
+04120     Empty01         Grassland
+04130     Empty00       Shallow Sea
+04140     Empty00        Deep Ocean
+04150     Empty00        Deep Ocean
+04160     Empty00        Deep Ocean
+04170     Empty00        Deep Ocean
+05000     Empty00       Shallow Sea
+05010     Empty01         Grassland
+05020     Empty01            Forest
+05030     Empty01            Forest
+05040     Empty01         Grassland
+05050     Empty01            Forest
+05060     Empty01            Forest
+05070     Empty01         Grassland
+05080     Empty00       Shallow Sea
+05090     Empty01             Hills
+05100     Empty01             Hills
+05110     Empty01            Forest
+05120     Empty01         Grassland
+05130     Empty00       Shallow Sea
+05140     Empty00        Deep Ocean
+05150     Empty00        Deep Ocean
+05160     Empty00        Deep Ocean
+05170     Empty00        Deep Ocean
+06000     Empty00       Shallow Sea
+06010     Empty01         Grassland
+06020     Empty02         Mountains
+06030     Empty02         Mountains
+06040     Empty02         Mountains
+06050     Empty02         Mountains
+06060     Empty02         Mountains
+06070     Empty02         Mountains
+06080     Empty00       Shallow Sea
+06090     Empty01             Hills
+06100     Empty03         Mountains
+06110     Empty03         Mountains
+06120     Empty01            Forest
+06130     Empty01            Forest
+06140     Empty00       Shallow Sea
+06150     Empty00        Deep Ocean
+06160     Empty00        Deep Ocean
+06170     Empty00        Deep Ocean
+07000     Empty01         Grassland
+07010     Empty02         Mountains
+07020     Empty00             Hills
+07030     Empty02         Mountains
+07040     Empty02         Mountains
+07050     Empty02         Mountains
+07060     Empty02         Mountains
+07070     Empty02         Mountains
+07080     Empty01             Hills
+07090     Empty03         Mountains
+07100     Empty03         Mountains
+07110     Empty03         Mountains
+07120     Empty01            Forest
+07130     Empty01            Forest
+07140     Empty00       Shallow Sea
+07150     Empty00        Deep Ocean
+07160     Empty00        Deep Ocean
+07170     Empty00        Deep Ocean
+08000     Empty00       Shallow Sea
+08010     Empty02         Mountains
+08020     Empty00         Grassland
+08030     Empty00         Grassland
+08040     Empty00         Grassland
+08050     Empty00         Grassland
+08060     Empty00         Grassland
+08070     Empty00         Grassland
+08080     Empty00         Grassland
+08090     Empty00             Hills
+08100     Empty00         Grassland
+08110     Empty03         Mountains
+08120     Empty03         Mountains
+08130     Empty03         Mountains
+08140     Empty01            Forest
+08150     Empty00       Shallow Sea
+08160     Empty00        Deep Ocean
+08170     Empty00        Deep Ocean
+09000     Empty00             Hills
+09010     Empty00         Grassland
+09020     Empty00         Grassland
+09030     Empty00         Grassland
+09040     Empty00         Grassland
+09050     Empty00         Grassland
+09060     Empty00             Hills
+09070     Empty00             Hills
+09080     Empty00         Grassland
+09090     Empty00         Grassland
+09100     Empty00         Grassland
+09110     Empty03             Hills
+09120     Empty00            Forest
+09130     Empty00            Forest
+09140     Empty00       Shallow Sea
+09150     Empty00       Shallow Sea
+09160     Empty00        Deep Ocean
+09170     Empty00        Deep Ocean
+10000     Empty00       Shallow Sea
+10010     Empty00       Shallow Sea
+10020     Empty00         Grassland
+10030     Empty00         Grassland
+10040     Empty00         Grassland
+10050     Empty00             Hills
+10060     Empty00             Hills
+10070     Empty00             Hills
+10080     Empty00         Grassland
+10090     Empty00         Grassland
+10100     Empty00         Grassland
+10110     Empty03         Mountains
+10120     Empty00         Grassland
+10130     Empty00         Grassland
+10140     Empty00         Grassland
+10150     Empty00         Grassland
+10160     Empty00       Shallow Sea
+10170     Empty00       Shallow Sea
+11000     Empty00       Shallow Sea
+11010     Empty00       Shallow Sea
+11020     Empty00         Grassland
+11030     Empty00             Hills
+11040     Empty00             Hills
+11050     Empty00             Hills
+11060     Empty00         Grassland
+11070     Empty00         Grassland
+11080     Empty00         Grassland
+11090     Empty00         Grassland
+11100     Empty00         Grassland
+11110     Empty00         Grassland
+11120     Empty00         Grassland
+11130     Empty00         Grassland
+11140     Empty00         Grassland
+11150     Empty00         Grassland
+11160     Empty00            Forest
+11170     Empty00       Shallow Sea
+12000     Empty00       Shallow Sea
+12010     Empty00       Shallow Sea
+12020     Empty00         Grassland
+12030     Empty00             Hills
+12040     Empty00             Hills
+12050     Empty00         Grassland
+12060     Empty00         Grassland
+12070     Empty04      Forest Hills
+12080     Empty04             Hills
+12090     Empty00         Grassland
+12100     Empty00         Grassland
+12110     Empty00         Grassland
+12120     Empty00            Forest
+12130     Empty00             Hills
+12140     Empty00         Grassland
+12150     Empty00            Forest
+12160     Empty00             Hills
+12170     Empty00       Shallow Sea
+13000     Empty00         Grassland
+13010     Empty00         Grassland
+13020     Empty00         Grassland
+13030     Empty00         Grassland
+13040     Empty00         Grassland
+13050     Empty00         Grassland
+13060     Empty00         Grassland
+13070     Empty04      Forest Hills
+13080     Empty04             Hills
+13090     Empty00         Grassland
+13100     Empty00         Grassland
+13110     Empty00         Grassland
+13120     Empty00         Grassland
+13130     Empty00             Hills
+13140     Empty00         Grassland
+13150     Empty00            Forest
+13160     Empty00         Grassland
+13170     Empty00         Grassland
+14000     Empty00         Grassland
+14010     Empty00         Grassland
+14020     Empty00             Hills
+14030     Empty00             Hills
+14040     Empty00             Hills
+14050     Empty00         Grassland
+14060     Empty00         Grassland
+14070     Empty04      Forest Hills
+14080     Empty04      Forest Hills
+14090     Empty04             Hills
+14100     Empty00         Grassland
+14110     Empty00         Grassland
+14120     Empty00         Grassland
+14130     Empty00         Grassland
+14140     Empty00         Grassland
+14150     Empty00         Grassland
+14160     Empty00         Grassland
+14170     Empty00         Grassland
+15000     Empty00         Wasteland
+15010     Empty00             Hills
+15020     Empty00             Hills
+15030     Empty00             Hills
+15040     Empty00             Hills
+15050     Empty00         Grassland
+15060     Empty00         Grassland
+15070     Empty00             Hills
+15080     Empty00         Grassland
+15090     Empty00         Grassland
+15100     Empty00         Marshland
+15110     Empty00         Marshland
+15120     Empty00         Grassland
+15130     Empty00            Forest
+15140     Empty00         Grassland
+15150     Empty00             Hills
+15160     Empty00         Grassland
+15170     Empty00      Dense Forest
+16000     Empty00         Wasteland
+16010     Empty00         Wasteland
+16020     Empty00         Grassland
+16030     Empty00         Grassland
+16040     Empty05             Hills
+16050     Empty05             Hills
+16060     Empty05             Hills
+16070     Empty07             Hills
+16080     Empty07             Hills
+16090     Empty00         Grassland
+16100     Empty00         Marshland
+16110     Empty00         Marshland
+16120     Empty00         Grassland
+16130     Empty00         Grassland
+16140     Empty00             Hills
+16150     Empty00         Grassland
+16160     Empty00         Grassland
+16170     Empty00            Forest
+17000     Empty00         Mountains
+17010     Empty00         Wasteland
+17020     Empty00         Grassland
+17030     Empty00         Grassland
+17040     Empty05             Hills
+17050     Empty05             Hills
+17060     Empty05         Grassland
+17070     Empty07             Hills
+17080     Empty00         Grassland
+17090     Empty00         Grassland
+17100     Empty00         Marshland
+17110     Empty00         Grassland
+17120     Empty08         Grassland
+17130     Empty08         Grassland
+17140     Empty08         Grassland
+17150     Empty00         Grassland
+17160     Empty00         Grassland
+17170     Empty00      Dense Forest
+18000     Empty00         Mountains
+18010     Empty00         Mountains
+18020     Empty00         Wasteland
+18030     Empty00         Grassland
+18040     Empty00         Grassland
+18050     Empty05             Hills
+18060     Empty05             Hills
+18070     Empty05      Forest Hills
+18080     Empty05      Forest Hills
+18090     Empty00         Grassland
+18100     Empty00         Grassland
+18110     Empty00         Grassland
+18120     Empty08            Forest
+18130     Empty08      Forest Hills
+18140     Empty08      Forest Hills
+18150     Empty08            Forest
+18160     Empty00         Grassland
+18170     Empty00         Grassland
+19000     Empty00         Mountains
+19010     Empty00         Wasteland
+19020     Empty00         Mountains
+19030     Empty00             Hills
+19040     Empty00         Grassland
+19050     Empty05      Forest Hills
+19060     Empty05      Forest Hills
+19070     Empty05      Forest Hills
+19080     Empty00         Grassland
+19090     Empty00         Grassland
+19100     Empty00         Grassland
+19110     Empty08      Forest Hills
+19120     Empty08      Forest Hills
+19130     Empty08         Mountains
+19140     Empty08      Forest Hills
+19150     Empty08      Forest Hills
+19160     Empty00         Grassland
+19170     Empty00         Grassland
+20000     Empty00         Mountains
+20010     Empty00         Mountains
+20020     Empty00         Mountains
+20030     Empty00         Mountains
+20040     Empty00         Mountains
+20050     Empty00      Forest Hills
+20060     Empty06      Forest Hills
+20070     Empty00      Forest Hills
+20080     Empty00         Grassland
+20090     Empty00         Grassland
+20100     Empty00         Mountains
+20110     Empty00         Mountains
+20120     Empty00         Mountains
+20130     Empty00         Mountains
+20140     Empty00         Mountains
+20150     Empty00         Mountains
+20160     Empty09         Mountains
+20170     Empty00         Grassland
+21000     Empty10         Mountains
+21010     Empty10         Mountains
+21020     Empty00         Mountains
+21030     Empty00         Mountains
+21040     Empty00      Forest Hills
+21050     Empty06      Forest Hills
+21060     Empty00      Forest Hills
+21070     Empty00         Mountains
+21080     Empty00         Mountains
+21090     Empty00         Mountains
+21100     Empty00         Mountains
+21110     Empty00         Mountains
+21120     Empty00         Mountains
+21130     Empty00         Mountains
+21140     Empty00         Mountains
+21150     Empty09         Mountains
+21160     Empty00         Grassland
+21170     Empty00         Mountains
+22000     Empty10         Mountains
+22010     Empty10         Mountains
+22020     Empty10         Mountains
+22030     Empty00         Mountains
+22040     Empty00         Mountains
+22050     Empty00         Mountains
+22060     Empty00         Mountains
+22070     Empty00         Mountains
+22080     Empty00         Mountains
+22090     Empty00         Mountains
+22100     Empty00         Mountains
+22110     Empty00         Mountains
+22120     Empty00Dense Forest Hills
+22130     Empty00Dense Forest Hills
+22140     Empty00      Dense Forest
+22150     Empty00      Dense Forest
+22160     Empty00         Grassland
+22170     Empty00         Mountains
+23000     Empty10         Mountains
+23010     Empty10         Mountains
+23020     Empty00         Mountains
+23030     Empty00         Mountains
+23040     Empty00         Mountains
+23050     Empty00         Mountains
+23060     Empty00         Mountains
+23070     Empty00         Mountains
+23080     Empty00         Mountains
+23090     Empty00Dense Forest Hills
+23100     Empty00      Dense Forest
+23110     Empty00         Grassland
+23120     Empty00      Dense Forest
+23130     Empty00      Dense Forest
+23140     Empty00      Dense Forest
+23150     Empty00         Grassland
+23160     Empty00         Grassland
+23170     Empty00         Mountains
