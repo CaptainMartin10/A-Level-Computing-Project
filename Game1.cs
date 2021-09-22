@@ -47,9 +47,9 @@ namespace A_Level_Computing_Project
             Countries[10] = new Country(true, "Gundabad");
 
             Countries[Player].IsAI = false;
-            //\bin\Debug\netcoreapp3.1
+
             string NewSave = Path.GetFullPath("Saves/NewSave.txt");
-            NewSave = NewSave.Remove((NewSave.Length) - 41, 24);
+            NewSave = NewSave.Remove(NewSave.Length - 41, 24);
             using (StreamReader sr = new StreamReader(Path.GetFullPath(NewSave)))
             {
                 string line;
