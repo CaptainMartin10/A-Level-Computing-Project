@@ -47,8 +47,10 @@ namespace A_Level_Computing_Project
             Countries[10] = new Country(true, "Gundabad");
 
             Countries[Player].IsAI = false;
-
-            using (StreamReader sr = new StreamReader(Path.GetFullPath("NewSave.txt")))
+            //\bin\Debug\netcoreapp3.1
+            string NewSave = Path.GetFullPath("Saves/NewSave.txt");
+            NewSave = NewSave.Remove((NewSave.Length) - 41, 24);
+            using (StreamReader sr = new StreamReader(Path.GetFullPath(NewSave)))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
@@ -57,11 +59,9 @@ namespace A_Level_Computing_Project
                     {
                         MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))] = new Province(Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2)));
                         MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureLevel = Convert.ToInt32(line.Substring(4, 1));
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureGarrison = Convert.ToInt32(line.Substring(5, 4));
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureProduction = Convert.ToInt32(line.Substring(9, 4));
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Structure = (line.Substring(13, 10)).Trim();
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].OwnedBy = Countries[Convert.ToInt32(line.Substring(23, 2))];
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Terrain = (line.Substring(25, 18)).Trim();
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Structure = (line.Substring(5, 10)).Trim();
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].OwnedBy = Countries[Convert.ToInt32(line.Substring(15, 2))];
+                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Terrain = (line.Substring(17, 18)).Trim();
                     }
                 }
             }
@@ -111,6 +111,34 @@ namespace A_Level_Computing_Project
                 if (NextTurnButton.Contains(mousePoint))
                 {
                     Turn++;
+                    foreach (Country C in Countries)
+                    {
+                        C.Gold += 50;
+                        C.Metal += 50;
+                        C.Stone += 50;
+                        C.Wood += 50;
+                        C.Food += 50;
+                    }
+                    foreach (Province P in MapArray)
+                    {
+                        if (P.Structure == "Settlement")
+                        {
+                            P.OwnedBy.Gold += 100;
+                        }
+                        if (P.Structure == "Mine")
+                        {
+                            P.OwnedBy.Stone += 100;
+                            P.OwnedBy.Metal += 100;
+                        }
+                        if (P.Structure == "Farm")
+                        {
+                            P.OwnedBy.Food += 100;
+                        }
+                        if (P.Structure == "Forester")
+                        {
+                            P.OwnedBy.Wood += 100;
+                        }
+                    }
                 }
             }
 
