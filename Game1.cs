@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
+using System.Collections.Generic;
 using System;
 
 namespace A_Level_Computing_Project
@@ -18,6 +19,9 @@ namespace A_Level_Computing_Project
         public int Player = 8;
         public int Turn = 1;
         public MouseState CurrentMouseState, LastMouseState;
+        public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
+        public Dictionary<string, int> ForesterProduction = new Dictionary<string, int>();
+        public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
 
         public Game1()
         {
@@ -45,8 +49,38 @@ namespace A_Level_Computing_Project
             Countries[8] = new Country(true, "Dunland");
             Countries[9] = new Country(true, "Isengard");
             Countries[10] = new Country(true, "Gundabad");
-
             Countries[Player].IsAI = false;
+            
+            FarmProduction.Add("Grassland", 100);
+            FarmProduction.Add("Hills", 75);
+            FarmProduction.Add("Forest", 75);
+            FarmProduction.Add("Forest Hills", 50);
+            FarmProduction.Add("Dense Forest", 50);
+            FarmProduction.Add("Dense Forest Hills", 25);
+            FarmProduction.Add("Mountains", 25);
+            FarmProduction.Add("Wasteland", 0);
+            FarmProduction.Add("Marshland", 25);
+            
+            ForesterProduction.Add("Grassland", 50);
+            ForesterProduction.Add("Hills", 25);
+            ForesterProduction.Add("Forest", 100);
+            ForesterProduction.Add("Forest Hills", 75);
+            ForesterProduction.Add("Dense Forest", 150);
+            ForesterProduction.Add("Dense Forest Hills", 125);
+            ForesterProduction.Add("Mountains", 0);
+            ForesterProduction.Add("Wasteland", 0);
+            ForesterProduction.Add("Marshland", 0);
+            
+            MineProduction.Add("Grassland", 25);
+            MineProduction.Add("Hills", 50);
+            MineProduction.Add("Forest", 25);
+            MineProduction.Add("Forest Hills", 50);
+            MineProduction.Add("Dense Forest", 25);
+            MineProduction.Add("Dense Forest Hills", 50);
+            MineProduction.Add("Mountains", 100);
+            MineProduction.Add("Wasteland", 50);
+            MineProduction.Add("Marshland", 0);
+
 
             string NewSave = Path.GetFullPath("Saves/NewSave.txt");
             NewSave = NewSave.Remove(NewSave.Length - 41, 24);
@@ -123,20 +157,20 @@ namespace A_Level_Computing_Project
                     {
                         if (P.Structure == "Settlement")
                         {
-                            P.OwnedBy.Gold += 100;
+                            P.OwnedBy.Gold += 100 * P.StructureLevel;
                         }
                         if (P.Structure == "Mine")
                         {
-                            P.OwnedBy.Stone += 100;
-                            P.OwnedBy.Metal += 100;
+                            P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
+                            P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
                         }
                         if (P.Structure == "Farm")
                         {
-                            P.OwnedBy.Food += 100;
+                            P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
                         }
                         if (P.Structure == "Forester")
                         {
-                            P.OwnedBy.Wood += 100;
+                            P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
                         }
                     }
                 }
