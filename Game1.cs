@@ -13,7 +13,7 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public int CurrentHexX, CurrentHexY = 0;
+        public int SelectedX, SelectedY = 0;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine;
         public int Player = 8;
@@ -81,7 +81,6 @@ namespace A_Level_Computing_Project
             MineProduction.Add("Wasteland", 50);
             MineProduction.Add("Marshland", 0);
 
-
             string NewSave = Path.GetFullPath("Saves/NewSave.txt");
             NewSave = NewSave.Remove(NewSave.Length - 41, 24);
             using (StreamReader sr = new StreamReader(Path.GetFullPath(NewSave)))
@@ -136,8 +135,8 @@ namespace A_Level_Computing_Project
                 {
                     if (Hex.ContainsMousePointer(mousePoint))
                     {
-                        CurrentHexX = Hex.X;
-                        CurrentHexY = Hex.Y;
+                        SelectedX = Hex.X;
+                        SelectedY = Hex.Y;
                     }
                 }
 
@@ -198,27 +197,27 @@ namespace A_Level_Computing_Project
             _spriteBatch.DrawString(MenuFont, "Stone: " + Countries[Player].Stone, new Vector2(666, 211), Color.White);
             _spriteBatch.DrawString(MenuFont, "Metal: " + Countries[Player].Metal, new Vector2(666, 251), Color.White);
 
-            _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + CurrentHexX + " , " + CurrentHexY, new Vector2(666, 297), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[CurrentHexX, CurrentHexY].OwnedBy).Name, new Vector2(666, 337), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[CurrentHexX, CurrentHexY].Terrain, new Vector2(666, 377), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 297), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[SelectedX, SelectedY].OwnedBy).Name, new Vector2(666, 337), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[SelectedX, SelectedY].Terrain, new Vector2(666, 377), Color.White);
             
-            if (MapArray[CurrentHexX, CurrentHexY].Structure != "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == false)
+            if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == false)
             {
-                _spriteBatch.DrawString(MenuFont, MapArray[CurrentHexX, CurrentHexY].Structure, new Vector2(666, 417), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[CurrentHexX, CurrentHexY].StructureGarrison, new Vector2(666, 457), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Producing: " + MapArray[CurrentHexX, CurrentHexY].StructureProduction, new Vector2(666, 497), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[CurrentHexX, CurrentHexY].StructureLevel, new Vector2(666, 537), Color.White);
+                _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 417), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[SelectedX, SelectedY].StructureGarrison, new Vector2(666, 457), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Producing: " + MapArray[SelectedX, SelectedY].StructureProduction, new Vector2(666, 497), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(666, 577), Color.White);
             }
-            else if (MapArray[CurrentHexX, CurrentHexY].Structure != "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == true)
+            else if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == true)
             {
-                _spriteBatch.DrawString(MenuFont, MapArray[CurrentHexX, CurrentHexY].Structure, new Vector2(666, 417), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[CurrentHexX, CurrentHexY].StructureGarrison, new Vector2(666, 457), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Producing: " + MapArray[CurrentHexX, CurrentHexY].StructureProduction, new Vector2(666, 497), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[CurrentHexX, CurrentHexY].StructureLevel, new Vector2(666, 537), Color.White);
+                _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 417), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Garrison: " + MapArray[SelectedX, SelectedY].StructureGarrison, new Vector2(666, 457), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Producing: " + MapArray[SelectedX, SelectedY].StructureProduction, new Vector2(666, 497), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Cannot Upgrade", new Vector2(666, 577), Color.White);
             }
-            else if (MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == false)
+            else if (MapArray[SelectedX, SelectedY].Structure == "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == false)
             {
                 _spriteBatch.DrawString(MenuFont, "Build Fort", new Vector2(666, 417), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Build Settlement", new Vector2(666, 457), Color.White);
@@ -226,7 +225,7 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Build Forester", new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Build Mine", new Vector2(666, 577), Color.White);
             }
-            else if (MapArray[CurrentHexX, CurrentHexY].Structure == "Empty" && MapArray[CurrentHexX, CurrentHexY].OwnedBy.IsAI == true)
+            else if (MapArray[SelectedX, SelectedY].Structure == "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == true)
             {
                 _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 417), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 457), Color.White);
