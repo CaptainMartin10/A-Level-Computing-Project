@@ -7,14 +7,11 @@ namespace A_Level_Computing_Project
     public class Army
     {
         public int X, Y, Infantry;
-        public Country OwnedBy;
 
-        public Army(int x, int y, int i, Country o)
+        public Army(int x, int y)
         {
             X = x;
             Y = y;
-            Infantry = i;
-            OwnedBy = o;
         }
     }
 }
