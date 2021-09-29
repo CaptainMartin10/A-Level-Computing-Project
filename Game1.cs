@@ -15,13 +15,14 @@ namespace A_Level_Computing_Project
         public Country[] Countries = new Country[11];
         public int SelectedX, SelectedY = 0;
         public SpriteFont MenuFont;
-        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine;
+        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu;
         public int Player = 8;
         public int Turn = 1;
         public MouseState CurrentMouseState, LastMouseState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
         public Dictionary<string, int> ForesterProduction = new Dictionary<string, int>();
         public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
+        public string Menu = "Game";
 
         public Game1()
         {
@@ -53,6 +54,7 @@ namespace A_Level_Computing_Project
             Farm = Content.Load<Texture2D>("Farm");
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
+            BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
             MenuFont = Content.Load<SpriteFont>("MenuFont");
 
             Countries[0] = new Country(true, "Unowned", 0, 0);
@@ -131,46 +133,124 @@ namespace A_Level_Computing_Project
 
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
-                foreach (Province Hex in MapArray)
+                if (Menu == "Game")
                 {
-                    if (Hex.ContainsMousePointer(mousePoint))
+                    foreach (Province Hex in MapArray)
                     {
-                        SelectedX = Hex.X;
-                        SelectedY = Hex.Y;
+                        if (Hex.ContainsMousePointer(mousePoint))
+                        {
+                            SelectedX = Hex.X;
+                            SelectedY = Hex.Y;
+                        }
+                    }
+
+                    Rectangle NextTurnButton = new Rectangle(663, 624, 498, 36);
+                    if (NextTurnButton.Contains(mousePoint))
+                    {
+                        Turn++;
+                        foreach (Country C in Countries)
+                        {
+                            C.Gold += 50;
+                            C.Metal += 50;
+                            C.Stone += 50;
+                            C.Wood += 50;
+                            C.Food += 50;
+                        }
+                        foreach (Province P in MapArray)
+                        {
+                            if (P.Structure == "Settlement")
+                            {
+                                P.OwnedBy.Gold += 100 * P.StructureLevel;
+                            }
+                            if (P.Structure == "Mine")
+                            {
+                                P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
+                                P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
+                            }
+                            if (P.Structure == "Farm")
+                            {
+                                P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
+                            }
+                            if (P.Structure == "Forester")
+                            {
+                                P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                            }
+                        }
+                    }
+
+                    Rectangle BuildStructureButton = new Rectangle(663, 498, 498, 36);
+                    if (BuildStructureButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure == "Empty")
+                    {
+                        Menu = "Build Structure";
                     }
                 }
 
-                Rectangle NextTurnButton = new Rectangle(663, 624, 498, 36);
-                if (NextTurnButton.Contains(mousePoint))
+                if (Menu == "Build Structure")
                 {
-                    Turn++;
-                    foreach (Country C in Countries)
+                    Rectangle BuildSettlement = new Rectangle(221, 312, 40, 40);
+                    Rectangle BuildFort = new Rectangle(265, 312, 40, 40);
+                    Rectangle BuildFarm = new Rectangle(309, 312, 40, 40);
+                    Rectangle BuildMine = new Rectangle(353, 312, 40, 40);
+                    Rectangle BuildForester = new Rectangle(397, 312, 40, 40);
+                    Rectangle CloseBuildMenu = new Rectangle(447, 312, 14, 14);
+                    if (BuildSettlement.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
                     {
-                        C.Gold += 50;
-                        C.Metal += 50;
-                        C.Stone += 50;
-                        C.Wood += 50;
-                        C.Food += 50;
+                        MapArray[SelectedX, SelectedY].Structure = "Settlement";
+                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                        Countries[Player].Gold -= 100;
+                        Countries[Player].Food -= 100;
+                        Countries[Player].Wood -= 100;
+                        Countries[Player].Stone -= 100;
+                        Countries[Player].Metal -= 100;
+                        Menu = "Game";
                     }
-                    foreach (Province P in MapArray)
+                    else if (BuildFort.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
                     {
-                        if (P.Structure == "Settlement")
-                        {
-                            P.OwnedBy.Gold += 100 * P.StructureLevel;
-                        }
-                        if (P.Structure == "Mine")
-                        {
-                            P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
-                            P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
-                        }
-                        if (P.Structure == "Farm")
-                        {
-                            P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
-                        }
-                        if (P.Structure == "Forester")
-                        {
-                            P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
-                        }
+                        MapArray[SelectedX, SelectedY].Structure = "Fort";
+                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                        Countries[Player].Gold -= 100;
+                        Countries[Player].Food -= 100;
+                        Countries[Player].Wood -= 100;
+                        Countries[Player].Stone -= 100;
+                        Countries[Player].Metal -= 100;
+                        Menu = "Game";
+                    }
+                    else if (BuildFarm.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    {
+                        MapArray[SelectedX, SelectedY].Structure = "Farm";
+                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                        Countries[Player].Gold -= 100;
+                        Countries[Player].Food -= 100;
+                        Countries[Player].Wood -= 100;
+                        Countries[Player].Stone -= 100;
+                        Countries[Player].Metal -= 100;
+                        Menu = "Game";
+                    }
+                    else if (BuildMine.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    {
+                        MapArray[SelectedX, SelectedY].Structure = "Mine";
+                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                        Countries[Player].Gold -= 100;
+                        Countries[Player].Food -= 100;
+                        Countries[Player].Wood -= 100;
+                        Countries[Player].Stone -= 100;
+                        Countries[Player].Metal -= 100;
+                        Menu = "Game";
+                    }
+                    else if (BuildForester.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    {
+                        MapArray[SelectedX, SelectedY].Structure = "Forester";
+                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                        Countries[Player].Gold -= 100;
+                        Countries[Player].Food -= 100;
+                        Countries[Player].Wood -= 100;
+                        Countries[Player].Stone -= 100;
+                        Countries[Player].Metal -= 100;
+                        Menu = "Game";
+                    }
+                    else if (CloseBuildMenu.Contains(mousePoint))
+                    {
+                        Menu = "Game";
                     }
                 }
             }
@@ -295,6 +375,11 @@ namespace A_Level_Computing_Project
                         _spriteBatch.Draw(Mine, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
                     }
                 }
+            }
+
+            if (Menu == "Build Structure")
+            {
+                _spriteBatch.Draw(BuildStructureMenu, new Vector2(215, 306), Color.White);
             }
 
             _spriteBatch.End();

@@ -9,7 +9,9 @@ namespace A_Level_Computing_Project
         public int Gold, Wood, Stone, Food, Metal;
         public bool IsAI;
         public string Name;
-        public Army Standing, Levy;
+        public StandingArmy Standing;
+        public LevyArmy Levy;
+
 
         public Country (bool AI, string n, int ax, int ay)
         {
@@ -20,7 +22,7 @@ namespace A_Level_Computing_Project
             Stone = 500;
             Food = 500;
             Metal = 500;
-            Standing = new Army(ax, ay);
+            Standing = new StandingArmy(ax, ay);
         }
     }
 }
