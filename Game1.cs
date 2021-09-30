@@ -19,6 +19,7 @@ namespace A_Level_Computing_Project
         public int Player = 8;
         public int Turn = 1;
         public MouseState CurrentMouseState, LastMouseState;
+        public KeyboardState CurrentKeyboardState, LastKeyboardState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
         public Dictionary<string, int> ForesterProduction = new Dictionary<string, int>();
         public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
@@ -130,6 +131,7 @@ namespace A_Level_Computing_Project
 
             CurrentMouseState = Mouse.GetState();
             Point mousePoint = new Point(CurrentMouseState.X, CurrentMouseState.Y);
+            CurrentKeyboardState = Keyboard.GetState();
 
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
@@ -267,6 +269,7 @@ namespace A_Level_Computing_Project
             }
 
             LastMouseState = CurrentMouseState;
+            LastKeyboardState = CurrentKeyboardState;
 
             base.Update(gameTime);
         }
