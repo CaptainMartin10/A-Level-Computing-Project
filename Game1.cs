@@ -13,17 +13,17 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public int SelectedX, SelectedY = 0;
+        public int SelectedX, SelectedY, Player = 8, Turn = 1;
         public SpriteFont MenuFont;
-        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu;
-        public int Player = 8;
-        public int Turn = 1;
+        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad;
         public MouseState CurrentMouseState, LastMouseState;
         public KeyboardState CurrentKeyboardState, LastKeyboardState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
         public Dictionary<string, int> ForesterProduction = new Dictionary<string, int>();
         public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
+        public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
         public string Menu = "Game";
+        public string Mapmode = "Regular";
 
         public Game1()
         {
@@ -56,6 +56,17 @@ namespace A_Level_Computing_Project
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
             BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
+            Unowned = Content.Load<Texture2D>("Blank Tile");
+            Lindon = Content.Load<Texture2D>("Lindon Tile");
+            BlueMountainsNorth = Content.Load<Texture2D>("Blue Mountains North Tile");
+            BlueMountainsSouth = Content.Load<Texture2D>("Blue Mountains South Tile");
+            Shire = Content.Load<Texture2D>("Shire Tile");
+            RangersoftheNorth = Content.Load<Texture2D>("Rangers of the North Tile");
+            Rivendell = Content.Load<Texture2D>("Rivendell Tile");
+            Breeland = Content.Load<Texture2D>("Breeland Tile");
+            Dunland = Content.Load<Texture2D>("Dunland Tile");
+            Isengard = Content.Load<Texture2D>("Isengard Tile");
+            Gundabad = Content.Load<Texture2D>("Gundabad Tile");
             MenuFont = Content.Load<SpriteFont>("MenuFont");
 
             Countries[0] = new Country(true, "Unowned", 0, 0);
@@ -100,6 +111,18 @@ namespace A_Level_Computing_Project
             MineProduction.Add("Mountains", 100);
             MineProduction.Add("Wasteland", 50);
             MineProduction.Add("Marshland", 0);
+
+            OwnedMapmode.Add("Unowned", Unowned);
+            OwnedMapmode.Add("Lindon", Lindon);
+            OwnedMapmode.Add("Blue Mountains North", BlueMountainsNorth);
+            OwnedMapmode.Add("Blue Mountains South", BlueMountainsSouth);
+            OwnedMapmode.Add("Shire", Shire);
+            OwnedMapmode.Add("Rangers of the North", RangersoftheNorth);
+            OwnedMapmode.Add("Rivendell", Rivendell);
+            OwnedMapmode.Add("Breeland", Breeland);
+            OwnedMapmode.Add("Dunland", Dunland);
+            OwnedMapmode.Add("Isengard", Isengard);
+            OwnedMapmode.Add("Gundabad", Gundabad);
 
             string NewSave = Path.GetFullPath("Saves/NewSave.txt");
             NewSave = NewSave.Remove(NewSave.Length - 41, 24);
@@ -268,6 +291,18 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
+            {
+                if (Mapmode == "Regular")
+                {
+                    Mapmode = "ShowOwned";
+                }
+                else if (Mapmode == "ShowOwned")
+                {
+                    Mapmode = "Regular";
+                }
+            }
+
             LastMouseState = CurrentMouseState;
             LastKeyboardState = CurrentKeyboardState;
 
@@ -334,6 +369,18 @@ namespace A_Level_Computing_Project
 
             foreach (Province Hex in MapArray)
             {
+                if(Mapmode == "ShowOwned")
+                {
+                    if (Hex.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                    }
+                    else if (Hex.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+
                 if (Hex.Structure == "Fort")
                 {
                     if (Hex.X % 2 == 0)
