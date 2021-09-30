@@ -183,6 +183,17 @@ namespace A_Level_Computing_Project
                     {
                         Menu = "Build Structure";
                     }
+
+                    Rectangle UpgradeStrucutreButton = new Rectangle(663, 578, 498, 36);
+                    if (UpgradeStrucutreButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].StructureLevel < 5 && Countries[Player].Gold > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Food > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Wood > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Stone > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Metal > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1))
+                    {
+                        MapArray[SelectedX, SelectedY].StructureLevel += 1;
+                        Countries[Player].Gold -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
+                        Countries[Player].Food -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
+                        Countries[Player].Wood -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
+                        Countries[Player].Stone -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
+                        Countries[Player].Metal -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
+                    }
                 }
 
                 if (Menu == "Build Structure")
