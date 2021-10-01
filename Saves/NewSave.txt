@@ -126,7 +126,7 @@
 06170     Empty00        Deep Ocean
 07000     Empty01         Grassland
 07010     Empty02         Mountains
-07020     Empty00             Hills
+07020     Empty02             Hills
 07030     Empty02         Mountains
 07040     Empty02         Mountains
 07050     Empty02         Mountains
@@ -172,7 +172,7 @@
 09090     Empty00         Grassland
 09100     Empty00         Grassland
 09110     Empty03             Hills
-09120     Empty00            Forest
+09120     Empty03            Forest
 09130     Empty00            Forest
 09140     Empty00       Shallow Sea
 09150     Empty00       Shallow Sea

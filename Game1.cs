@@ -81,6 +81,8 @@ namespace A_Level_Computing_Project
             Countries[9] = new Country(true, "Isengard", 20, 16);
             Countries[10] = new Country(true, "Gundabad", 22, 1);
             Countries[Player].IsAI = false;
+            SelectedX = Countries[Player].CapitalX;
+            SelectedY = Countries[Player].CapitalY;
 
             FarmProduction.Add("Grassland", 100);
             FarmProduction.Add("Hills", 75);
@@ -377,6 +379,7 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 497), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(666, 577), Color.White);
+
             }
             else if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == true)
             {
