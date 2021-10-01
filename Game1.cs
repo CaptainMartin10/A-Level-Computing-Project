@@ -379,7 +379,6 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 497), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(666, 577), Color.White);
-
             }
             else if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == true)
             {
