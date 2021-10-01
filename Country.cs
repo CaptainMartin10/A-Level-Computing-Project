@@ -6,14 +6,13 @@ namespace A_Level_Computing_Project
 {
     public class Country
     {
-        public int Gold, Wood, Stone, Food, Metal;
+        public int Gold, Wood, Stone, Food, Metal, CapitalX, CapitalY;
         public bool IsAI;
         public string Name;
         public StandingArmy Standing;
         public LevyArmy Levy;
 
-
-        public Country (bool AI, string n, int ax, int ay)
+        public Country (bool AI, string n, int x, int y)
         {
             IsAI = AI;
             Name = n;
@@ -22,7 +21,9 @@ namespace A_Level_Computing_Project
             Stone = 500;
             Food = 500;
             Metal = 500;
-            Standing = new StandingArmy(ax, ay);
+            CapitalX = x;
+            CapitalY = y;
+            Standing = new StandingArmy(x, y);
         }
     }
 }

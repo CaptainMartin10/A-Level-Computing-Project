@@ -173,32 +173,35 @@ namespace A_Level_Computing_Project
                     if (NextTurnButton.Contains(mousePoint))
                     {
                         Turn++;
-                        foreach (Country C in Countries)
+                        if (Countries[Player].Levy == null)
                         {
-                            C.Gold += 50;
-                            C.Metal += 50;
-                            C.Stone += 50;
-                            C.Wood += 50;
-                            C.Food += 50;
-                        }
-                        foreach (Province P in MapArray)
-                        {
-                            if (P.Structure == "Settlement")
+                            foreach (Country C in Countries)
                             {
-                                P.OwnedBy.Gold += 100 * P.StructureLevel;
+                                C.Gold += 50;
+                                C.Metal += 50;
+                                C.Stone += 50;
+                                C.Wood += 50;
+                                C.Food += 50;
                             }
-                            if (P.Structure == "Mine")
+                            foreach (Province P in MapArray)
                             {
-                                P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
-                                P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
-                            }
-                            if (P.Structure == "Farm")
-                            {
-                                P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
-                            }
-                            if (P.Structure == "Forester")
-                            {
-                                P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                                if (P.Structure == "Settlement")
+                                {
+                                    P.OwnedBy.Gold += 100 * P.StructureLevel;
+                                }
+                                if (P.Structure == "Mine")
+                                {
+                                    P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
+                                    P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
+                                }
+                                if (P.Structure == "Farm")
+                                {
+                                    P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
+                                }
+                                if (P.Structure == "Forester")
+                                {
+                                    P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                                }
                             }
                         }
                     }
@@ -218,6 +221,35 @@ namespace A_Level_Computing_Project
                         Countries[Player].Wood -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
                         Countries[Player].Stone -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
                         Countries[Player].Metal -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
+                    }
+
+                    Rectangle RaiseLevyArmyButton = new Rectangle(663, 332, 498, 36);
+                    if (RaiseLevyArmyButton.Contains(mousePoint) && Countries[Player].Levy == null)
+                    {
+                        int LevyArmySize = 0;
+                        foreach (Province Hex in MapArray)
+                        {
+                            if (Hex.OwnedBy == Countries[Player])
+                            {
+                                if (Hex.Structure == "Empty")
+                                {
+                                    LevyArmySize += 50;
+                                }
+                                else if (Hex.Structure == "Settlement")
+                                {
+                                    LevyArmySize += 200 * Hex.StructureLevel;
+                                }
+                                else if (Hex.Structure == "Farm" || Hex.Structure == "Forester" || Hex.Structure == "Mine")
+                                {
+                                    LevyArmySize += 100 * Hex.StructureLevel;
+                                }
+                            }
+                        }
+                        Countries[Player].Levy = new LevyArmy(Countries[Player].CapitalX, Countries[Player].CapitalY, LevyArmySize);
+                    }
+                    else if (RaiseLevyArmyButton.Contains(mousePoint) && Countries[Player].Levy != null)
+                    {
+                        Countries[Player].Levy = null;
                     }
                 }
 
@@ -329,7 +361,7 @@ namespace A_Level_Computing_Project
 
             if(Countries[Player].Levy != null)
             {
-                _spriteBatch.DrawString(MenuFont, "Levy Army Location: " + Countries[Player].Levy.X + " , " + Countries[Player].Levy.Y, new Vector2(666, 331), Color.White);
+                _spriteBatch.DrawString(MenuFont, Countries[Player].Levy.Infantry + " Dismiss Levy Army at: " + Countries[Player].Levy.X + " , " + Countries[Player].Levy.Y, new Vector2(666, 331), Color.White);
             }
             else
             {
