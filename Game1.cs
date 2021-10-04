@@ -15,13 +15,14 @@ namespace A_Level_Computing_Project
         public Country[] Countries = new Country[11];
         public int SelectedX, SelectedY, Player = 8, Turn = 1;
         public SpriteFont MenuFont;
-        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad;
+        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy;
         public MouseState CurrentMouseState, LastMouseState;
         public KeyboardState CurrentKeyboardState, LastKeyboardState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
         public Dictionary<string, int> ForesterProduction = new Dictionary<string, int>();
         public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
         public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
+        public Dictionary<string, Texture2D> ArmyTextures = new Dictionary<string, Texture2D>();
         public string Menu = "Game";
         public string Mapmode = "Regular";
 
@@ -56,6 +57,7 @@ namespace A_Level_Computing_Project
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
             BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
+            
             Unowned = Content.Load<Texture2D>("Blank Tile");
             Lindon = Content.Load<Texture2D>("Lindon Tile");
             BlueMountainsNorth = Content.Load<Texture2D>("Blue Mountains North Tile");
@@ -67,6 +69,18 @@ namespace A_Level_Computing_Project
             Dunland = Content.Load<Texture2D>("Dunland Tile");
             Isengard = Content.Load<Texture2D>("Isengard Tile");
             Gundabad = Content.Load<Texture2D>("Gundabad Tile");
+
+            LindonArmy = Content.Load<Texture2D>("Lindon Army");
+            BlueMountainsNorthArmy = Content.Load<Texture2D>("Blue Mountains North Army");
+            BlueMountainsSouthArmy = Content.Load<Texture2D>("Blue Mountains South Army");
+            ShireArmy = Content.Load<Texture2D>("Shire Army");
+            RangersoftheNorthArmy = Content.Load<Texture2D>("Rangers of the North Army");
+            RivendellArmy = Content.Load<Texture2D>("Rivendell Army");
+            BreelandArmy = Content.Load<Texture2D>("Breeland Army");
+            DunlandArmy = Content.Load<Texture2D>("Dunland Army");
+            IsengardArmy = Content.Load<Texture2D>("Isengard Army");
+            GundabadArmy = Content.Load<Texture2D>("Gundabad Army");
+
             MenuFont = Content.Load<SpriteFont>("MenuFont");
 
             Countries[0] = new Country(true, "Unowned", 0, 0);
@@ -80,7 +94,9 @@ namespace A_Level_Computing_Project
             Countries[8] = new Country(true, "Dunland", 18, 14);
             Countries[9] = new Country(true, "Isengard", 20, 16);
             Countries[10] = new Country(true, "Gundabad", 22, 1);
+
             Countries[Player].IsAI = false;
+
             SelectedX = Countries[Player].CapitalX;
             SelectedY = Countries[Player].CapitalY;
 
@@ -125,6 +141,17 @@ namespace A_Level_Computing_Project
             OwnedMapmode.Add("Dunland", Dunland);
             OwnedMapmode.Add("Isengard", Isengard);
             OwnedMapmode.Add("Gundabad", Gundabad);
+
+            ArmyTextures.Add("Lindon", LindonArmy);
+            ArmyTextures.Add("Blue Mountains North", BlueMountainsNorthArmy);
+            ArmyTextures.Add("Blue Mountains South", BlueMountainsSouthArmy);
+            ArmyTextures.Add("Shire", ShireArmy);
+            ArmyTextures.Add("Rangers of the North", RangersoftheNorthArmy);
+            ArmyTextures.Add("Rivendell", RivendellArmy);
+            ArmyTextures.Add("Breeland", BreelandArmy);
+            ArmyTextures.Add("Dunland", DunlandArmy);
+            ArmyTextures.Add("Isengard", IsengardArmy);
+            ArmyTextures.Add("Gundabad", GundabadArmy);
 
             string NewSave = Path.GetFullPath("Saves/NewSave.txt");
             NewSave = NewSave.Remove(NewSave.Length - 41, 24);
@@ -403,7 +430,7 @@ namespace A_Level_Computing_Project
 
             foreach (Province Hex in MapArray)
             {
-                if(Mapmode == "ShowOwned")
+                if (Mapmode == "ShowOwned")
                 {
                     if (Hex.X % 2 == 0)
                     {
@@ -414,7 +441,37 @@ namespace A_Level_Computing_Project
                         _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
                     }
                 }
+            }
 
+            foreach (Country C in Countries)
+            {
+                if (C.Name != "Unowned")
+                {
+                    if (C.Standing.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Standing.X * 27, C.Standing.Y * 36), Color.White);
+                    }
+                    else if (C.Standing.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Standing.X * 27, (C.Standing.Y * 36) + 18), Color.White);
+                    }
+
+                    if (C.Levy != null)
+                    {
+                        if (C.Levy.X % 2 == 0)
+                        {
+                            _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Levy.X * 27, C.Levy.Y * 36), Color.White);
+                        }
+                        else if (C.Levy.X % 2 == 1)
+                        {
+                            _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Levy.X * 27, (C.Levy.Y * 36) + 18), Color.White);
+                        }
+                    }
+                }
+            }
+
+            foreach (Province Hex in MapArray) 
+            {
                 if (Hex.Structure == "Fort")
                 {
                     if (Hex.X % 2 == 0)
