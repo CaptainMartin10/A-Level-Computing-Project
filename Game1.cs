@@ -23,8 +23,7 @@ namespace A_Level_Computing_Project
         public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
         public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
         public Dictionary<string, Texture2D> ArmyTextures = new Dictionary<string, Texture2D>();
-        public string Menu = "Game";
-        public string Mapmode = "Regular";
+        public string Menu = "Game", Mapmode = "Regular", Selected = "Terrain";
 
         public Game1()
         {
@@ -195,6 +194,23 @@ namespace A_Level_Computing_Project
                         {
                             SelectedX = Hex.X;
                             SelectedY = Hex.Y;
+                            Selected = "Terrain";
+                        }
+                    }
+
+                    foreach (Country C in Countries)
+                    {
+                        if (C.Standing.ContainsMousePointer(mousePoint))
+                        {
+                            SelectedX = C.Standing.X;
+                            SelectedY = C.Standing.Y;
+                            Selected = "Standing";
+                        }
+                        else if (C.Levy != null && C.Levy.ContainsMousePointer(mousePoint))
+                        {
+                            SelectedX = C.Levy.X;
+                            SelectedY = C.Levy.Y;
+                            Selected = "Levy";
                         }
                     }
 
