@@ -205,7 +205,7 @@ namespace A_Level_Computing_Project
 
                     foreach (Country C in Countries)
                     {
-                        if (C.Standing.ContainsMousePointer(mousePoint))
+                        if (C.Name != "Unowned" && C.Standing.ContainsMousePointer(mousePoint))
                         {
                             SelectedX = C.Standing.X;
                             SelectedY = C.Standing.Y;
@@ -524,20 +524,11 @@ namespace A_Level_Computing_Project
                     _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 577), Color.White);
                 }
             }
-            else if (Selected == "Standing")
+            else if (Selected == "Standing" || Selected == "Levy")
             {
                 _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY, new Vector2(666, 377), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy, new Vector2(666, 417), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Type: Standing", new Vector2(666, 457), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Infantry: " + MapArray[SelectedX, SelectedY].ArmyInside.Infantry, new Vector2(666, 497), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Archers: " + MapArray[SelectedX, SelectedY].ArmyInside.Archers, new Vector2(666, 537), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Cavalry: " + MapArray[SelectedX, SelectedY].ArmyInside.Cavalry, new Vector2(666, 577), Color.White);
-            }
-            else if (Selected == "Levy")
-            {
-                _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY, new Vector2(666, 377), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy, new Vector2(666, 417), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Type: Levy", new Vector2(666, 457), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Type: " + Selected, new Vector2(666, 457), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Infantry: " + MapArray[SelectedX, SelectedY].ArmyInside.Infantry, new Vector2(666, 497), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Archers: " + MapArray[SelectedX, SelectedY].ArmyInside.Archers, new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Cavalry: " + MapArray[SelectedX, SelectedY].ArmyInside.Cavalry, new Vector2(666, 577), Color.White);
