@@ -7,7 +7,8 @@ namespace A_Level_Computing_Project
 {
     public class Army
     {
-        public int X, Y, Infantry;
+        public int X, Y, Infantry, Cavalry, Archers;
+        public string OwnedBy;
 
         public bool ContainsMousePointer(Point mousePoint)
         {
@@ -60,21 +61,22 @@ namespace A_Level_Computing_Project
 
     public class StandingArmy : Army
     {
-        public int Cavalry, Archers;
-        public StandingArmy(int x, int y)
+        public StandingArmy(int x, int y, string o)
         {
             X = x;
             Y = y;
+            OwnedBy = o; 
         }
     }
 
     public class LevyArmy : Army
     {
-        public LevyArmy(int x, int y, int i)
+        public LevyArmy(int x, int y, int i, string o)
         {
             X = x;
             Y = y;
             Infantry = i;
+            OwnedBy = o;
         }
     }
 }

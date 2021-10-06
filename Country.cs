@@ -23,7 +23,7 @@ namespace A_Level_Computing_Project
             Metal = 500;
             CapitalX = x;
             CapitalY = y;
-            Standing = new StandingArmy(x, y);
+            Standing = new StandingArmy(x, y, Name);
         }
     }
 }
