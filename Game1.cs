@@ -475,6 +475,133 @@ namespace A_Level_Computing_Project
 
             _spriteBatch.Begin();
             _spriteBatch.Draw(Background, new Vector2(0, 0), Color.White);
+
+            foreach (Province Hex in MapArray)
+            {
+                if (Mapmode == "ShowOwned")
+                {
+                    if (Hex.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                    }
+                    else if (Hex.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+            }
+
+            foreach (Country C in Countries)
+            {
+                if (C.Name != "Unowned")
+                {
+                    if (C.Standing.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Standing.X * 27, C.Standing.Y * 36), Color.White);
+                    }
+                    else if (C.Standing.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Standing.X * 27, (C.Standing.Y * 36) + 18), Color.White);
+                    }
+
+                    if (C.Levy != null)
+                    {
+                        if (C.Levy.X % 2 == 0)
+                        {
+                            _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Levy.X * 27, C.Levy.Y * 36), Color.White);
+                        }
+                        else if (C.Levy.X % 2 == 1)
+                        {
+                            _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Levy.X * 27, (C.Levy.Y * 36) + 18), Color.White);
+                        }
+                    }
+                }
+            }
+
+            foreach (Province Hex in MapArray)
+            {
+                if (Hex.Structure == "Fort")
+                {
+                    if (Hex.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(Fort, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                    }
+                    else if (Hex.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(Fort, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+                else if (Hex.Structure == "Settlement")
+                {
+                    if (Hex.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(Settlement, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                    }
+                    else if (Hex.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(Settlement, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+                else if (Hex.Structure == "Farm")
+                {
+                    if (Hex.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(Farm, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                    }
+                    else if (Hex.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(Farm, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+                else if (Hex.Structure == "Forester")
+                {
+                    if (Hex.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(Forester, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                    }
+                    else if (Hex.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(Forester, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+                else if (Hex.Structure == "Mine")
+                {
+                    if (Hex.X % 2 == 0)
+                    {
+                        _spriteBatch.Draw(Mine, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                    }
+                    else if (Hex.X % 2 == 1)
+                    {
+                        _spriteBatch.Draw(Mine, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+            }
+
+            if (Selected == "Standing" || Selected == "Levy")
+            {
+                if (MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                {
+                    if (SelectedX % 2 == 0)
+                    {
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY - 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY + 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                    }
+                    else if (SelectedX % 2 == 1)
+                    {
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY + 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY + 1) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY + 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY) * 36), Color.White);
+                    }
+                }
+            }
+
             _spriteBatch.DrawString(MenuFont, "Mouse Coordinates: " + CurrentMouseState.X + " , " + CurrentMouseState.Y, new Vector2(666, 5), Color.White);
 
             _spriteBatch.DrawString(MenuFont, "Player: " + Countries[Player].Name, new Vector2(666, 51), Color.White);
@@ -533,132 +660,9 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Infantry: " + MapArray[SelectedX, SelectedY].ArmyInside.Infantry, new Vector2(666, 497), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Archers: " + MapArray[SelectedX, SelectedY].ArmyInside.Archers, new Vector2(666, 537), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Cavalry: " + MapArray[SelectedX, SelectedY].ArmyInside.Cavalry, new Vector2(666, 577), Color.White);
-
-                if (MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
-                {
-                    if (SelectedX % 2 == 0)
-                    {
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY - 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                    }
-                    else if (SelectedY % 2 == 1)
-                    {
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY + 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY) * 36), Color.White);
-                    }
-                }
             }
 
             _spriteBatch.DrawString(MenuFont, "Turn: " + Turn + ", Next Turn", new Vector2(666, 623 ), Color.White);
-
-            foreach (Province Hex in MapArray)
-            {
-                if (Mapmode == "ShowOwned")
-                {
-                    if (Hex.X % 2 == 0)
-                    {
-                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
-                    }
-                    else if (Hex.X % 2 == 1)
-                    {
-                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
-                    }
-                }
-            }
-
-            foreach (Country C in Countries)
-            {
-                if (C.Name != "Unowned")
-                {
-                    if (C.Standing.X % 2 == 0)
-                    {
-                        _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Standing.X * 27, C.Standing.Y * 36), Color.White);
-                    }
-                    else if (C.Standing.X % 2 == 1)
-                    {
-                        _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Standing.X * 27, (C.Standing.Y * 36) + 18), Color.White);
-                    }
-
-                    if (C.Levy != null)
-                    {
-                        if (C.Levy.X % 2 == 0)
-                        {
-                            _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Levy.X * 27, C.Levy.Y * 36), Color.White);
-                        }
-                        else if (C.Levy.X % 2 == 1)
-                        {
-                            _spriteBatch.Draw(ArmyTextures[C.Name], new Vector2(C.Levy.X * 27, (C.Levy.Y * 36) + 18), Color.White);
-                        }
-                    }
-                }
-            }
-
-            foreach (Province Hex in MapArray) 
-            {
-                if (Hex.Structure == "Fort")
-                {
-                    if (Hex.X % 2 == 0)
-                    {
-                        _spriteBatch.Draw(Fort, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
-                    }
-                    else if (Hex.X % 2 == 1)
-                    {
-                        _spriteBatch.Draw(Fort, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
-                    }
-                }
-                else if (Hex.Structure == "Settlement")
-                {
-                    if (Hex.X % 2 == 0)
-                    {
-                        _spriteBatch.Draw(Settlement, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
-                    }
-                    else if (Hex.X % 2 == 1)
-                    {
-                        _spriteBatch.Draw(Settlement, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
-                    }
-                }
-                else if (Hex.Structure == "Farm")
-                {
-                    if (Hex.X % 2 == 0)
-                    {
-                        _spriteBatch.Draw(Farm, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
-                    }
-                    else if (Hex.X % 2 == 1)
-                    {
-                        _spriteBatch.Draw(Farm, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
-                    }
-                }
-                else if (Hex.Structure == "Forester")
-                {
-                    if (Hex.X % 2 == 0)
-                    {
-                        _spriteBatch.Draw(Forester, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
-                    }
-                    else if (Hex.X % 2 == 1)
-                    {
-                        _spriteBatch.Draw(Forester, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
-                    }
-                }
-                else if (Hex.Structure == "Mine")
-                {
-                    if (Hex.X % 2 == 0)
-                    {
-                        _spriteBatch.Draw(Mine, new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
-                    }
-                    else if (Hex.X % 2 == 1)
-                    {
-                        _spriteBatch.Draw(Mine, new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
-                    }
-                }
-            }
 
             if (Menu == "Build Structure")
             {
