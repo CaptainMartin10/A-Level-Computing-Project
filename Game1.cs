@@ -220,50 +220,13 @@ namespace A_Level_Computing_Project
                         }
                     }
 
-                    Rectangle NextTurnButton = new Rectangle(663, 624, 498, 36);
-                    if (NextTurnButton.Contains(mousePoint))
-                    {
-                        Turn++;
-                        if (Countries[Player].Levy == null)
-                        {
-                            foreach (Country C in Countries)
-                            {
-                                C.Gold += 50;
-                                C.Metal += 50;
-                                C.Stone += 50;
-                                C.Wood += 50;
-                                C.Food += 50;
-                            }
-                            foreach (Province P in MapArray)
-                            {
-                                if (P.Structure == "Settlement")
-                                {
-                                    P.OwnedBy.Gold += 100 * P.StructureLevel;
-                                }
-                                if (P.Structure == "Mine")
-                                {
-                                    P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
-                                    P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
-                                }
-                                if (P.Structure == "Farm")
-                                {
-                                    P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
-                                }
-                                if (P.Structure == "Forester")
-                                {
-                                    P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
-                                }
-                            }
-                        }
-                    }
-
-                    Rectangle BuildStructureButton = new Rectangle(663, 498, 498, 36);
+                    Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
                     if (BuildStructureButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure == "Empty")
                     {
                         Menu = "Build Structure";
                     }
 
-                    Rectangle UpgradeStrucutreButton = new Rectangle(663, 578, 498, 36);
+                    Rectangle UpgradeStrucutreButton = new Rectangle(663, 624, 498, 36);
                     if (UpgradeStrucutreButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].StructureLevel < 5 && Countries[Player].Gold > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Food > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Wood > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Stone > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Metal > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1))
                     {
                         MapArray[SelectedX, SelectedY].StructureLevel += 1;
@@ -274,7 +237,7 @@ namespace A_Level_Computing_Project
                         Countries[Player].Metal -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
                     }
 
-                    Rectangle RaiseLevyArmyButton = new Rectangle(663, 332, 498, 36);
+                    Rectangle RaiseLevyArmyButton = new Rectangle(663, 286, 498, 36);
                     if (RaiseLevyArmyButton.Contains(mousePoint) && Countries[Player].Levy == null)
                     {
                         int LevyArmySize = 0;
@@ -461,6 +424,42 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            if (!CurrentKeyboardState.IsKeyDown(Keys.Enter) && LastKeyboardState.IsKeyDown(Keys.Enter))
+            {
+                Turn++;
+                if (Countries[Player].Levy == null)
+                {
+                    foreach (Country C in Countries)
+                    {
+                        C.Gold += 50;
+                        C.Metal += 50;
+                        C.Stone += 50;
+                        C.Wood += 50;
+                        C.Food += 50;
+                    }
+                    foreach (Province P in MapArray)
+                    {
+                        if (P.Structure == "Settlement")
+                        {
+                            P.OwnedBy.Gold += 100 * P.StructureLevel;
+                        }
+                        if (P.Structure == "Mine")
+                        {
+                            P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
+                            P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
+                        }
+                        if (P.Structure == "Farm")
+                        {
+                            P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
+                        }
+                        if (P.Structure == "Forester")
+                        {
+                            P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                        }
+                    }
+                }
+            }
+
             LastMouseState = CurrentMouseState;
             LastKeyboardState = CurrentKeyboardState;
 
@@ -602,67 +601,63 @@ namespace A_Level_Computing_Project
                 }
             }
 
-            _spriteBatch.DrawString(MenuFont, "Mouse Coordinates: " + CurrentMouseState.X + " , " + CurrentMouseState.Y, new Vector2(666, 5), Color.White);
-
-            _spriteBatch.DrawString(MenuFont, "Player: " + Countries[Player].Name, new Vector2(666, 51), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Gold: " + Countries[Player].Gold, new Vector2(666, 91), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Food: " + Countries[Player].Food, new Vector2(666, 131), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Wood: " + Countries[Player].Wood, new Vector2(666, 171), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Stone: " + Countries[Player].Stone, new Vector2(666, 211), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Metal: " + Countries[Player].Metal, new Vector2(666, 251), Color.White);
-            _spriteBatch.DrawString(MenuFont, "Standing Army Location: " + Countries[Player].Standing.X + " , " + Countries[Player].Standing.Y, new Vector2(666, 291), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Player: " + Countries[Player].Name, new Vector2(666, 5), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Gold: " + Countries[Player].Gold, new Vector2(666, 45), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Food: " + Countries[Player].Food, new Vector2(666, 85), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Wood: " + Countries[Player].Wood, new Vector2(666, 125), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Stone: " + Countries[Player].Stone, new Vector2(666, 165), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Metal: " + Countries[Player].Metal, new Vector2(666, 205), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Standing Army Location: " + Countries[Player].Standing.X + " , " + Countries[Player].Standing.Y, new Vector2(666, 245), Color.White);
 
             if(Countries[Player].Levy != null)
             {
-                _spriteBatch.DrawString(MenuFont, "Dismiss Levy Army at: " + Countries[Player].Levy.X + " , " + Countries[Player].Levy.Y, new Vector2(666, 331), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Dismiss Levy Army at: " + Countries[Player].Levy.X + " , " + Countries[Player].Levy.Y, new Vector2(666, 285), Color.White);
             }
             else
             {
-                _spriteBatch.DrawString(MenuFont, "Raise Levy Army", new Vector2(666, 331), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Raise Levy Army", new Vector2(666, 285), Color.White);
             }
 
             if (Selected == "Terrain")
             {
-                _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 377), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[SelectedX, SelectedY].OwnedBy).Name, new Vector2(666, 417), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[SelectedX, SelectedY].Terrain, new Vector2(666, 457), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[SelectedX, SelectedY].OwnedBy).Name, new Vector2(666, 463), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[SelectedX, SelectedY].Terrain, new Vector2(666, 503), Color.White);
 
                 if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == false)
                 {
-                    _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 497), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 537), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(666, 577), Color.White);
+                    _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 543), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 583), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Upgrade", new Vector2(666, 623), Color.White);
                 }
                 else if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == true)
                 {
-                    _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 497), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 537), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Cannot Upgrade", new Vector2(666, 577), Color.White);
+                    _spriteBatch.DrawString(MenuFont, MapArray[SelectedX, SelectedY].Structure, new Vector2(666, 543), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Level: " + MapArray[SelectedX, SelectedY].StructureLevel, new Vector2(666, 583), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Cannot Upgrade", new Vector2(666, 623), Color.White);
                 }
                 else if (MapArray[SelectedX, SelectedY].Structure == "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == false)
                 {
-                    _spriteBatch.DrawString(MenuFont, "Build Structure", new Vector2(666, 497), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 537), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 577), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Build Structure", new Vector2(666, 543), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 583), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 623), Color.White);
                 }
                 else if (MapArray[SelectedX, SelectedY].Structure == "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == true)
                 {
-                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 497), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 537), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 577), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 543), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 583), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 623), Color.White);
                 }
             }
             else if (Selected == "Standing" || Selected == "Levy")
             {
-                _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY, new Vector2(666, 377), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy, new Vector2(666, 417), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Type: " + Selected, new Vector2(666, 457), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Infantry: " + MapArray[SelectedX, SelectedY].ArmyInside.Infantry, new Vector2(666, 497), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Archers: " + MapArray[SelectedX, SelectedY].ArmyInside.Archers, new Vector2(666, 537), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Cavalry: " + MapArray[SelectedX, SelectedY].ArmyInside.Cavalry, new Vector2(666, 577), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy, new Vector2(666, 463), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Type: " + Selected, new Vector2(666, 503), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Infantry: " + MapArray[SelectedX, SelectedY].ArmyInside.Infantry, new Vector2(666, 543), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Archers: " + MapArray[SelectedX, SelectedY].ArmyInside.Archers, new Vector2(666, 583), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Cavalry: " + MapArray[SelectedX, SelectedY].ArmyInside.Cavalry, new Vector2(666, 623), Color.White);
             }
-
-            _spriteBatch.DrawString(MenuFont, "Turn: " + Turn + ", Next Turn", new Vector2(666, 623 ), Color.White);
 
             if (Menu == "Build Structure")
             {
