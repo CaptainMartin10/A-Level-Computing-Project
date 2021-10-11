@@ -220,6 +220,11 @@ namespace A_Level_Computing_Project
                         }
                     }
 
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                    {
+
+                    }
+
                     Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
                     if (BuildStructureButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure == "Empty")
                     {
