@@ -56,7 +56,7 @@ namespace A_Level_Computing_Project
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
             BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
-            
+
             Unowned = Content.Load<Texture2D>("Blank Tile");
             Lindon = Content.Load<Texture2D>("Lindon Tile");
             BlueMountainsNorth = Content.Load<Texture2D>("Blue Mountains North Tile");
@@ -220,7 +220,7 @@ namespace A_Level_Computing_Project
                         }
                     }
 
-                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
 
                     }
@@ -273,7 +273,7 @@ namespace A_Level_Computing_Project
                         }
                         else if (Countries[Player].CapitalX % 2 == 0)
                         {
-                            if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].ArmyInside == null  && MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].OwnedBy == Countries[Player])
+                            if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].ArmyInside == null && MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].OwnedBy == Countries[Player])
                             {
                                 ArmyX = Countries[Player].CapitalX;
                                 ArmyY = Countries[Player].CapitalY - 1;
@@ -319,7 +319,7 @@ namespace A_Level_Computing_Project
                             else if (MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY + 1].ArmyInside == null && MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY + 1].OwnedBy == Countries[Player])
                             {
                                 ArmyX = Countries[Player].CapitalX + 1;
-                                ArmyY = Countries[Player].CapitalY+ 1;
+                                ArmyY = Countries[Player].CapitalY + 1;
                             }
                             else if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY + 1].ArmyInside == null && MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY + 1].OwnedBy == Countries[Player])
                             {
@@ -344,6 +344,7 @@ namespace A_Level_Computing_Project
                     {
                         MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = null;
                         Countries[Player].Levy = null;
+                        Selected = "Terrain";
                     }
                 }
 
@@ -418,7 +419,7 @@ namespace A_Level_Computing_Project
             }
 
             if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
-            { 
+            {
                 if (Mapmode == "Regular")
                 {
                     Mapmode = "ShowOwned";
@@ -583,7 +584,7 @@ namespace A_Level_Computing_Project
 
             if (Selected == "Standing" || Selected == "Levy")
             {
-                if (MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                if (MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                 {
                     if (SelectedX % 2 == 0)
                     {
@@ -614,7 +615,7 @@ namespace A_Level_Computing_Project
             _spriteBatch.DrawString(MenuFont, "Metal: " + Countries[Player].Metal, new Vector2(666, 205), Color.White);
             _spriteBatch.DrawString(MenuFont, "Standing Army Location: " + Countries[Player].Standing.X + " , " + Countries[Player].Standing.Y, new Vector2(666, 245), Color.White);
 
-            if(Countries[Player].Levy != null)
+            if (Countries[Player].Levy != null)
             {
                 _spriteBatch.DrawString(MenuFont, "Dismiss Levy Army at: " + Countries[Player].Levy.X + " , " + Countries[Player].Levy.Y, new Vector2(666, 285), Color.White);
             }
@@ -622,6 +623,9 @@ namespace A_Level_Computing_Project
             {
                 _spriteBatch.DrawString(MenuFont, "Raise Levy Army", new Vector2(666, 285), Color.White);
             }
+
+            _spriteBatch.DrawString(MenuFont, "Research", new Vector2(666, 331), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Market", new Vector2(666, 377), Color.White);
 
             if (Selected == "Terrain")
             {
@@ -654,7 +658,7 @@ namespace A_Level_Computing_Project
                     _spriteBatch.DrawString(MenuFont, "Empty", new Vector2(666, 623), Color.White);
                 }
             }
-            else if (Selected == "Standing" || Selected == "Levy")
+            else if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null)
             {
                 _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy, new Vector2(666, 463), Color.White);
