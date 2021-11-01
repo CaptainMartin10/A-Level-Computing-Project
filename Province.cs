@@ -7,7 +7,7 @@ namespace A_Level_Computing_Project
         public int X, Y, StructureLevel, StructureGarrison, StructureProduction;
         public string Terrain, Structure;
         public Country OwnedBy;
-        public Army ArmyInside;
+        public RealArmy ArmyInside;
 
         public Province(int x, int y)
         {

@@ -220,9 +220,51 @@ namespace A_Level_Computing_Project
                         }
                     }
 
-                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
-
+                        List<PhantomArmy> MoveSelection = new List<PhantomArmy>();
+                        if (SelectedX % 2 == 0)
+                        {
+                            PhantomArmy ArmyMoveN = new PhantomArmy(SelectedX, SelectedY - 1);
+                            PhantomArmy ArmyMoveNE = new PhantomArmy(SelectedX + 1, SelectedY - 1);
+                            PhantomArmy ArmyMoveSE = new PhantomArmy(SelectedX + 1, SelectedY);
+                            PhantomArmy ArmyMoveS = new PhantomArmy(SelectedX, SelectedY + 1);
+                            PhantomArmy ArmyMoveSW = new PhantomArmy(SelectedX - 1, SelectedY);
+                            PhantomArmy ArmyMoveNW = new PhantomArmy(SelectedX - 1, SelectedY - 1);
+                            MoveSelection.Add(ArmyMoveN);
+                            MoveSelection.Add(ArmyMoveNE);
+                            MoveSelection.Add(ArmyMoveSE);
+                            MoveSelection.Add(ArmyMoveS);
+                            MoveSelection.Add(ArmyMoveSW);
+                            MoveSelection.Add(ArmyMoveNW);
+                        }
+                        else if (SelectedX % 2 == 1)
+                        {
+                            PhantomArmy ArmyMoveN = new PhantomArmy(SelectedX, SelectedY - 1);
+                            PhantomArmy ArmyMoveNE = new PhantomArmy(SelectedX + 1, SelectedY);
+                            PhantomArmy ArmyMoveSE = new PhantomArmy(SelectedX + 1, SelectedY + 1);
+                            PhantomArmy ArmyMoveS = new PhantomArmy(SelectedX, SelectedY+ 1);
+                            PhantomArmy ArmyMoveSW = new PhantomArmy(SelectedX - 1, SelectedY + 1);
+                            PhantomArmy ArmyMoveNW = new PhantomArmy(SelectedX - 1, SelectedY);
+                            MoveSelection.Add(ArmyMoveN);
+                            MoveSelection.Add(ArmyMoveNE);
+                            MoveSelection.Add(ArmyMoveSE);
+                            MoveSelection.Add(ArmyMoveS);
+                            MoveSelection.Add(ArmyMoveSW);
+                            MoveSelection.Add(ArmyMoveNW);
+                        }
+                        foreach(PhantomArmy p in MoveSelection)
+                        {
+                            if(p.ContainsMousePointer(mousePoint))
+                            {
+                                MapArray[SelectedX, SelectedY].ArmyInside.X = p.X;
+                                MapArray[SelectedX, SelectedY].ArmyInside.Y = p.Y;
+                                MapArray[SelectedX, SelectedY].ArmyInside = null;
+                                SelectedX = p.X;
+                                SelectedY = p.Y;
+                            }
+                        }
+                        MoveSelection.Clear();
                     }
 
                     Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
