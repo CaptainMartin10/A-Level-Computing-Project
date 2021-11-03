@@ -13,6 +13,7 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
+        public PhantomArmy[] MoveSelection = new PhantomArmy[6];
         public int SelectedX, SelectedY, Player = 8, Turn = 1;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement;
@@ -194,6 +195,54 @@ namespace A_Level_Computing_Project
             {
                 if (Menu == "Game")
                 {
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                    {
+                        if (SelectedX % 2 == 0)
+                        {
+                            MoveSelection[0] = new PhantomArmy(SelectedX, SelectedY - 1);
+                            MoveSelection[1] = new PhantomArmy(SelectedX + 1, SelectedY - 1);
+                            MoveSelection[2] = new PhantomArmy(SelectedX + 1, SelectedY);
+                            MoveSelection[3] = new PhantomArmy(SelectedX, SelectedY + 1);
+                            MoveSelection[4] = new PhantomArmy(SelectedX - 1, SelectedY);
+                            MoveSelection[5] = new PhantomArmy(SelectedX - 1, SelectedY - 1);
+                        }
+                        else if (SelectedX % 2 == 1)
+                        {
+                            MoveSelection[0] = new PhantomArmy(SelectedX, SelectedY - 1);
+                            MoveSelection[1] = new PhantomArmy(SelectedX + 1, SelectedY);
+                            MoveSelection[2] = new PhantomArmy(SelectedX + 1, SelectedY + 1);
+                            MoveSelection[3] = new PhantomArmy(SelectedX, SelectedY + 1);
+                            MoveSelection[4] = new PhantomArmy(SelectedX - 1, SelectedY + 1);
+                            MoveSelection[5] = new PhantomArmy(SelectedX - 1, SelectedY);
+                        }
+                        foreach (PhantomArmy p in MoveSelection)
+                        {
+                            if (p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].ArmyInside == null)
+                            {
+                                if (Selected == "Standing" && !Countries[Player].Standing.Moved)
+                                {
+                                    MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
+                                    Countries[Player].Standing.X = p.X;
+                                    Countries[Player].Standing.Y = p.Y;
+                                    MapArray[SelectedX, SelectedY].ArmyInside = null;
+                                    SelectedX = p.X;
+                                    SelectedY = p.Y;
+                                    Countries[Player].Standing.Moved = true;
+                                }
+                                else if (Selected == "Levy" && !Countries[Player].Levy.Moved)
+                                {
+                                    MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
+                                    Countries[Player].Levy.X = p.X;
+                                    Countries[Player].Levy.Y = p.Y;
+                                    MapArray[SelectedX, SelectedY].ArmyInside = null;
+                                    SelectedX = p.X;
+                                    SelectedY = p.Y;
+                                    Countries[Player].Levy.Moved = true;
+                                }
+                            }
+                        }
+                    }
+
                     foreach (Province Hex in MapArray)
                     {
                         if (Hex.ContainsMousePointer(mousePoint))
@@ -218,53 +267,6 @@ namespace A_Level_Computing_Project
                             SelectedY = C.Levy.Y;
                             Selected = "Levy";
                         }
-                    }
-
-                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
-                    {
-                        List<PhantomArmy> MoveSelection = new List<PhantomArmy>();
-                        if (SelectedX % 2 == 0)
-                        {
-                            PhantomArmy ArmyMoveN = new PhantomArmy(SelectedX, SelectedY - 1);
-                            PhantomArmy ArmyMoveNE = new PhantomArmy(SelectedX + 1, SelectedY - 1);
-                            PhantomArmy ArmyMoveSE = new PhantomArmy(SelectedX + 1, SelectedY);
-                            PhantomArmy ArmyMoveS = new PhantomArmy(SelectedX, SelectedY + 1);
-                            PhantomArmy ArmyMoveSW = new PhantomArmy(SelectedX - 1, SelectedY);
-                            PhantomArmy ArmyMoveNW = new PhantomArmy(SelectedX - 1, SelectedY - 1);
-                            MoveSelection.Add(ArmyMoveN);
-                            MoveSelection.Add(ArmyMoveNE);
-                            MoveSelection.Add(ArmyMoveSE);
-                            MoveSelection.Add(ArmyMoveS);
-                            MoveSelection.Add(ArmyMoveSW);
-                            MoveSelection.Add(ArmyMoveNW);
-                        }
-                        else if (SelectedX % 2 == 1)
-                        {
-                            PhantomArmy ArmyMoveN = new PhantomArmy(SelectedX, SelectedY - 1);
-                            PhantomArmy ArmyMoveNE = new PhantomArmy(SelectedX + 1, SelectedY);
-                            PhantomArmy ArmyMoveSE = new PhantomArmy(SelectedX + 1, SelectedY + 1);
-                            PhantomArmy ArmyMoveS = new PhantomArmy(SelectedX, SelectedY+ 1);
-                            PhantomArmy ArmyMoveSW = new PhantomArmy(SelectedX - 1, SelectedY + 1);
-                            PhantomArmy ArmyMoveNW = new PhantomArmy(SelectedX - 1, SelectedY);
-                            MoveSelection.Add(ArmyMoveN);
-                            MoveSelection.Add(ArmyMoveNE);
-                            MoveSelection.Add(ArmyMoveSE);
-                            MoveSelection.Add(ArmyMoveS);
-                            MoveSelection.Add(ArmyMoveSW);
-                            MoveSelection.Add(ArmyMoveNW);
-                        }
-                        foreach(PhantomArmy p in MoveSelection)
-                        {
-                            if(p.ContainsMousePointer(mousePoint))
-                            {
-                                MapArray[SelectedX, SelectedY].ArmyInside.X = p.X;
-                                MapArray[SelectedX, SelectedY].ArmyInside.Y = p.Y;
-                                MapArray[SelectedX, SelectedY].ArmyInside = null;
-                                SelectedX = p.X;
-                                SelectedY = p.Y;
-                            }
-                        }
-                        MoveSelection.Clear();
                     }
 
                     Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
@@ -504,6 +506,14 @@ namespace A_Level_Computing_Project
                         {
                             P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
                         }
+                    }
+                }
+                foreach (Country c in Countries)
+                {
+                    c.Standing.Moved = false;
+                    if (c.Levy != null)
+                    {
+                        c.Levy.Moved = false;
                     }
                 }
             }

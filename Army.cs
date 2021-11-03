@@ -62,6 +62,7 @@ namespace A_Level_Computing_Project
     {
         public int Infantry, Cavalry, Archers;
         public string OwnedBy;
+        public bool Moved;
     }
 
     public class StandingArmy : RealArmy
@@ -70,7 +71,8 @@ namespace A_Level_Computing_Project
         {
             X = x;
             Y = y;
-            OwnedBy = o; 
+            OwnedBy = o;
+            Moved = false;
         }
     }
 
@@ -82,6 +84,7 @@ namespace A_Level_Computing_Project
             Y = y;
             Infantry = i;
             OwnedBy = o;
+            Moved = true;
         }
     }
 
