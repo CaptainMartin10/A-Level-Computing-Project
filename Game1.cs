@@ -533,9 +533,9 @@ namespace A_Level_Computing_Project
             _spriteBatch.Begin();
             _spriteBatch.Draw(Background, new Vector2(0, 0), Color.White);
 
-            foreach (Province Hex in MapArray)
+            if (Mapmode == "ShowOwned")
             {
-                if (Mapmode == "ShowOwned")
+                foreach (Province Hex in MapArray)
                 {
                     if (Hex.X % 2 == 0)
                     {
@@ -544,6 +544,31 @@ namespace A_Level_Computing_Project
                     else if (Hex.X % 2 == 1)
                     {
                         _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                    }
+                }
+            }
+
+            if (Selected == "Standing" || Selected == "Levy")
+            {
+                if (MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                {
+                    if (SelectedX % 2 == 0)
+                    {
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY - 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY + 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                    }
+                    else if (SelectedX % 2 == 1)
+                    {
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY + 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY + 1) * 36) + 18), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY + 1) * 36), Color.White);
+                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY) * 36), Color.White);
                     }
                 }
             }
@@ -634,31 +659,6 @@ namespace A_Level_Computing_Project
                 }
             }
 
-            if (Selected == "Standing" || Selected == "Levy")
-            {
-                if (MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
-                {
-                    if (SelectedX % 2 == 0)
-                    {
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY - 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                    }
-                    else if (SelectedX % 2 == 1)
-                    {
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY + 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY) * 36), Color.White);
-                    }
-                }
-            }
-
             _spriteBatch.DrawString(MenuFont, "Player: " + Countries[Player].Name, new Vector2(666, 5), Color.White);
             _spriteBatch.DrawString(MenuFont, "Gold: " + Countries[Player].Gold, new Vector2(666, 45), Color.White);
             _spriteBatch.DrawString(MenuFont, "Food: " + Countries[Player].Food, new Vector2(666, 85), Color.White);
@@ -712,7 +712,14 @@ namespace A_Level_Computing_Project
             }
             else if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null)
             {
-                _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
+                if (MapArray[SelectedX, SelectedY].ArmyInside.Moved)
+                {
+                    _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY + "; Moved", new Vector2(666, 423), Color.White);
+                }
+                else if (!MapArray[SelectedX, SelectedY].ArmyInside.Moved)
+                {
+                    _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY + "; Not Moved", new Vector2(666, 423), Color.White);
+                }
                 _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy, new Vector2(666, 463), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Type: " + Selected, new Vector2(666, 503), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Infantry: " + MapArray[SelectedX, SelectedY].ArmyInside.Infantry, new Vector2(666, 543), Color.White);
