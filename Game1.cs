@@ -217,7 +217,7 @@ namespace A_Level_Computing_Project
                         }
                         foreach (PhantomArmy p in MoveSelection)
                         {
-                            if (p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].ArmyInside == null)
+                            if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].ArmyInside == null && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
                             {
                                 if (Selected == "Standing" && !Countries[Player].Standing.Moved)
                                 {
@@ -554,21 +554,57 @@ namespace A_Level_Computing_Project
                 {
                     if (SelectedX % 2 == 0)
                     {
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY - 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        if ((SelectedX) >= 0 && (SelectedX) <= 23 && (SelectedY - 1) >= 0 && (SelectedY - 1) <= 17 && MapArray[SelectedX, SelectedY - 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, (SelectedY - 1) * 36), Color.White);
+                        }
+                        if ((SelectedX + 1) >= 0 && (SelectedX + 1) <= 23 && (SelectedY - 1) >= 0 && (SelectedY - 1) <= 17 && MapArray[SelectedX + 1, SelectedY - 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        }
+                        if ((SelectedX + 1) >= 0 && (SelectedX + 1) <= 23 && (SelectedY) >= 0 && (SelectedY) <= 17 && MapArray[SelectedX+ 1, SelectedY].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, ((SelectedY) * 36) + 18), Color.White);
+                        }
+                        if ((SelectedX) >= 0 && (SelectedX) <= 23 && (SelectedY + 1) >= 0 && (SelectedY + 1) <= 17 && MapArray[SelectedX, SelectedY + 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY+ 1) * 36)), Color.White);
+                        }
+                        if ((SelectedX - 1) >= 0 && (SelectedX - 1) <= 23 && (SelectedY) >= 0 && (SelectedY) <= 17 && MapArray[SelectedX - 1, SelectedY].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY) * 36) + 18), Color.White);
+                        }
+                        if ((SelectedX - 1) >= 0 && (SelectedX - 1) <= 23 && (SelectedY - 1) >= 0 && (SelectedY - 1) <= 17 && MapArray[SelectedX - 1, SelectedY - 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        }
                     }
                     else if (SelectedX % 2 == 1)
                     {
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY + 1) * 36) + 18), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY + 1) * 36), Color.White);
-                        _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY) * 36), Color.White);
+                        if ((SelectedX) >= 0 && (SelectedX) <= 23 && (SelectedY - 1) >= 0 && (SelectedY - 1) <= 17 && MapArray[SelectedX, SelectedY - 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY - 1) * 36) + 18), Color.White);
+                        }
+                        if ((SelectedX + 1) >= 0 && (SelectedX + 1) <= 23 && (SelectedY) >= 0 && (SelectedY) <= 17 && MapArray[SelectedX + 1, SelectedY].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY) * 36), Color.White);
+                        }
+                        if ((SelectedX + 1) >= 0 && (SelectedX + 1) <= 23 && (SelectedY + 1) >= 0 && (SelectedY + 1) <= 17 && MapArray[SelectedX+ 1, SelectedY + 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX + 1) * 27, (SelectedY + 1) * 36), Color.White);
+                        }
+                        if ((SelectedX) >= 0 && (SelectedX) <= 23 && (SelectedY + 1) >= 0 && (SelectedY + 1) <= 17 && MapArray[SelectedX, SelectedY + 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX) * 27, ((SelectedY + 1) * 36) + 18), Color.White);
+                        }
+                        if ((SelectedX - 1) >= 0 && (SelectedX - 1) <= 23 && (SelectedY + 1) >= 0 && (SelectedY + 1) <= 17 && MapArray[SelectedX - 1, SelectedY + 1].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY + 1) * 36), Color.White);
+                        }
+                        if ((SelectedX - 1) >= 0 && (SelectedX - 1) <= 23 && (SelectedY) >= 0 && (SelectedY) <= 17 && MapArray[SelectedX - 1, SelectedY].Terrain != "Deep Ocean")
+                        {
+                            _spriteBatch.Draw(ArmyMovement, new Vector2((SelectedX - 1) * 27, (SelectedY) * 36), Color.White);
+                        }
                     }
                 }
             }
