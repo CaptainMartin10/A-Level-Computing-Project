@@ -133,14 +133,15 @@ namespace A_Level_Computing_Project
             MineProduction.Add("Marshland", 0);
             
             ArmyCosts.Add("Grassland", 1);
-            ArmyCosts.Add("Hills", 1);
+            ArmyCosts.Add("Hills", 2);
             ArmyCosts.Add("Forest", 1);
-            ArmyCosts.Add("Forest Hills", 1);
+            ArmyCosts.Add("Forest Hills", 2);
             ArmyCosts.Add("Dense Forest", 1);
-            ArmyCosts.Add("Dense Forest Hills", 1);
-            ArmyCosts.Add("Mountains", 1);
-            ArmyCosts.Add("Wasteland", 1);
-            ArmyCosts.Add("Marshland", 1);
+            ArmyCosts.Add("Dense Forest Hills", 2);
+            ArmyCosts.Add("Mountains", 3);
+            ArmyCosts.Add("Wasteland", 2);
+            ArmyCosts.Add("Marshland", 3);
+            ArmyCosts.Add("Shallow Sea", 2);
 
             OwnedMapmode.Add("Unowned", Unowned);
             OwnedMapmode.Add("Lindon", Lindon);
@@ -240,7 +241,11 @@ namespace A_Level_Computing_Project
                                     SelectedY = p.Y;
                                     Countries[Player].Standing.Moved = true;
                                     Countries[Player].Gold -= (Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry);
-                                    Countries[Player].Food -= ((Countries[Player].Standing.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain]));
+                                    Countries[Player].Food -= ((Countries[Player].Standing.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2));
+                                    if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
+                                    {
+                                        Countries[Player].Wood -= (Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry);
+                                    }
                                 }
                                 else if (Selected == "Levy" && !Countries[Player].Levy.Moved)
                                 {
@@ -252,6 +257,10 @@ namespace A_Level_Computing_Project
                                     SelectedY = p.Y;
                                     Countries[Player].Levy.Moved = true;
                                     Countries[Player].Food -= (Countries[Player].Levy.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]);
+                                    if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
+                                    {
+                                        Countries[Player].Wood -= (Countries[Player].Levy.Infantry);
+                                    }
                                 }
                             }
                         }
