@@ -229,7 +229,7 @@ namespace A_Level_Computing_Project
                         }
                         foreach (PhantomArmy p in MoveSelection)
                         {
-                            if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].ArmyInside == null && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
+                            if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
                             {
                                 if (Selected == "Standing" && !Countries[Player].Standing.Moved)
                                 {
@@ -261,6 +261,10 @@ namespace A_Level_Computing_Project
                                     {
                                         Countries[Player].Wood -= (Countries[Player].Levy.Infantry);
                                     }
+                                }
+                                if (MapArray[p.X, p.Y].ArmyInside != null)
+                                {
+
                                 }
                             }
                         }
@@ -509,6 +513,7 @@ namespace A_Level_Computing_Project
                         C.Stone += 50;
                         C.Wood += 50;
                         C.Food += 50;
+                        C.Standing.Infantry += 50;
                     }
                     foreach (Province P in MapArray)
                     {
@@ -516,18 +521,24 @@ namespace A_Level_Computing_Project
                         {
                             P.OwnedBy.Gold += 100 * P.StructureLevel;
                         }
-                        if (P.Structure == "Mine")
+                        else if (P.Structure == "Mine")
                         {
                             P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
                             P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
                         }
-                        if (P.Structure == "Farm")
+                        else if (P.Structure == "Farm")
                         {
                             P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
                         }
-                        if (P.Structure == "Forester")
+                        else if (P.Structure == "Forester")
                         {
                             P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                        }
+                        else if (P.Structure == "Fort")
+                        {
+                            P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
+                            P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
+                            P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
                         }
                     }
                 }
