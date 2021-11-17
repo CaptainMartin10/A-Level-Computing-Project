@@ -230,7 +230,7 @@ namespace A_Level_Computing_Project
                         foreach (PhantomArmy p in MoveSelection)
                         {
                             if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
-                            {
+                            {   
                                 if (Selected == "Standing" && !Countries[Player].Standing.Moved)
                                 {
                                     MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
@@ -261,10 +261,6 @@ namespace A_Level_Computing_Project
                                     {
                                         Countries[Player].Wood -= (Countries[Player].Levy.Infantry);
                                     }
-                                }
-                                if (MapArray[p.X, p.Y].ArmyInside != null)
-                                {
-
                                 }
                             }
                         }
