@@ -31,7 +31,7 @@ namespace A_Level_Computing_Project
                     return false;
                 }
             }
-            if (X % 2 == 1)
+            else if (X % 2 == 1)
             {
                 Rectangle CircleBounds1 = new Rectangle((X * 27) + 15, (Y * 36) + 22, 6, 28);
                 Rectangle CircleBounds2 = new Rectangle((X * 27) + 13, (Y * 36) + 23, 10, 26);
@@ -63,6 +63,29 @@ namespace A_Level_Computing_Project
         public int Infantry, Cavalry, Archers;
         public string OwnedBy;
         public bool Moved;
+        public PhantomArmy[] MoveSelection = new PhantomArmy[6];
+
+        public void Move(int SX, int SY)
+        {
+            if (SX % 2 == 0)
+            {
+                MoveSelection[0] = new PhantomArmy(SX, SY - 1);
+                MoveSelection[1] = new PhantomArmy(SX + 1, SY - 1);
+                MoveSelection[2] = new PhantomArmy(SX + 1, SY);
+                MoveSelection[3] = new PhantomArmy(SX, SY + 1);
+                MoveSelection[4] = new PhantomArmy(SX - 1, SY);
+                MoveSelection[5] = new PhantomArmy(SX - 1, SY - 1);
+            }
+            else if (SX % 2 == 1)
+            {
+                MoveSelection[0] = new PhantomArmy(SX, SY - 1);
+                MoveSelection[1] = new PhantomArmy(SX + 1, SY);
+                MoveSelection[2] = new PhantomArmy(SX + 1, SY + 1);
+                MoveSelection[3] = new PhantomArmy(SX, SY + 1);
+                MoveSelection[4] = new PhantomArmy(SX - 1, SY + 1);
+                MoveSelection[5] = new PhantomArmy(SX - 1, SY);
+            }
+        }
     }
 
     public class StandingArmy : RealArmy

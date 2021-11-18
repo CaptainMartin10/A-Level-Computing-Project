@@ -13,7 +13,6 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public PhantomArmy[] MoveSelection = new PhantomArmy[6];
         public int SelectedX, SelectedY, Player = 8, Turn = 1;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement;
@@ -209,28 +208,11 @@ namespace A_Level_Computing_Project
                 {
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
-                        if (SelectedX % 2 == 0)
-                        {
-                            MoveSelection[0] = new PhantomArmy(SelectedX, SelectedY - 1);
-                            MoveSelection[1] = new PhantomArmy(SelectedX + 1, SelectedY - 1);
-                            MoveSelection[2] = new PhantomArmy(SelectedX + 1, SelectedY);
-                            MoveSelection[3] = new PhantomArmy(SelectedX, SelectedY + 1);
-                            MoveSelection[4] = new PhantomArmy(SelectedX - 1, SelectedY);
-                            MoveSelection[5] = new PhantomArmy(SelectedX - 1, SelectedY - 1);
-                        }
-                        else if (SelectedX % 2 == 1)
-                        {
-                            MoveSelection[0] = new PhantomArmy(SelectedX, SelectedY - 1);
-                            MoveSelection[1] = new PhantomArmy(SelectedX + 1, SelectedY);
-                            MoveSelection[2] = new PhantomArmy(SelectedX + 1, SelectedY + 1);
-                            MoveSelection[3] = new PhantomArmy(SelectedX, SelectedY + 1);
-                            MoveSelection[4] = new PhantomArmy(SelectedX - 1, SelectedY + 1);
-                            MoveSelection[5] = new PhantomArmy(SelectedX - 1, SelectedY);
-                        }
-                        foreach (PhantomArmy p in MoveSelection)
+                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY);
+                        foreach (PhantomArmy p in MapArray[SelectedX, SelectedY].ArmyInside.MoveSelection)
                         {
                             if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
-                            {   
+                            {
                                 if (Selected == "Standing" && !Countries[Player].Standing.Moved)
                                 {
                                     MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
