@@ -65,25 +65,62 @@ namespace A_Level_Computing_Project
         public bool Moved;
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
 
-        public void Move(int SX, int SY)
+        public void Move(int SelectedX, int SelectedY, Point mousePoint, Province[,] MapArray, Country[] Countries, int Player, string Selected, Dictionary<string, int> ArmyCosts)
         {
-            if (SX % 2 == 0)
+            if (SelectedX % 2 == 0)
             {
-                MoveSelection[0] = new PhantomArmy(SX, SY - 1);
-                MoveSelection[1] = new PhantomArmy(SX + 1, SY - 1);
-                MoveSelection[2] = new PhantomArmy(SX + 1, SY);
-                MoveSelection[3] = new PhantomArmy(SX, SY + 1);
-                MoveSelection[4] = new PhantomArmy(SX - 1, SY);
-                MoveSelection[5] = new PhantomArmy(SX - 1, SY - 1);
+                MoveSelection[0] = new PhantomArmy(SelectedX, SelectedY - 1);
+                MoveSelection[1] = new PhantomArmy(SelectedX + 1, SelectedY - 1);
+                MoveSelection[2] = new PhantomArmy(SelectedX + 1, SelectedY);
+                MoveSelection[3] = new PhantomArmy(SelectedX, SelectedY + 1);
+                MoveSelection[4] = new PhantomArmy(SelectedX - 1, SelectedY);
+                MoveSelection[5] = new PhantomArmy(SelectedX - 1, SelectedY - 1);
             }
-            else if (SX % 2 == 1)
+            else if (SelectedX % 2 == 1)
             {
-                MoveSelection[0] = new PhantomArmy(SX, SY - 1);
-                MoveSelection[1] = new PhantomArmy(SX + 1, SY);
-                MoveSelection[2] = new PhantomArmy(SX + 1, SY + 1);
-                MoveSelection[3] = new PhantomArmy(SX, SY + 1);
-                MoveSelection[4] = new PhantomArmy(SX - 1, SY + 1);
-                MoveSelection[5] = new PhantomArmy(SX - 1, SY);
+                MoveSelection[0] = new PhantomArmy(SelectedX, SelectedY - 1);
+                MoveSelection[1] = new PhantomArmy(SelectedX + 1, SelectedY);
+                MoveSelection[2] = new PhantomArmy(SelectedX + 1, SelectedY + 1);
+                MoveSelection[3] = new PhantomArmy(SelectedX, SelectedY + 1);
+                MoveSelection[4] = new PhantomArmy(SelectedX - 1, SelectedY + 1);
+                MoveSelection[5] = new PhantomArmy(SelectedX - 1, SelectedY);
+            }
+            foreach (PhantomArmy p in MoveSelection)
+            {
+                if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[SelectedX, SelectedY].Terrain != "Deep Ocean")
+                {
+                    if (Selected == "Standing" && !Countries[Player].Standing.Moved)
+                    {
+                        MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
+                        Countries[Player].Standing.X = p.X;
+                        Countries[Player].Standing.Y = p.Y;
+                        MapArray[SelectedX, SelectedY].ArmyInside = null;
+                        SelectedX = p.X;
+                        SelectedY = p.Y;
+                        Countries[Player].Standing.Moved = true;
+                        Countries[Player].Gold -= (Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry);
+                        Countries[Player].Food -= ((Countries[Player].Standing.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2));
+                        if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
+                        {
+                            Countries[Player].Wood -= (Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry);
+                        }
+                    }
+                    else if (Selected == "Levy" && !Countries[Player].Levy.Moved)
+                    {
+                        MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
+                        Countries[Player].Levy.X = p.X;
+                        Countries[Player].Levy.Y = p.Y;
+                        MapArray[SelectedX, SelectedY].ArmyInside = null;
+                        SelectedX = p.X;
+                        SelectedY = p.Y;
+                        Countries[Player].Levy.Moved = true;
+                        Countries[Player].Food -= (Countries[Player].Levy.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]);
+                        if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
+                        {
+                            Countries[Player].Wood -= (Countries[Player].Levy.Infantry);
+                        }
+                    }
+                }
             }
         }
     }

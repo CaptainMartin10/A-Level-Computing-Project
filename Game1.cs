@@ -208,44 +208,7 @@ namespace A_Level_Computing_Project
                 {
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
-                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY);
-                        foreach (PhantomArmy p in MapArray[SelectedX, SelectedY].ArmyInside.MoveSelection)
-                        {
-                            if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
-                            {
-                                if (Selected == "Standing" && !Countries[Player].Standing.Moved)
-                                {
-                                    MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
-                                    Countries[Player].Standing.X = p.X;
-                                    Countries[Player].Standing.Y = p.Y;
-                                    MapArray[SelectedX, SelectedY].ArmyInside = null;
-                                    SelectedX = p.X;
-                                    SelectedY = p.Y;
-                                    Countries[Player].Standing.Moved = true;
-                                    Countries[Player].Gold -= (Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry);
-                                    Countries[Player].Food -= ((Countries[Player].Standing.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2));
-                                    if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
-                                    {
-                                        Countries[Player].Wood -= (Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry);
-                                    }
-                                }
-                                else if (Selected == "Levy" && !Countries[Player].Levy.Moved)
-                                {
-                                    MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
-                                    Countries[Player].Levy.X = p.X;
-                                    Countries[Player].Levy.Y = p.Y;
-                                    MapArray[SelectedX, SelectedY].ArmyInside = null;
-                                    SelectedX = p.X;
-                                    SelectedY = p.Y;
-                                    Countries[Player].Levy.Moved = true;
-                                    Countries[Player].Food -= (Countries[Player].Levy.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]);
-                                    if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
-                                    {
-                                        Countries[Player].Wood -= (Countries[Player].Levy.Infantry);
-                                    }
-                                }
-                            }
-                        }
+                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY, mousePoint, MapArray, Countries, Player, Selected, ArmyCosts);
                     }
 
                     foreach (Province Hex in MapArray)
