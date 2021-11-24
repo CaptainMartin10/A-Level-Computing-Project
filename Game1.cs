@@ -244,14 +244,10 @@ namespace A_Level_Computing_Project
                     }
 
                     Rectangle UpgradeStrucutreButton = new Rectangle(663, 624, 498, 36);
-                    if (UpgradeStrucutreButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].StructureLevel < 5 && Countries[Player].Gold > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Food > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Wood > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Stone > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1) && Countries[Player].Metal > 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1))
+                    if (UpgradeStrucutreButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].StructureLevel < 5 && Countries[Player].CanAfford(100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1)))
                     {
                         MapArray[SelectedX, SelectedY].StructureLevel += 1;
-                        Countries[Player].Gold -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
-                        Countries[Player].Food -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
-                        Countries[Player].Wood -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
-                        Countries[Player].Stone -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
-                        Countries[Player].Metal -= 100 * MapArray[SelectedX, SelectedY].StructureLevel;
+                        Countries[Player].Pay(100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel);
                     }
 
                     Rectangle RaiseLevyArmyButton = new Rectangle(663, 286, 498, 36);
@@ -368,59 +364,39 @@ namespace A_Level_Computing_Project
                     Rectangle BuildMine = new Rectangle(353, 312, 40, 40);
                     Rectangle BuildForester = new Rectangle(397, 312, 40, 40);
                     Rectangle CloseBuildMenu = new Rectangle(447, 312, 14, 14);
-                    if (BuildSettlement.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    if (BuildSettlement.Contains(mousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
                     {
                         MapArray[SelectedX, SelectedY].Structure = "Settlement";
                         MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Gold -= 100;
-                        Countries[Player].Food -= 100;
-                        Countries[Player].Wood -= 100;
-                        Countries[Player].Stone -= 100;
-                        Countries[Player].Metal -= 100;
+                        Countries[Player].Pay(100, 100, 100, 100, 100);
                         Menu = "Game";
                     }
-                    else if (BuildFort.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    else if (BuildFort.Contains(mousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
                     {
                         MapArray[SelectedX, SelectedY].Structure = "Fort";
                         MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Gold -= 100;
-                        Countries[Player].Food -= 100;
-                        Countries[Player].Wood -= 100;
-                        Countries[Player].Stone -= 100;
-                        Countries[Player].Metal -= 100;
+                        Countries[Player].Pay(100, 100, 100, 100, 100);
                         Menu = "Game";
                     }
-                    else if (BuildFarm.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    else if (BuildFarm.Contains(mousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
                     {
                         MapArray[SelectedX, SelectedY].Structure = "Farm";
                         MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Gold -= 100;
-                        Countries[Player].Food -= 100;
-                        Countries[Player].Wood -= 100;
-                        Countries[Player].Stone -= 100;
-                        Countries[Player].Metal -= 100;
+                        Countries[Player].Pay(100, 100, 100, 100, 100);
                         Menu = "Game";
                     }
-                    else if (BuildMine.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    else if (BuildMine.Contains(mousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
                     {
                         MapArray[SelectedX, SelectedY].Structure = "Mine";
                         MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Gold -= 100;
-                        Countries[Player].Food -= 100;
-                        Countries[Player].Wood -= 100;
-                        Countries[Player].Stone -= 100;
-                        Countries[Player].Metal -= 100;
+                        Countries[Player].Pay(100, 100, 100, 100, 100);
                         Menu = "Game";
                     }
-                    else if (BuildForester.Contains(mousePoint) && Countries[Player].Gold > 100 && Countries[Player].Food > 100 && Countries[Player].Wood > 100 && Countries[Player].Stone > 100 && Countries[Player].Metal > 100)
+                    else if (BuildForester.Contains(mousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
                     {
                         MapArray[SelectedX, SelectedY].Structure = "Forester";
                         MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Gold -= 100;
-                        Countries[Player].Food -= 100;
-                        Countries[Player].Wood -= 100;
-                        Countries[Player].Stone -= 100;
-                        Countries[Player].Metal -= 100;
+                        Countries[Player].Pay(100, 100, 100, 100, 100);
                         Menu = "Game";
                     }
                     else if (CloseBuildMenu.Contains(mousePoint))

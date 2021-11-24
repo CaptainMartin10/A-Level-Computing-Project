@@ -25,5 +25,26 @@ namespace A_Level_Computing_Project
             CapitalY = y;
             Standing = new StandingArmy(x, y, Name);
         }
+
+        public bool CanAfford(int ReqGold, int ReqWood, int ReqStone, int ReqFood, int ReqMetal)
+        {
+            if (Gold >= ReqGold && Wood >= ReqWood && Stone >= ReqStone && Food >= ReqFood && Metal >=ReqMetal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Pay(int g, int w, int s, int f, int m)
+        {
+            Gold -= g;
+            Wood -= w;
+            Stone -= s;
+            Food -= f;
+            Metal -= m;
+        }
     }
 }
