@@ -113,34 +113,36 @@ namespace A_Level_Computing_Project
                         {
                             Countries[Player].Wood -= ((Countries[Player].Levy.Infantry) / 10);
                         }
+
                         if (MapArray[p.X, p.Y].ArmyInside != null && MapArray[p.X, p.Y].ArmyInside.OwnedBy != Countries[Player].Name)
                         {
-                            MapArray[X, Y].ArmyInside.Attack(MapArray[p.X, p.Y].ArmyInside.GetArmyScore(MapArray, ArmyCosts), MapArray[p.X, p.Y].ArmyInside);
+                            MapArray[X, Y].ArmyInside.Attack(MapArray[p.X, p.Y].ArmyInside, MapArray[X, Y].ArmyInside.GetArmyScore(), MapArray[p.X, p.Y].ArmyInside.GetArmyScore());
                         }
-
-                        MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
-                        Countries[Player].Levy.X = p.X;
-                        Countries[Player].Levy.Y = p.Y;
-                        MapArray[SelectedX, SelectedY].ArmyInside = null;
-                        SelectedX = p.X;
-                        SelectedY = p.Y;
-                        Countries[Player].Levy.Moved = true;
+                        else
+                        {
+                            MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
+                            Countries[Player].Levy.X = p.X;
+                            Countries[Player].Levy.Y = p.Y;
+                            MapArray[SelectedX, SelectedY].ArmyInside = null;
+                            SelectedX = p.X;
+                            SelectedY = p.Y;
+                            Countries[Player].Levy.Moved = true;
+                        }
                     }
                 }
             }
         }
 
-        public int GetArmyScore(Province[,] MapArray, Dictionary<string, int> ArmyCosts)
+        public int GetArmyScore()
         {
             int Score = 0;
             Score += (((Infantry * 2) + (Archers * 3) + (Cavalry * 4)) / 2);
-            Score *= ArmyCosts[MapArray[X, Y].Terrain];
             return Score;
         }
 
-        public void Attack(int Score, RealArmy Defender)
+        public void Attack(RealArmy Defender, int AttackerScore, int DefenderScore)
         {
-
+            
         }
     }
 
