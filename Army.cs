@@ -142,7 +142,10 @@ namespace A_Level_Computing_Project
 
         public void Attack(RealArmy Defender, int AttackerScore, int DefenderScore)
         {
-            
+            while (AttackerScore > 0 && DefenderScore > 0)
+            {
+
+            }
         }
     }
 
