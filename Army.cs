@@ -116,7 +116,7 @@ namespace A_Level_Computing_Project
 
                         if (MapArray[p.X, p.Y].ArmyInside != null && MapArray[p.X, p.Y].ArmyInside.OwnedBy != Countries[Player].Name)
                         {
-                            MapArray[X, Y].ArmyInside.Attack(MapArray[p.X, p.Y].ArmyInside, MapArray[X, Y].ArmyInside.GetArmyScore(), MapArray[p.X, p.Y].ArmyInside.GetArmyScore());
+                            MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside, MapArray[X, Y].ArmyInside.GetArmyScore(), MapArray[p.X, p.Y].ArmyInside.GetArmyScore());
                         }
                         else
                         {
@@ -140,11 +140,32 @@ namespace A_Level_Computing_Project
             return Score;
         }
 
-        public void Attack(RealArmy Defender, int AttackerScore, int DefenderScore)
+        public void Battle(RealArmy Defender, int AttackerScore, int DefenderScore)
         {
             while (AttackerScore > 0 && DefenderScore > 0)
             {
+                if (AttackerScore > DefenderScore)
+                {
+                    Defender.Infantry *= (DefenderScore / AttackerScore);
+                    Defender.Archers *= (DefenderScore / AttackerScore);
+                    Defender.Cavalry *= (DefenderScore / AttackerScore);
+                    Infantry *= ((DefenderScore / AttackerScore) / 10);
+                    Archers *= ((DefenderScore / AttackerScore) / 10);
+                    Cavalry *= ((DefenderScore / AttackerScore) / 10);
+                }
+                else if (AttackerScore < DefenderScore)
+                {
+                    Infantry *= (AttackerScore / DefenderScore);
+                    Archers *= (AttackerScore / DefenderScore);
+                    Cavalry *= (AttackerScore / DefenderScore);
+                    Defender.Infantry *= ((AttackerScore / DefenderScore) / 10);
+                    Defender.Archers *= ((AttackerScore / DefenderScore) / 10);
+                    Defender.Cavalry *= ((AttackerScore / DefenderScore) / 10);
+                }
+                else if (AttackerScore == DefenderScore)
+                {
 
+                }
             }
         }
     }
