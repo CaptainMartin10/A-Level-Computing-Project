@@ -116,7 +116,7 @@ namespace A_Level_Computing_Project
 
                         if (MapArray[p.X, p.Y].ArmyInside != null && MapArray[p.X, p.Y].ArmyInside.OwnedBy != Countries[Player].Name)
                         {
-                            MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside, MapArray[X, Y].ArmyInside.GetArmyScore(), MapArray[p.X, p.Y].ArmyInside.GetArmyScore());
+                            MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside);
                         }
                         else
                         {
@@ -140,8 +140,10 @@ namespace A_Level_Computing_Project
             return Score;
         }
 
-        public void Battle(RealArmy Defender, int AttackerScore, int DefenderScore)
+        public void Battle(RealArmy Defender)
         {
+            int AttackerScore = GetArmyScore();
+            int DefenderScore = Defender.GetArmyScore();
             while (AttackerScore > 0 && DefenderScore > 0)
             {
                 if (AttackerScore > DefenderScore)
@@ -149,22 +151,34 @@ namespace A_Level_Computing_Project
                     Defender.Infantry *= (DefenderScore / AttackerScore);
                     Defender.Archers *= (DefenderScore / AttackerScore);
                     Defender.Cavalry *= (DefenderScore / AttackerScore);
-                    Infantry *= ((DefenderScore / AttackerScore) / 10);
-                    Archers *= ((DefenderScore / AttackerScore) / 10);
-                    Cavalry *= ((DefenderScore / AttackerScore) / 10);
+                    Infantry -= (Infantry * ((DefenderScore / AttackerScore) / 10));
+                    Archers -= (Archers * ((DefenderScore / AttackerScore) / 10));
+                    Cavalry -= (Cavalry * ((DefenderScore / AttackerScore) / 10));
+                    DefenderScore = Defender.GetArmyScore();
+                    AttackerScore = GetArmyScore();
                 }
                 else if (AttackerScore < DefenderScore)
                 {
                     Infantry *= (AttackerScore / DefenderScore);
                     Archers *= (AttackerScore / DefenderScore);
                     Cavalry *= (AttackerScore / DefenderScore);
-                    Defender.Infantry *= ((AttackerScore / DefenderScore) / 10);
-                    Defender.Archers *= ((AttackerScore / DefenderScore) / 10);
-                    Defender.Cavalry *= ((AttackerScore / DefenderScore) / 10);
+                    Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
+                    Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
+                    Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
+                    DefenderScore = Defender.GetArmyScore();
+                    AttackerScore = GetArmyScore();
                 }
                 else if (AttackerScore == DefenderScore)
                 {
-
+                    DefenderScore++;
+                    Infantry *= (AttackerScore / DefenderScore);
+                    Archers *= (AttackerScore / DefenderScore);
+                    Cavalry *= (AttackerScore / DefenderScore);
+                    Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
+                    Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
+                    Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
+                    DefenderScore = Defender.GetArmyScore();
+                    AttackerScore = GetArmyScore();
                 }
             }
         }
