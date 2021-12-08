@@ -218,7 +218,7 @@ namespace A_Level_Computing_Project
             {
                 if (Menu == "Game")
                 {
-                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
                         MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
                     }

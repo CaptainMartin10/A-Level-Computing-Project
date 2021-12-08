@@ -93,13 +93,13 @@ namespace A_Level_Computing_Project
                             int TempY = Countries[CountryIndexes[OwnedBy]].Standing.Y;
                             Countries[CountryIndexes[OwnedBy]].Standing.X = p.X;
                             Countries[CountryIndexes[OwnedBy]].Standing.Y = p.Y;
-                            Selected = "Province";
                             MapArray[TempX, TempY].ArmyInside = null;
                             Countries[CountryIndexes[OwnedBy]].Standing.Moved = true;
                         }
                         else if (GetArmyScore() == 0)
                         {
-                            Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            Retreating = true;
+                            Moved = true;
                         }
                     }
                     else
@@ -109,7 +109,6 @@ namespace A_Level_Computing_Project
                         int TempY = Countries[CountryIndexes[OwnedBy]].Standing.Y;
                         Countries[CountryIndexes[OwnedBy]].Standing.X = p.X;
                         Countries[CountryIndexes[OwnedBy]].Standing.Y = p.Y;
-                        Selected = "Province";
                         MapArray[TempX, TempY].ArmyInside = null;
                         Countries[CountryIndexes[OwnedBy]].Standing.Moved = true;
                     }
@@ -136,13 +135,13 @@ namespace A_Level_Computing_Project
                             int TempY = Countries[CountryIndexes[OwnedBy]].Levy.Y;
                             Countries[CountryIndexes[OwnedBy]].Levy.X = p.X;
                             Countries[CountryIndexes[OwnedBy]].Levy.Y = p.Y;
-                            Selected = "Province";
                             MapArray[TempX, TempY].ArmyInside = null;
                             Countries[CountryIndexes[OwnedBy]].Levy.Moved = true;
                         }
                         else if (GetArmyScore() == 0)
                         {
-                            Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            Retreating = true;
+                            Moved = true;
                         }
                     }
                     else
@@ -152,7 +151,6 @@ namespace A_Level_Computing_Project
                         int TempY = Countries[CountryIndexes[OwnedBy]].Levy.Y;
                         Countries[CountryIndexes[OwnedBy]].Levy.X = p.X;
                         Countries[CountryIndexes[OwnedBy]].Levy.Y = p.Y;
-                        Selected = "Province";
                         MapArray[TempX, TempY].ArmyInside = null;
                         Countries[CountryIndexes[OwnedBy]].Levy.Moved = true;
                     }
@@ -252,48 +250,56 @@ namespace A_Level_Computing_Project
             {
                 TempDArray[0] = X + 1;
                 TempDArray[1] = Y - 1;
+                Retreating = true;
             }
             else if (DX > X && DY > Y)
             {
                 TempDArray[0] = X + 1;
                 TempDArray[1] = Y + 1;
+                Retreating = true;
             }
             else if (DX < X && DY > Y)
             {
                 TempDArray[0] = X - 1;
                 TempDArray[1] = Y + 1;
+                Retreating = true;
             }
             else if (DX < X && DY < Y)
             {
                 TempDArray[0] = X - 1;
                 TempDArray[1] = Y - 1;
+                Retreating = true;
             }
             else if (DX == X && DY > Y)
             {
                 TempDArray[0] = X;
                 TempDArray[1] = Y + 1;
+                Retreating = true;
             }
             else if (DX == X && DY < Y)
             {
                 TempDArray[0] = X;
                 TempDArray[1] = Y - 1;
+                Retreating = true;
             }
             else if (DX > X && DY == Y)
             {
                 TempDArray[0] = X + 1;
                 TempDArray[1] = Y;
+                Retreating = true;
             }
             else if (DX < X && DY == Y)
             {
                 TempDArray[0] = X - 1;
                 TempDArray[1] = Y;
+                Retreating = true;
             }
             else if (DX == X && DY == Y)
             {
-                if(Infantry == 0 && Archers == 0 && Cavalry == 0)
+                if (Infantry == 0 && Archers == 0 && Cavalry == 0)
                 {
-                    TempDArray[0] = X + 1;
-                    TempDArray[1] = Y + 1;
+                    TempDArray[0] = X;
+                    TempDArray[1] = Y - 1;
                 }
                 else
                 {
@@ -301,7 +307,10 @@ namespace A_Level_Computing_Project
                 }
             }
 
-            Move(MapArray, Countries, Selected, ArmyCosts, TempDArray, CountryIndexes);
+            if (!(TempDArray[0] == 0 && TempDArray[1] == 0))
+            {
+                Move(MapArray, Countries, Selected, ArmyCosts, TempDArray, CountryIndexes);
+            }
         }
     }
 
