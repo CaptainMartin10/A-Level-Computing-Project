@@ -62,28 +62,44 @@ namespace A_Level_Computing_Project
     {
         public int Infantry, Cavalry, Archers;
         public string OwnedBy;
-        public bool Moved;
+        public bool Moved, Retreating;
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
 
-        public void Move(int SelectedX, int SelectedY, Point mousePoint, Province[,] MapArray, Country[] Countries, int Player, string Selected, Dictionary<string, int> ArmyCosts)
+        public void Move(int SelectedX, int SelectedY, Province[,] MapArray, Country[] Countries, int Player, string Selected, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
         {
-            int[] TempPArray = PickMoveLocation(SelectedX, SelectedY);
             PhantomArmy p = new PhantomArmy(TempPArray[0], TempPArray[1]);
-            if (Selected == "Standing" && !Countries[Player].Standing.Moved)
+            if (!(p.X == 0 && p.Y == 0))
             {
-                Countries[Player].Gold -= ((Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry) / 10);
-                Countries[Player].Food -= (((Countries[Player].Standing.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10);
-                if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
+                if (Selected == "Standing" && !Countries[Player].Standing.Moved)
                 {
-                    Countries[Player].Wood -= ((Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry) / 10);
-                }
-
-                if (MapArray[p.X, p.Y].ArmyInside != null && MapArray[p.X, p.Y].ArmyInside.OwnedBy != Countries[Player].Name)
-                {
-                    MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside);
-                    if (MapArray[p.X, p.Y].ArmyInside.GetArmyScore() == 0)
+                    Countries[Player].Gold -= ((Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry) / 10);
+                    Countries[Player].Food -= (((Countries[Player].Standing.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[Player].Standing.Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10);
+                    if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
                     {
-                        MapArray[p.X, p.Y].ArmyInside.Retreat(MapArray);
+                        Countries[Player].Wood -= ((Countries[Player].Standing.Infantry + Countries[Player].Standing.Archers + Countries[Player].Standing.Cavalry) / 10);
+                    }
+
+                    if (MapArray[p.X, p.Y].ArmyInside != null && MapArray[p.X, p.Y].ArmyInside.OwnedBy != Countries[Player].Name)
+                    {
+                        MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside);
+                        if (MapArray[p.X, p.Y].ArmyInside.GetArmyScore() == 0)
+                        {
+                            MapArray[p.X, p.Y].ArmyInside.Retreat(MapArray, Countries, CountryIndexes);
+                            MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
+                            Countries[Player].Standing.X = p.X;
+                            Countries[Player].Standing.Y = p.Y;
+                            MapArray[SelectedX, SelectedY].ArmyInside = null;
+                            SelectedX = p.X;
+                            SelectedY = p.Y;
+                            Countries[Player].Standing.Moved = true;
+                        }
+                        else if (GetArmyScore() == 0)
+                        {
+                            Retreat(MapArray, Countries, CountryIndexes);
+                        }
+                    }
+                    else
+                    {
                         MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
                         Countries[Player].Standing.X = p.X;
                         Countries[Player].Standing.Y = p.Y;
@@ -92,36 +108,36 @@ namespace A_Level_Computing_Project
                         SelectedY = p.Y;
                         Countries[Player].Standing.Moved = true;
                     }
-                    else if (GetArmyScore() == 0)
+                }
+                else if (Selected == "Levy" && !Countries[Player].Levy.Moved)
+                {
+                    Countries[Player].Food -= ((Countries[Player].Levy.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) / 10);
+                    if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
                     {
-                        Retreat(MapArray);
+                        Countries[Player].Wood -= ((Countries[Player].Levy.Infantry) / 10);
                     }
-                }
-                else
-                {
-                    MapArray[p.X, p.Y].ArmyInside = Countries[Player].Standing;
-                    Countries[Player].Standing.X = p.X;
-                    Countries[Player].Standing.Y = p.Y;
-                    MapArray[SelectedX, SelectedY].ArmyInside = null;
-                    SelectedX = p.X;
-                    SelectedY = p.Y;
-                    Countries[Player].Standing.Moved = true;
-                }
-            }
-            else if (Selected == "Levy" && !Countries[Player].Levy.Moved)
-            {
-                Countries[Player].Food -= ((Countries[Player].Levy.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) / 10);
-                if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
-                {
-                    Countries[Player].Wood -= ((Countries[Player].Levy.Infantry) / 10);
-                }
 
-                if (MapArray[p.X, p.Y].ArmyInside != null && MapArray[p.X, p.Y].ArmyInside.OwnedBy != Countries[Player].Name)
-                {
-                    MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside);
-                    if (MapArray[p.X, p.Y].ArmyInside.GetArmyScore() == 0)
+                    if (MapArray[p.X, p.Y].ArmyInside != null && MapArray[p.X, p.Y].ArmyInside.OwnedBy != Countries[Player].Name)
                     {
-                        MapArray[p.X, p.Y].ArmyInside.Retreat(MapArray);
+                        MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside);
+                        if (MapArray[p.X, p.Y].ArmyInside.GetArmyScore() == 0)
+                        {
+                            MapArray[p.X, p.Y].ArmyInside.Retreat(MapArray, Countries, CountryIndexes);
+                            MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
+                            Countries[Player].Levy.X = p.X;
+                            Countries[Player].Levy.Y = p.Y;
+                            MapArray[SelectedX, SelectedY].ArmyInside = null;
+                            SelectedX = p.X;
+                            SelectedY = p.Y;
+                            Countries[Player].Levy.Moved = true;
+                        }
+                        else if (GetArmyScore() == 0)
+                        {
+                            Retreat(MapArray, Countries, CountryIndexes);
+                        }
+                    }
+                    else
+                    {
                         MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
                         Countries[Player].Levy.X = p.X;
                         Countries[Player].Levy.Y = p.Y;
@@ -130,25 +146,11 @@ namespace A_Level_Computing_Project
                         SelectedY = p.Y;
                         Countries[Player].Levy.Moved = true;
                     }
-                    else if (GetArmyScore() == 0)
-                    {
-                        Retreat(MapArray);
-                    }
-                }
-                else
-                {
-                    MapArray[p.X, p.Y].ArmyInside = Countries[Player].Levy;
-                    Countries[Player].Levy.X = p.X;
-                    Countries[Player].Levy.Y = p.Y;
-                    MapArray[SelectedX, SelectedY].ArmyInside = null;
-                    SelectedX = p.X;
-                    SelectedY = p.Y;
-                    Countries[Player].Levy.Moved = true;
                 }
             }
         }
 
-        public int[] PickMoveLocation(int SelectedX, int SelectedY)
+        public int[] PickMoveLocation(int SelectedX, int SelectedY, Point mousePoint, Province[,] MapArray)
         {
             int[] MoveLocation = new int[2];
             if (SelectedX % 2 == 0)
@@ -169,11 +171,12 @@ namespace A_Level_Computing_Project
                 MoveSelection[4] = new PhantomArmy(SelectedX - 1, SelectedY + 1);
                 MoveSelection[5] = new PhantomArmy(SelectedX - 1, SelectedY);
             }
-
             foreach (PhantomArmy p in MoveSelection)
             {
                 if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
-                { 
+                {
+                    MoveLocation[0] = p.X;
+                    MoveLocation[1] = p.Y;
                 }
             }
             return MoveLocation;
@@ -229,9 +232,11 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public void Retreat(Province[,] MapArray)
+        public void Retreat(Province[,] MapArray, Country[] Countries, Dictionary<string, int>  CountryIndexes)
         {
-
+            int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
+            int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
+            Retreating = true;
         }
     }
 
@@ -242,7 +247,6 @@ namespace A_Level_Computing_Project
             X = x;
             Y = y;
             OwnedBy = o;
-            Moved = false;
         }
     }
 

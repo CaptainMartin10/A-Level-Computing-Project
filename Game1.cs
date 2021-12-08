@@ -24,6 +24,7 @@ namespace A_Level_Computing_Project
         public Dictionary<string, int> ArmyCosts = new Dictionary<string, int>();
         public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
         public Dictionary<string, Texture2D> ArmyTextures = new Dictionary<string, Texture2D>();
+        public Dictionary<string, int> CountryIndexes = new Dictionary<string, int>();
         public string Menu = "Game", Mapmode = "Regular", Selected = "Terrain";
 
         public Game1()
@@ -165,6 +166,17 @@ namespace A_Level_Computing_Project
             ArmyTextures.Add("Isengard", IsengardArmy);
             ArmyTextures.Add("Gundabad", GundabadArmy);
 
+            CountryIndexes.Add("Lindon", 1);
+            CountryIndexes.Add("Blue Mountains North", 2);
+            CountryIndexes.Add("Blue Mountains South", 3);
+            CountryIndexes.Add("Shire", 4);
+            CountryIndexes.Add("Rangers of the North", 5);
+            CountryIndexes.Add("Rivendell", 6);
+            CountryIndexes.Add("Breeland", 7);
+            CountryIndexes.Add("Dunland", 8);
+            CountryIndexes.Add("Isengard", 9);
+            CountryIndexes.Add("Gundabad", 10);
+
             string NewSave = Path.GetFullPath("Saves/NewSave.txt");
             NewSave = NewSave.Remove(NewSave.Length - 41, 24);
             using (StreamReader sr = new StreamReader(Path.GetFullPath(NewSave)))
@@ -208,7 +220,7 @@ namespace A_Level_Computing_Project
                 {
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
-                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY, mousePoint, MapArray, Countries, Player, Selected, ArmyCosts);
+                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY, MapArray, Countries, Player, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
                     }
 
                     foreach (Province Hex in MapArray)
