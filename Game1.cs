@@ -25,7 +25,7 @@ namespace A_Level_Computing_Project
         public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
         public Dictionary<string, Texture2D> ArmyTextures = new Dictionary<string, Texture2D>();
         public Dictionary<string, int> CountryIndexes = new Dictionary<string, int>();
-        public string Menu = "Game", Mapmode = "Regular", Selected = "Terrain";
+        public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
 
         public Game1()
         {
@@ -220,7 +220,7 @@ namespace A_Level_Computing_Project
                 {
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
-                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
+                        MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
                     }
 
                     foreach (Province Hex in MapArray)
@@ -229,7 +229,7 @@ namespace A_Level_Computing_Project
                         {
                             SelectedX = Hex.X;
                             SelectedY = Hex.Y;
-                            Selected = "Terrain";
+                            Selected = "Province";
                         }
                     }
 
@@ -476,7 +476,7 @@ namespace A_Level_Computing_Project
                     c.Standing.Moved = false;
                     if (c.Standing.Retreating)
                     {
-                        c.Standing.Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                        c.Standing.Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
                     }
 
                     if (c.Levy != null)
@@ -484,7 +484,7 @@ namespace A_Level_Computing_Project
                         c.Levy.Moved = false;
                         if (c.Levy.Retreating)
                         {
-                            c.Levy.Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            c.Levy.Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
                         }
                     }
                 }
@@ -687,7 +687,7 @@ namespace A_Level_Computing_Project
             _spriteBatch.DrawString(MenuFont, "Research", new Vector2(666, 331), Color.White);
             _spriteBatch.DrawString(MenuFont, "Market", new Vector2(666, 377), Color.White);
 
-            if (Selected == "Terrain")
+            if (Selected == "Province")
             {
                 _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[SelectedX, SelectedY].OwnedBy).Name, new Vector2(666, 463), Color.White);

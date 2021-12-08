@@ -65,7 +65,7 @@ namespace A_Level_Computing_Project
         public bool Moved, Retreating;
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
 
-        public void Move(int SelectedX, int SelectedY, Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
+        public void Move(Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
         {
             PhantomArmy p = new PhantomArmy(TempPArray[0], TempPArray[1]);
             if (!(p.X == 0 && p.Y == 0))
@@ -87,28 +87,30 @@ namespace A_Level_Computing_Project
                         MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside);
                         if (MapArray[p.X, p.Y].ArmyInside.GetArmyScore() == 0)
                         {
-                            MapArray[p.X, p.Y].ArmyInside.Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            MapArray[p.X, p.Y].ArmyInside.Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
                             MapArray[p.X, p.Y].ArmyInside = Countries[CountryIndexes[OwnedBy]].Standing;
+                            int TempX = Countries[CountryIndexes[OwnedBy]].Standing.X;
+                            int TempY = Countries[CountryIndexes[OwnedBy]].Standing.Y;
                             Countries[CountryIndexes[OwnedBy]].Standing.X = p.X;
                             Countries[CountryIndexes[OwnedBy]].Standing.Y = p.Y;
-                            MapArray[SelectedX, SelectedY].ArmyInside = null;
-                            SelectedX = p.X;
-                            SelectedY = p.Y;
+                            Selected = "Province";
+                            MapArray[TempX, TempY].ArmyInside = null;
                             Countries[CountryIndexes[OwnedBy]].Standing.Moved = true;
                         }
                         else if (GetArmyScore() == 0)
                         {
-                            Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
                         }
                     }
                     else
                     {
                         MapArray[p.X, p.Y].ArmyInside = Countries[CountryIndexes[OwnedBy]].Standing;
+                        int TempX = Countries[CountryIndexes[OwnedBy]].Standing.X;
+                        int TempY = Countries[CountryIndexes[OwnedBy]].Standing.Y;
                         Countries[CountryIndexes[OwnedBy]].Standing.X = p.X;
                         Countries[CountryIndexes[OwnedBy]].Standing.Y = p.Y;
-                        MapArray[SelectedX, SelectedY].ArmyInside = null;
-                        SelectedX = p.X;
-                        SelectedY = p.Y;
+                        Selected = "Province";
+                        MapArray[TempX, TempY].ArmyInside = null;
                         Countries[CountryIndexes[OwnedBy]].Standing.Moved = true;
                     }
                 }
@@ -128,28 +130,30 @@ namespace A_Level_Computing_Project
                         MapArray[X, Y].ArmyInside.Battle(MapArray[p.X, p.Y].ArmyInside);
                         if (MapArray[p.X, p.Y].ArmyInside.GetArmyScore() == 0)
                         {
-                            MapArray[p.X, p.Y].ArmyInside.Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            MapArray[p.X, p.Y].ArmyInside.Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
                             MapArray[p.X, p.Y].ArmyInside = Countries[CountryIndexes[OwnedBy]].Levy;
+                            int TempX = Countries[CountryIndexes[OwnedBy]].Levy.X;
+                            int TempY = Countries[CountryIndexes[OwnedBy]].Levy.Y;
                             Countries[CountryIndexes[OwnedBy]].Levy.X = p.X;
                             Countries[CountryIndexes[OwnedBy]].Levy.Y = p.Y;
-                            MapArray[SelectedX, SelectedY].ArmyInside = null;
-                            SelectedX = p.X;
-                            SelectedY = p.Y;
+                            Selected = "Province";
+                            MapArray[TempX, TempY].ArmyInside = null;
                             Countries[CountryIndexes[OwnedBy]].Levy.Moved = true;
                         }
                         else if (GetArmyScore() == 0)
                         {
-                            Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
                         }
                     }
                     else
                     {
                         MapArray[p.X, p.Y].ArmyInside = Countries[CountryIndexes[OwnedBy]].Levy;
+                        int TempX = Countries[CountryIndexes[OwnedBy]].Levy.X;
+                        int TempY = Countries[CountryIndexes[OwnedBy]].Levy.Y;
                         Countries[CountryIndexes[OwnedBy]].Levy.X = p.X;
                         Countries[CountryIndexes[OwnedBy]].Levy.Y = p.Y;
-                        MapArray[SelectedX, SelectedY].ArmyInside = null;
-                        SelectedX = p.X;
-                        SelectedY = p.Y;
+                        Selected = "Province";
+                        MapArray[TempX, TempY].ArmyInside = null;
                         Countries[CountryIndexes[OwnedBy]].Levy.Moved = true;
                     }
                 }
@@ -238,12 +242,10 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public void Retreat(int SelectedX, int SelectedY, Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
+        public void Retreat(Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
         {
-            //int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
-            //int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
-            int DX = 21;
-            int DY = 12;
+            int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
+            int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
             int[] TempDArray = new int[2];
 
             if (DX > X && DY < Y)
@@ -299,7 +301,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
-            Move(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, TempDArray, CountryIndexes);
+            Move(MapArray, Countries, Selected, ArmyCosts, TempDArray, CountryIndexes);
         }
     }
 
