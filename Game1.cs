@@ -220,7 +220,7 @@ namespace A_Level_Computing_Project
                 {
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                     {
-                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY, MapArray, Countries, Player, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
+                        MapArray[SelectedX, SelectedY].ArmyInside.Move(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
                     }
 
                     foreach (Province Hex in MapArray)
@@ -474,9 +474,18 @@ namespace A_Level_Computing_Project
                 foreach (Country c in Countries)
                 {
                     c.Standing.Moved = false;
+                    if (c.Standing.Retreating)
+                    {
+                        c.Standing.Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                    }
+
                     if (c.Levy != null)
                     {
                         c.Levy.Moved = false;
+                        if (c.Levy.Retreating)
+                        {
+                            c.Levy.Retreat(SelectedX, SelectedY, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                        }
                     }
                 }
             }
