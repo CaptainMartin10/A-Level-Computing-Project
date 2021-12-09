@@ -183,8 +183,16 @@ namespace A_Level_Computing_Project
             {
                 if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
                 {
-                    MoveLocation[0] = p.X;
-                    MoveLocation[1] = p.Y;
+                    if (MapArray[p.X, p.Y].ArmyInside == null)
+                    {
+                        MoveLocation[0] = p.X;
+                        MoveLocation[1] = p.Y;
+                    }
+                    else if (!MapArray[p.X, p.Y].ArmyInside.Retreating)
+                    {
+                        MoveLocation[0] = p.X;
+                        MoveLocation[1] = p.Y;
+                    }
                 }
             }
             return MoveLocation;
@@ -300,6 +308,7 @@ namespace A_Level_Computing_Project
                 {
                     TempDArray[0] = X;
                     TempDArray[1] = Y - 1;
+                    Retreating = true;
                 }
                 else
                 {

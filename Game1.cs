@@ -218,7 +218,7 @@ namespace A_Level_Computing_Project
             {
                 if (Menu == "Game")
                 {
-                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating)
                     {
                         MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
                     }
@@ -720,7 +720,11 @@ namespace A_Level_Computing_Project
             }
             else if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null)
             {
-                if (MapArray[SelectedX, SelectedY].ArmyInside.Moved)
+                if (MapArray[SelectedX, SelectedY].ArmyInside.Retreating)
+                {
+                    _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY + "; Retreating", new Vector2(666, 423), Color.White);
+                }
+                else if (MapArray[SelectedX, SelectedY].ArmyInside.Moved)
                 {
                     _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY + "; Moved", new Vector2(666, 423), Color.White);
                 }
