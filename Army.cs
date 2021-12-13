@@ -64,6 +64,7 @@ namespace A_Level_Computing_Project
         public string OwnedBy;
         public bool Moved, Retreating;
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
+        public List<Province> BeenThrough = new List<Province>();
 
         public void Move(Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
         {
@@ -254,66 +255,64 @@ namespace A_Level_Computing_Project
             int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
             int[] TempDArray = new int[2];
 
-            if (DX > X && DY < Y)
+            //if (DX > X && DY < Y)
+            //{
+            //    TempDArray[0] = X + 1;
+            //    TempDArray[1] = Y - 1;
+            //    Retreating = true;
+            //}
+            //else if (DX > X && DY > Y)
+            //{
+            //    TempDArray[0] = X + 1;
+            //    TempDArray[1] = Y + 1;
+            //    Retreating = true;
+            //}
+            //else if (DX < X && DY > Y)
+            //{
+            //    TempDArray[0] = X - 1;
+            //    TempDArray[1] = Y + 1;
+            //    Retreating = true;
+            //}
+            //else if (DX < X && DY < Y)
+            //{
+            //    TempDArray[0] = X - 1;
+            //    TempDArray[1] = Y - 1;
+            //    Retreating = true;
+            //}
+            //else if (DX == X && DY > Y)
+            //{
+            //    TempDArray[0] = X;
+            //    TempDArray[1] = Y + 1;
+            //    Retreating = true;
+            //}
+            //else if (DX == X && DY < Y)
+            //{
+            //    TempDArray[0] = X;
+            //    TempDArray[1] = Y - 1;
+            //    Retreating = true;
+            //}
+            //else if (DX > X && DY == Y)
+            //{
+            //    TempDArray[0] = X + 1;
+            //    TempDArray[1] = Y;
+            //    Retreating = true;
+            //}
+            //else if (DX < X && DY == Y)
+            //{
+            //    TempDArray[0] = X - 1;
+            //    TempDArray[1] = Y;
+            //    Retreating = true;
+            //}
+            //else if (DX == X && DY == Y)
+            //{
+            //    TempDArray[0] = X;
+            //    TempDArray[1] = Y - 1;
+            //    Retreating = true;
+            //}
+
+            if (DX == TempDArray[0] && DY == TempDArray[1])
             {
-                TempDArray[0] = X + 1;
-                TempDArray[1] = Y - 1;
-                Retreating = true;
-            }
-            else if (DX > X && DY > Y)
-            {
-                TempDArray[0] = X + 1;
-                TempDArray[1] = Y + 1;
-                Retreating = true;
-            }
-            else if (DX < X && DY > Y)
-            {
-                TempDArray[0] = X - 1;
-                TempDArray[1] = Y + 1;
-                Retreating = true;
-            }
-            else if (DX < X && DY < Y)
-            {
-                TempDArray[0] = X - 1;
-                TempDArray[1] = Y - 1;
-                Retreating = true;
-            }
-            else if (DX == X && DY > Y)
-            {
-                TempDArray[0] = X;
-                TempDArray[1] = Y + 1;
-                Retreating = true;
-            }
-            else if (DX == X && DY < Y)
-            {
-                TempDArray[0] = X;
-                TempDArray[1] = Y - 1;
-                Retreating = true;
-            }
-            else if (DX > X && DY == Y)
-            {
-                TempDArray[0] = X + 1;
-                TempDArray[1] = Y;
-                Retreating = true;
-            }
-            else if (DX < X && DY == Y)
-            {
-                TempDArray[0] = X - 1;
-                TempDArray[1] = Y;
-                Retreating = true;
-            }
-            else if (DX == X && DY == Y)
-            {
-                if (Infantry == 0 && Archers == 0 && Cavalry == 0)
-                {
-                    TempDArray[0] = X;
-                    TempDArray[1] = Y - 1;
-                    Retreating = true;
-                }
-                else
-                {
-                    Retreating = false;
-                }
+                Retreating = false;
             }
 
             if (!(TempDArray[0] == 0 && TempDArray[1] == 0))

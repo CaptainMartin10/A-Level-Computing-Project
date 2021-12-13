@@ -8,6 +8,7 @@ namespace A_Level_Computing_Project
         public string Terrain, Structure;
         public Country OwnedBy;
         public RealArmy ArmyInside;
+        public int[,] AdjacentTo = new int[6, 2];
 
         public Province(int x, int y)
         {
