@@ -4,16 +4,51 @@ namespace A_Level_Computing_Project
 {
     public class Province
     {
-        public int X, Y, StructureLevel, StructureGarrison, StructureProduction;
+        public int X, Y, StructureLevel;
         public string Terrain, Structure;
         public Country OwnedBy;
         public RealArmy ArmyInside;
         public int[,] AdjacentTo = new int[6, 2];
 
-        public Province(int x, int y)
+        public Province(int x, int y, int sl, string s, Country o, string t)
         {
             X = x;
             Y = y;
+            StructureLevel = sl;
+            Structure = s;
+            OwnedBy = o;
+            Terrain = t;
+
+            if (X % 2 == 0)
+            {
+                AdjacentTo[0, 0] = X;
+                AdjacentTo[0, 1] = Y - 1;
+                AdjacentTo[1, 0] = X + 1;
+                AdjacentTo[1, 1] = Y - 1;
+                AdjacentTo[2, 0] = X + 1;
+                AdjacentTo[2, 1] = Y;
+                AdjacentTo[3, 0] = X;
+                AdjacentTo[3, 1] = Y + 1;
+                AdjacentTo[4, 0] = X - 1;
+                AdjacentTo[4, 1] = Y;
+                AdjacentTo[5, 0] = X - 1;
+                AdjacentTo[5, 1] = Y - 1;
+            }
+            else if (X % 2 == 1)
+            {
+                AdjacentTo[0, 0] = X;
+                AdjacentTo[0, 1] = Y - 1;
+                AdjacentTo[1, 0] = X + 1;
+                AdjacentTo[1, 1] = Y;
+                AdjacentTo[2, 0] = X + 1;
+                AdjacentTo[2, 1] = Y + 1;
+                AdjacentTo[3, 0] = X;
+                AdjacentTo[3, 1] = Y + 1;
+                AdjacentTo[4, 0] = X - 1;
+                AdjacentTo[4, 1] = Y + 1;
+                AdjacentTo[5, 0] = X - 1;
+                AdjacentTo[5, 1] = Y;
+            }
         }
 
         public bool ContainsMousePointer(Point mousePoint)

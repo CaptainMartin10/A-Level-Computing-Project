@@ -186,11 +186,14 @@ namespace A_Level_Computing_Project
                 {
                     if (line.Length == 35)
                     {
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))] = new Province(Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2)));
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].StructureLevel = Convert.ToInt32(line.Substring(4, 1));
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Structure = (line.Substring(5, 10)).Trim();
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].OwnedBy = Countries[Convert.ToInt32(line.Substring(15, 2))];
-                        MapArray[Convert.ToInt32(line.Substring(0, 2)), Convert.ToInt32(line.Substring(2, 2))].Terrain = (line.Substring(17, 18)).Trim();
+                        int X = Convert.ToInt32(line.Substring(0, 2));
+                        int Y = Convert.ToInt32(line.Substring(2, 2));
+                        int StructureLevel = Convert.ToInt32(line.Substring(4, 1));
+                        string Structure = (line.Substring(5, 10)).Trim();
+                        Country OwnedBy = Countries[Convert.ToInt32(line.Substring(15, 2))];
+                        string Terrain = (line.Substring(17, 18)).Trim();
+
+                        MapArray[X, Y] = new Province(X, Y, StructureLevel, Structure, OwnedBy, Terrain);
                     }
                 }
             }
