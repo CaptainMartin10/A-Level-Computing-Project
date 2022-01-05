@@ -294,74 +294,22 @@ namespace A_Level_Computing_Project
                             ArmyX = Countries[Player].CapitalX;
                             ArmyY = Countries[Player].CapitalY;
                         }
-                        else if (Countries[Player].CapitalX % 2 == 0)
+                        else
                         {
-                            if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].ArmyInside == null && MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].OwnedBy == Countries[Player])
+                            for (int i = 5; i >= 0; i--)
                             {
-                                ArmyX = Countries[Player].CapitalX;
-                                ArmyY = Countries[Player].CapitalY - 1;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY - 1].ArmyInside == null && MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY - 1].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX + 1;
-                                ArmyY = Countries[Player].CapitalY - 1;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY].ArmyInside == null && MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX + 1;
-                                ArmyY = Countries[Player].CapitalY;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY + 1].ArmyInside == null && MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY + 1].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX;
-                                ArmyY = Countries[Player].CapitalY + 1;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY].ArmyInside == null && MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX - 1;
-                                ArmyY = Countries[Player].CapitalY;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY - 1].ArmyInside == null && MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY - 1].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX - 1;
-                                ArmyY = Countries[Player].CapitalY - 1;
+                                if (MapArray[MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 0], MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 1]].ArmyInside == null)
+                                {
+                                    ArmyX = MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 0];
+                                    ArmyY = MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 1];
+                                }
                             }
                         }
-                        else if (Countries[Player].CapitalX % 2 == 1)
+                        if (ArmyX != 0 || ArmyY != 0)
                         {
-                            if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].ArmyInside == null && MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY - 1].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX;
-                                ArmyY = Countries[Player].CapitalY - 1;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY].ArmyInside == null && MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX + 1;
-                                ArmyY = Countries[Player].CapitalY;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY + 1].ArmyInside == null && MapArray[Countries[Player].CapitalX + 1, Countries[Player].CapitalY + 1].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX + 1;
-                                ArmyY = Countries[Player].CapitalY + 1;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY + 1].ArmyInside == null && MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY + 1].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX;
-                                ArmyY = Countries[Player].CapitalY + 1;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY + 1].ArmyInside == null && MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY + 1].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX - 1;
-                                ArmyY = Countries[Player].CapitalY + 1;
-                            }
-                            else if (MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY].ArmyInside == null && MapArray[Countries[Player].CapitalX - 1, Countries[Player].CapitalY].OwnedBy == Countries[Player])
-                            {
-                                ArmyX = Countries[Player].CapitalX - 1;
-                                ArmyY = Countries[Player].CapitalY;
-                            }
-                        }
-                        Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name);
-                        MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = Countries[Player].Levy;
+                            Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name);
+                            MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = Countries[Player].Levy;
+                        }                                                               
                     }
                     else if (RaiseLevyArmyButton.Contains(mousePoint) && Countries[Player].Levy != null)
                     {
