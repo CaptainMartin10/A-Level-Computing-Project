@@ -254,6 +254,17 @@ namespace A_Level_Computing_Project
             int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
             int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
             int[] TempDArray = new int[2];
+            int[] PrevCheck = new int[2];
+            PrevCheck[0] = X;
+            PrevCheck[1] = Y;
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (MapArray[MapArray[X,Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].ArmyInside == null)
+                {
+                    if()
+                }
+            }
 
             if (DX == TempDArray[0] && DY == TempDArray[1])
             {

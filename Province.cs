@@ -100,5 +100,10 @@ namespace A_Level_Computing_Project
                 return false;
             }
         }
+
+        public bool IsBetterDirection (Province Comparison, Province Destination)
+        {
+            return false;
+        }
     }
 }
