@@ -230,7 +230,7 @@ namespace A_Level_Computing_Project
                         }
                         else
                         {
-                            MapArray[SelectedX, SelectedY].ArmyInside.Battle(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
                         }
                     }
 

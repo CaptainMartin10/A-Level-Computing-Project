@@ -69,47 +69,26 @@ namespace A_Level_Computing_Project
         public void Move(Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
         {
             PhantomArmy p = new PhantomArmy(TempPArray[0], TempPArray[1]);
-            if (!(p.X == 0 && p.Y == 0))
+            if (!(p.X == 0 && p.Y == 0) && !Moved)
             {
-                if (Selected == "Standing" && !Countries[CountryIndexes[OwnedBy]].Standing.Moved)
+                if (!Retreating)
                 {
-                    if (!Retreating)
+                    Countries[CountryIndexes[OwnedBy]].Gold -= ((Infantry + Archers + Cavalry) / 10);
+                    Countries[CountryIndexes[OwnedBy]].Food -= (((Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10);
+                    if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
                     {
-                        Countries[CountryIndexes[OwnedBy]].Gold -= ((Countries[CountryIndexes[OwnedBy]].Standing.Infantry + Countries[CountryIndexes[OwnedBy]].Standing.Archers + Countries[CountryIndexes[OwnedBy]].Standing.Cavalry) / 10);
-                        Countries[CountryIndexes[OwnedBy]].Food -= (((Countries[CountryIndexes[OwnedBy]].Standing.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[CountryIndexes[OwnedBy]].Standing.Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Countries[CountryIndexes[OwnedBy]].Standing.Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10);
-                        if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
-                        {
-                            Countries[CountryIndexes[OwnedBy]].Wood -= ((Countries[CountryIndexes[OwnedBy]].Standing.Infantry + Countries[CountryIndexes[OwnedBy]].Standing.Archers + Countries[CountryIndexes[OwnedBy]].Standing.Cavalry) / 10);
-                        }
+                        Countries[CountryIndexes[OwnedBy]].Wood -= ((Infantry + Archers + Cavalry) / 10);
                     }
-
-                    MapArray[p.X, p.Y].ArmyInside = Countries[CountryIndexes[OwnedBy]].Standing;
-                    int TempX = Countries[CountryIndexes[OwnedBy]].Standing.X;
-                    int TempY = Countries[CountryIndexes[OwnedBy]].Standing.Y;
-                    Countries[CountryIndexes[OwnedBy]].Standing.X = p.X;
-                    Countries[CountryIndexes[OwnedBy]].Standing.Y = p.Y;
-                    MapArray[TempX, TempY].ArmyInside = null;
-                    Countries[CountryIndexes[OwnedBy]].Standing.Moved = true;
                 }
-                else if (Selected == "Levy" && !Countries[CountryIndexes[OwnedBy]].Levy.Moved)
-                {
-                    if (!Retreating)
-                    {
-                        Countries[CountryIndexes[OwnedBy]].Food -= ((Countries[CountryIndexes[OwnedBy]].Levy.Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) / 10);
-                        if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
-                        {
-                            Countries[CountryIndexes[OwnedBy]].Wood -= ((Countries[CountryIndexes[OwnedBy]].Levy.Infantry) / 10);
-                        }
-                    }
 
-                    MapArray[p.X, p.Y].ArmyInside = Countries[CountryIndexes[OwnedBy]].Levy;
-                    int TempX = Countries[CountryIndexes[OwnedBy]].Levy.X;
-                    int TempY = Countries[CountryIndexes[OwnedBy]].Levy.Y;
-                    Countries[CountryIndexes[OwnedBy]].Levy.X = p.X;
-                    Countries[CountryIndexes[OwnedBy]].Levy.Y = p.Y;
-                    MapArray[TempX, TempY].ArmyInside = null;
-                    Countries[CountryIndexes[OwnedBy]].Levy.Moved = true;
-                }
+                MapArray[p.X, p.Y].ArmyInside = this;
+                int TempX = X;
+                int TempY = Y;
+                X = p.X;
+                Y = p.Y;
+                MapArray[TempX, TempY].ArmyInside = null;
+                Moved = true;
+
             }
         }
 
@@ -140,52 +119,87 @@ namespace A_Level_Computing_Project
             return Score;
         }
 
-        public void Battle(RealArmy Defender, Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
+        public void Attack(RealArmy Defender, Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
         {
-            int AttackerScore = GetArmyScore();
-            int DefenderScore = Defender.GetArmyScore();
-            while (AttackerScore > 0 && DefenderScore > 0)
+            if (!(Defender.X == 0 && Defender.Y == 0))
             {
-                if (AttackerScore > DefenderScore)
+                int AttackerScore = GetArmyScore();
+                int DefenderScore = Defender.GetArmyScore();
+                bool Won = false;
+                while (AttackerScore > 0 && DefenderScore > 0)
                 {
-                    Defender.Infantry *= (DefenderScore / AttackerScore);
-                    Defender.Archers *= (DefenderScore / AttackerScore);
-                    Defender.Cavalry *= (DefenderScore / AttackerScore);
-                    Infantry -= (Infantry * ((DefenderScore / AttackerScore) / 10));
-                    Archers -= (Archers * ((DefenderScore / AttackerScore) / 10));
-                    Cavalry -= (Cavalry * ((DefenderScore / AttackerScore) / 10));
-                    DefenderScore = Defender.GetArmyScore();
-                    AttackerScore = GetArmyScore();
+                    if (AttackerScore > DefenderScore)
+                    {
+                        Defender.Infantry *= (DefenderScore / AttackerScore);
+                        Defender.Archers *= (DefenderScore / AttackerScore);
+                        Defender.Cavalry *= (DefenderScore / AttackerScore);
+                        Infantry -= (Infantry * ((DefenderScore / AttackerScore) / 10));
+                        Archers -= (Archers * ((DefenderScore / AttackerScore) / 10));
+                        Cavalry -= (Cavalry * ((DefenderScore / AttackerScore) / 10));
+                        DefenderScore = Defender.GetArmyScore();
+                        AttackerScore = GetArmyScore();
+                    }
+                    else if (AttackerScore < DefenderScore)
+                    {
+                        Infantry *= (AttackerScore / DefenderScore);
+                        Archers *= (AttackerScore / DefenderScore);
+                        Cavalry *= (AttackerScore / DefenderScore);
+                        Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
+                        Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
+                        Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
+                        DefenderScore = Defender.GetArmyScore();
+                        AttackerScore = GetArmyScore();
+                    }
+                    else if (AttackerScore == DefenderScore)
+                    {
+                        DefenderScore++;
+                        Infantry *= (AttackerScore / DefenderScore);
+                        Archers *= (AttackerScore / DefenderScore);
+                        Cavalry *= (AttackerScore / DefenderScore);
+                        Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
+                        Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
+                        Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
+                        DefenderScore = Defender.GetArmyScore();
+                        AttackerScore = GetArmyScore();
+                    }
                 }
-                else if (AttackerScore < DefenderScore)
-                {
-                    Infantry *= (AttackerScore / DefenderScore);
-                    Archers *= (AttackerScore / DefenderScore);
-                    Cavalry *= (AttackerScore / DefenderScore);
-                    Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
-                    Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
-                    Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
-                    DefenderScore = Defender.GetArmyScore();
-                    AttackerScore = GetArmyScore();
-                }
-                else if (AttackerScore == DefenderScore)
-                {
-                    DefenderScore++;
-                    Infantry *= (AttackerScore / DefenderScore);
-                    Archers *= (AttackerScore / DefenderScore);
-                    Cavalry *= (AttackerScore / DefenderScore);
-                    Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
-                    Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
-                    Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
-                    DefenderScore = Defender.GetArmyScore();
-                    AttackerScore = GetArmyScore();
-                }
-            }
 
-            if (DefenderScore == 0)
-            {
-                
-                Defender.Move(MapArray, Countries, Selected, ArmyCosts,, CountryIndexes)
+                if (DefenderScore == 0)
+                {
+                    Won = true;
+                }
+
+                if (Won)
+                {
+                    int MoveLocationIndex = 0;
+                    int[] MoveLocation = new int[2];
+
+                    for (int i = 0; i < 6; i++)
+                    {
+                        if (X == MapArray[Defender.X, Defender.Y].AdjacentTo[i, 0] && Y == MapArray[Defender.X, Defender.Y].AdjacentTo[i, 1])
+                        {
+                            MoveLocationIndex = i;
+                        }
+                    }
+
+                    MoveLocationIndex -= 3;
+                    if (MoveLocationIndex < 0)
+                    {
+                        MoveLocationIndex += 6;
+                    }
+
+                    MoveLocation[0] = MapArray[Defender.X, Defender.Y].AdjacentTo[MoveLocationIndex, 0];
+                    MoveLocation[1] = MapArray[Defender.X, Defender.Y].AdjacentTo[MoveLocationIndex, 1];
+
+                    Moved = true;
+                    Defender.Retreating = true;
+                    Defender.Move(MapArray, Countries, Selected, ArmyCosts, MoveLocation, CountryIndexes);
+                }
+                else
+                {
+                    Moved = true;
+                    Retreating = true;
+                }
             }
         }
 
@@ -193,27 +207,30 @@ namespace A_Level_Computing_Project
         {
             int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
             int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
-            int[] TempDArray = new int[2];
-            int[] PrevCheck = new int[2];
-            PrevCheck[0] = X;
-            PrevCheck[1] = Y;
+            int[] BestDArray = new int[2];
+            BestDArray[0] = X;
+            BestDArray[1] = Y;
 
             for (int i = 0; i < 6; i++)
             {
                 if (MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].ArmyInside == null)
                 {
-
+                    if (MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].IsCloserThan(MapArray[BestDArray[0], BestDArray[1]], MapArray[DX, DY]))
+                    {
+                        BestDArray[0] = MapArray[X, Y].AdjacentTo[i, 0];
+                        BestDArray[1] = MapArray[X, Y].AdjacentTo[i, 1];
+                    }
                 }
             }
 
-            if (DX == TempDArray[0] && DY == TempDArray[1])
+            if (DX == BestDArray[0] && DY == BestDArray[1])
             {
                 Retreating = false;
             }
 
-            if (!(TempDArray[0] == 0 && TempDArray[1] == 0))
+            if (!(BestDArray[0] == 0 && BestDArray[1] == 0))
             {
-                Move(MapArray, Countries, Selected, ArmyCosts, TempDArray, CountryIndexes);
+                Move(MapArray, Countries, Selected, ArmyCosts, BestDArray, CountryIndexes);
             }
         }
     }

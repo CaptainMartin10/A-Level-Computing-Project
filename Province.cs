@@ -101,8 +101,13 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public bool IsBetterDirection (Province Comparison, Province Destination)
+        public bool IsCloserThan(Province Comparison, Province Destination)
         {
+            if (Destination.X - Comparison.X <= Destination.X - X || Destination.Y - Comparison.Y <= Destination.Y - Y)
+            {
+                return false;
+            }
+            
             return false;
         }
     }
