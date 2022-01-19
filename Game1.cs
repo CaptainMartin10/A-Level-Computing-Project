@@ -223,7 +223,15 @@ namespace A_Level_Computing_Project
                 {
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating)
                     {
-                        MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, Selected, ArmyCosts, MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray), CountryIndexes);
+                        int[] MoveLocation = MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray);
+                        if(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside == null)
+                        {
+                            MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, Selected, ArmyCosts, MoveLocation, CountryIndexes);
+                        }
+                        else
+                        {
+                            MapArray[SelectedX, SelectedY].ArmyInside.Battle(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                        }
                     }
 
                     foreach (Province Hex in MapArray)
