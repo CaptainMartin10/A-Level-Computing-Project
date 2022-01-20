@@ -227,9 +227,15 @@ namespace A_Level_Computing_Project
                 Retreating = false;
             }
 
-            if (!(BestDArray[0] == 0 && BestDArray[1] == 0))
+            if (!(BestDArray[0] == 0 && BestDArray[1] == 0) && !(BestDArray[0] == X && BestDArray[1] == Y))
             {
-                Move(MapArray, Countries, ArmyCosts, BestDArray, CountryIndexes);
+                MapArray[BestDArray[0], BestDArray[1]].ArmyInside = this;
+                int TempX = X;
+                int TempY = Y;
+                X = BestDArray[0];
+                Y = BestDArray[1];
+                MapArray[TempX, TempY].ArmyInside = null;
+                Moved = true;
             }
         }
     }

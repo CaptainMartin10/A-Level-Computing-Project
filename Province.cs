@@ -107,8 +107,8 @@ namespace A_Level_Computing_Project
             {
                 return false;
             }
-            
-            return false;
+
+            return true;
         }
     }
 }
