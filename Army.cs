@@ -66,10 +66,10 @@ namespace A_Level_Computing_Project
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
         public List<Province> BeenThrough = new List<Province>();
 
-        public void Move(Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
+        public void Move(Province[,] MapArray, Country[] Countries, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
         {
             PhantomArmy p = new PhantomArmy(TempPArray[0], TempPArray[1]);
-            if (!(p.X == 0 && p.Y == 0) && !Moved)
+            if (!Moved)
             {
                 if (!Retreating)
                 {
@@ -88,7 +88,6 @@ namespace A_Level_Computing_Project
                 Y = p.Y;
                 MapArray[TempX, TempY].ArmyInside = null;
                 Moved = true;
-
             }
         }
 
@@ -119,7 +118,7 @@ namespace A_Level_Computing_Project
             return Score;
         }
 
-        public void Attack(RealArmy Defender, Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
+        public void Attack(RealArmy Defender, Province[,] MapArray, Country[] Countries, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
         {
             if (!(Defender.X == 0 && Defender.Y == 0))
             {
@@ -193,7 +192,7 @@ namespace A_Level_Computing_Project
 
                     Moved = true;
                     Defender.Retreating = true;
-                    Defender.Move(MapArray, Countries, Selected, ArmyCosts, MoveLocation, CountryIndexes);
+                    Defender.Move(MapArray, Countries, ArmyCosts, MoveLocation, CountryIndexes);
                 }
                 else
                 {
@@ -203,7 +202,7 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public void Retreat(Province[,] MapArray, Country[] Countries, string Selected, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
+        public void Retreat(Province[,] MapArray, Country[] Countries, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
         {
             int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
             int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
@@ -215,7 +214,7 @@ namespace A_Level_Computing_Project
             {
                 if (MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].ArmyInside == null)
                 {
-                    if (MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].IsCloserThan(MapArray[BestDArray[0], BestDArray[1]], MapArray[DX, DY]))
+                    if (MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].IsCloserThan(MapArray[BestDArray[0], BestDArray[1]], MapArray[DX, DY]) && !BeenThrough.Contains(MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]]))
                     {
                         BestDArray[0] = MapArray[X, Y].AdjacentTo[i, 0];
                         BestDArray[1] = MapArray[X, Y].AdjacentTo[i, 1];
@@ -230,7 +229,7 @@ namespace A_Level_Computing_Project
 
             if (!(BestDArray[0] == 0 && BestDArray[1] == 0))
             {
-                Move(MapArray, Countries, Selected, ArmyCosts, BestDArray, CountryIndexes);
+                Move(MapArray, Countries, ArmyCosts, BestDArray, CountryIndexes);
             }
         }
     }

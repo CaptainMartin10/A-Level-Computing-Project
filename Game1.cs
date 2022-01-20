@@ -131,7 +131,7 @@ namespace A_Level_Computing_Project
             MineProduction.Add("Mountains", 100);
             MineProduction.Add("Wasteland", 50);
             MineProduction.Add("Marshland", 0);
-            
+
             ArmyCosts.Add("Grassland", 1);
             ArmyCosts.Add("Hills", 2);
             ArmyCosts.Add("Forest", 1);
@@ -224,13 +224,16 @@ namespace A_Level_Computing_Project
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating)
                     {
                         int[] MoveLocation = MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray);
-                        if(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside == null)
+                        if (!(MoveLocation[0] == 0 && MoveLocation[1] == 0))
                         {
-                            MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, Selected, ArmyCosts, MoveLocation, CountryIndexes);
-                        }
-                        else
-                        {
-                            MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside == null)
+                            {
+                                MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, ArmyCosts, MoveLocation, CountryIndexes);
+                            }
+                            else if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside != null)
+                            {
+                                MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, ArmyCosts, CountryIndexes);
+                            }
                         }
                     }
 
@@ -317,7 +320,7 @@ namespace A_Level_Computing_Project
                         {
                             Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name);
                             MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = Countries[Player].Levy;
-                        }                                                               
+                        }
                     }
                     else if (RaiseLevyArmyButton.Contains(mousePoint) && Countries[Player].Levy != null)
                     {
@@ -435,7 +438,7 @@ namespace A_Level_Computing_Project
                     c.Standing.Moved = false;
                     if (c.Standing.Retreating)
                     {
-                        c.Standing.Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                        c.Standing.Retreat(MapArray, Countries, ArmyCosts, CountryIndexes);
                     }
 
                     if (c.Levy != null)
@@ -443,7 +446,7 @@ namespace A_Level_Computing_Project
                         c.Levy.Moved = false;
                         if (c.Levy.Retreating)
                         {
-                            c.Levy.Retreat(MapArray, Countries, Selected, ArmyCosts, CountryIndexes);
+                            c.Levy.Retreat(MapArray, Countries, ArmyCosts, CountryIndexes);
                         }
                     }
                 }
@@ -484,7 +487,7 @@ namespace A_Level_Computing_Project
                 if (MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
                 {
                     //_spriteBatch.Draw(ArmyMovement, new Vector2(, ), Color.White);
-                    
+
                     for (int i = 0; i < 6; i++)
                     {
                         if (MapArray[SelectedX, SelectedY].AdjacentTo[i, 0] >= 0 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 0] <= 23 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 1] >= 0 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 1] <= 17)
@@ -498,7 +501,7 @@ namespace A_Level_Computing_Project
                                 _spriteBatch.Draw(ArmyMovement, new Vector2(MapArray[SelectedX, SelectedY].AdjacentTo[i, 0] * 27, (MapArray[SelectedX, SelectedY].AdjacentTo[i, 1] * 36) + 18), Color.White);
                             }
                         }
-                    }                  
+                    }
                 }
             }
 
