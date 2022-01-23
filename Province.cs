@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace A_Level_Computing_Project
 {
@@ -101,14 +103,32 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public bool IsCloserThan(Province Comparison, Province Destination)
+        public int[] FindBestDirection(Province Destination, Province[,] MapArray)
         {
-            if (Destination.X - Comparison.X <= Destination.X - X || Destination.Y - Comparison.Y <= Destination.Y - Y)
-            {
-                return false;
-            }
+            int[] BestDirection = new int[2];
+            List<int> Options = new List<int>();
+            Options.Add(0);
+            Options.Add(1);
+            Options.Add(2);
+            Options.Add(3);
+            Options.Add(4);
+            Options.Add(5);
+            List<int> OptionsToRemove = new List<int>();
 
-            return true;
+            foreach (int i in Options)
+            {
+                if (MapArray[AdjacentTo[i,0], AdjacentTo[i, 1]].ArmyInside != null)
+                {
+                    OptionsToRemove.Add(i);
+                }
+            }
+            foreach (int i in OptionsToRemove)
+            {
+                Options.Remove(i);
+            }
+            OptionsToRemove.Clear();
+
+            return BestDirection;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public int SelectedX, SelectedY, Player = 8, Turn = 1;
+        public int SelectedX, SelectedY, Player = 4, Turn = 1;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement;
         public MouseState CurrentMouseState, LastMouseState;
@@ -21,7 +21,7 @@ namespace A_Level_Computing_Project
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
         public Dictionary<string, int> ForesterProduction = new Dictionary<string, int>();
         public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
-        public Dictionary<string, int> ArmyCosts = new Dictionary<string, int>();
+        public Dictionary<string, int> TerrainCosts = new Dictionary<string, int>();
         public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
         public Dictionary<string, Texture2D> ArmyTextures = new Dictionary<string, Texture2D>();
         public Dictionary<string, int> CountryIndexes = new Dictionary<string, int>();
@@ -132,16 +132,16 @@ namespace A_Level_Computing_Project
             MineProduction.Add("Wasteland", 50);
             MineProduction.Add("Marshland", 0);
 
-            ArmyCosts.Add("Grassland", 1);
-            ArmyCosts.Add("Hills", 2);
-            ArmyCosts.Add("Forest", 1);
-            ArmyCosts.Add("Forest Hills", 2);
-            ArmyCosts.Add("Dense Forest", 1);
-            ArmyCosts.Add("Dense Forest Hills", 2);
-            ArmyCosts.Add("Mountains", 3);
-            ArmyCosts.Add("Wasteland", 2);
-            ArmyCosts.Add("Marshland", 3);
-            ArmyCosts.Add("Shallow Sea", 2);
+            TerrainCosts.Add("Grassland", 1);
+            TerrainCosts.Add("Hills", 2);
+            TerrainCosts.Add("Forest", 1);
+            TerrainCosts.Add("Forest Hills", 2);
+            TerrainCosts.Add("Dense Forest", 1);
+            TerrainCosts.Add("Dense Forest Hills", 2);
+            TerrainCosts.Add("Mountains", 3);
+            TerrainCosts.Add("Wasteland", 2);
+            TerrainCosts.Add("Marshland", 3);
+            TerrainCosts.Add("Shallow Sea", 2);
 
             OwnedMapmode.Add("Unowned", Unowned);
             OwnedMapmode.Add("Lindon", Lindon);
@@ -228,11 +228,11 @@ namespace A_Level_Computing_Project
                         {
                             if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside == null)
                             {
-                                MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, ArmyCosts, MoveLocation, CountryIndexes);
+                                MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
                             }
                             else if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside != null)
                             {
-                                MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, ArmyCosts, CountryIndexes);
+                                MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, TerrainCosts, CountryIndexes);
                             }
                         }
                     }
@@ -438,7 +438,7 @@ namespace A_Level_Computing_Project
                     c.Standing.Moved = false;
                     if (c.Standing.Retreating)
                     {
-                        c.Standing.Retreat(MapArray, Countries, ArmyCosts, CountryIndexes);
+                        c.Standing.Retreat(MapArray, Countries, CountryIndexes);
                     }
 
                     if (c.Levy != null)
@@ -446,7 +446,7 @@ namespace A_Level_Computing_Project
                         c.Levy.Moved = false;
                         if (c.Levy.Retreating)
                         {
-                            c.Levy.Retreat(MapArray, Countries, ArmyCosts, CountryIndexes);
+                            c.Levy.Retreat(MapArray, Countries, CountryIndexes);
                         }
                     }
                 }

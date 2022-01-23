@@ -66,7 +66,7 @@ namespace A_Level_Computing_Project
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
         public List<Province> BeenThrough = new List<Province>();
 
-        public void Move(Province[,] MapArray, Country[] Countries, Dictionary<string, int> ArmyCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
+        public void Move(Province[,] MapArray, Country[] Countries, Dictionary<string, int> TerrainCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
         {
             PhantomArmy p = new PhantomArmy(TempPArray[0], TempPArray[1]);
             if (!Moved)
@@ -74,7 +74,7 @@ namespace A_Level_Computing_Project
                 if (!Retreating)
                 {
                     Countries[CountryIndexes[OwnedBy]].Gold -= ((Infantry + Archers + Cavalry) / 10);
-                    Countries[CountryIndexes[OwnedBy]].Food -= (((Infantry * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * ArmyCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * ArmyCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10);
+                    Countries[CountryIndexes[OwnedBy]].Food -= (((Infantry * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * TerrainCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10);
                     if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
                     {
                         Countries[CountryIndexes[OwnedBy]].Wood -= ((Infantry + Archers + Cavalry) / 10);
@@ -118,7 +118,7 @@ namespace A_Level_Computing_Project
             return Score;
         }
 
-        public void Attack(RealArmy Defender, Province[,] MapArray, Country[] Countries, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
+        public void Attack(RealArmy Defender, Province[,] MapArray, Country[] Countries, Dictionary<string, int> TerrainCosts, Dictionary<string, int> CountryIndexes)
         {
             if (!(Defender.X == 0 && Defender.Y == 0))
             {
@@ -192,7 +192,7 @@ namespace A_Level_Computing_Project
 
                     Moved = true;
                     Defender.Retreating = true;
-                    Defender.Move(MapArray, Countries, ArmyCosts, MoveLocation, CountryIndexes);
+                    Defender.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
                 }
                 else
                 {
@@ -202,25 +202,11 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public void Retreat(Province[,] MapArray, Country[] Countries, Dictionary<string, int> ArmyCosts, Dictionary<string, int> CountryIndexes)
+        public void Retreat(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes)
         {
             int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
             int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
-            int[] BestDArray = new int[2];
-            BestDArray[0] = X;
-            BestDArray[1] = Y;
-
-            for (int i = 0; i < 6; i++)
-            {
-                if (MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].ArmyInside == null)
-                {
-                    if (MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]].IsCloserThan(MapArray[BestDArray[0], BestDArray[1]], MapArray[DX, DY]) && !BeenThrough.Contains(MapArray[MapArray[X, Y].AdjacentTo[i, 0], MapArray[X, Y].AdjacentTo[i, 1]]))
-                    {
-                        BestDArray[0] = MapArray[X, Y].AdjacentTo[i, 0];
-                        BestDArray[1] = MapArray[X, Y].AdjacentTo[i, 1];
-                    }
-                }
-            }
+            int[] BestDArray = MapArray[X, Y].FindBestDirection(MapArray[DX, DY], MapArray);
 
             if (DX == BestDArray[0] && DY == BestDArray[1])
             {
@@ -234,6 +220,7 @@ namespace A_Level_Computing_Project
                 int TempY = Y;
                 X = BestDArray[0];
                 Y = BestDArray[1];
+                BeenThrough.Add(MapArray[TempX, TempY]);
                 MapArray[TempX, TempY].ArmyInside = null;
                 Moved = true;
             }
