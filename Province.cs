@@ -117,7 +117,7 @@ namespace A_Level_Computing_Project
 
             foreach (int i in Options)
             {
-                if (MapArray[AdjacentTo[i,0], AdjacentTo[i, 1]].ArmyInside != null)
+                if (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null)
                 {
                     OptionsToRemove.Add(i);
                 }
@@ -127,6 +127,49 @@ namespace A_Level_Computing_Project
                 Options.Remove(i);
             }
             OptionsToRemove.Clear();
+
+            if (Destination.X == X)
+            {
+                OptionsToRemove.Add(1);
+                OptionsToRemove.Add(2);
+                OptionsToRemove.Add(4);
+                OptionsToRemove.Add(5);
+
+                if (Destination.Y > Y)
+                {
+                    OptionsToRemove.Add(0);
+                }
+                else if (Destination.Y < Y)
+                {
+                    OptionsToRemove.Add(3);
+                }
+            }
+            else if (Destination.X > X)
+            {
+                OptionsToRemove.Add(0);
+                OptionsToRemove.Add(3);
+                OptionsToRemove.Add(4);
+                OptionsToRemove.Add(5);
+
+            }
+            else if (Destination.X < X)
+            {
+                OptionsToRemove.Add(0);
+                OptionsToRemove.Add(1);
+                OptionsToRemove.Add(2);
+                OptionsToRemove.Add(3);
+
+            }
+
+            foreach (int i in OptionsToRemove)
+            {
+                Options.Remove(i);
+            }
+            OptionsToRemove.Clear();
+
+
+            BestDirection[0] = AdjacentTo[Options[0], 0];
+            BestDirection[1] = AdjacentTo[Options[0], 1];
 
             return BestDirection;
         }
