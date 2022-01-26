@@ -105,16 +105,114 @@ namespace A_Level_Computing_Project
 
         public int[] FindBestDirection(Province Destination, Province[,] MapArray)
         {
-            int[] BestDirection = new int[2];
             List<int> Options = new List<int>();
-            Options.Add(0);
-            Options.Add(1);
-            Options.Add(2);
-            Options.Add(3);
-            Options.Add(4);
-            Options.Add(5);
-            List<int> OptionsToRemove = new List<int>();
+            if (Destination.X == X)
+            {
+                if (Destination.Y > Y)
+                {
+                    Options.Add(3);
+                    Options.Add(4);
+                    Options.Add(2);
+                    Options.Add(5);
+                    Options.Add(1);
+                    Options.Add(0);
+                }
+                else if (Destination.Y < Y)
+                {
+                    Options.Add(0);
+                    Options.Add(1);
+                    Options.Add(5);
+                    Options.Add(2);
+                    Options.Add(4);
+                    Options.Add(3);
+                }
+            }
+            else if (Destination.X > X)
+            {
+                if (Destination.Y > Y)
+                {
+                    Options.Add(2);
+                    Options.Add(3);
+                    Options.Add(1);
+                    Options.Add(4);
+                    Options.Add(0);
+                    Options.Add(5);
+                }
+                else if (Destination.Y < Y)
+                {
+                    Options.Add(1);
+                    Options.Add(2);
+                    Options.Add(0);
+                    Options.Add(3);
+                    Options.Add(5);
+                    Options.Add(4);
+                }
+                else if (Destination.Y == Y)
+                {
+                    if (X % 2 == 0)
+                    {
+                        Options.Add(2);
+                        Options.Add(3);
+                        Options.Add(1);
+                        Options.Add(4);
+                        Options.Add(0);
+                        Options.Add(5);
+                    }
+                    else if (X % 2 == 1)
+                    {
+                        Options.Add(1);
+                        Options.Add(2);
+                        Options.Add(0);
+                        Options.Add(3);
+                        Options.Add(5);
+                        Options.Add(4);
+                    }
+                }
+            }
+            else if (Destination.X < X)
+            {
+                if (Destination.Y > Y)
+                {
+                    Options.Add(4);
+                    Options.Add(5);
+                    Options.Add(3);
+                    Options.Add(0);
+                    Options.Add(2);
+                    Options.Add(1);
+                }
+                else if (Destination.Y < Y)
+                {
+                    Options.Add(5);
+                    Options.Add(0);
+                    Options.Add(4);
+                    Options.Add(1);
+                    Options.Add(3);
+                    Options.Add(2);
+                }
+                else if (Destination.Y == Y)
+                {
+                    if (X % 2 == 0)
+                    {
+                        Options.Add(4);
+                        Options.Add(5);
+                        Options.Add(3);
+                        Options.Add(0);
+                        Options.Add(2);
+                        Options.Add(1);
+                    }
+                    else if (X % 2 == 1)
+                    {
+                        Options.Add(5);
+                        Options.Add(0);
+                        Options.Add(4);
+                        Options.Add(1);
+                        Options.Add(3);
+                        Options.Add(2);
+                    }
+                }
+            }
 
+            List<int> OptionsToRemove = new List<int>();
             foreach (int i in Options)
             {
                 if (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null)
@@ -128,46 +226,7 @@ namespace A_Level_Computing_Project
             }
             OptionsToRemove.Clear();
 
-            if (Destination.X == X)
-            {
-                OptionsToRemove.Add(1);
-                OptionsToRemove.Add(2);
-                OptionsToRemove.Add(4);
-                OptionsToRemove.Add(5);
-
-                if (Destination.Y > Y)
-                {
-                    OptionsToRemove.Add(0);
-                }
-                else if (Destination.Y < Y)
-                {
-                    OptionsToRemove.Add(3);
-                }
-            }
-            else if (Destination.X > X)
-            {
-                OptionsToRemove.Add(0);
-                OptionsToRemove.Add(3);
-                OptionsToRemove.Add(4);
-                OptionsToRemove.Add(5);
-
-            }
-            else if (Destination.X < X)
-            {
-                OptionsToRemove.Add(0);
-                OptionsToRemove.Add(1);
-                OptionsToRemove.Add(2);
-                OptionsToRemove.Add(3);
-
-            }
-
-            foreach (int i in OptionsToRemove)
-            {
-                Options.Remove(i);
-            }
-            OptionsToRemove.Clear();
-
-
+            int[] BestDirection = new int[2];
             BestDirection[0] = AdjacentTo[Options[0], 0];
             BestDirection[1] = AdjacentTo[Options[0], 1];
 
