@@ -192,6 +192,7 @@ namespace A_Level_Computing_Project
 
                     Moved = true;
                     Defender.Retreating = true;
+                    Defender.Moved = false;
                     Defender.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
                 }
                 else

@@ -614,7 +614,24 @@ namespace A_Level_Computing_Project
             if (Selected == "Province")
             {
                 _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Owned By: " + (MapArray[SelectedX, SelectedY].OwnedBy).Name, new Vector2(666, 463), Color.White);
+
+                bool Colonisable = false;
+                for (int i = 0; i < 6; i++)
+                {
+                    if (MapArray[SelectedX, SelectedY].AdjacentTo[i, 0] >= 0 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 0] <= 23 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 1] >= 0 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 1] <= 23 && MapArray[MapArray[SelectedX, SelectedY].AdjacentTo[i, 0], MapArray[SelectedX, SelectedY].AdjacentTo[i, 1]].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].OwnedBy == Countries[0])
+                    {
+                        Colonisable = true;
+                    }
+                }
+                if (Colonisable)
+                {
+                    _spriteBatch.DrawString(MenuFont, "Colonise", new Vector2(666, 463), Color.White);
+                }
+                else
+                {
+                    _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].OwnedBy.Name, new Vector2(666, 463), Color.White);
+                }
+                
                 _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[SelectedX, SelectedY].Terrain, new Vector2(666, 503), Color.White);
 
                 if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == false)
@@ -656,6 +673,7 @@ namespace A_Level_Computing_Project
                 {
                     _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY + "; Not Moved", new Vector2(666, 423), Color.White);
                 }
+
                 _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy, new Vector2(666, 463), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Type: " + Selected, new Vector2(666, 503), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Infantry: " + MapArray[SelectedX, SelectedY].ArmyInside.Infantry, new Vector2(666, 543), Color.White);
