@@ -263,6 +263,16 @@ namespace A_Level_Computing_Project
                         }
                     }
 
+                    Rectangle ColoniseButton = new Rectangle(663, 464, 498, 36);
+                    if (ColoniseButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].Colonisable(MapArray, Countries, Player))
+                    {
+                        if (Countries[Player].CanAfford(200, 200, 200, 200, 200))
+                        {
+                            Countries[Player].Pay(200, 200, 200, 200, 200);
+                            MapArray[SelectedX, SelectedY].OwnedBy = Countries[Player];
+                        }
+                    }
+
                     Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
                     if (BuildStructureButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure == "Empty")
                     {
@@ -615,15 +625,7 @@ namespace A_Level_Computing_Project
             {
                 _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
 
-                bool Colonisable = false;
-                for (int i = 0; i < 6; i++)
-                {
-                    if (MapArray[SelectedX, SelectedY].AdjacentTo[i, 0] >= 0 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 0] <= 23 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 1] >= 0 && MapArray[SelectedX, SelectedY].AdjacentTo[i, 1] <= 23 && MapArray[MapArray[SelectedX, SelectedY].AdjacentTo[i, 0], MapArray[SelectedX, SelectedY].AdjacentTo[i, 1]].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].OwnedBy == Countries[0])
-                    {
-                        Colonisable = true;
-                    }
-                }
-                if (Colonisable)
+                if (MapArray[SelectedX, SelectedY].Colonisable(MapArray, Countries, Player))
                 {
                     _spriteBatch.DrawString(MenuFont, "Colonise", new Vector2(666, 463), Color.White);
                 }
@@ -631,7 +633,7 @@ namespace A_Level_Computing_Project
                 {
                     _spriteBatch.DrawString(MenuFont, "Owned By: " + MapArray[SelectedX, SelectedY].OwnedBy.Name, new Vector2(666, 463), Color.White);
                 }
-                
+
                 _spriteBatch.DrawString(MenuFont, "Terrain: " + MapArray[SelectedX, SelectedY].Terrain, new Vector2(666, 503), Color.White);
 
                 if (MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].OwnedBy.IsAI == false)

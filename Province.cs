@@ -232,5 +232,32 @@ namespace A_Level_Computing_Project
 
             return BestDirection;
         }
+
+        public bool Colonisable(Province[,] MapArray, Country[] Countries, int Player)
+        {
+            bool Colonisable = false;
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 23 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Player] && OwnedBy == Countries[0])
+                {
+                    Colonisable = true;
+                }
+            }
+
+            return Colonisable;
+        }
+
+        public bool Seigeable(Province[,] MapArray, Country[] Countries, int Player)
+        {
+            bool Seigeable = false;
+
+            if (Colonisable(MapArray, Countries, Player) && ArmyInside.OwnedBy == Countries[Player].Name)
+            {
+
+            }
+
+            return Seigeable;
+        }
     }
 }
