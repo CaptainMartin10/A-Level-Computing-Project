@@ -221,7 +221,7 @@ namespace A_Level_Computing_Project
             {
                 if (Menu == "Game")
                 {
-                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating)
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating && !MapArray[SelectedX, SelectedY].ArmyInside.Sieging)
                     {
                         int[] MoveLocation = MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, mousePoint, MapArray);
                         if (!(MoveLocation[0] == 0 && MoveLocation[1] == 0))
@@ -263,14 +263,18 @@ namespace A_Level_Computing_Project
                         }
                     }
 
-                    Rectangle ColoniseButton = new Rectangle(663, 464, 498, 36);
-                    if (ColoniseButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].Colonisable(MapArray, Countries, Player))
+                    Rectangle GainLandButton = new Rectangle(663, 464, 498, 36);
+                    if (GainLandButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].CanColonise(MapArray, Countries, Player))
                     {
                         if (Countries[Player].CanAfford(200, 200, 200, 200, 200))
                         {
                             Countries[Player].Pay(200, 200, 200, 200, 200);
                             MapArray[SelectedX, SelectedY].OwnedBy = Countries[Player];
                         }
+                    }
+                    else if (GainLandButton.Contains(mousePoint) && MapArray[SelectedX, SelectedY].CanAnnex(MapArray, Countries, Player))
+                    {
+                        MapArray[SelectedX, SelectedY].ArmyInside.Sieging = true;
                     }
 
                     Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
@@ -414,7 +418,10 @@ namespace A_Level_Computing_Project
                         C.Stone += 50;
                         C.Wood += 50;
                         C.Food += 50;
-                        C.Standing.Infantry += 50;
+                        if (!C.Standing.Retreating && !C.Standing.Sieging)
+                        {
+                            C.Standing.Infantry += 50;
+                        }
                     }
                     foreach (Province P in MapArray)
                     {
@@ -437,9 +444,12 @@ namespace A_Level_Computing_Project
                         }
                         else if (P.Structure == "Fort")
                         {
-                            P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
-                            P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
-                            P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
+                            if (!P.OwnedBy.Standing.Retreating && !P.OwnedBy.Standing.Sieging)
+                            {
+                                P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
+                                P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
+                                P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
+                            }
                         }
                     }
                 }
@@ -450,6 +460,10 @@ namespace A_Level_Computing_Project
                     {
                         c.Standing.Retreat(MapArray, Countries, CountryIndexes);
                     }
+                    else if (c.Standing.Sieging)
+                    {
+                        c.Standing.Siege(MapArray, Countries, CountryIndexes);
+                    }
 
                     if (c.Levy != null)
                     {
@@ -457,6 +471,10 @@ namespace A_Level_Computing_Project
                         if (c.Levy.Retreating)
                         {
                             c.Levy.Retreat(MapArray, Countries, CountryIndexes);
+                        }
+                        else if (c.Levy.Sieging)
+                        {
+                            c.Levy.Siege(MapArray, Countries, CountryIndexes);
                         }
                     }
                 }
@@ -625,9 +643,13 @@ namespace A_Level_Computing_Project
             {
                 _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
 
-                if (MapArray[SelectedX, SelectedY].Colonisable(MapArray, Countries, Player))
+                if (MapArray[SelectedX, SelectedY].CanColonise(MapArray, Countries, Player))
                 {
                     _spriteBatch.DrawString(MenuFont, "Colonise", new Vector2(666, 463), Color.White);
+                }
+                else if (MapArray[SelectedX, SelectedY].CanAnnex(MapArray, Countries, Player))
+                {
+                    _spriteBatch.DrawString(MenuFont, "Siege", new Vector2(666, 463), Color.White);
                 }
                 else
                 {
@@ -666,6 +688,10 @@ namespace A_Level_Computing_Project
                 if (MapArray[SelectedX, SelectedY].ArmyInside.Retreating)
                 {
                     _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY + "; Retreating", new Vector2(666, 423), Color.White);
+                }
+                else if (MapArray[SelectedX, SelectedY].ArmyInside.Sieging)
+                {
+                    _spriteBatch.DrawString(MenuFont, "Army Location: " + SelectedX + " , " + SelectedY + "; Siegeing", new Vector2(666, 423), Color.White);
                 }
                 else if (MapArray[SelectedX, SelectedY].ArmyInside.Moved)
                 {

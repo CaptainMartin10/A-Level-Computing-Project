@@ -60,9 +60,9 @@ namespace A_Level_Computing_Project
 
     public class RealArmy : Army
     {
-        public int Infantry, Cavalry, Archers;
+        public int Infantry, Cavalry, Archers, SiegeProgress;
         public string OwnedBy;
-        public bool Moved, Retreating;
+        public bool Moved, Retreating, Sieging;
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
         public List<Province> BeenThrough = new List<Province>();
 
@@ -192,6 +192,7 @@ namespace A_Level_Computing_Project
 
                     Moved = true;
                     Defender.Retreating = true;
+                    Defender.Sieging = false;
                     Defender.Moved = false;
                     Defender.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
                 }
@@ -224,6 +225,19 @@ namespace A_Level_Computing_Project
                 BeenThrough.Add(MapArray[TempX, TempY]);
                 MapArray[TempX, TempY].ArmyInside = null;
                 Moved = true;
+            }
+        }
+
+        public void Siege(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes)
+        {
+            if (SiegeProgress >= 100)
+            {
+                Sieging = false;
+                MapArray[X, Y].OwnedBy = Countries[CountryIndexes[OwnedBy]];
+            }
+            else
+            {
+                SiegeProgress += 20;
             }
         }
     }

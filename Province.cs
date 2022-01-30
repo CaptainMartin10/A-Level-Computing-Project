@@ -213,7 +213,7 @@ namespace A_Level_Computing_Project
             }
 
             List<int> OptionsToRemove = new List<int>();
-            for(int i = 0; i < 0; i++)
+            for (int i = 0; i < 0; i++)
             {
                 if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Shallow Sea" || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Deep Ocean"))
                 {
@@ -233,31 +233,34 @@ namespace A_Level_Computing_Project
             return BestDirection;
         }
 
-        public bool Colonisable(Province[,] MapArray, Country[] Countries, int Player)
+        public bool CanColonise(Province[,] MapArray, Country[] Countries, int Coloniser)
         {
-            bool Colonisable = false;
+            bool CanColonise = false;
 
             for (int i = 0; i < 6; i++)
             {
-                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 23 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Player] && OwnedBy == Countries[0])
+                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 23 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Coloniser] && OwnedBy == Countries[0])
                 {
-                    Colonisable = true;
+                    CanColonise = true;
                 }
             }
 
-            return Colonisable;
+            return CanColonise;
         }
 
-        public bool Seigeable(Province[,] MapArray, Country[] Countries, int Player)
+        public bool CanAnnex(Province[,] MapArray, Country[] Countries, int Annexer)
         {
-            bool Seigeable = false;
+            bool CanAnnex = false;
 
-            if (Colonisable(MapArray, Countries, Player) && ArmyInside.OwnedBy == Countries[Player].Name)
+            for (int i = 0; i < 6; i++)
             {
-
+                if (ArmyInside != null && ArmyInside.OwnedBy == Countries[Annexer].Name && AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 23 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Annexer] && OwnedBy != Countries[0] && OwnedBy != Countries[Annexer] && !ArmyInside.Moved && !ArmyInside.Sieging)
+                {
+                    CanAnnex = true;
+                }
             }
 
-            return Seigeable;
+            return CanAnnex;
         }
     }
 }
