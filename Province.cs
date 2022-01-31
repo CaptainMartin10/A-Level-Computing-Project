@@ -213,7 +213,7 @@ namespace A_Level_Computing_Project
             }
 
             List<int> OptionsToRemove = new List<int>();
-            for (int i = 0; i < 0; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Shallow Sea" || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Deep Ocean"))
                 {

@@ -12,7 +12,7 @@ namespace A_Level_Computing_Project
         public StandingArmy Standing;
         public LevyArmy Levy;
 
-        public Country (bool AI, string n, int x, int y)
+        public Country (bool AI, string n, int x, int y, int ax, int ay)
         {
             IsAI = AI;
             Name = n;
@@ -23,7 +23,7 @@ namespace A_Level_Computing_Project
             Metal = 500;
             CapitalX = x;
             CapitalY = y;
-            Standing = new StandingArmy(x, y, Name);
+            Standing = new StandingArmy(ax, ay, Name);
         }
 
         public bool CanAfford(int ReqGold, int ReqWood, int ReqStone, int ReqFood, int ReqMetal)

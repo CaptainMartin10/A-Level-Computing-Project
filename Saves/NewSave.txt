@@ -1,3 +1,15 @@
+00Unowned00000000
+01Lindon07080708
+02Blue Mountains North07050705
+03Blue Mountains South07100710
+04Shire12081208
+05Rangers of the North18061806
+06Rivendell21052105
+07Breeland16081608
+08Dunland18141814
+09Isengard20162016
+10Gundabad22012201
+
 00000     Empty00        Deep Ocean
 00010     Empty00        Deep Ocean
 00020     Empty00        Deep Ocean

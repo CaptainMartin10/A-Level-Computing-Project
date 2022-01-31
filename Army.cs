@@ -230,14 +230,13 @@ namespace A_Level_Computing_Project
 
         public void Siege(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes)
         {
+            SiegeProgress += 20;
+
             if (SiegeProgress >= 100)
             {
                 Sieging = false;
+                SiegeProgress = 0;
                 MapArray[X, Y].OwnedBy = Countries[CountryIndexes[OwnedBy]];
-            }
-            else
-            {
-                SiegeProgress += 20;
             }
         }
     }

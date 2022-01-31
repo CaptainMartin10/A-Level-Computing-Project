@@ -85,17 +85,17 @@ namespace A_Level_Computing_Project
 
             MenuFont = Content.Load<SpriteFont>("MenuFont");
 
-            Countries[0] = new Country(true, "Unowned", 0, 0);
-            Countries[1] = new Country(true, "Lindon", 7, 8);
-            Countries[2] = new Country(true, "Blue Mountains North", 7, 5);
-            Countries[3] = new Country(true, "Blue Mountains South", 7, 10);
-            Countries[4] = new Country(true, "Shire", 12, 8);
-            Countries[5] = new Country(true, "Rangers of the North", 18, 6);
-            Countries[6] = new Country(true, "Rivendell", 21, 5);
-            Countries[7] = new Country(true, "Breeland", 16, 8);
-            Countries[8] = new Country(true, "Dunland", 18, 14);
-            Countries[9] = new Country(true, "Isengard", 20, 16);
-            Countries[10] = new Country(true, "Gundabad", 22, 1);
+            Countries[0] = new Country(true, "Unowned", 0, 0, 0, 0);
+            Countries[1] = new Country(true, "Lindon", 7, 8, 7, 8);
+            Countries[2] = new Country(true, "Blue Mountains North", 7, 5, 7, 5);
+            Countries[3] = new Country(true, "Blue Mountains South", 7, 10, 7, 10);
+            Countries[4] = new Country(true, "Shire", 12, 8, 12, 8);
+            Countries[5] = new Country(true, "Rangers of the North", 18, 6, 18, 6);
+            Countries[6] = new Country(true, "Rivendell", 21, 5, 21, 5);
+            Countries[7] = new Country(true, "Breeland", 16, 8, 16, 8);
+            Countries[8] = new Country(true, "Dunland", 18, 14, 18, 14);
+            Countries[9] = new Country(true, "Isengard", 20, 16, 20, 16);
+            Countries[10] = new Country(true, "Gundabad", 22, 1, 22, 1);
 
             Countries[Player].IsAI = false;
 
@@ -194,6 +194,10 @@ namespace A_Level_Computing_Project
                         string Terrain = (line.Substring(17, 18)).Trim();
 
                         MapArray[X, Y] = new Province(X, Y, StructureLevel, Structure, OwnedBy, Terrain);
+                    }
+                    else if (line.Length == 30)
+                    {
+
                     }
                 }
             }
