@@ -243,23 +243,27 @@ namespace A_Level_Computing_Project
 
     public class StandingArmy : RealArmy
     {
-        public StandingArmy(int x, int y, string o)
+        public StandingArmy(int x, int y, int i, int a, int c, string o, bool m)
         {
             X = x;
             Y = y;
+            Infantry = i;
+            Archers = a;
+            Cavalry = c;
             OwnedBy = o;
+            Moved = m;
         }
     }
 
     public class LevyArmy : RealArmy
     {
-        public LevyArmy(int x, int y, int i, string o)
+        public LevyArmy(int x, int y, int i, string o, bool m)
         {
             X = x;
             Y = y;
             Infantry = i;
             OwnedBy = o;
-            Moved = true;
+            Moved = m;
         }
     }
 

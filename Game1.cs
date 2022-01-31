@@ -14,6 +14,7 @@ namespace A_Level_Computing_Project
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
         public int SelectedX, SelectedY, Player = 4, Turn = 1;
+        public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement;
         public MouseState CurrentMouseState, LastMouseState;
@@ -25,7 +26,6 @@ namespace A_Level_Computing_Project
         public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
         public Dictionary<string, Texture2D> ArmyTextures = new Dictionary<string, Texture2D>();
         public Dictionary<string, int> CountryIndexes = new Dictionary<string, int>();
-        public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
 
         public Game1()
         {
@@ -84,23 +84,6 @@ namespace A_Level_Computing_Project
             GundabadArmy = Content.Load<Texture2D>("Gundabad Army");
 
             MenuFont = Content.Load<SpriteFont>("MenuFont");
-
-            Countries[0] = new Country(true, "Unowned", 0, 0, 0, 0);
-            Countries[1] = new Country(true, "Lindon", 7, 8, 7, 8);
-            Countries[2] = new Country(true, "Blue Mountains North", 7, 5, 7, 5);
-            Countries[3] = new Country(true, "Blue Mountains South", 7, 10, 7, 10);
-            Countries[4] = new Country(true, "Shire", 12, 8, 12, 8);
-            Countries[5] = new Country(true, "Rangers of the North", 18, 6, 18, 6);
-            Countries[6] = new Country(true, "Rivendell", 21, 5, 21, 5);
-            Countries[7] = new Country(true, "Breeland", 16, 8, 16, 8);
-            Countries[8] = new Country(true, "Dunland", 18, 14, 18, 14);
-            Countries[9] = new Country(true, "Isengard", 20, 16, 20, 16);
-            Countries[10] = new Country(true, "Gundabad", 22, 1, 22, 1);
-
-            Countries[Player].IsAI = false;
-
-            SelectedX = Countries[Player].CapitalX;
-            SelectedY = Countries[Player].CapitalY;
 
             FarmProduction.Add("Grassland", 100);
             FarmProduction.Add("Hills", 75);
@@ -179,7 +162,7 @@ namespace A_Level_Computing_Project
 
             string NewSave = Path.GetFullPath("Saves/NewSave.txt");
             NewSave = NewSave.Remove(NewSave.Length - 41, 24);
-            using (StreamReader sr = new StreamReader(Path.GetFullPath(NewSave)))
+            using (StreamReader sr = new StreamReader(NewSave))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
@@ -195,16 +178,57 @@ namespace A_Level_Computing_Project
 
                         MapArray[X, Y] = new Province(X, Y, StructureLevel, Structure, OwnedBy, Terrain);
                     }
-                    else if (line.Length == 30)
+                    else if (line.Length == 56)
                     {
+                        int ID = Convert.ToInt32(line.Substring(0, 2));
+                        string Name = (line.Substring(2, 20)).Trim();
+                        int CX = Convert.ToInt32(line.Substring(22, 2));
+                        int CY = Convert.ToInt32(line.Substring(24, 2));
+                        int Gold = Convert.ToInt32(line.Substring(26, 6));
+                        int Wood = Convert.ToInt32(line.Substring(32, 6));
+                        int Stone = Convert.ToInt32(line.Substring(38, 6));
+                        int Food = Convert.ToInt32(line.Substring(44, 6));
+                        int Metal = Convert.ToInt32(line.Substring(50, 6));
 
+                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal);
+                    }
+                    else if (line.Length == 29)
+                    {
+                        int ID = Convert.ToInt32(line.Substring(0, 2));
+                        int X = Convert.ToInt32(line.Substring(2, 2));
+                        int Y = Convert.ToInt32(line.Substring(4, 2));
+                        int Infantry = Convert.ToInt32(line.Substring(6, 6));
+                        int Archers = Convert.ToInt32(line.Substring(12, 6));
+                        int Cavalry = Convert.ToInt32(line.Substring(18, 6));
+                        bool Moved = bool.Parse((line.Substring(24, 5)).Trim());
+
+                        Countries[ID].Standing = new StandingArmy(X, Y, Infantry, Archers, Cavalry, Countries[ID].Name, Moved);
+                    }
+                    else if (line.Length == 17)
+                    {
+                        int ID = Convert.ToInt32(line.Substring(0, 2));
+                        int X = Convert.ToInt32(line.Substring(2, 2));
+                        int Y = Convert.ToInt32(line.Substring(4, 2));
+                        int Infantry = Convert.ToInt32(line.Substring(6, 6));
+                        bool Moved = bool.Parse((line.Substring(12, 5)).Trim());
+
+                        Countries[ID].Levy = new LevyArmy(X, Y, Infantry, Countries[ID].Name, Moved);
                     }
                 }
             }
 
+            Countries[Player].IsAI = false;
+            SelectedX = Countries[Player].CapitalX;
+            SelectedY = Countries[Player].CapitalY;
+
             foreach (Country C in Countries)
             {
                 MapArray[C.Standing.X, C.Standing.Y].ArmyInside = C.Standing;
+
+                if (C.Levy != null)
+                {
+                    MapArray[C.Levy.X, C.Levy.Y].ArmyInside = C.Levy;
+                }
             }
         }
 
@@ -336,7 +360,7 @@ namespace A_Level_Computing_Project
                         }
                         if (ArmyX != 0 || ArmyY != 0)
                         {
-                            Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name);
+                            Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name, true);
                             MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = Countries[Player].Levy;
                         }
                     }

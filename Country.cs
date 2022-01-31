@@ -12,18 +12,17 @@ namespace A_Level_Computing_Project
         public StandingArmy Standing;
         public LevyArmy Levy;
 
-        public Country (bool AI, string n, int x, int y, int ax, int ay)
+        public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m)
         {
             IsAI = AI;
             Name = n;
-            Gold = 500;
-            Wood = 500;
-            Stone = 500;
-            Food = 500;
-            Metal = 500;
+            Gold = g;
+            Wood = w;
+            Stone = s;
+            Food = f;
+            Metal = m;
             CapitalX = x;
             CapitalY = y;
-            Standing = new StandingArmy(ax, ay, Name);
         }
 
         public bool CanAfford(int ReqGold, int ReqWood, int ReqStone, int ReqFood, int ReqMetal)
