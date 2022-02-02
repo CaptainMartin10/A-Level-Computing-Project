@@ -97,10 +97,8 @@ namespace A_Level_Computing_Project
                     return false;
                 }
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public int[] FindBestDirection(Province Destination, Province[,] MapArray)

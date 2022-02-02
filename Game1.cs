@@ -16,7 +16,7 @@ namespace A_Level_Computing_Project
         public int SelectedX, SelectedY, Player = 4, Turn = 1;
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
         public SpriteFont MenuFont;
-        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement;
+        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu;
         public MouseState CurrentMouseState, LastMouseState;
         public KeyboardState CurrentKeyboardState, LastKeyboardState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
@@ -58,6 +58,7 @@ namespace A_Level_Computing_Project
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
             BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
+            PauseMenu = Content.Load<Texture2D>("Start Menu");
 
             Unowned = Content.Load<Texture2D>("Blank Tile");
             Lindon = Content.Load<Texture2D>("Lindon Tile");
@@ -234,11 +235,6 @@ namespace A_Level_Computing_Project
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            {
-                Exit();
-            }
-
             // TODO: Add your update logic here
 
             CurrentMouseState = Mouse.GetState();
@@ -420,6 +416,11 @@ namespace A_Level_Computing_Project
                         Menu = "Game";
                     }
                 }
+
+                if (Menu == "Pause")
+                {
+                    Exit();
+                }
             }
 
             if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
@@ -505,6 +506,18 @@ namespace A_Level_Computing_Project
                             c.Levy.Siege(MapArray, Countries, CountryIndexes);
                         }
                     }
+                }
+            }
+
+            if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+            {
+                if (Menu == "Game")
+                {
+                    Menu = "Pause";
+                }
+                else if (Menu == "Pause" || Menu == "Build Structure")
+                {
+                    Menu = "Game";
                 }
             }
 
@@ -740,6 +753,11 @@ namespace A_Level_Computing_Project
             if (Menu == "Build Structure")
             {
                 _spriteBatch.Draw(BuildStructureMenu, new Vector2(215, 306), Color.White);
+            }
+
+            if (Menu == "Pause")
+            {
+                _spriteBatch.Draw(PauseMenu, new Vector2(242, 249), Color.White);
             }
 
             _spriteBatch.End();
