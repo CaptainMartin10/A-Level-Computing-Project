@@ -15,6 +15,7 @@ namespace A_Level_Computing_Project
         public Country[] Countries = new Country[11];
         public int SelectedX, SelectedY, Player = 4, Turn = 1;
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
+        public bool MenuChanged = false;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu;
         public MouseState CurrentMouseState, LastMouseState;
@@ -161,62 +162,7 @@ namespace A_Level_Computing_Project
             CountryIndexes.Add("Isengard", 9);
             CountryIndexes.Add("Gundabad", 10);
 
-            string NewSave = Path.GetFullPath("Saves/NewSave.txt");
-            NewSave = NewSave.Remove(NewSave.Length - 41, 24);
-            using (StreamReader sr = new StreamReader(NewSave))
-            {
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (line.Length == 35)
-                    {
-                        int X = Convert.ToInt32(line.Substring(0, 2));
-                        int Y = Convert.ToInt32(line.Substring(2, 2));
-                        int StructureLevel = Convert.ToInt32(line.Substring(4, 1));
-                        string Structure = (line.Substring(5, 10)).Trim();
-                        Country OwnedBy = Countries[Convert.ToInt32(line.Substring(15, 2))];
-                        string Terrain = (line.Substring(17, 18)).Trim();
-
-                        MapArray[X, Y] = new Province(X, Y, StructureLevel, Structure, OwnedBy, Terrain);
-                    }
-                    else if (line.Length == 56)
-                    {
-                        int ID = Convert.ToInt32(line.Substring(0, 2));
-                        string Name = (line.Substring(2, 20)).Trim();
-                        int CX = Convert.ToInt32(line.Substring(22, 2));
-                        int CY = Convert.ToInt32(line.Substring(24, 2));
-                        int Gold = Convert.ToInt32(line.Substring(26, 6));
-                        int Wood = Convert.ToInt32(line.Substring(32, 6));
-                        int Stone = Convert.ToInt32(line.Substring(38, 6));
-                        int Food = Convert.ToInt32(line.Substring(44, 6));
-                        int Metal = Convert.ToInt32(line.Substring(50, 6));
-
-                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal);
-                    }
-                    else if (line.Length == 29)
-                    {
-                        int ID = Convert.ToInt32(line.Substring(0, 2));
-                        int X = Convert.ToInt32(line.Substring(2, 2));
-                        int Y = Convert.ToInt32(line.Substring(4, 2));
-                        int Infantry = Convert.ToInt32(line.Substring(6, 6));
-                        int Archers = Convert.ToInt32(line.Substring(12, 6));
-                        int Cavalry = Convert.ToInt32(line.Substring(18, 6));
-                        bool Moved = bool.Parse((line.Substring(24, 5)).Trim());
-
-                        Countries[ID].Standing = new StandingArmy(X, Y, Infantry, Archers, Cavalry, Countries[ID].Name, Moved);
-                    }
-                    else if (line.Length == 17)
-                    {
-                        int ID = Convert.ToInt32(line.Substring(0, 2));
-                        int X = Convert.ToInt32(line.Substring(2, 2));
-                        int Y = Convert.ToInt32(line.Substring(4, 2));
-                        int Infantry = Convert.ToInt32(line.Substring(6, 6));
-                        bool Moved = bool.Parse((line.Substring(12, 5)).Trim());
-
-                        Countries[ID].Levy = new LevyArmy(X, Y, Infantry, Countries[ID].Name, Moved);
-                    }
-                }
-            }
+            LoadSave("Saves/NewSave.txt");
 
             Countries[Player].IsAI = false;
             SelectedX = Countries[Player].CapitalX;
@@ -241,9 +187,9 @@ namespace A_Level_Computing_Project
             Point mousePoint = new Point(CurrentMouseState.X, CurrentMouseState.Y);
             CurrentKeyboardState = Keyboard.GetState();
 
-            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+            if (Menu == "Game")
             {
-                if (Menu == "Game")
+                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
                 {
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating && !MapArray[SelectedX, SelectedY].ArmyInside.Sieging)
                     {
@@ -368,7 +314,102 @@ namespace A_Level_Computing_Project
                     }
                 }
 
-                if (Menu == "Build Structure")
+                if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
+                {
+                    if (Mapmode == "Regular")
+                    {
+                        Mapmode = "ShowOwned";
+                    }
+                    else if (Mapmode == "ShowOwned")
+                    {
+                        Mapmode = "Regular";
+                    }
+                }
+
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Enter) && LastKeyboardState.IsKeyDown(Keys.Enter))
+                {
+                    Turn++;
+                    if (Countries[Player].Levy == null)
+                    {
+                        foreach (Country C in Countries)
+                        {
+                            C.Gold += 50;
+                            C.Metal += 50;
+                            C.Stone += 50;
+                            C.Wood += 50;
+                            C.Food += 50;
+                            if (!C.Standing.Retreating && !C.Standing.Sieging)
+                            {
+                                C.Standing.Infantry += 50;
+                            }
+                        }
+                        foreach (Province P in MapArray)
+                        {
+                            if (P.Structure == "Settlement")
+                            {
+                                P.OwnedBy.Gold += 100 * P.StructureLevel;
+                            }
+                            else if (P.Structure == "Mine")
+                            {
+                                P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
+                                P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
+                            }
+                            else if (P.Structure == "Farm")
+                            {
+                                P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
+                            }
+                            else if (P.Structure == "Forester")
+                            {
+                                P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                            }
+                            else if (P.Structure == "Fort")
+                            {
+                                if (!P.OwnedBy.Standing.Retreating && !P.OwnedBy.Standing.Sieging)
+                                {
+                                    P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
+                                    P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
+                                    P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
+                                }
+                            }
+                        }
+                    }
+                    foreach (Country c in Countries)
+                    {
+                        c.Standing.Moved = false;
+                        if (c.Standing.Retreating)
+                        {
+                            c.Standing.Retreat(MapArray, Countries, CountryIndexes);
+                        }
+                        else if (c.Standing.Sieging)
+                        {
+                            c.Standing.Siege(MapArray, Countries, CountryIndexes);
+                        }
+
+                        if (c.Levy != null)
+                        {
+                            c.Levy.Moved = false;
+                            if (c.Levy.Retreating)
+                            {
+                                c.Levy.Retreat(MapArray, Countries, CountryIndexes);
+                            }
+                            else if (c.Levy.Sieging)
+                            {
+                                c.Levy.Siege(MapArray, Countries, CountryIndexes);
+                            }
+                        }
+                    }
+                }
+
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
+                {
+                    Menu = "Pause";
+                    MenuChanged = true;
+                }
+            }
+
+            if (Menu == "Build Structure")
+            {
+                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
                 {
                     Rectangle BuildSettlement = new Rectangle(221, 312, 40, 40);
                     Rectangle BuildFort = new Rectangle(265, 312, 40, 40);
@@ -416,115 +457,56 @@ namespace A_Level_Computing_Project
                         Menu = "Game";
                     }
                 }
-
-                if (Menu == "Pause")
-                {
-                    Exit();
-                }
-            }
-
-            if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
-            {
-                if (Mapmode == "Regular")
-                {
-                    Mapmode = "ShowOwned";
-                }
-                else if (Mapmode == "ShowOwned")
-                {
-                    Mapmode = "Regular";
-                }
-            }
-
-            if (!CurrentKeyboardState.IsKeyDown(Keys.Enter) && LastKeyboardState.IsKeyDown(Keys.Enter))
-            {
-                Turn++;
-                if (Countries[Player].Levy == null)
-                {
-                    foreach (Country C in Countries)
-                    {
-                        C.Gold += 50;
-                        C.Metal += 50;
-                        C.Stone += 50;
-                        C.Wood += 50;
-                        C.Food += 50;
-                        if (!C.Standing.Retreating && !C.Standing.Sieging)
-                        {
-                            C.Standing.Infantry += 50;
-                        }
-                    }
-                    foreach (Province P in MapArray)
-                    {
-                        if (P.Structure == "Settlement")
-                        {
-                            P.OwnedBy.Gold += 100 * P.StructureLevel;
-                        }
-                        else if (P.Structure == "Mine")
-                        {
-                            P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
-                            P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
-                        }
-                        else if (P.Structure == "Farm")
-                        {
-                            P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
-                        }
-                        else if (P.Structure == "Forester")
-                        {
-                            P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
-                        }
-                        else if (P.Structure == "Fort")
-                        {
-                            if (!P.OwnedBy.Standing.Retreating && !P.OwnedBy.Standing.Sieging)
-                            {
-                                P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
-                                P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
-                                P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
-                            }
-                        }
-                    }
-                }
-                foreach (Country c in Countries)
-                {
-                    c.Standing.Moved = false;
-                    if (c.Standing.Retreating)
-                    {
-                        c.Standing.Retreat(MapArray, Countries, CountryIndexes);
-                    }
-                    else if (c.Standing.Sieging)
-                    {
-                        c.Standing.Siege(MapArray, Countries, CountryIndexes);
-                    }
-
-                    if (c.Levy != null)
-                    {
-                        c.Levy.Moved = false;
-                        if (c.Levy.Retreating)
-                        {
-                            c.Levy.Retreat(MapArray, Countries, CountryIndexes);
-                        }
-                        else if (c.Levy.Sieging)
-                        {
-                            c.Levy.Siege(MapArray, Countries, CountryIndexes);
-                        }
-                    }
-                }
-            }
-
-            if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
-            {
-                if (Menu == "Game")
-                {
-                    Menu = "Pause";
-                }
-                else if (Menu == "Pause" || Menu == "Build Structure")
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
                 {
                     Menu = "Game";
+                    MenuChanged = true;
+                }
+            }
+
+            if (Menu == "Pause")
+            {
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
+                {
+                    Menu = "Game";
+                    MenuChanged = true;
+                }
+
+                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    Rectangle NewGameButton = new Rectangle(247, 254, 160, 36);
+                    if (NewGameButton.Contains(mousePoint))
+                    {
+                        LoadSave("Saves/NewSave.txt");
+                        Menu = "Game";
+                    }
+
+                    Rectangle LoadGameButton = new Rectangle(247, 294, 160, 36);
+                    if (LoadGameButton.Contains(mousePoint))
+                    {
+
+                    }
+
+                    Rectangle SaveGameButton = new Rectangle(247, 334, 160, 36);
+                    if (SaveGameButton.Contains(mousePoint))
+                    {
+                        SaveGame();
+                    }
+
+                    Rectangle ExitGameButton = new Rectangle(247, 374, 160, 36);
+                    if (ExitGameButton.Contains(mousePoint))
+                    {
+                        Exit();
+                    }
                 }
             }
 
             LastMouseState = CurrentMouseState;
             LastKeyboardState = CurrentKeyboardState;
+            MenuChanged = false;
 
             base.Update(gameTime);
+
         }
 
         protected override void Draw(GameTime gameTime)
@@ -757,12 +739,91 @@ namespace A_Level_Computing_Project
 
             if (Menu == "Pause")
             {
-                _spriteBatch.Draw(PauseMenu, new Vector2(242, 249), Color.White);
+                _spriteBatch.Draw(PauseMenu, new Vector2(241, 248), Color.White);
+
+                _spriteBatch.DrawString(MenuFont, "New Game", new Vector2(250, 253), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Load Game", new Vector2(250, 293), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Save Game", new Vector2(250, 333), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Exit Game", new Vector2(250, 373), Color.White);
             }
 
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        protected void LoadSave(string Save)
+        {
+            Save = Path.GetFullPath(Save);
+            Save = Save.Remove(Save.Length - 41, 24);
+            using (StreamReader sr = new StreamReader(Save))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Length == 35)
+                    {
+                        int X = Convert.ToInt32(line.Substring(0, 2));
+                        int Y = Convert.ToInt32(line.Substring(2, 2));
+                        int StructureLevel = Convert.ToInt32(line.Substring(4, 1));
+                        string Structure = (line.Substring(5, 10)).Trim();
+                        Country OwnedBy = Countries[Convert.ToInt32(line.Substring(15, 2))];
+                        string Terrain = (line.Substring(17, 18)).Trim();
+
+                        MapArray[X, Y] = new Province(X, Y, StructureLevel, Structure, OwnedBy, Terrain);
+                    }
+                    else if (line.Length == 56)
+                    {
+                        int ID = Convert.ToInt32(line.Substring(0, 2));
+                        string Name = (line.Substring(2, 20)).Trim();
+                        int CX = Convert.ToInt32(line.Substring(22, 2));
+                        int CY = Convert.ToInt32(line.Substring(24, 2));
+                        int Gold = Convert.ToInt32(line.Substring(26, 6));
+                        int Wood = Convert.ToInt32(line.Substring(32, 6));
+                        int Stone = Convert.ToInt32(line.Substring(38, 6));
+                        int Food = Convert.ToInt32(line.Substring(44, 6));
+                        int Metal = Convert.ToInt32(line.Substring(50, 6));
+
+                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal);
+                    }
+                    else if (line.Length == 29)
+                    {
+                        int ID = Convert.ToInt32(line.Substring(0, 2));
+                        int X = Convert.ToInt32(line.Substring(2, 2));
+                        int Y = Convert.ToInt32(line.Substring(4, 2));
+                        int Infantry = Convert.ToInt32(line.Substring(6, 6));
+                        int Archers = Convert.ToInt32(line.Substring(12, 6));
+                        int Cavalry = Convert.ToInt32(line.Substring(18, 6));
+                        bool Moved = bool.Parse((line.Substring(24, 5)).Trim());
+
+                        Countries[ID].Standing = new StandingArmy(X, Y, Infantry, Archers, Cavalry, Countries[ID].Name, Moved);
+                    }
+                    else if (line.Length == 17)
+                    {
+                        int ID = Convert.ToInt32(line.Substring(0, 2));
+                        int X = Convert.ToInt32(line.Substring(2, 2));
+                        int Y = Convert.ToInt32(line.Substring(4, 2));
+                        int Infantry = Convert.ToInt32(line.Substring(6, 6));
+                        bool Moved = bool.Parse((line.Substring(12, 5)).Trim());
+
+                        Countries[ID].Levy = new LevyArmy(X, Y, Infantry, Countries[ID].Name, Moved);
+                    }
+                    else if (line.Length == 2)
+                    {
+                        Player = Convert.ToInt32(line.Substring(0, 2));
+                    }
+                }
+            }
+        }
+
+        protected void SaveGame()
+        {
+            string Save = Path.GetFullPath("Saves");
+            Save = Save.Remove(Save.Length - 41, 24);
+            using (StreamWriter sw = new StreamWriter(""))
+            {
+
+            }
         }
     }
 }
