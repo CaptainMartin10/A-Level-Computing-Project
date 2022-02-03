@@ -151,6 +151,7 @@ namespace A_Level_Computing_Project
             ArmyTextures.Add("Isengard", IsengardArmy);
             ArmyTextures.Add("Gundabad", GundabadArmy);
 
+            CountryIndexes.Add("Unowned", 0);
             CountryIndexes.Add("Lindon", 1);
             CountryIndexes.Add("Blue Mountains North", 2);
             CountryIndexes.Add("Blue Mountains South", 3);
@@ -820,10 +821,106 @@ namespace A_Level_Computing_Project
         {
             string Save = Path.GetFullPath("Saves/NewSave.txt");
             Save = Save.Remove(Save.Length - 41, 24);
-            Save = Save.Remove(Save.Length - 6, 1);
+            Save = Save.Remove(Save.Length - 11, 11);
+            Save += Countries[Player].Name + "Save.txt";
             using (StreamWriter sw = new StreamWriter(Save))
-            {             
-                sw.WriteLine("Hello");
+            {
+                foreach (Country c in Countries)
+                {
+                    string line = "";
+
+                    line += Convert.ToString(CountryIndexes[c.Name]);
+                    if (line.Length == 1)
+                    {
+                        line = line.Insert(0, "0");
+                    }
+
+                    line += c.Name;
+                    while (line.Length < 22)
+                    {
+                        line = line.Insert(2, " ");
+                    }
+
+                    line += c.CapitalX;
+                    if (line.Length == 23)
+                    {
+                        line = line.Insert(22, "0");
+                    }
+
+                    line += c.CapitalY;
+                    if (line.Length == 25)
+                    {
+                        line = line.Insert(24, "0");
+                    }
+
+                    if (c.Gold > 999999)
+                    {
+                        line += "999999";
+                    }
+                    else
+                    { 
+                        line += Convert.ToString(c.Gold); 
+                        while (line.Length < 32)
+                        {
+                            line = line.Insert(26, "0");
+                        }
+                    }
+
+                    if (c.Wood > 999999)
+                    {
+                        line += "999999";
+                    }
+                    else
+                    {
+                        line += Convert.ToString(c.Wood);
+                        while (line.Length < 38)
+                        {
+                            line = line.Insert(32, "0");
+                        }
+                    }
+
+                    if (c.Stone > 999999)
+                    {
+                        line += "999999";
+                    }
+                    else
+                    {
+                        line += Convert.ToString(c.Stone);
+                        while (line.Length < 44)
+                        {
+                            line = line.Insert(38, "0");
+                        }
+                    }
+
+                    if (c.Food > 999999)
+                    {
+                        line += "999999";
+                    }
+                    else
+                    {
+                        line += Convert.ToString(c.Food);
+                        while (line.Length < 50)
+                        {
+                            line = line.Insert(44, "0");
+                        }
+                    }
+
+                    if (c.Metal > 999999)
+                    {
+                        line += "999999";
+                    }
+                    else
+                    {
+                        line += Convert.ToString(c.Metal);
+                        while (line.Length < 56)
+                        {
+                            line = line.Insert(50, "0");
+                        }
+                    }
+
+
+                    sw.WriteLine(line);
+                }
             }
         }
     }
