@@ -818,11 +818,12 @@ namespace A_Level_Computing_Project
 
         protected void SaveGame()
         {
-            string Save = Path.GetFullPath("Saves");
+            string Save = Path.GetFullPath("Saves/NewSave.txt");
             Save = Save.Remove(Save.Length - 41, 24);
-            using (StreamWriter sw = new StreamWriter(""))
-            {
-
+            Save = Save.Remove(Save.Length - 6, 1);
+            using (StreamWriter sw = new StreamWriter(Save))
+            {             
+                sw.WriteLine("Hello");
             }
         }
     }
