@@ -121,6 +121,18 @@
 /processorParam:TextureFormat=Color
 /build:Breeland Tile.png
 
+#begin Country Menu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Country Menu.png
+
 #begin Dunland Army.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -272,6 +284,18 @@
 /processorParam:TextureFormat=Color
 /build:Mine.png
 
+#begin Pause Menu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pause Menu.png
+
 #begin Rangers of the North Army.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -355,18 +379,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shire Tile.png
-
-#begin Start Menu.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Start Menu.png
 
 #begin Structure Menu.png
 /importer:TextureImporter

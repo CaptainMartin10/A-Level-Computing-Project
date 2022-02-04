@@ -17,7 +17,7 @@ namespace A_Level_Computing_Project
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
         public bool MenuChanged = false;
         public SpriteFont MenuFont;
-        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu;
+        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu, CountryMenu;
         public MouseState CurrentMouseState, LastMouseState;
         public KeyboardState CurrentKeyboardState, LastKeyboardState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
@@ -59,7 +59,8 @@ namespace A_Level_Computing_Project
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
             BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
-            PauseMenu = Content.Load<Texture2D>("Start Menu");
+            PauseMenu = Content.Load<Texture2D>("Pause Menu");
+            CountryMenu = Content.Load<Texture2D>("Country Menu");
 
             Unowned = Content.Load<Texture2D>("Blank Tile");
             Lindon = Content.Load<Texture2D>("Lindon Tile");
@@ -212,9 +213,16 @@ namespace A_Level_Computing_Project
                     {
                         if (Hex.ContainsMousePointer(mousePoint))
                         {
-                            SelectedX = Hex.X;
-                            SelectedY = Hex.Y;
-                            Selected = "Province";
+                            if (Hex.X == 0 && Hex.Y == 0)
+                            {
+                                Menu = "Pause";
+                            }
+                            else
+                            {
+                                SelectedX = Hex.X;
+                                SelectedY = Hex.Y;
+                                Selected = "Province";
+                            }
                         }
                     }
 
@@ -475,29 +483,69 @@ namespace A_Level_Computing_Project
 
                 if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
                 {
-                    Rectangle NewGameButton = new Rectangle(247, 254, 160, 36);
+                    Rectangle NewGameButton = new Rectangle(243, 254, 168, 36);
                     if (NewGameButton.Contains(mousePoint))
                     {
-                        LoadSave("Saves/NewSave.txt");
-                        Menu = "Game";
+                        Menu = "Pick Country";
                     }
 
-                    Rectangle LoadGameButton = new Rectangle(247, 294, 160, 36);
+                    Rectangle LoadGameButton = new Rectangle(243, 294, 168, 36);
                     if (LoadGameButton.Contains(mousePoint))
                     {
-
+                        
                     }
 
-                    Rectangle SaveGameButton = new Rectangle(247, 334, 160, 36);
+                    Rectangle SaveGameButton = new Rectangle(243, 334, 168, 36);
                     if (SaveGameButton.Contains(mousePoint))
                     {
                         SaveGame();
                     }
 
-                    Rectangle ExitGameButton = new Rectangle(247, 374, 160, 36);
+                    Rectangle ExitGameButton = new Rectangle(243, 374, 168, 36);
                     if (ExitGameButton.Contains(mousePoint))
                     {
                         Exit();
+                    }
+
+                    Rectangle CloseMenuButton = new Rectangle(425, 254, 14, 14);
+                    if (CloseMenuButton.Contains(mousePoint))
+                    {
+                        Menu = "Game";
+                    }
+                }
+            }
+
+            if (Menu == "Pick Country")
+            {
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
+                {
+                    Menu = "Game";
+                    MenuChanged = true;
+                }
+
+                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    Rectangle BackButton = new Rectangle(263, 225, 14, 14);
+                    if (BackButton.Contains(mousePoint))
+                    {
+                        Menu = "Pause";
+                    }
+
+                    Rectangle CloseCountryMenu = new Rectangle(381, 225, 14, 14);
+                    if (CloseCountryMenu.Contains(mousePoint))
+                    {
+                        Menu = "Game";
+                    }
+
+                    Rectangle[] CountryOptions = new Rectangle[10];
+                    for (int i = 0; i < 10; i++)
+                    {
+                        CountryOptions[i] = new Rectangle(287 + (44 * (i % 2)), 225 + ((i % 5) * 44), 40, 40);
+                        if (CountryOptions[i].Contains (mousePoint))
+                        {
+                            Player = i + 1;
+                            LoadSave("Saves/NewSave.txt");
+                        }
                     }
                 }
             }
@@ -740,12 +788,17 @@ namespace A_Level_Computing_Project
 
             if (Menu == "Pause")
             {
-                _spriteBatch.Draw(PauseMenu, new Vector2(241, 248), Color.White);
+                _spriteBatch.Draw(PauseMenu, new Vector2(237, 248), Color.White);
 
-                _spriteBatch.DrawString(MenuFont, "New Game", new Vector2(250, 253), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Load Game", new Vector2(250, 293), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Save Game", new Vector2(250, 333), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Exit Game", new Vector2(250, 373), Color.White);
+                _spriteBatch.DrawString(MenuFont, "New Game", new Vector2(246, 253), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Load Game", new Vector2(246, 293), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Save Game", new Vector2(246, 333), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Exit Game", new Vector2(246, 373), Color.White);
+            }
+
+            if (Menu == "Pick Country")
+            {
+                _spriteBatch.Draw(CountryMenu, new Vector2(257, 219), Color.White);
             }
 
             _spriteBatch.End();
@@ -858,8 +911,8 @@ namespace A_Level_Computing_Project
                         line += "999999";
                     }
                     else
-                    { 
-                        line += Convert.ToString(c.Gold); 
+                    {
+                        line += Convert.ToString(c.Gold);
                         while (line.Length < 32)
                         {
                             line = line.Insert(26, "0");
