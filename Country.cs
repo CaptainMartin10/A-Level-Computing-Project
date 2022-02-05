@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace A_Level_Computing_Project
 {
     public class Country
     {
-        public int Gold, Wood, Stone, Food, Metal, CapitalX, CapitalY;
+        public int Gold, Wood, Stone, Food, Metal, CapitalX, CapitalY, ID;
         public bool IsAI;
         public string Name;
         public StandingArmy Standing;
         public LevyArmy Levy;
+        public Texture2D OwnedTileTexture, ArmyTexture;
 
         public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m)
         {

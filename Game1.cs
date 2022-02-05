@@ -15,7 +15,6 @@ namespace A_Level_Computing_Project
         public Country[] Countries = new Country[11];
         public int SelectedX, SelectedY, Player = 4, Turn = 1;
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
-        public bool MenuChanged = false;
         public SpriteFont MenuFont;
         public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu, CountryMenu;
         public MouseState CurrentMouseState, LastMouseState;
@@ -165,20 +164,6 @@ namespace A_Level_Computing_Project
             CountryIndexes.Add("Gundabad", 10);
 
             LoadSave("Saves/NewSave.txt");
-
-            Countries[Player].IsAI = false;
-            SelectedX = Countries[Player].CapitalX;
-            SelectedY = Countries[Player].CapitalY;
-
-            foreach (Country C in Countries)
-            {
-                MapArray[C.Standing.X, C.Standing.Y].ArmyInside = C.Standing;
-
-                if (C.Levy != null)
-                {
-                    MapArray[C.Levy.X, C.Levy.Y].ArmyInside = C.Levy;
-                }
-            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -240,6 +225,18 @@ namespace A_Level_Computing_Project
                             SelectedY = C.Levy.Y;
                             Selected = "Levy";
                         }
+                    }
+
+                    Rectangle NextTurnButton = new Rectangle(663, 332, 498, 36);
+                    if (NextTurnButton.Contains(mousePoint))
+                    {
+                        NextTurn();
+                    }
+
+                    Rectangle OpenMarketButton = new Rectangle(663, 378, 498, 36);
+                    if (OpenMarketButton.Contains(mousePoint))
+                    {
+
                     }
 
                     Rectangle GainLandButton = new Rectangle(663, 464, 498, 36);
@@ -337,86 +334,16 @@ namespace A_Level_Computing_Project
 
                 if (!CurrentKeyboardState.IsKeyDown(Keys.Enter) && LastKeyboardState.IsKeyDown(Keys.Enter))
                 {
-                    Turn++;
-                    if (Countries[Player].Levy == null)
-                    {
-                        foreach (Country C in Countries)
-                        {
-                            C.Gold += 50;
-                            C.Metal += 50;
-                            C.Stone += 50;
-                            C.Wood += 50;
-                            C.Food += 50;
-                            if (!C.Standing.Retreating && !C.Standing.Sieging)
-                            {
-                                C.Standing.Infantry += 50;
-                            }
-                        }
-                        foreach (Province P in MapArray)
-                        {
-                            if (P.Structure == "Settlement")
-                            {
-                                P.OwnedBy.Gold += 100 * P.StructureLevel;
-                            }
-                            else if (P.Structure == "Mine")
-                            {
-                                P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
-                                P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
-                            }
-                            else if (P.Structure == "Farm")
-                            {
-                                P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
-                            }
-                            else if (P.Structure == "Forester")
-                            {
-                                P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
-                            }
-                            else if (P.Structure == "Fort")
-                            {
-                                if (!P.OwnedBy.Standing.Retreating && !P.OwnedBy.Standing.Sieging)
-                                {
-                                    P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
-                                    P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
-                                    P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
-                                }
-                            }
-                        }
-                    }
-                    foreach (Country c in Countries)
-                    {
-                        c.Standing.Moved = false;
-                        if (c.Standing.Retreating)
-                        {
-                            c.Standing.Retreat(MapArray, Countries, CountryIndexes);
-                        }
-                        else if (c.Standing.Sieging)
-                        {
-                            c.Standing.Siege(MapArray, Countries, CountryIndexes);
-                        }
-
-                        if (c.Levy != null)
-                        {
-                            c.Levy.Moved = false;
-                            if (c.Levy.Retreating)
-                            {
-                                c.Levy.Retreat(MapArray, Countries, CountryIndexes);
-                            }
-                            else if (c.Levy.Sieging)
-                            {
-                                c.Levy.Siege(MapArray, Countries, CountryIndexes);
-                            }
-                        }
-                    }
+                    NextTurn();
                 }
 
-                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
                 {
                     Menu = "Pause";
-                    MenuChanged = true;
                 }
             }
 
-            if (Menu == "Build Structure")
+            else if (Menu == "Build Structure")
             {
                 if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
                 {
@@ -466,19 +393,17 @@ namespace A_Level_Computing_Project
                         Menu = "Game";
                     }
                 }
-                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
                 {
                     Menu = "Game";
-                    MenuChanged = true;
                 }
             }
 
-            if (Menu == "Pause")
+            else if (Menu == "Pause")
             {
-                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
                 {
                     Menu = "Game";
-                    MenuChanged = true;
                 }
 
                 if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
@@ -492,7 +417,7 @@ namespace A_Level_Computing_Project
                     Rectangle LoadGameButton = new Rectangle(243, 294, 168, 36);
                     if (LoadGameButton.Contains(mousePoint))
                     {
-                        
+                        Menu = "Load Game";
                     }
 
                     Rectangle SaveGameButton = new Rectangle(243, 334, 168, 36);
@@ -515,12 +440,11 @@ namespace A_Level_Computing_Project
                 }
             }
 
-            if (Menu == "Pick Country")
+            else if (Menu == "Pick Country")
             {
-                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape) && !MenuChanged)
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
                 {
                     Menu = "Game";
-                    MenuChanged = true;
                 }
 
                 if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
@@ -540,19 +464,36 @@ namespace A_Level_Computing_Project
                     Rectangle[] CountryOptions = new Rectangle[10];
                     for (int i = 0; i < 10; i++)
                     {
-                        CountryOptions[i] = new Rectangle(287 + (44 * (i % 2)), 225 + ((i % 5) * 44), 40, 40);
-                        if (CountryOptions[i].Contains (mousePoint))
+                        int X = 0;
+                        int Y = 0;
+                        if (i % 2 == 0)
+                        {
+                            X = 287;
+                            Y = (((i / 2) % 5) * 44) + 225;
+                        }
+                        else
+                        {
+                            X = 331;
+                            Y = ((((i - 1) / 2) % 5) * 44) + 225;
+                        }
+                        CountryOptions[i] = new Rectangle(X, Y, 40, 40);
+                        if (CountryOptions[i].Contains(mousePoint))
                         {
                             Player = i + 1;
                             LoadSave("Saves/NewSave.txt");
+                            Menu = "Game";
                         }
                     }
                 }
             }
 
+            else if (Menu == "Load Game")
+            {
+
+            }
+
             LastMouseState = CurrentMouseState;
             LastKeyboardState = CurrentKeyboardState;
-            MenuChanged = false;
 
             base.Update(gameTime);
 
@@ -708,7 +649,7 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Raise Levy Army", new Vector2(666, 285), Color.White);
             }
 
-            _spriteBatch.DrawString(MenuFont, "Research", new Vector2(666, 331), Color.White);
+            _spriteBatch.DrawString(MenuFont, "Next Turn", new Vector2(666, 331), Color.White);
             _spriteBatch.DrawString(MenuFont, "Market", new Vector2(666, 377), Color.White);
 
             if (Selected == "Province")
@@ -868,6 +809,21 @@ namespace A_Level_Computing_Project
                     }
                 }
             }
+
+            Countries[Player].IsAI = false;
+            SelectedX = Countries[Player].CapitalX;
+            SelectedY = Countries[Player].CapitalY;
+            Selected = "Province";
+
+            foreach (Country C in Countries)
+            {
+                MapArray[C.Standing.X, C.Standing.Y].ArmyInside = C.Standing;
+
+                if (C.Levy != null)
+                {
+                    MapArray[C.Levy.X, C.Levy.Y].ArmyInside = C.Levy;
+                }
+            }
         }
 
         protected void SaveGame()
@@ -971,8 +927,224 @@ namespace A_Level_Computing_Project
                         }
                     }
 
+                    sw.WriteLine(line);
+                }
+
+                foreach (Country c in Countries)
+                {
+                    string line = "";
+
+                    line += Convert.ToString(CountryIndexes[c.Name]);
+                    if (line.Length == 1)
+                    {
+                        line = line.Insert(0, "0");
+                    }
+
+                    line += Convert.ToString(c.Standing.X);
+                    if (line.Length == 3)
+                    {
+                        line = line.Insert(2, "0");
+                    }
+
+                    line += Convert.ToString(c.Standing.Y);
+                    if (line.Length == 5)
+                    {
+                        line = line.Insert(4, "0");
+                    }
+
+                    line += Convert.ToString(c.Standing.Infantry);
+                    while (line.Length < 12)
+                    {
+                        line = line.Insert(6, "0");
+                    }
+
+                    line += Convert.ToString(c.Standing.Archers);
+                    while (line.Length < 18)
+                    {
+                        line = line.Insert(12, "0");
+                    }
+
+                    line += Convert.ToString(c.Standing.Cavalry);
+                    while (line.Length < 24)
+                    {
+                        line = line.Insert(18, "0");
+                    }
+
+                    if (c.Standing.Moved)
+                    {
+                        line += " True";
+                    }
+                    else if (!c.Standing.Moved)
+                    {
+                        line += "False";
+                    }
 
                     sw.WriteLine(line);
+                }
+
+                foreach (Country c in Countries)
+                {
+                    if (c.Levy != null)
+                    {
+                        string line = "";
+
+                        line += Convert.ToString(CountryIndexes[c.Name]);
+                        if (line.Length == 1)
+                        {
+                            line = line.Insert(0, "0");
+                        }
+
+                        line += Convert.ToString(c.Levy.X);
+                        if (line.Length == 3)
+                        {
+                            line = line.Insert(2, "0");
+                        }
+
+                        line += Convert.ToString(c.Levy.Y);
+                        if (line.Length == 5)
+                        {
+                            line = line.Insert(4, "0");
+                        }
+
+                        line += Convert.ToString(c.Levy.Infantry);
+                        while (line.Length < 12)
+                        {
+                            line = line.Insert(6, "0");
+                        }
+
+                        if (c.Levy.Moved)
+                        {
+                            line += " True";
+                        }
+                        else if (!c.Levy.Moved)
+                        {
+                            line += "False";
+                        }
+
+                        sw.WriteLine(line);
+                    }
+                }
+
+                foreach (Province p in MapArray)
+                {
+                    string line = "";
+
+                    line += Convert.ToString(p.X);
+                    if (line.Length == 1)
+                    {
+                        line = line.Insert(0, "0");
+                    }
+
+                    line += Convert.ToString(p.Y);
+                    if (line.Length == 3)
+                    {
+                        line = line.Insert(2, "0");
+                    }
+
+                    line += Convert.ToString(p.StructureLevel);
+
+                    line += p.Structure;
+                    while (line.Length < 15)
+                    {
+                        line = line.Insert(5, " ");
+                    }
+
+                    line += Convert.ToString(CountryIndexes[p.OwnedBy.Name]);
+                    if (line.Length == 16)
+                    {
+                        line = line.Insert(15, "0");
+                    }
+
+                    line += p.Terrain;
+                    while (line.Length < 35)
+                    {
+                        line = line.Insert(17, " ");
+                    }
+
+                    sw.WriteLine(line);
+                }
+
+                if (Player < 10)
+                {
+                    sw.WriteLine("0" + Convert.ToString(Player));
+                }
+                else
+                {
+                    sw.WriteLine(Convert.ToString(Player));
+                }
+            }
+        }
+
+        protected void NextTurn()
+        {
+            Turn++;
+            if (Countries[Player].Levy == null)
+            {
+                foreach (Country C in Countries)
+                {
+                    C.Gold += 50;
+                    C.Metal += 50;
+                    C.Stone += 50;
+                    C.Wood += 50;
+                    C.Food += 50;
+                    if (!C.Standing.Retreating && !C.Standing.Sieging)
+                    {
+                        C.Standing.Infantry += 50;
+                    }
+                }
+                foreach (Province P in MapArray)
+                {
+                    if (P.Structure == "Settlement")
+                    {
+                        P.OwnedBy.Gold += 100 * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Mine")
+                    {
+                        P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
+                        P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Farm")
+                    {
+                        P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Forester")
+                    {
+                        P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Fort")
+                    {
+                        if (!P.OwnedBy.Standing.Retreating && !P.OwnedBy.Standing.Sieging)
+                        {
+                            P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
+                            P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
+                            P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
+                        }
+                    }
+                }
+            }
+            foreach (Country c in Countries)
+            {
+                c.Standing.Moved = false;
+                if (c.Standing.Retreating)
+                {
+                    c.Standing.Retreat(MapArray, Countries, CountryIndexes);
+                }
+                else if (c.Standing.Sieging)
+                {
+                    c.Standing.Siege(MapArray, Countries, CountryIndexes);
+                }
+
+                if (c.Levy != null)
+                {
+                    c.Levy.Moved = false;
+                    if (c.Levy.Retreating)
+                    {
+                        c.Levy.Retreat(MapArray, Countries, CountryIndexes);
+                    }
+                    else if (c.Levy.Sieging)
+                    {
+                        c.Levy.Siege(MapArray, Countries, CountryIndexes);
+                    }
                 }
             }
         }
