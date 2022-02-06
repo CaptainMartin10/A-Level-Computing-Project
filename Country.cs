@@ -9,12 +9,12 @@ namespace A_Level_Computing_Project
     {
         public int Gold, Wood, Stone, Food, Metal, CapitalX, CapitalY, ID;
         public bool IsAI;
-        public string Name;
+        public string Name, CountryCode;
         public StandingArmy Standing;
         public LevyArmy Levy;
         public Texture2D OwnedTileTexture, ArmyTexture;
 
-        public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m)
+        public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m, string c)
         {
             IsAI = AI;
             Name = n;
@@ -25,6 +25,7 @@ namespace A_Level_Computing_Project
             Metal = m;
             CapitalX = x;
             CapitalY = y;
+            CountryCode = c;
         }
 
         public bool CanAfford(int ReqGold, int ReqWood, int ReqStone, int ReqFood, int ReqMetal)

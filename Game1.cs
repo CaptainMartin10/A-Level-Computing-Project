@@ -13,10 +13,11 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public int SelectedX, SelectedY, Player = 4, Turn = 1;
+        public int SelectedX, SelectedY, Player = 4, Turn = 1, SavesFP, SavesEP;
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
+        public List<string> Saves = new List<string>();
         public SpriteFont MenuFont;
-        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu, CountryMenu;
+        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu, CountryMenu, LoadMenu;
         public MouseState CurrentMouseState, LastMouseState;
         public KeyboardState CurrentKeyboardState, LastKeyboardState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
@@ -57,9 +58,11 @@ namespace A_Level_Computing_Project
             Farm = Content.Load<Texture2D>("Farm");
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
+
             BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
             PauseMenu = Content.Load<Texture2D>("Pause Menu");
             CountryMenu = Content.Load<Texture2D>("Country Menu");
+            LoadMenu = Content.Load<Texture2D>("Load Menu");
 
             Unowned = Content.Load<Texture2D>("Blank Tile");
             Lindon = Content.Load<Texture2D>("Lindon Tile");
@@ -163,7 +166,9 @@ namespace A_Level_Computing_Project
             CountryIndexes.Add("Isengard", 9);
             CountryIndexes.Add("Gundabad", 10);
 
-            LoadSave("Saves/NewSave.txt");
+            string Save = Path.GetFullPath("Saves/NewSave.txt");
+            Save = Save.Remove(Save.Length - 41, 24);
+            LoadSave(Save);
         }
 
         protected override void Update(GameTime gameTime)
@@ -417,6 +422,30 @@ namespace A_Level_Computing_Project
                     Rectangle LoadGameButton = new Rectangle(243, 294, 168, 36);
                     if (LoadGameButton.Contains(mousePoint))
                     {
+                        string SavesPath = Path.GetFullPath("Saves/NewSave.txt");
+                        SavesPath = SavesPath.Remove(SavesPath.Length - 41, 24);
+                        SavesPath = SavesPath.Remove(SavesPath.Length - 11, 11);
+
+                        Saves.Clear();
+                        string[] TempSaves = Directory.GetFiles(SavesPath);
+                        foreach (string s in TempSaves)
+                        {
+                            if (!s.Contains("NewSave"))
+                            {
+                                Saves.Add(s);
+                            }
+                        }
+
+                        SavesFP = 0;
+                        if (Saves.Count > 5)
+                        {
+                            SavesEP = 4;
+                        }
+                        else
+                        {
+                            SavesEP = Saves.Count - 1;
+                        }
+
                         Menu = "Load Game";
                     }
 
@@ -480,7 +509,9 @@ namespace A_Level_Computing_Project
                         if (CountryOptions[i].Contains(mousePoint))
                         {
                             Player = i + 1;
-                            LoadSave("Saves/NewSave.txt");
+                            string Save = Path.GetFullPath("Saves/NewSave.txt");
+                            Save = Save.Remove(Save.Length - 41, 24);
+                            LoadSave(Save);
                             Menu = "Game";
                         }
                     }
@@ -489,14 +520,71 @@ namespace A_Level_Computing_Project
 
             else if (Menu == "Load Game")
             {
+                if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+                {
+                    Menu = "Game";
+                }
 
+                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    Rectangle BackButton = new Rectangle(60, 241, 14, 14);
+                    if (BackButton.Contains(mousePoint))
+                    {
+                        Menu = "Pause";
+                    }
+
+                    Rectangle CloseLoadMenu = new Rectangle(582, 241, 14, 14);
+                    if (CloseLoadMenu.Contains(mousePoint))
+                    {
+                        Menu = "Game";
+                    }
+
+                    Rectangle[] SaveButtons;
+                    if (Saves.Count < 5)
+                    {
+                        SaveButtons = new Rectangle[Saves.Count];
+                        for (int i = 0; i < SaveButtons.Length; i++)
+                        {
+                            SaveButtons[i] = new Rectangle(86 + (i * 36), 243, 466, 36);
+                        }
+
+                        foreach (Rectangle b in SaveButtons)
+                        {
+                            if (b.Contains(mousePoint))
+                            {
+                                string Save = Saves[(((b.Y) - 243) / 36) + SavesFP];
+                                LoadSave(Save);
+                                Menu = "Game";
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        SaveButtons = new Rectangle[5];
+                        SaveButtons[0] = new Rectangle(86, 243, 466, 36);
+                        SaveButtons[1] = new Rectangle(86, 279, 466, 36);
+                        SaveButtons[2] = new Rectangle(86, 315, 466, 36);
+                        SaveButtons[3] = new Rectangle(86, 351, 466, 36);
+                        SaveButtons[4] = new Rectangle(86, 387, 466, 36);
+
+                        foreach (Rectangle b in SaveButtons)
+                        {
+                            if (b.Contains(mousePoint))
+                            {
+                                string Save = Saves[(((b.Y) - 243) / 36) + SavesFP];
+                                LoadSave(Save);
+                                Menu = "Game";
+                            }
+                        }
+                    }
+                }
             }
 
             LastMouseState = CurrentMouseState;
             LastKeyboardState = CurrentKeyboardState;
 
             base.Update(gameTime);
-
         }
 
         protected override void Draw(GameTime gameTime)
@@ -742,6 +830,17 @@ namespace A_Level_Computing_Project
                 _spriteBatch.Draw(CountryMenu, new Vector2(257, 219), Color.White);
             }
 
+            if (Menu == "Load Game")
+            {
+                _spriteBatch.Draw(LoadMenu, new Vector2(54, 235), Color.White);
+                
+                for (int i = SavesFP; i <= SavesEP; i++)
+                {
+                    _spriteBatch.DrawString(MenuFont, Saves[i].Substring(Saves[i].Length - 25, 21), new Vector2(89, ((i - SavesFP) * 36) + 242), Color.White);
+                }
+                
+            }
+
             _spriteBatch.End();
 
             base.Draw(gameTime);
@@ -749,8 +848,6 @@ namespace A_Level_Computing_Project
 
         protected void LoadSave(string Save)
         {
-            Save = Path.GetFullPath(Save);
-            Save = Save.Remove(Save.Length - 41, 24);
             using (StreamReader sr = new StreamReader(Save))
             {
                 string line;
@@ -767,7 +864,7 @@ namespace A_Level_Computing_Project
 
                         MapArray[X, Y] = new Province(X, Y, StructureLevel, Structure, OwnedBy, Terrain);
                     }
-                    else if (line.Length == 56)
+                    else if (line.Length == 59)
                     {
                         int ID = Convert.ToInt32(line.Substring(0, 2));
                         string Name = (line.Substring(2, 20)).Trim();
@@ -778,8 +875,9 @@ namespace A_Level_Computing_Project
                         int Stone = Convert.ToInt32(line.Substring(38, 6));
                         int Food = Convert.ToInt32(line.Substring(44, 6));
                         int Metal = Convert.ToInt32(line.Substring(50, 6));
+                        string CountryCode = line.Substring(56, 3);
 
-                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal);
+                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal, CountryCode);
                     }
                     else if (line.Length == 29)
                     {
@@ -831,7 +929,10 @@ namespace A_Level_Computing_Project
             string Save = Path.GetFullPath("Saves/NewSave.txt");
             Save = Save.Remove(Save.Length - 41, 24);
             Save = Save.Remove(Save.Length - 11, 11);
-            Save += Countries[Player].Name + "Save.txt";
+            string Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+            Date = Date.Replace('/', '_');
+            Date = Date.Replace(':', '.');
+            Save += Countries[Player].CountryCode + "(" + Date + ").txt";
             using (StreamWriter sw = new StreamWriter(Save))
             {
                 foreach (Country c in Countries)
@@ -926,6 +1027,8 @@ namespace A_Level_Computing_Project
                             line = line.Insert(50, "0");
                         }
                     }
+
+                    line += c.CountryCode;
 
                     sw.WriteLine(line);
                 }
