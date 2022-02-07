@@ -12,7 +12,6 @@ namespace A_Level_Computing_Project
         public string Name, CountryCode;
         public StandingArmy Standing;
         public LevyArmy Levy;
-        public Texture2D OwnedTileTexture, ArmyTexture;
 
         public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m, string c)
         {

@@ -212,10 +212,11 @@ namespace A_Level_Computing_Project
 
             if (DX == BestDArray[0] && DY == BestDArray[1])
             {
+                BeenThrough.Clear();
                 Retreating = false;
             }
 
-            if (!(BestDArray[0] == 0 && BestDArray[1] == 0) && !(BestDArray[0] == X && BestDArray[1] == Y))
+            if (!(BestDArray[0] == 0 && BestDArray[1] == 0) && !(BestDArray[0] == X && BestDArray[1] == Y) && !BeenThrough.Contains(MapArray[BestDArray[0], BestDArray[1]]))
             {
                 MapArray[BestDArray[0], BestDArray[1]].ArmyInside = this;
                 int TempX = X;
