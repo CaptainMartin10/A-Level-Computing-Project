@@ -73,21 +73,47 @@ namespace A_Level_Computing_Project
             {
                 if (!Retreating)
                 {
-                    Countries[CountryIndexes[OwnedBy]].Gold -= ((Infantry + Archers + Cavalry) / 10);
-                    Countries[CountryIndexes[OwnedBy]].Food -= (((Infantry * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * TerrainCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10);
                     if (MapArray[p.X, p.Y].Terrain == "Shallow Sea")
                     {
-                        Countries[CountryIndexes[OwnedBy]].Wood -= ((Infantry + Archers + Cavalry) / 10);
+                        if (Countries[CountryIndexes[OwnedBy]].CanAfford((Infantry + Archers + Cavalry) / 10, (Infantry + Archers + Cavalry) / 10, 0, ((Infantry * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * TerrainCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10, 0))
+                        {
+                            Countries[CountryIndexes[OwnedBy]].Pay((Infantry + Archers + Cavalry) / 10, (Infantry + Archers + Cavalry) / 10, 0, ((Infantry * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * TerrainCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10, 0);
+
+                            MapArray[p.X, p.Y].ArmyInside = this;
+                            int TempX = X;
+                            int TempY = Y;
+                            X = p.X;
+                            Y = p.Y;
+                            MapArray[TempX, TempY].ArmyInside = null;
+                            Moved = true;
+                        }
+                    }
+                    else
+                    {
+                        if (Countries[CountryIndexes[OwnedBy]].CanAfford((Infantry + Archers + Cavalry) / 10, (Infantry + Archers + Cavalry) / 10, 0, ((Infantry * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * TerrainCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10, 0))
+                        {
+                            Countries[CountryIndexes[OwnedBy]].Pay((Infantry + Archers + Cavalry) / 10, 0, 0, ((Infantry * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Archers * TerrainCosts[MapArray[p.X, p.Y].Terrain]) + (Cavalry * TerrainCosts[MapArray[p.X, p.Y].Terrain] * 2)) / 10, 0);
+
+                            MapArray[p.X, p.Y].ArmyInside = this;
+                            int TempX = X;
+                            int TempY = Y;
+                            X = p.X;
+                            Y = p.Y;
+                            MapArray[TempX, TempY].ArmyInside = null;
+                            Moved = true;
+                        }
                     }
                 }
-
-                MapArray[p.X, p.Y].ArmyInside = this;
-                int TempX = X;
-                int TempY = Y;
-                X = p.X;
-                Y = p.Y;
-                MapArray[TempX, TempY].ArmyInside = null;
-                Moved = true;
+                else
+                {
+                    MapArray[p.X, p.Y].ArmyInside = this;
+                    int TempX = X;
+                    int TempY = Y;
+                    X = p.X;
+                    Y = p.Y;
+                    MapArray[TempX, TempY].ArmyInside = null;
+                    Moved = true;
+                }
             }
         }
 

@@ -539,44 +539,35 @@ namespace A_Level_Computing_Project
                         Menu = "Game";
                     }
 
-                    Rectangle[] SaveButtons;
-                    if (Saves.Count < 5)
+                    Rectangle UpButton = new Rectangle(558, 241, 14, 14);
                     {
-                        SaveButtons = new Rectangle[Saves.Count];
-                        for (int i = 0; i < SaveButtons.Length; i++)
+                        if (UpButton.Contains(mousePoint) && SavesFP > 0)
                         {
-                            SaveButtons[i] = new Rectangle(86 + (i * 36), 243, 466, 36);
+                            SavesFP--;
+                            SavesEP--;
                         }
-
-                        foreach (Rectangle b in SaveButtons)
-                        {
-                            if (b.Contains(mousePoint))
-                            {
-                                string Save = Saves[(((b.Y) - 243) / 36) + SavesFP];
-                                LoadSave(Save);
-                                Menu = "Game";
-                            }
-                        }
-
                     }
-                    else
-                    {
-                        SaveButtons = new Rectangle[5];
-                        SaveButtons[0] = new Rectangle(86, 243, 466, 36);
-                        SaveButtons[1] = new Rectangle(86, 279, 466, 36);
-                        SaveButtons[2] = new Rectangle(86, 315, 466, 36);
-                        SaveButtons[3] = new Rectangle(86, 351, 466, 36);
-                        SaveButtons[4] = new Rectangle(86, 387, 466, 36);
 
-                        foreach (Rectangle b in SaveButtons)
+                    Rectangle DownButton = new Rectangle(558, 411, 14, 14);
+                    {
+                        if (DownButton.Contains(mousePoint) && SavesEP < Saves.Count - 1)
                         {
-                            if (b.Contains(mousePoint))
-                            {
-                                string Save = Saves[(((b.Y) - 243) / 36) + SavesFP];
-                                LoadSave(Save);
-                                Menu = "Game";
-                            }
+                            SavesFP++;
+                            SavesEP++;
                         }
+                    }
+
+                    int ListPosition = 0;
+                    for(int i = SavesFP; i <= SavesEP; i++)
+                    {
+                        Rectangle Button = new Rectangle(86, 243 + (ListPosition * 36), 466, 36);
+                        ListPosition++;
+                        if (Button.Contains(mousePoint))
+                        {
+                            LoadSave(Saves[i]);
+                            Menu = "Game";
+                        }
+
                     }
                 }
             }

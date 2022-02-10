@@ -237,7 +237,7 @@ namespace A_Level_Computing_Project
 
             for (int i = 0; i < 6; i++)
             {
-                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 23 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Coloniser] && OwnedBy == Countries[0])
+                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Coloniser] && OwnedBy == Countries[0])
                 {
                     CanColonise = true;
                 }
