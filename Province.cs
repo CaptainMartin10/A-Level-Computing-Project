@@ -213,7 +213,7 @@ namespace A_Level_Computing_Project
             List<int> OptionsToRemove = new List<int>();
             for (int i = 0; i < 6; i++)
             {
-                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Shallow Sea" || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Deep Ocean"))
+                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].IsDangerous(MapArray) || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Shallow Sea" || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Deep Ocean"))
                 {
                     OptionsToRemove.Add(i);
                 }
@@ -248,17 +248,42 @@ namespace A_Level_Computing_Project
 
         public bool CanAnnex(Province[,] MapArray, Country[] Countries, int Annexer)
         {
-            bool CanAnnex = false;
+            foreach (Country c in Countries)
+            {
+                if (X = c.CapitalX && Y = c.CapitalY && c.OwnsLand)
+                {
+                    return false;
+                }
+            }
 
             for (int i = 0; i < 6; i++)
             {
                 if (ArmyInside != null && ArmyInside.OwnedBy == Countries[Annexer].Name && AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 23 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Annexer] && OwnedBy != Countries[0] && OwnedBy != Countries[Annexer] && !ArmyInside.Moved && !ArmyInside.Sieging)
                 {
-                    CanAnnex = true;
+                    return true;
                 }
             }
 
-            return CanAnnex;
+            return false;
+        }
+
+        public bool IsDangerous(Province[,] MapArray)
+        {
+            int TotalArmiesNearby = 0;
+            for (int i = 0; i < 6; i++)
+            {
+                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null)
+                {
+                    TotalArmiesNearby++;
+                }
+            }
+
+            if (TotalArmiesNearby > 1)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

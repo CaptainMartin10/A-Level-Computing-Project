@@ -263,6 +263,13 @@ namespace A_Level_Computing_Project
             {
                 Sieging = false;
                 SiegeProgress = 0;
+                if (X = MapArray[X, Y].OwnedBy.CapitalX && Y = MapArray[X, Y].OwnedBy.CapitalY)
+                {
+                    MapArray[X, Y].OwnedBy.Levy == null;
+                    MapArray[X, Y].OwnedBy.Standing.X = 0;
+                    MapArray[X, Y].OwnedBy.Standing.Y = 0;
+                    MapArray[X, Y].OwnedBy.Collapsed = true;
+                }
                 MapArray[X, Y].OwnedBy = Countries[CountryIndexes[OwnedBy]];
             }
         }

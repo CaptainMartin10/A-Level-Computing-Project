@@ -218,17 +218,20 @@ namespace A_Level_Computing_Project
 
                     foreach (Country C in Countries)
                     {
-                        if (C.Name != "Unowned" && C.Standing.ContainsMousePointer(mousePoint))
+                        if (!C.Collapsed)
                         {
-                            SelectedX = C.Standing.X;
-                            SelectedY = C.Standing.Y;
-                            Selected = "Standing";
-                        }
-                        else if (C.Levy != null && C.Levy.ContainsMousePointer(mousePoint))
-                        {
-                            SelectedX = C.Levy.X;
-                            SelectedY = C.Levy.Y;
-                            Selected = "Levy";
+                            if (C.Name != "Unowned" && C.Standing.ContainsMousePointer(mousePoint))
+                            {
+                                SelectedX = C.Standing.X;
+                                SelectedY = C.Standing.Y;
+                                Selected = "Standing";
+                            }
+                            else if (C.Levy != null && C.Levy.ContainsMousePointer(mousePoint))
+                            {
+                                SelectedX = C.Levy.X;
+                                SelectedY = C.Levy.Y;
+                                Selected = "Levy";
+                            }
                         }
                     }
 
@@ -558,7 +561,7 @@ namespace A_Level_Computing_Project
                     }
 
                     int ListPosition = 0;
-                    for(int i = SavesFP; i <= SavesEP; i++)
+                    for (int i = SavesFP; i <= SavesEP; i++)
                     {
                         Rectangle Button = new Rectangle(86, 243 + (ListPosition * 36), 466, 36);
                         ListPosition++;
@@ -627,7 +630,7 @@ namespace A_Level_Computing_Project
 
             foreach (Country C in Countries)
             {
-                if (C.Name != "Unowned")
+                if (C.Name != "Unowned" && !C.Collapsed)
                 {
                     if (C.Standing.X % 2 == 0)
                     {
@@ -824,12 +827,12 @@ namespace A_Level_Computing_Project
             if (Menu == "Load Game")
             {
                 _spriteBatch.Draw(LoadMenu, new Vector2(54, 235), Color.White);
-                
+
                 for (int i = SavesFP; i <= SavesEP; i++)
                 {
                     _spriteBatch.DrawString(MenuFont, Saves[i].Substring(Saves[i].Length - 25, 21), new Vector2(89, ((i - SavesFP) * 36) + 242), Color.White);
                 }
-                
+
             }
 
             _spriteBatch.End();
@@ -855,7 +858,7 @@ namespace A_Level_Computing_Project
 
                         MapArray[X, Y] = new Province(X, Y, StructureLevel, Structure, OwnedBy, Terrain);
                     }
-                    else if (line.Length == 59)
+                    else if (line.Length == 64)
                     {
                         int ID = Convert.ToInt32(line.Substring(0, 2));
                         string Name = (line.Substring(2, 20)).Trim();
@@ -867,8 +870,9 @@ namespace A_Level_Computing_Project
                         int Food = Convert.ToInt32(line.Substring(44, 6));
                         int Metal = Convert.ToInt32(line.Substring(50, 6));
                         string CountryCode = line.Substring(56, 3);
+                        bool Collapsed = Convert.ToInt32(line.Substring(59, 5).Trim())
 
-                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal, CountryCode);
+                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal, CountryCode, Collapsed);
                     }
                     else if (line.Length == 29)
                     {
@@ -1021,6 +1025,15 @@ namespace A_Level_Computing_Project
 
                     line += c.CountryCode;
 
+                    if (c.Collapsed)
+                    {
+                        line += " True"
+                    }
+                    else if (!c.Collapsed)
+                    {
+                        line += "False"
+                    }
+
                     sw.WriteLine(line);
                 }
 
@@ -1172,9 +1185,9 @@ namespace A_Level_Computing_Project
         protected void NextTurn()
         {
             Turn++;
-            if (Countries[Player].Levy == null)
+            foreach (Country C in Countries)
             {
-                foreach (Country C in Countries)
+                if (C.Levy == null)
                 {
                     C.Gold += 50;
                     C.Metal += 50;
@@ -1186,7 +1199,10 @@ namespace A_Level_Computing_Project
                         C.Standing.Infantry += 50;
                     }
                 }
-                foreach (Province P in MapArray)
+            }
+            foreach (Province P in MapArray)
+            {
+                if (P.OwnedBy.Levy == null)
                 {
                     if (P.Structure == "Settlement")
                     {
@@ -1218,26 +1234,29 @@ namespace A_Level_Computing_Project
             }
             foreach (Country c in Countries)
             {
-                c.Standing.Moved = false;
-                if (c.Standing.Retreating)
+                if (!c.Collapsed)
                 {
-                    c.Standing.Retreat(MapArray, Countries, CountryIndexes);
-                }
-                else if (c.Standing.Sieging)
-                {
-                    c.Standing.Siege(MapArray, Countries, CountryIndexes);
-                }
-
-                if (c.Levy != null)
-                {
-                    c.Levy.Moved = false;
-                    if (c.Levy.Retreating)
+                    c.Standing.Moved = false;
+                    if (c.Standing.Retreating)
                     {
-                        c.Levy.Retreat(MapArray, Countries, CountryIndexes);
+                        c.Standing.Retreat(MapArray, Countries, CountryIndexes);
                     }
-                    else if (c.Levy.Sieging)
+                    else if (c.Standing.Sieging)
                     {
-                        c.Levy.Siege(MapArray, Countries, CountryIndexes);
+                        c.Standing.Siege(MapArray, Countries, CountryIndexes);
+                    }
+
+                    if (c.Levy != null)
+                    {
+                        c.Levy.Moved = false;
+                        if (c.Levy.Retreating)
+                        {
+                            c.Levy.Retreat(MapArray, Countries, CountryIndexes);
+                        }
+                        else if (c.Levy.Sieging)
+                        {
+                            c.Levy.Siege(MapArray, Countries, CountryIndexes);
+                        }
                     }
                 }
             }
