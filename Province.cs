@@ -250,7 +250,7 @@ namespace A_Level_Computing_Project
         {
             foreach (Country c in Countries)
             {
-                if (X = c.CapitalX && Y = c.CapitalY && c.OwnsLand)
+                if (X == c.CapitalX && Y == c.CapitalY && c.OwnsLand(MapArray))
                 {
                     return false;
                 }

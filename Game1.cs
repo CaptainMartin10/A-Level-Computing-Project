@@ -870,7 +870,7 @@ namespace A_Level_Computing_Project
                         int Food = Convert.ToInt32(line.Substring(44, 6));
                         int Metal = Convert.ToInt32(line.Substring(50, 6));
                         string CountryCode = line.Substring(56, 3);
-                        bool Collapsed = Convert.ToInt32(line.Substring(59, 5).Trim())
+                        bool Collapsed = Convert.ToBoolean(line.Substring(59, 5).Trim());
 
                         Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal, CountryCode, Collapsed);
                     }
@@ -1027,11 +1027,11 @@ namespace A_Level_Computing_Project
 
                     if (c.Collapsed)
                     {
-                        line += " True"
+                        line += " True";
                     }
                     else if (!c.Collapsed)
                     {
-                        line += "False"
+                        line += "False";
                     }
 
                     sw.WriteLine(line);

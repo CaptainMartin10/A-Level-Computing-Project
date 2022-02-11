@@ -13,7 +13,7 @@ namespace A_Level_Computing_Project
         public StandingArmy Standing;
         public LevyArmy Levy;
 
-        public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m, string c, string co)
+        public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m, string c, bool co)
         {
             IsAI = AI;
             Name = n;
