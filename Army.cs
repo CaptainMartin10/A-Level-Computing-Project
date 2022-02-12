@@ -64,7 +64,6 @@ namespace A_Level_Computing_Project
         public string OwnedBy;
         public bool Moved, Retreating, Sieging;
         public PhantomArmy[] MoveSelection = new PhantomArmy[6];
-        public List<Province> BeenThrough = new List<Province>();
 
         public void Move(Province[,] MapArray, Country[] Countries, Dictionary<string, int> TerrainCosts, int[] TempPArray, Dictionary<string, int> CountryIndexes)
         {
@@ -238,18 +237,16 @@ namespace A_Level_Computing_Project
 
             if (DX == BestDArray[0] && DY == BestDArray[1])
             {
-                BeenThrough.Clear();
                 Retreating = false;
             }
 
-            if (!(BestDArray[0] == 0 && BestDArray[1] == 0) && !(BestDArray[0] == X && BestDArray[1] == Y) && !BeenThrough.Contains(MapArray[BestDArray[0], BestDArray[1]]))
+            if (!(BestDArray[0] == 0 && BestDArray[1] == 0) && !(BestDArray[0] == X && BestDArray[1] == Y))
             {
                 MapArray[BestDArray[0], BestDArray[1]].ArmyInside = this;
                 int TempX = X;
                 int TempY = Y;
                 X = BestDArray[0];
                 Y = BestDArray[1];
-                BeenThrough.Add(MapArray[TempX, TempY]);
                 MapArray[TempX, TempY].ArmyInside = null;
                 Moved = true;
             }
@@ -265,10 +262,7 @@ namespace A_Level_Computing_Project
                 SiegeProgress = 0;
                 if (X == MapArray[X, Y].OwnedBy.CapitalX && Y == MapArray[X, Y].OwnedBy.CapitalY)
                 {
-                    MapArray[X, Y].OwnedBy.Levy = null;
-                    MapArray[X, Y].OwnedBy.Standing.X = 0;
-                    MapArray[X, Y].OwnedBy.Standing.Y = 0;
-                    MapArray[X, Y].OwnedBy.Collapsed = true;
+                    MapArray[X, Y].OwnedBy.Collapse(MapArray, Countries);
                 }
                 MapArray[X, Y].OwnedBy = Countries[CountryIndexes[OwnedBy]];
             }

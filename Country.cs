@@ -8,12 +8,12 @@ namespace A_Level_Computing_Project
     public class Country
     {
         public int Gold, Wood, Stone, Food, Metal, CapitalX, CapitalY, ID;
-        public bool IsAI, Collapsed;
+        public bool IsAI;
         public string Name, CountryCode;
         public StandingArmy Standing;
         public LevyArmy Levy;
 
-        public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m, string c, bool co)
+        public Country (bool AI, string n, int x, int y, int g, int w, int s, int f, int m, string c)
         {
             IsAI = AI;
             Name = n;
@@ -25,7 +25,6 @@ namespace A_Level_Computing_Project
             CapitalX = x;
             CapitalY = y;
             CountryCode = c;
-            Collapsed = co;
         }
 
         public bool CanAfford(int ReqGold, int ReqWood, int ReqStone, int ReqFood, int ReqMetal)
@@ -51,9 +50,25 @@ namespace A_Level_Computing_Project
 
         public bool OwnsLand (Province[,] MapArray)
         {
+            foreach(Province p in MapArray)
+            {
+                if (p.OwnedBy == this && CapitalX != p.X && CapitalY != p.Y)
+                {
+                    return true;
+                }
+            }
 
+            return false;
+        }
 
-            return true;
+        public void Collapse(Province[,] MapArray, Country[] Countries)
+        {
+            Standing.OwnedBy = "Unowned";
+            if (Levy != null)
+            {
+                Levy.OwnedBy = "Unowned";
+            }
+            Name = "Unowned";
         }
     }
 }

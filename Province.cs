@@ -213,7 +213,11 @@ namespace A_Level_Computing_Project
             List<int> OptionsToRemove = new List<int>();
             for (int i = 0; i < 6; i++)
             {
-                if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].IsDangerous(MapArray) || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Shallow Sea" || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Deep Ocean"))
+                if (AdjacentTo[i, 0] < 0 || AdjacentTo[i, 0] > 23 || AdjacentTo[i, 1] < 0 || AdjacentTo[i, 1] > 17)
+                {
+                    OptionsToRemove.Add(i);
+                }
+                else if (MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].ArmyInside != null || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].IsDangerous(MapArray) || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Shallow Sea" || MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].Terrain == "Deep Ocean")
                 {
                     OptionsToRemove.Add(i);
                 }
@@ -225,25 +229,31 @@ namespace A_Level_Computing_Project
             OptionsToRemove.Clear();
 
             int[] BestDirection = new int[2];
-            BestDirection[0] = AdjacentTo[Options[0], 0];
-            BestDirection[1] = AdjacentTo[Options[0], 1];
+            if (Options.Count == 0)
+            {
+                BestDirection[0] = X;
+                BestDirection[1] = Y;
+            }
+            else
+            {
+                BestDirection[0] = AdjacentTo[Options[0], 0];
+                BestDirection[1] = AdjacentTo[Options[0], 1];
+            }
 
             return BestDirection;
         }
 
         public bool CanColonise(Province[,] MapArray, Country[] Countries, int Coloniser)
         {
-            bool CanColonise = false;
-
             for (int i = 0; i < 6; i++)
             {
                 if (AdjacentTo[i, 0] >= 0 && AdjacentTo[i, 0] <= 23 && AdjacentTo[i, 1] >= 0 && AdjacentTo[i, 1] <= 17 && MapArray[AdjacentTo[i, 0], AdjacentTo[i, 1]].OwnedBy == Countries[Coloniser] && OwnedBy == Countries[0])
                 {
-                    CanColonise = true;
+                    return true;
                 }
             }
 
-            return CanColonise;
+            return false;
         }
 
         public bool CanAnnex(Province[,] MapArray, Country[] Countries, int Annexer)
