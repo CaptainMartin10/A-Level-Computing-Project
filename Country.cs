@@ -61,7 +61,7 @@ namespace A_Level_Computing_Project
             return false;
         }
 
-        public void Collapse(Province[,] MapArray, Country[] Countries)
+        public void Collapse()
         {
             Standing.OwnedBy = "Unowned";
             if (Levy != null)

@@ -881,7 +881,7 @@ namespace A_Level_Computing_Project
                         bool Sieging = Convert.ToBoolean((line.Substring(29, 5)).Trim());
                         int SiegeProgress = Convert.ToInt32((line.Substring(34, 3)));
 
-                        Countries[ID].Standing = new StandingArmy(X, Y, Infantry, Archers, Cavalry, Countries[ID].Name, Moved);
+                        Countries[ID].Standing = new StandingArmy(X, Y, Infantry, Archers, Cavalry, Countries[ID].Name, Moved, Sieging, SiegeProgress);
                     }
                     else if (line.Length == 17)
                     {
@@ -1254,11 +1254,6 @@ namespace A_Level_Computing_Project
                     {
                         c.Levy.Retreat(MapArray, Countries, CountryIndexes);
                     }
-                    else if (c.Levy.Sieging)
-                    {
-                        c.Levy.Siege(MapArray, Countries, CountryIndexes);
-                    }
-
                 }
             }
         }

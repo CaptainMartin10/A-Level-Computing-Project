@@ -251,6 +251,22 @@ namespace A_Level_Computing_Project
                 Moved = true;
             }
         }
+    }
+
+    public class StandingArmy : RealArmy
+    {
+        public StandingArmy(int x, int y, int i, int a, int c, string o, bool m, bool s, int sp)
+        {
+            X = x;
+            Y = y;
+            Infantry = i;
+            Archers = a;
+            Cavalry = c;
+            OwnedBy = o;
+            Moved = m;
+            Sieging = s;
+            SiegeProgress = sp;
+        }
 
         public void Siege(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes)
         {
@@ -262,24 +278,10 @@ namespace A_Level_Computing_Project
                 SiegeProgress = 0;
                 if (X == MapArray[X, Y].OwnedBy.CapitalX && Y == MapArray[X, Y].OwnedBy.CapitalY)
                 {
-                    MapArray[X, Y].OwnedBy.Collapse(MapArray, Countries);
+                    MapArray[X, Y].OwnedBy.Collapse();
                 }
                 MapArray[X, Y].OwnedBy = Countries[CountryIndexes[OwnedBy]];
             }
-        }
-    }
-
-    public class StandingArmy : RealArmy
-    {
-        public StandingArmy(int x, int y, int i, int a, int c, string o, bool m)
-        {
-            X = x;
-            Y = y;
-            Infantry = i;
-            Archers = a;
-            Cavalry = c;
-            OwnedBy = o;
-            Moved = m;
         }
     }
 
