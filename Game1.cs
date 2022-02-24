@@ -1231,24 +1231,7 @@ namespace A_Level_Computing_Project
             }
             foreach (Country c in Countries)
             {
-                c.Standing.Moved = false;
-                if (c.Standing.Retreating)
-                {
-                    c.Standing.Retreat(MapArray, Countries, CountryIndexes);
-                }
-                else if (c.Standing.Sieging)
-                {
-                    c.Standing.Siege(MapArray, Countries, CountryIndexes);
-                }
-
-                if (c.Levy != null)
-                {
-                    c.Levy.Moved = false;
-                    if (c.Levy.Retreating)
-                    {
-                        c.Levy.Retreat(MapArray, Countries, CountryIndexes);
-                    }
-                }
+                c.NextTurn(MapArray, Countries, CountryIndexes, Player, TerrainCosts);
             }
         }
     }
