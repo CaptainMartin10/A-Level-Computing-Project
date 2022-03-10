@@ -53,7 +53,7 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public bool ContainsMousePointer(Point mousePoint)
+        public bool ContainsMousePointer(Point MousePoint)
         {
             if (X % 2 == 0)
             {
@@ -67,7 +67,7 @@ namespace A_Level_Computing_Project
                 Rectangle HexBounds8 = new Rectangle((X * 27) + 2, (Y * 36) + 13, 32, 10);
                 Rectangle HexBounds9 = new Rectangle((X * 27) + 1, (Y * 36) + 15, 34, 6);
                 Rectangle HexBounds10 = new Rectangle((X * 27), (Y * 36) + 17, 36, 2);
-                if (HexBounds1.Contains(mousePoint) || HexBounds2.Contains(mousePoint) || HexBounds3.Contains(mousePoint) || HexBounds4.Contains(mousePoint) || HexBounds5.Contains(mousePoint) || HexBounds6.Contains(mousePoint) || HexBounds7.Contains(mousePoint) || HexBounds8.Contains(mousePoint) || HexBounds9.Contains(mousePoint) || HexBounds10.Contains(mousePoint))
+                if (HexBounds1.Contains(MousePoint) || HexBounds2.Contains(MousePoint) || HexBounds3.Contains(MousePoint) || HexBounds4.Contains(MousePoint) || HexBounds5.Contains(MousePoint) || HexBounds6.Contains(MousePoint) || HexBounds7.Contains(MousePoint) || HexBounds8.Contains(MousePoint) || HexBounds9.Contains(MousePoint) || HexBounds10.Contains(MousePoint))
                 {
                     return true;
                 }
@@ -88,7 +88,7 @@ namespace A_Level_Computing_Project
                 Rectangle HexBounds8 = new Rectangle((X * 27) + 2, (Y * 36) + 31, 32, 10);
                 Rectangle HexBounds9 = new Rectangle((X * 27) + 1, (Y * 36) + 33, 34, 6);
                 Rectangle HexBounds10 = new Rectangle((X * 27), (Y * 36) + 35, 36, 2);
-                if (HexBounds1.Contains(mousePoint) || HexBounds2.Contains(mousePoint) || HexBounds3.Contains(mousePoint) || HexBounds4.Contains(mousePoint) || HexBounds5.Contains(mousePoint) || HexBounds6.Contains(mousePoint) || HexBounds7.Contains(mousePoint) || HexBounds8.Contains(mousePoint) || HexBounds9.Contains(mousePoint) || HexBounds10.Contains(mousePoint))
+                if (HexBounds1.Contains(MousePoint) || HexBounds2.Contains(MousePoint) || HexBounds3.Contains(MousePoint) || HexBounds4.Contains(MousePoint) || HexBounds5.Contains(MousePoint) || HexBounds6.Contains(MousePoint) || HexBounds7.Contains(MousePoint) || HexBounds8.Contains(MousePoint) || HexBounds9.Contains(MousePoint) || HexBounds10.Contains(MousePoint))
                 {
                     return true;
                 }

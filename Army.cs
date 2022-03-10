@@ -9,7 +9,7 @@ namespace A_Level_Computing_Project
     {
         public int X, Y;
 
-        public bool ContainsMousePointer(Point mousePoint)
+        public bool ContainsMousePointer(Point MousePoint)
         {
             if (X % 2 == 0)
             {
@@ -22,7 +22,7 @@ namespace A_Level_Computing_Project
                 Rectangle CircleBounds7 = new Rectangle((X * 27) + 6, (Y * 36) + 11, 24, 14);
                 Rectangle CircleBounds8 = new Rectangle((X * 27) + 5, (Y * 36) + 13, 26, 10);
                 Rectangle CircleBounds9 = new Rectangle((X * 27) + 4, (Y * 36) + 15, 28, 6);
-                if (CircleBounds1.Contains(mousePoint) || CircleBounds2.Contains(mousePoint) || CircleBounds3.Contains(mousePoint) || CircleBounds4.Contains(mousePoint) || CircleBounds5.Contains(mousePoint) || CircleBounds6.Contains(mousePoint) || CircleBounds7.Contains(mousePoint) || CircleBounds8.Contains(mousePoint) || CircleBounds9.Contains(mousePoint))
+                if (CircleBounds1.Contains(MousePoint) || CircleBounds2.Contains(MousePoint) || CircleBounds3.Contains(MousePoint) || CircleBounds4.Contains(MousePoint) || CircleBounds5.Contains(MousePoint) || CircleBounds6.Contains(MousePoint) || CircleBounds7.Contains(MousePoint) || CircleBounds8.Contains(MousePoint) || CircleBounds9.Contains(MousePoint))
                 {
                     return true;
                 }
@@ -42,7 +42,7 @@ namespace A_Level_Computing_Project
                 Rectangle CircleBounds7 = new Rectangle((X * 27) + 6, (Y * 36) + 29, 24, 14);
                 Rectangle CircleBounds8 = new Rectangle((X * 27) + 5, (Y * 36) + 31, 26, 10);
                 Rectangle CircleBounds9 = new Rectangle((X * 27) + 4, (Y * 36) + 33, 28, 6);
-                if (CircleBounds1.Contains(mousePoint) || CircleBounds2.Contains(mousePoint) || CircleBounds3.Contains(mousePoint) || CircleBounds4.Contains(mousePoint) || CircleBounds5.Contains(mousePoint) || CircleBounds6.Contains(mousePoint) || CircleBounds7.Contains(mousePoint) || CircleBounds8.Contains(mousePoint) || CircleBounds9.Contains(mousePoint))
+                if (CircleBounds1.Contains(MousePoint) || CircleBounds2.Contains(MousePoint) || CircleBounds3.Contains(MousePoint) || CircleBounds4.Contains(MousePoint) || CircleBounds5.Contains(MousePoint) || CircleBounds6.Contains(MousePoint) || CircleBounds7.Contains(MousePoint) || CircleBounds8.Contains(MousePoint) || CircleBounds9.Contains(MousePoint))
                 {
                     return true;
                 }
@@ -116,7 +116,7 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public int[] PickMoveLocation(int SelectedX, int SelectedY, Point mousePoint, Province[,] MapArray)
+        public int[] PickMoveLocation(int SelectedX, int SelectedY, Point MousePoint, Province[,] MapArray)
         {
             int[] MoveLocation = new int[2];
 
@@ -127,7 +127,7 @@ namespace A_Level_Computing_Project
 
             foreach (PhantomArmy p in MoveSelection)
             {
-                if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(mousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
+                if (p.X >= 0 && p.X <= 23 && p.Y >= 0 && p.Y <= 17 && p.ContainsMousePointer(MousePoint) && MapArray[p.X, p.Y].Terrain != "Deep Ocean")
                 {
                     MoveLocation[0] = p.X;
                     MoveLocation[1] = p.Y;
