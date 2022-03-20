@@ -17,7 +17,7 @@ namespace A_Level_Computing_Project
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
         public List<string> Saves = new List<string>();
         public SpriteFont MenuFont;
-        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu, CountryMenu, LoadMenu;
+        public Texture2D Background, Fort, Settlement, Farm, Forester, Mine, BuildStructureMenu, Unowned, Lindon, BlueMountainsNorth, BlueMountainsSouth, Shire, RangersoftheNorth, Rivendell, Breeland, Dunland, Isengard, Gundabad, LindonArmy, BlueMountainsNorthArmy, BlueMountainsSouthArmy, ShireArmy, RangersoftheNorthArmy, RivendellArmy, BreelandArmy, DunlandArmy, IsengardArmy, GundabadArmy, ArmyMovement, PauseMenu, CountryMenu, LoadMenu, MarketMenu;
         public MouseState CurrentMouseState, LastMouseState;
         public KeyboardState CurrentKeyboardState, LastKeyboardState;
         public Dictionary<string, int> FarmProduction = new Dictionary<string, int>();
@@ -63,6 +63,7 @@ namespace A_Level_Computing_Project
             PauseMenu = Content.Load<Texture2D>("Pause Menu");
             CountryMenu = Content.Load<Texture2D>("Country Menu");
             LoadMenu = Content.Load<Texture2D>("Load Menu");
+            MarketMenu = Content.Load<Texture2D>("Market Menu");
 
             Unowned = Content.Load<Texture2D>("Blank Tile");
             Lindon = Content.Load<Texture2D>("Lindon Tile");
@@ -197,7 +198,7 @@ namespace A_Level_Computing_Project
 
                     else if (OpenMarketButton.Contains(MousePoint))
                     {
-
+                        Menu = "Market";
                     }
 
                     else if (GainLandButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].CanColonise(MapArray, Countries, Player) && Countries[Player].CanAfford(200, 200, 200, 200, 200))
@@ -564,6 +565,101 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            else if (Menu == "Market")
+            {
+                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    Rectangle CloseMarketButton = new Rectangle(637, 123, 14, 14);
+                    if (CloseMarketButton.Contains(MousePoint))
+                    {
+                        Menu = "Game";
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            for (int j = 0; j < 5; j++)
+                            {
+                                bool Purchased = false;
+                                Rectangle PurchaseButton = new Rectangle(6 + (i * 125), 163 + (j * 86), 121, 36);
+                                if (PurchaseButton.Contains(MousePoint))
+                                {
+                                    if (i == 0)
+                                    {
+                                        if (Countries[Player].CanAfford(100, 0, 0, 0, 0))
+                                        {
+                                            Countries[Player].Pay(100, 0, 0, 0, 0);
+                                            Purchased = true;
+                                        }
+                                    }
+                                    else if (i == 1)
+                                    {
+                                        if (Countries[Player].CanAfford(0, 0, 0, 100, 0))
+                                        {
+                                            Countries[Player].Pay(0, 0, 0, 100, 0);
+                                            Purchased = true;
+                                        }
+                                    }
+                                    else if (i == 2)
+                                    {
+                                        if (Countries[Player].CanAfford(0, 100, 0, 0, 0))
+                                        {
+                                            Countries[Player].Pay(0, 100, 0, 0, 0);
+                                            Purchased = true;
+                                        }
+                                    }
+                                    else if (i == 3)
+                                    {
+                                        if (Countries[Player].CanAfford(0, 0, 100, 0, 0))
+                                        {
+                                            Countries[Player].Pay(0, 0, 100, 0, 0);
+                                            Purchased = true;
+                                        }
+                                    }
+                                    else if (i == 4)
+                                    {
+                                        if (Countries[Player].CanAfford(0, 0, 0, 0, 100))
+                                        {
+                                            Countries[Player].Pay(0, 0, 0, 0, 100);
+                                            Purchased = true;
+                                        }
+                                    }
+                                }
+
+                                if (Purchased)
+                                {
+                                    if (j == 0)
+                                    {
+                                        Countries[Player].Gold += 100;
+                                    }
+                                    else if (j == 1)
+                                    {
+                                        Countries[Player].Food += 100;
+                                    }
+                                    else if (j == 2)
+                                    {
+                                        Countries[Player].Wood += 100;
+                                    }
+                                    else if (j == 3)
+                                    {
+                                        Countries[Player].Stone += 100;
+                                    }
+                                    else if (j == 4)
+                                    {
+                                        Countries[Player].Metal += 100;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+                {
+                    Menu = "Game";
+                }
+            }
+
             LastMouseState = CurrentMouseState;
             LastKeyboardState = CurrentKeyboardState;
 
@@ -820,6 +916,26 @@ namespace A_Level_Computing_Project
                     _spriteBatch.DrawString(MenuFont, Saves[i].Substring(Saves[i].Length - 25, 21), new Vector2(89, ((i - SavesFP) * 36) + 242), Color.White);
                 }
 
+            }
+
+            if (Menu == "Market")
+            {
+                _spriteBatch.Draw(MarketMenu, new Vector2(0, 117), Color.White);
+
+                _spriteBatch.DrawString(MenuFont, "Purchase 100 Gold for:", new Vector2(134, 122), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 100 Food for:", new Vector2(134, 208), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 100 Wood for:", new Vector2(134, 294), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 100 Stone for:", new Vector2(134, 380), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 100 Metal for:", new Vector2(134, 466), Color.White);
+
+                for (int i = 0; i < 5; i ++)
+                {
+                    _spriteBatch.DrawString(MenuFont, "100 G", new Vector2(9, 162 + (i * 86)), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "100 F", new Vector2(134, 162 + (i * 86)), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "100 W", new Vector2(259, 162 + (i * 86)), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "100 S", new Vector2(384, 162 + (i * 86)), Color.White);
+                    _spriteBatch.DrawString(MenuFont, "100 M", new Vector2(509, 162 + (i * 86)), Color.White);
+                }
             }
 
             _spriteBatch.End();
