@@ -143,7 +143,7 @@ namespace A_Level_Computing_Project
             }
             if (ArmyX != 0 || ArmyY != 0)
             {
-                Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name, true);
+                Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name, true, false);
                 MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = Countries[Player].Levy;
             }
         }

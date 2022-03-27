@@ -13,7 +13,7 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public int SelectedX, SelectedY, Player = 4, Turn = 1, SavesFP, SavesEP;
+        public int SelectedX, SelectedY, Player = 4, SavesFP, SavesEP;
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
         public List<string> Saves = new List<string>();
         public SpriteFont MenuFont;
@@ -24,7 +24,7 @@ namespace A_Level_Computing_Project
         public Dictionary<string, int> ForesterProduction = new Dictionary<string, int>();
         public Dictionary<string, int> MineProduction = new Dictionary<string, int>();
         public Dictionary<string, int> TerrainCosts = new Dictionary<string, int>();
-        public Dictionary<string, Texture2D> OwnedMapmode = new Dictionary<string, Texture2D>();
+        public Dictionary<string, Texture2D> OwnedMapMode = new Dictionary<string, Texture2D>();
         public Dictionary<string, Texture2D> ArmyTextures = new Dictionary<string, Texture2D>();
         public Dictionary<string, int> CountryIndexes = new Dictionary<string, int>();
 
@@ -132,17 +132,17 @@ namespace A_Level_Computing_Project
             TerrainCosts.Add("Marshland", 3);
             TerrainCosts.Add("Shallow Sea", 2);
 
-            OwnedMapmode.Add("Unowned", Unowned);
-            OwnedMapmode.Add("Lindon", Lindon);
-            OwnedMapmode.Add("Blue Mountains North", BlueMountainsNorth);
-            OwnedMapmode.Add("Blue Mountains South", BlueMountainsSouth);
-            OwnedMapmode.Add("Shire", Shire);
-            OwnedMapmode.Add("Rangers of the North", RangersoftheNorth);
-            OwnedMapmode.Add("Rivendell", Rivendell);
-            OwnedMapmode.Add("Breeland", Breeland);
-            OwnedMapmode.Add("Dunland", Dunland);
-            OwnedMapmode.Add("Isengard", Isengard);
-            OwnedMapmode.Add("Gundabad", Gundabad);
+            OwnedMapMode.Add("Unowned", Unowned);
+            OwnedMapMode.Add("Lindon", Lindon);
+            OwnedMapMode.Add("Blue Mountains North", BlueMountainsNorth);
+            OwnedMapMode.Add("Blue Mountains South", BlueMountainsSouth);
+            OwnedMapMode.Add("Shire", Shire);
+            OwnedMapMode.Add("Rangers of the North", RangersoftheNorth);
+            OwnedMapMode.Add("Rivendell", Rivendell);
+            OwnedMapMode.Add("Breeland", Breeland);
+            OwnedMapMode.Add("Dunland", Dunland);
+            OwnedMapMode.Add("Isengard", Isengard);
+            OwnedMapMode.Add("Gundabad", Gundabad);
 
             ArmyTextures.Add("Lindon", LindonArmy);
             ArmyTextures.Add("Blue Mountains North", BlueMountainsNorthArmy);
@@ -231,11 +231,11 @@ namespace A_Level_Computing_Project
                 {
                     if (Hex.X % 2 == 0)
                     {
-                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
+                        _spriteBatch.Draw(OwnedMapMode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, Hex.Y * 36), Color.White);
                     }
                     else if (Hex.X % 2 == 1)
                     {
-                        _spriteBatch.Draw(OwnedMapmode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
+                        _spriteBatch.Draw(OwnedMapMode[Hex.OwnedBy.Name], new Vector2(Hex.X * 27, (Hex.Y * 36) + 18), Color.White);
                     }
                 }
             }
@@ -472,11 +472,11 @@ namespace A_Level_Computing_Project
             {
                 _spriteBatch.Draw(MarketMenu, new Vector2(0, 117), Color.White);
 
-                _spriteBatch.DrawString(MenuFont, "Purchase 100 Gold for:", new Vector2(134, 122), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 100 Food for:", new Vector2(134, 208), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 100 Wood for:", new Vector2(134, 294), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 100 Stone for:", new Vector2(134, 380), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 100 Metal for:", new Vector2(134, 466), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 75 Gold for:", new Vector2(134, 122), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 75 Food for:", new Vector2(134, 208), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 75 Wood for:", new Vector2(134, 294), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 75 Stone for:", new Vector2(134, 380), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Purchase 75 Metal for:", new Vector2(134, 466), Color.White);
 
                 for (int i = 0; i < 5; i++)
                 {
@@ -836,41 +836,41 @@ namespace A_Level_Computing_Project
                             {
                                 if (i == 0)
                                 {
-                                    if (Countries[Player].CanAfford(100, 0, 0, 0, 0))
+                                    if (Countries[Player].CanAfford(75, 0, 0, 0, 0))
                                     {
-                                        Countries[Player].Pay(100, 0, 0, 0, 0);
+                                        Countries[Player].Pay(75, 0, 0, 0, 0);
                                         Purchased = true;
                                     }
                                 }
                                 else if (i == 1)
                                 {
-                                    if (Countries[Player].CanAfford(0, 0, 0, 100, 0))
+                                    if (Countries[Player].CanAfford(0, 0, 0, 75, 0))
                                     {
-                                        Countries[Player].Pay(0, 0, 0, 100, 0);
+                                        Countries[Player].Pay(0, 0, 0, 75, 0);
                                         Purchased = true;
                                     }
                                 }
                                 else if (i == 2)
                                 {
-                                    if (Countries[Player].CanAfford(0, 100, 0, 0, 0))
+                                    if (Countries[Player].CanAfford(0, 75, 0, 0, 0))
                                     {
-                                        Countries[Player].Pay(0, 100, 0, 0, 0);
+                                        Countries[Player].Pay(0, 75, 0, 0, 0);
                                         Purchased = true;
                                     }
                                 }
                                 else if (i == 3)
                                 {
-                                    if (Countries[Player].CanAfford(0, 0, 100, 0, 0))
+                                    if (Countries[Player].CanAfford(0, 0, 75, 0, 0))
                                     {
-                                        Countries[Player].Pay(0, 0, 100, 0, 0);
+                                        Countries[Player].Pay(0, 0, 75, 0, 0);
                                         Purchased = true;
                                     }
                                 }
                                 else if (i == 4)
                                 {
-                                    if (Countries[Player].CanAfford(0, 0, 0, 0, 100))
+                                    if (Countries[Player].CanAfford(0, 0, 0, 0, 75))
                                     {
-                                        Countries[Player].Pay(0, 0, 0, 0, 100);
+                                        Countries[Player].Pay(0, 0, 0, 0, 75);
                                         Purchased = true;
                                     }
                                 }
@@ -943,7 +943,7 @@ namespace A_Level_Computing_Project
 
                         Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal, CountryCode);
                     }
-                    else if (line.Length == 37)
+                    else if (line.Length == 42)
                     {
                         int ID = Convert.ToInt32(line.Substring(0, 2));
                         int X = Convert.ToInt32(line.Substring(2, 2));
@@ -954,18 +954,20 @@ namespace A_Level_Computing_Project
                         bool Moved = Convert.ToBoolean((line.Substring(24, 5)).Trim());
                         bool Sieging = Convert.ToBoolean((line.Substring(29, 5)).Trim());
                         int SiegeProgress = Convert.ToInt32((line.Substring(34, 3)));
+                        bool Retreating = Convert.ToBoolean((line.Substring(37, 5)).Trim());
 
-                        Countries[ID].Standing = new StandingArmy(X, Y, Infantry, Archers, Cavalry, Countries[ID].Name, Moved, Sieging, SiegeProgress);
+                        Countries[ID].Standing = new StandingArmy(X, Y, Infantry, Archers, Cavalry, Countries[ID].Name, Moved, Sieging, Retreating, SiegeProgress);
                     }
-                    else if (line.Length == 17)
+                    else if (line.Length == 22)
                     {
                         int ID = Convert.ToInt32(line.Substring(0, 2));
                         int X = Convert.ToInt32(line.Substring(2, 2));
                         int Y = Convert.ToInt32(line.Substring(4, 2));
                         int Infantry = Convert.ToInt32(line.Substring(6, 6));
                         bool Moved = bool.Parse((line.Substring(12, 5)).Trim());
+                        bool Retreating = bool.Parse((line.Substring(17, 5)).Trim());
 
-                        Countries[ID].Levy = new LevyArmy(X, Y, Infantry, Countries[ID].Name, Moved);
+                        Countries[ID].Levy = new LevyArmy(X, Y, Infantry, Countries[ID].Name, Moved, Retreating);
                     }
                     else if (line.Length == 2)
                     {
@@ -1163,6 +1165,15 @@ namespace A_Level_Computing_Project
                         line = line.Insert(34, "0");
                     }
 
+                    if (c.Standing.Retreating)
+                    {
+                        line += " True";
+                    }
+                    else if (!c.Standing.Retreating)
+                    {
+                        line += "False";
+                    }
+
                     sw.WriteLine(line);
                 }
 
@@ -1201,6 +1212,15 @@ namespace A_Level_Computing_Project
                             line += " True";
                         }
                         else if (!c.Levy.Moved)
+                        {
+                            line += "False";
+                        }
+
+                        if (c.Levy.Retreating)
+                        {
+                            line += " True";
+                        }
+                        else if (!c.Levy.Retreating)
                         {
                             line += "False";
                         }
@@ -1261,7 +1281,6 @@ namespace A_Level_Computing_Project
 
         protected void NextTurn()
         {
-            Turn++;
             foreach (Country C in Countries)
             {
                 if (C.Levy == null)

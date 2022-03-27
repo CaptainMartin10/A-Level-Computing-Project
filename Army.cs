@@ -255,7 +255,7 @@ namespace A_Level_Computing_Project
 
     public class StandingArmy : RealArmy
     {
-        public StandingArmy(int x, int y, int i, int a, int c, string o, bool m, bool s, int sp)
+        public StandingArmy(int x, int y, int i, int a, int c, string o, bool m, bool s, bool r, int sp)
         {
             X = x;
             Y = y;
@@ -265,6 +265,7 @@ namespace A_Level_Computing_Project
             OwnedBy = o;
             Moved = m;
             Sieging = s;
+            Retreating = r;
             SiegeProgress = sp;
         }
 
@@ -287,13 +288,14 @@ namespace A_Level_Computing_Project
 
     public class LevyArmy : RealArmy
     {
-        public LevyArmy(int x, int y, int i, string o, bool m)
+        public LevyArmy(int x, int y, int i, string o, bool m, bool r)
         {
             X = x;
             Y = y;
             Infantry = i;
             OwnedBy = o;
             Moved = m;
+            Retreating = r;
         }
     }
 
