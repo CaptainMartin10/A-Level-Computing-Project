@@ -182,482 +182,32 @@ namespace A_Level_Computing_Project
 
             if (Menu == "Game")
             {
-                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    Rectangle NextTurnButton = new Rectangle(663, 332, 498, 36);
-                    Rectangle OpenMarketButton = new Rectangle(663, 378, 498, 36);
-                    Rectangle GainLandButton = new Rectangle(663, 464, 498, 36);
-                    Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
-                    Rectangle UpgradeStrucutreButton = new Rectangle(663, 624, 498, 36);
-                    Rectangle RaiseLevyArmyButton = new Rectangle(663, 286, 498, 36);
-
-                    if (NextTurnButton.Contains(MousePoint))
-                    {
-                        NextTurn();
-                    }
-
-                    else if (OpenMarketButton.Contains(MousePoint))
-                    {
-                        Menu = "Market";
-                    }
-
-                    else if (GainLandButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].CanColonise(MapArray, Countries, Player) && Countries[Player].CanAfford(200, 200, 200, 200, 200))
-                    {
-                        Countries[Player].Pay(200, 200, 200, 200, 200);
-                        MapArray[SelectedX, SelectedY].OwnedBy = Countries[Player];
-                    }
-
-                    else if (GainLandButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].CanAnnex(MapArray, Countries, Player))
-                    {
-                        MapArray[SelectedX, SelectedY].ArmyInside.Sieging = true;
-                    }
-
-                    else if (BuildStructureButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure == "Empty")
-                    {
-                        Menu = "Build Structure";
-                    }
-
-                    else if (UpgradeStrucutreButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].StructureLevel < 5 && Countries[Player].CanAfford(100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1)))
-                    {
-                        MapArray[SelectedX, SelectedY].StructureLevel += 1;
-                        Countries[Player].Pay(100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel);
-                    }
-
-                    else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy == null)
-                    {
-                        int LevyArmySize = 0;
-                        foreach (Province Hex in MapArray)
-                        {
-                            if (Hex.OwnedBy == Countries[Player])
-                            {
-                                if (Hex.Structure == "Empty")
-                                {
-                                    LevyArmySize += 50;
-                                }
-                                else if (Hex.Structure == "Settlement")
-                                {
-                                    LevyArmySize += 200 * Hex.StructureLevel;
-                                }
-                                else if (Hex.Structure == "Farm" || Hex.Structure == "Forester" || Hex.Structure == "Mine")
-                                {
-                                    LevyArmySize += 100 * Hex.StructureLevel;
-                                }
-                            }
-                        }
-                        int ArmyX = 0;
-                        int ArmyY = 0;
-                        if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].ArmyInside == null)
-                        {
-                            ArmyX = Countries[Player].CapitalX;
-                            ArmyY = Countries[Player].CapitalY;
-                        }
-                        else
-                        {
-                            for (int i = 5; i >= 0; i--)
-                            {
-                                if (MapArray[MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 0], MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 1]].ArmyInside == null)
-                                {
-                                    ArmyX = MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 0];
-                                    ArmyY = MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 1];
-                                }
-                            }
-                        }
-                        if (ArmyX != 0 || ArmyY != 0)
-                        {
-                            Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name, true);
-                            MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = Countries[Player].Levy;
-                        }
-                    }
-
-                    else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy != null)
-                    {
-                        MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = null;
-                        Countries[Player].Levy = null;
-                        Selected = "Terrain";
-                    }
-
-                    else
-                    {
-                        if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating && !MapArray[SelectedX, SelectedY].ArmyInside.Sieging)
-                        {
-                            int[] MoveLocation = MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, MousePoint, MapArray);
-                            if (!(MoveLocation[0] == 0 && MoveLocation[1] == 0))
-                            {
-                                if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside == null)
-                                {
-                                    MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
-                                }
-                                else if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside != null && !MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside.Retreating)
-                                {
-                                    MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, TerrainCosts, CountryIndexes);
-                                }
-                            }
-                        }
-
-                        foreach (Province Hex in MapArray)
-                        {
-                            if (Hex.ContainsMousePointer(MousePoint))
-                            {
-                                if (Hex.X == 0 && Hex.Y == 0)
-                                {
-                                    Menu = "Pause";
-                                }
-                                else
-                                {
-                                    SelectedX = Hex.X;
-                                    SelectedY = Hex.Y;
-                                    Selected = "Province";
-                                }
-                            }
-                        }
-
-                        foreach (Country C in Countries)
-                        {
-                            if (C.Name != "Unowned" && C.Standing.ContainsMousePointer(MousePoint))
-                            {
-                                SelectedX = C.Standing.X;
-                                SelectedY = C.Standing.Y;
-                                Selected = "Standing";
-                            }
-                            else if (C.Name != "Unowned" && C.Levy != null && C.Levy.ContainsMousePointer(MousePoint))
-                            {
-                                SelectedX = C.Levy.X;
-                                SelectedY = C.Levy.Y;
-                                Selected = "Levy";
-                            }
-
-                        }
-                    }
-                }
-
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
-                {
-                    if (Mapmode == "Regular")
-                    {
-                        Mapmode = "ShowOwned";
-                    }
-                    else if (Mapmode == "ShowOwned")
-                    {
-                        Mapmode = "Regular";
-                    }
-                }
-
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.Enter) && LastKeyboardState.IsKeyDown(Keys.Enter))
-                {
-                    NextTurn();
-                }
-
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
-                {
-                    Menu = "Pause";
-                }
+                CheckGameMenu(MousePoint);
             }
 
             else if (Menu == "Build Structure")
             {
-                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    Rectangle BuildSettlement = new Rectangle(221, 312, 40, 40);
-                    Rectangle BuildFort = new Rectangle(265, 312, 40, 40);
-                    Rectangle BuildFarm = new Rectangle(309, 312, 40, 40);
-                    Rectangle BuildMine = new Rectangle(353, 312, 40, 40);
-                    Rectangle BuildForester = new Rectangle(397, 312, 40, 40);
-                    Rectangle CloseBuildMenu = new Rectangle(447, 312, 14, 14);
-                    if (BuildSettlement.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
-                    {
-                        MapArray[SelectedX, SelectedY].Structure = "Settlement";
-                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Pay(100, 100, 100, 100, 100);
-                        Menu = "Game";
-                    }
-                    else if (BuildFort.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
-                    {
-                        MapArray[SelectedX, SelectedY].Structure = "Fort";
-                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Pay(100, 100, 100, 100, 100);
-                        Menu = "Game";
-                    }
-                    else if (BuildFarm.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
-                    {
-                        MapArray[SelectedX, SelectedY].Structure = "Farm";
-                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Pay(100, 100, 100, 100, 100);
-                        Menu = "Game";
-                    }
-                    else if (BuildMine.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
-                    {
-                        MapArray[SelectedX, SelectedY].Structure = "Mine";
-                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Pay(100, 100, 100, 100, 100);
-                        Menu = "Game";
-                    }
-                    else if (BuildForester.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
-                    {
-                        MapArray[SelectedX, SelectedY].Structure = "Forester";
-                        MapArray[SelectedX, SelectedY].StructureLevel = 1;
-                        Countries[Player].Pay(100, 100, 100, 100, 100);
-                        Menu = "Game";
-                    }
-                    else if (CloseBuildMenu.Contains(MousePoint))
-                    {
-                        Menu = "Game";
-                    }
-                }
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
-                {
-                    Menu = "Game";
-                }
+                CheckBuildStructureMenu(MousePoint);
             }
 
             else if (Menu == "Pause")
             {
-                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    Rectangle NewGameButton = new Rectangle(243, 254, 168, 36);
-                    Rectangle LoadGameButton = new Rectangle(243, 294, 168, 36);
-                    Rectangle SaveGameButton = new Rectangle(243, 334, 168, 36);
-                    Rectangle ExitGameButton = new Rectangle(243, 374, 168, 36);
-                    Rectangle CloseMenuButton = new Rectangle(425, 254, 14, 14);
-                    if (NewGameButton.Contains(MousePoint))
-                    {
-                        Menu = "Pick Country";
-                    }
-                    else if (LoadGameButton.Contains(MousePoint))
-                    {
-                        string SavesPath = Path.GetFullPath("Saves/NewSave.txt");
-                        SavesPath = SavesPath.Remove(SavesPath.Length - 41, 24);
-                        SavesPath = SavesPath.Remove(SavesPath.Length - 11, 11);
-
-                        Saves.Clear();
-                        string[] TempSaves = Directory.GetFiles(SavesPath);
-                        foreach (string s in TempSaves)
-                        {
-                            if (!s.Contains("NewSave"))
-                            {
-                                Saves.Add(s);
-                            }
-                        }
-
-                        SavesFP = 0;
-                        if (Saves.Count > 5)
-                        {
-                            SavesEP = 4;
-                        }
-                        else
-                        {
-                            SavesEP = Saves.Count - 1;
-                        }
-
-                        Menu = "Load Game";
-                    }
-                    else if (SaveGameButton.Contains(MousePoint))
-                    {
-                        SaveGame();
-                    }
-                    else if (ExitGameButton.Contains(MousePoint))
-                    {
-                        Exit();
-                    }
-                    else if (CloseMenuButton.Contains(MousePoint))
-                    {
-                        Menu = "Game";
-                    }
-                }
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
-                {
-                    Menu = "Game";
-                }
+                CheckPauseMenu(MousePoint);
             }
 
             else if (Menu == "Pick Country")
             {
-                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    Rectangle BackButton = new Rectangle(263, 225, 14, 14);
-                    Rectangle CloseCountryMenu = new Rectangle(381, 225, 14, 14);
-                    if (BackButton.Contains(MousePoint))
-                    {
-                        Menu = "Pause";
-                    }
-                    else if (CloseCountryMenu.Contains(MousePoint))
-                    {
-                        Menu = "Game";
-                    }
-                    else
-                    {
-                        Rectangle[] CountryOptions = new Rectangle[10];
-                        for (int i = 0; i < 10; i++)
-                        {
-                            int X;
-                            int Y;
-                            if (i % 2 == 0)
-                            {
-                                X = 287;
-                                Y = (((i / 2) % 5) * 44) + 225;
-                            }
-                            else
-                            {
-                                X = 331;
-                                Y = ((((i - 1) / 2) % 5) * 44) + 225;
-                            }
-                            CountryOptions[i] = new Rectangle(X, Y, 40, 40);
-                            if (CountryOptions[i].Contains(MousePoint))
-                            {
-                                Player = i + 1;
-                                string Save = Path.GetFullPath("Saves/NewSave.txt");
-                                Save = Save.Remove(Save.Length - 41, 24);
-                                LoadSave(Save);
-                                Menu = "Game";
-                            }
-                        }
-                    }
-                }
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
-                {
-                    Menu = "Game";
-                }
+                CheckPickCountryMenu(MousePoint);
             }
 
             else if (Menu == "Load Game")
             {
-                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    Rectangle BackButton = new Rectangle(60, 241, 14, 14);
-                    Rectangle CloseLoadMenu = new Rectangle(582, 241, 14, 14);
-                    Rectangle UpButton = new Rectangle(558, 241, 14, 14);
-                    Rectangle DownButton = new Rectangle(558, 411, 14, 14);
-                    if (BackButton.Contains(MousePoint))
-                    {
-                        Menu = "Pause";
-                    }
-                    else if (CloseLoadMenu.Contains(MousePoint))
-                    {
-                        Menu = "Game";
-                    }
-                    else if (UpButton.Contains(MousePoint) && SavesFP > 0)
-                    {
-                        SavesFP--;
-                        SavesEP--;
-                    }
-                    else if (DownButton.Contains(MousePoint) && SavesEP < Saves.Count - 1)
-                    {
-                        SavesFP++;
-                        SavesEP++;
-                    }
-                    else
-                    {
-                        int ListPosition = 0;
-                        for (int i = SavesFP; i <= SavesEP; i++)
-                        {
-                            Rectangle Button = new Rectangle(86, 243 + (ListPosition * 36), 466, 36);
-                            ListPosition++;
-                            if (Button.Contains(MousePoint))
-                            {
-                                LoadSave(Saves[i]);
-                                Menu = "Game";
-                            }
-                        }
-                    }
-                }
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
-                {
-                    Menu = "Game";
-                }
+                CheckLoadGameMenu(MousePoint);
             }
 
             else if (Menu == "Market")
             {
-                if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    Rectangle CloseMarketButton = new Rectangle(637, 123, 14, 14);
-                    if (CloseMarketButton.Contains(MousePoint))
-                    {
-                        Menu = "Game";
-                    }
-                    else
-                    {
-                        for (int i = 0; i < 5; i++)
-                        {
-                            for (int j = 0; j < 5; j++)
-                            {
-                                bool Purchased = false;
-                                Rectangle PurchaseButton = new Rectangle(6 + (i * 125), 163 + (j * 86), 121, 36);
-                                if (PurchaseButton.Contains(MousePoint))
-                                {
-                                    if (i == 0)
-                                    {
-                                        if (Countries[Player].CanAfford(100, 0, 0, 0, 0))
-                                        {
-                                            Countries[Player].Pay(100, 0, 0, 0, 0);
-                                            Purchased = true;
-                                        }
-                                    }
-                                    else if (i == 1)
-                                    {
-                                        if (Countries[Player].CanAfford(0, 0, 0, 100, 0))
-                                        {
-                                            Countries[Player].Pay(0, 0, 0, 100, 0);
-                                            Purchased = true;
-                                        }
-                                    }
-                                    else if (i == 2)
-                                    {
-                                        if (Countries[Player].CanAfford(0, 100, 0, 0, 0))
-                                        {
-                                            Countries[Player].Pay(0, 100, 0, 0, 0);
-                                            Purchased = true;
-                                        }
-                                    }
-                                    else if (i == 3)
-                                    {
-                                        if (Countries[Player].CanAfford(0, 0, 100, 0, 0))
-                                        {
-                                            Countries[Player].Pay(0, 0, 100, 0, 0);
-                                            Purchased = true;
-                                        }
-                                    }
-                                    else if (i == 4)
-                                    {
-                                        if (Countries[Player].CanAfford(0, 0, 0, 0, 100))
-                                        {
-                                            Countries[Player].Pay(0, 0, 0, 0, 100);
-                                            Purchased = true;
-                                        }
-                                    }
-                                }
-
-                                if (Purchased)
-                                {
-                                    if (j == 0)
-                                    {
-                                        Countries[Player].Gold += 100;
-                                    }
-                                    else if (j == 1)
-                                    {
-                                        Countries[Player].Food += 100;
-                                    }
-                                    else if (j == 2)
-                                    {
-                                        Countries[Player].Wood += 100;
-                                    }
-                                    else if (j == 3)
-                                    {
-                                        Countries[Player].Stone += 100;
-                                    }
-                                    else if (j == 4)
-                                    {
-                                        Countries[Player].Metal += 100;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
-                {
-                    Menu = "Game";
-                }
+                CheckMarketMenu(MousePoint);
             }
 
             LastMouseState = CurrentMouseState;
@@ -928,7 +478,7 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Purchase 100 Stone for:", new Vector2(134, 380), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Purchase 100 Metal for:", new Vector2(134, 466), Color.White);
 
-                for (int i = 0; i < 5; i ++)
+                for (int i = 0; i < 5; i++)
                 {
                     _spriteBatch.DrawString(MenuFont, "100 G", new Vector2(9, 162 + (i * 86)), Color.White);
                     _spriteBatch.DrawString(MenuFont, "100 F", new Vector2(134, 162 + (i * 86)), Color.White);
@@ -941,6 +491,423 @@ namespace A_Level_Computing_Project
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        protected void CheckGameMenu(Point MousePoint)
+        {
+            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+            {
+                Rectangle NextTurnButton = new Rectangle(663, 332, 498, 36);
+                Rectangle OpenMarketButton = new Rectangle(663, 378, 498, 36);
+                Rectangle GainLandButton = new Rectangle(663, 464, 498, 36);
+                Rectangle BuildStructureButton = new Rectangle(663, 544, 498, 36);
+                Rectangle UpgradeStrucutreButton = new Rectangle(663, 624, 498, 36);
+                Rectangle RaiseLevyArmyButton = new Rectangle(663, 286, 498, 36);
+
+                if (NextTurnButton.Contains(MousePoint))
+                {
+                    NextTurn();
+                }
+
+                else if (OpenMarketButton.Contains(MousePoint))
+                {
+                    Menu = "Market";
+                }
+
+                else if (GainLandButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].CanColonise(MapArray, Countries, Player) && Countries[Player].CanAfford(200, 200, 200, 200, 200))
+                {
+                    Countries[Player].Pay(200, 200, 200, 200, 200);
+                    MapArray[SelectedX, SelectedY].OwnedBy = Countries[Player];
+                }
+
+                else if (GainLandButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].CanAnnex(MapArray, Countries, Player))
+                {
+                    MapArray[SelectedX, SelectedY].ArmyInside.Sieging = true;
+                }
+
+                else if (BuildStructureButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure == "Empty")
+                {
+                    Menu = "Build Structure";
+                }
+
+                else if (UpgradeStrucutreButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].StructureLevel < 5 && Countries[Player].CanAfford(100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1)))
+                {
+                    MapArray[SelectedX, SelectedY].StructureLevel += 1;
+                    Countries[Player].Pay(100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel);
+                }
+
+                else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy == null)
+                {
+                    Countries[Player].RaiseLevyArmy(MapArray, Countries, Player);
+                }
+
+                else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy != null)
+                {
+                    MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = null;
+                    Countries[Player].Levy = null;
+                    Selected = "Terrain";
+                }
+
+                else
+                {
+                    if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating && !MapArray[SelectedX, SelectedY].ArmyInside.Sieging)
+                    {
+                        int[] MoveLocation = MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, MousePoint, MapArray);
+                        if (!(MoveLocation[0] == 0 && MoveLocation[1] == 0))
+                        {
+                            if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside == null)
+                            {
+                                MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
+                            }
+                            else if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside != null && !MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside.Retreating)
+                            {
+                                MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, TerrainCosts, CountryIndexes);
+                            }
+                        }
+                    }
+
+                    foreach (Province Hex in MapArray)
+                    {
+                        if (Hex.ContainsMousePointer(MousePoint))
+                        {
+                            if (Hex.X == 0 && Hex.Y == 0)
+                            {
+                                Menu = "Pause";
+                            }
+                            else
+                            {
+                                SelectedX = Hex.X;
+                                SelectedY = Hex.Y;
+                                Selected = "Province";
+                            }
+                        }
+                    }
+
+                    foreach (Country C in Countries)
+                    {
+                        if (C.Name != "Unowned" && C.Standing.ContainsMousePointer(MousePoint))
+                        {
+                            SelectedX = C.Standing.X;
+                            SelectedY = C.Standing.Y;
+                            Selected = "Standing";
+                        }
+                        else if (C.Name != "Unowned" && C.Levy != null && C.Levy.ContainsMousePointer(MousePoint))
+                        {
+                            SelectedX = C.Levy.X;
+                            SelectedY = C.Levy.Y;
+                            Selected = "Levy";
+                        }
+
+                    }
+                }
+            }
+
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
+            {
+                if (Mapmode == "Regular")
+                {
+                    Mapmode = "ShowOwned";
+                }
+                else if (Mapmode == "ShowOwned")
+                {
+                    Mapmode = "Regular";
+                }
+            }
+
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.Enter) && LastKeyboardState.IsKeyDown(Keys.Enter))
+            {
+                NextTurn();
+            }
+
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Menu = "Pause";
+            }
+        }
+
+        protected void CheckBuildStructureMenu(Point MousePoint)
+        {
+            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+            {
+                Rectangle BuildSettlement = new Rectangle(221, 312, 40, 40);
+                Rectangle BuildFort = new Rectangle(265, 312, 40, 40);
+                Rectangle BuildFarm = new Rectangle(309, 312, 40, 40);
+                Rectangle BuildMine = new Rectangle(353, 312, 40, 40);
+                Rectangle BuildForester = new Rectangle(397, 312, 40, 40);
+                Rectangle CloseBuildMenu = new Rectangle(447, 312, 14, 14);
+                if (BuildSettlement.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
+                {
+                    MapArray[SelectedX, SelectedY].Structure = "Settlement";
+                    MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                    Countries[Player].Pay(100, 100, 100, 100, 100);
+                    Menu = "Game";
+                }
+                else if (BuildFort.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
+                {
+                    MapArray[SelectedX, SelectedY].Structure = "Fort";
+                    MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                    Countries[Player].Pay(100, 100, 100, 100, 100);
+                    Menu = "Game";
+                }
+                else if (BuildFarm.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
+                {
+                    MapArray[SelectedX, SelectedY].Structure = "Farm";
+                    MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                    Countries[Player].Pay(100, 100, 100, 100, 100);
+                    Menu = "Game";
+                }
+                else if (BuildMine.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
+                {
+                    MapArray[SelectedX, SelectedY].Structure = "Mine";
+                    MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                    Countries[Player].Pay(100, 100, 100, 100, 100);
+                    Menu = "Game";
+                }
+                else if (BuildForester.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
+                {
+                    MapArray[SelectedX, SelectedY].Structure = "Forester";
+                    MapArray[SelectedX, SelectedY].StructureLevel = 1;
+                    Countries[Player].Pay(100, 100, 100, 100, 100);
+                    Menu = "Game";
+                }
+                else if (CloseBuildMenu.Contains(MousePoint))
+                {
+                    Menu = "Game";
+                }
+            }
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Menu = "Game";
+            }
+        }
+
+        protected void CheckPauseMenu(Point MousePoint)
+        {
+            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+            {
+                Rectangle NewGameButton = new Rectangle(243, 254, 168, 36);
+                Rectangle LoadGameButton = new Rectangle(243, 294, 168, 36);
+                Rectangle SaveGameButton = new Rectangle(243, 334, 168, 36);
+                Rectangle ExitGameButton = new Rectangle(243, 374, 168, 36);
+                Rectangle CloseMenuButton = new Rectangle(425, 254, 14, 14);
+                if (NewGameButton.Contains(MousePoint))
+                {
+                    Menu = "Pick Country";
+                }
+                else if (LoadGameButton.Contains(MousePoint))
+                {
+                    RefreshSavesList();
+                    Menu = "Load Game";
+                }
+                else if (SaveGameButton.Contains(MousePoint))
+                {
+                    SaveGame();
+                    Menu = "Game";
+                }
+                else if (ExitGameButton.Contains(MousePoint))
+                {
+                    Exit();
+                }
+                else if (CloseMenuButton.Contains(MousePoint))
+                {
+                    Menu = "Game";
+                }
+            }
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Menu = "Game";
+            }
+        }
+
+        protected void CheckPickCountryMenu(Point MousePoint)
+        {
+            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+            {
+                Rectangle BackButton = new Rectangle(263, 225, 14, 14);
+                Rectangle CloseCountryMenu = new Rectangle(381, 225, 14, 14);
+                if (BackButton.Contains(MousePoint))
+                {
+                    Menu = "Pause";
+                }
+                else if (CloseCountryMenu.Contains(MousePoint))
+                {
+                    Menu = "Game";
+                }
+                else
+                {
+                    Rectangle[] CountryOptions = new Rectangle[10];
+                    for (int i = 0; i < 10; i++)
+                    {
+                        int X;
+                        int Y;
+                        if (i % 2 == 0)
+                        {
+                            X = 287;
+                            Y = (((i / 2) % 5) * 44) + 225;
+                        }
+                        else
+                        {
+                            X = 331;
+                            Y = ((((i - 1) / 2) % 5) * 44) + 225;
+                        }
+                        CountryOptions[i] = new Rectangle(X, Y, 40, 40);
+                        if (CountryOptions[i].Contains(MousePoint))
+                        {
+                            Player = i + 1;
+                            string Save = Path.GetFullPath("Saves/NewSave.txt");
+                            Save = Save.Remove(Save.Length - 41, 24);
+                            LoadSave(Save);
+                            Menu = "Game";
+                        }
+                    }
+                }
+            }
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Menu = "Game";
+            }
+        }
+
+        protected void CheckLoadGameMenu(Point MousePoint)
+        {
+            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+            {
+                Rectangle BackButton = new Rectangle(60, 241, 14, 14);
+                Rectangle CloseLoadMenu = new Rectangle(582, 241, 14, 14);
+                Rectangle UpButton = new Rectangle(558, 241, 14, 14);
+                Rectangle DownButton = new Rectangle(558, 411, 14, 14);
+                if (BackButton.Contains(MousePoint))
+                {
+                    Menu = "Pause";
+                }
+                else if (CloseLoadMenu.Contains(MousePoint))
+                {
+                    Menu = "Game";
+                }
+                else if (UpButton.Contains(MousePoint) && SavesFP > 0)
+                {
+                    SavesFP--;
+                    SavesEP--;
+                }
+                else if (DownButton.Contains(MousePoint) && SavesEP < Saves.Count - 1)
+                {
+                    SavesFP++;
+                    SavesEP++;
+                }
+                else
+                {
+                    int ListPosition = 0;
+                    for (int i = SavesFP; i <= SavesEP; i++)
+                    {
+                        Rectangle Button = new Rectangle(86, 243 + (ListPosition * 36), 466, 36);
+                        ListPosition++;
+                        if (Button.Contains(MousePoint))
+                        {
+                            LoadSave(Saves[i]);
+                            Menu = "Game";
+                        }
+                    }
+                }
+            }
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Menu = "Game";
+            }
+        }
+
+        protected void CheckMarketMenu(Point MousePoint)
+        {
+            if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
+            {
+                Rectangle CloseMarketButton = new Rectangle(637, 123, 14, 14);
+                if (CloseMarketButton.Contains(MousePoint))
+                {
+                    Menu = "Game";
+                }
+                else
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            bool Purchased = false;
+                            Rectangle PurchaseButton = new Rectangle(6 + (i * 125), 163 + (j * 86), 121, 36);
+                            if (PurchaseButton.Contains(MousePoint))
+                            {
+                                if (i == 0)
+                                {
+                                    if (Countries[Player].CanAfford(100, 0, 0, 0, 0))
+                                    {
+                                        Countries[Player].Pay(100, 0, 0, 0, 0);
+                                        Purchased = true;
+                                    }
+                                }
+                                else if (i == 1)
+                                {
+                                    if (Countries[Player].CanAfford(0, 0, 0, 100, 0))
+                                    {
+                                        Countries[Player].Pay(0, 0, 0, 100, 0);
+                                        Purchased = true;
+                                    }
+                                }
+                                else if (i == 2)
+                                {
+                                    if (Countries[Player].CanAfford(0, 100, 0, 0, 0))
+                                    {
+                                        Countries[Player].Pay(0, 100, 0, 0, 0);
+                                        Purchased = true;
+                                    }
+                                }
+                                else if (i == 3)
+                                {
+                                    if (Countries[Player].CanAfford(0, 0, 100, 0, 0))
+                                    {
+                                        Countries[Player].Pay(0, 0, 100, 0, 0);
+                                        Purchased = true;
+                                    }
+                                }
+                                else if (i == 4)
+                                {
+                                    if (Countries[Player].CanAfford(0, 0, 0, 0, 100))
+                                    {
+                                        Countries[Player].Pay(0, 0, 0, 0, 100);
+                                        Purchased = true;
+                                    }
+                                }
+                            }
+
+                            if (Purchased)
+                            {
+                                if (j == 0)
+                                {
+                                    Countries[Player].Gold += 100;
+                                }
+                                else if (j == 1)
+                                {
+                                    Countries[Player].Food += 100;
+                                }
+                                else if (j == 2)
+                                {
+                                    Countries[Player].Wood += 100;
+                                }
+                                else if (j == 3)
+                                {
+                                    Countries[Player].Stone += 100;
+                                }
+                                else if (j == 4)
+                                {
+                                    Countries[Player].Metal += 100;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Menu = "Game";
+            }
         }
 
         protected void LoadSave(string Save)
@@ -1345,6 +1312,33 @@ namespace A_Level_Computing_Project
             foreach (Country c in Countries)
             {
                 c.NextTurn(MapArray, Countries, CountryIndexes, Player, TerrainCosts);
+            }
+        }
+
+        protected void RefreshSavesList()
+        {
+            string SavesPath = Path.GetFullPath("Saves/NewSave.txt");
+            SavesPath = SavesPath.Remove(SavesPath.Length - 41, 24);
+            SavesPath = SavesPath.Remove(SavesPath.Length - 11, 11);
+
+            Saves.Clear();
+            string[] TempSaves = Directory.GetFiles(SavesPath);
+            foreach (string s in TempSaves)
+            {
+                if (!s.Contains("NewSave"))
+                {
+                    Saves.Add(s);
+                }
+            }
+
+            SavesFP = 0;
+            if (Saves.Count > 5)
+            {
+                SavesEP = 4;
+            }
+            else
+            {
+                SavesEP = Saves.Count - 1;
             }
         }
     }
