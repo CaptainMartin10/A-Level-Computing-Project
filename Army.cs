@@ -145,87 +145,100 @@ namespace A_Level_Computing_Project
 
         public void Attack(RealArmy Defender, Province[,] MapArray, Country[] Countries, Dictionary<string, int> TerrainCosts, Dictionary<string, int> CountryIndexes)
         {
-            if (!(Defender.X == 0 && Defender.Y == 0))
+            int AttackerScore = GetArmyScore();
+            int DefenderScore = Defender.GetArmyScore();
+            bool Won = false;
+            if (AttackerScore > DefenderScore)
             {
-                int AttackerScore = GetArmyScore();
-                int DefenderScore = Defender.GetArmyScore();
-                bool Won = false;
-                while (AttackerScore > 0 && DefenderScore > 0)
+                int InfDeathTotal = Infantry - Defender.Infantry;
+                int ArcDeathTotal = Archers - Defender.Archers;
+                int CavDeathTotal = Cavalry - Defender.Cavalry;
+
+                Infantry -= InfDeathTotal * TerrainCosts[MapArray[Defender.X, Defender.Y].Terrain];
+                Archers -= ArcDeathTotal * TerrainCosts[MapArray[Defender.X, Defender.Y].Terrain];
+                Cavalry -= CavDeathTotal * TerrainCosts[MapArray[Defender.X, Defender.Y].Terrain];
+
+                Defender.Infantry -= InfDeathTotal;
+                Defender.Archers -= ArcDeathTotal;
+                Defender.Cavalry -= CavDeathTotal;
+
+                Won = true;
+            }
+            else if (AttackerScore <= DefenderScore)
+            {
+                int InfDeathTotal = Defender.Infantry - Infantry;
+                int ArcDeathTotal = Defender.Archers - Archers;
+                int CavDeathTotal = Defender.Cavalry - Cavalry;
+
+                Infantry -= InfDeathTotal * TerrainCosts[MapArray[Defender.X, Defender.Y].Terrain];
+                Archers -= ArcDeathTotal * TerrainCosts[MapArray[Defender.X, Defender.Y].Terrain];
+                Cavalry -= CavDeathTotal * TerrainCosts[MapArray[Defender.X, Defender.Y].Terrain];
+
+                Defender.Infantry -= InfDeathTotal;
+                Defender.Archers -= ArcDeathTotal;
+                Defender.Cavalry -= CavDeathTotal;
+
+                Won = false;
+            }
+
+            if (Defender.Infantry < 0)
+            {
+                Defender.Infantry = 0;
+            }
+            if (Defender.Archers < 0)
+            {
+                Defender.Archers = 0;
+            }
+            if (Defender.Cavalry < 0)
+            {
+                Defender.Cavalry = 0;
+            }
+
+            if (Infantry < 0)
+            {
+                Infantry = 0;
+            }
+            if (Archers < 0)
+            {
+                Archers = 0;
+            }
+            if (Cavalry < 0)
+            {
+                Cavalry = 0;
+            }
+
+            if (Won)
+            {
+                int MoveLocationIndex = 0;
+                int[] MoveLocation = new int[2];
+
+                for (int i = 0; i < 6; i++)
                 {
-                    if (AttackerScore > DefenderScore)
+                    if (X == MapArray[Defender.X, Defender.Y].AdjacentTo[i, 0] && Y == MapArray[Defender.X, Defender.Y].AdjacentTo[i, 1])
                     {
-                        Defender.Infantry *= (DefenderScore / AttackerScore);
-                        Defender.Archers *= (DefenderScore / AttackerScore);
-                        Defender.Cavalry *= (DefenderScore / AttackerScore);
-                        Infantry -= (Infantry * ((DefenderScore / AttackerScore) / 10));
-                        Archers -= (Archers * ((DefenderScore / AttackerScore) / 10));
-                        Cavalry -= (Cavalry * ((DefenderScore / AttackerScore) / 10));
-                        DefenderScore = Defender.GetArmyScore();
-                        AttackerScore = GetArmyScore();
-                    }
-                    else if (AttackerScore < DefenderScore)
-                    {
-                        Infantry *= (AttackerScore / DefenderScore);
-                        Archers *= (AttackerScore / DefenderScore);
-                        Cavalry *= (AttackerScore / DefenderScore);
-                        Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
-                        Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
-                        Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
-                        DefenderScore = Defender.GetArmyScore();
-                        AttackerScore = GetArmyScore();
-                    }
-                    else if (AttackerScore == DefenderScore)
-                    {
-                        DefenderScore++;
-                        Infantry *= (AttackerScore / DefenderScore);
-                        Archers *= (AttackerScore / DefenderScore);
-                        Cavalry *= (AttackerScore / DefenderScore);
-                        Defender.Infantry -= (Defender.Infantry * ((AttackerScore / DefenderScore) / 10));
-                        Defender.Archers -= (Defender.Archers * ((AttackerScore / DefenderScore) / 10));
-                        Defender.Cavalry -= (Defender.Cavalry * ((AttackerScore / DefenderScore) / 10));
-                        DefenderScore = Defender.GetArmyScore();
-                        AttackerScore = GetArmyScore();
+                        MoveLocationIndex = i;
                     }
                 }
 
-                if (DefenderScore == 0)
+                MoveLocationIndex -= 3;
+                if (MoveLocationIndex < 0)
                 {
-                    Won = true;
+                    MoveLocationIndex += 6;
                 }
 
-                if (Won)
-                {
-                    int MoveLocationIndex = 0;
-                    int[] MoveLocation = new int[2];
+                MoveLocation[0] = MapArray[Defender.X, Defender.Y].AdjacentTo[MoveLocationIndex, 0];
+                MoveLocation[1] = MapArray[Defender.X, Defender.Y].AdjacentTo[MoveLocationIndex, 1];
 
-                    for (int i = 0; i < 6; i++)
-                    {
-                        if (X == MapArray[Defender.X, Defender.Y].AdjacentTo[i, 0] && Y == MapArray[Defender.X, Defender.Y].AdjacentTo[i, 1])
-                        {
-                            MoveLocationIndex = i;
-                        }
-                    }
-
-                    MoveLocationIndex -= 3;
-                    if (MoveLocationIndex < 0)
-                    {
-                        MoveLocationIndex += 6;
-                    }
-
-                    MoveLocation[0] = MapArray[Defender.X, Defender.Y].AdjacentTo[MoveLocationIndex, 0];
-                    MoveLocation[1] = MapArray[Defender.X, Defender.Y].AdjacentTo[MoveLocationIndex, 1];
-
-                    Moved = true;
-                    Defender.Retreating = true;
-                    Defender.Sieging = false;
-                    Defender.Moved = false;
-                    Defender.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
-                }
-                else
-                {
-                    Moved = true;
-                    Retreating = true;
-                }
+                Moved = true;
+                Defender.Retreating = true;
+                Defender.Sieging = false;
+                Defender.Moved = false;
+                Defender.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
+            }
+            else
+            {
+                Moved = true;
+                Retreating = true;
             }
         }
 
