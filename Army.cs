@@ -297,7 +297,7 @@ namespace A_Level_Computing_Project
                 AttackDivider *= MapArray[X, Y].StructureLevel;
             }
 
-            AttackScore = GetArmyScore()/AttackDivider;
+            AttackScore = GetArmyScore() / AttackDivider;
 
             SiegeProgress += AttackScore;
 
