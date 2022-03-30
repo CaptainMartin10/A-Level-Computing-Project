@@ -282,9 +282,24 @@ namespace A_Level_Computing_Project
             SiegeProgress = sp;
         }
 
-        public void Siege(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes)
+        public void Siege(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes, Dictionary<string, int> TerrainCosts)
         {
-            SiegeProgress += 20;
+            int AttackScore;
+            int AttackDivider = TerrainCosts[MapArray[X, Y].Terrain] * 10;
+            
+            if (MapArray[X,Y].Structure == "Fort")
+            {
+                AttackDivider *= 2;
+            }
+
+            if (MapArray[X, Y].StructureLevel > 0)
+            {
+                AttackDivider *= MapArray[X, Y].StructureLevel;
+            }
+
+            AttackScore = GetArmyScore()/AttackDivider;
+
+            SiegeProgress += AttackScore;
 
             if (SiegeProgress >= 100)
             {

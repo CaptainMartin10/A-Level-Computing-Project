@@ -1272,56 +1272,12 @@ namespace A_Level_Computing_Project
 
         protected void NextTurn()
         {
-            foreach (Country C in Countries)
-            {
-                if (C.Levy == null)
-                {
-                    C.Gold += 50;
-                    C.Metal += 50;
-                    C.Stone += 50;
-                    C.Wood += 50;
-                    C.Food += 50;
-                    if (!C.Standing.Retreating && !C.Standing.Sieging)
-                    {
-                        C.Standing.Infantry += 50;
-                    }
-                }
-            }
-            foreach (Province P in MapArray)
-            {
-                if (P.OwnedBy.Levy == null)
-                {
-                    if (P.Structure == "Settlement")
-                    {
-                        P.OwnedBy.Gold += 100 * P.StructureLevel;
-                    }
-                    else if (P.Structure == "Mine")
-                    {
-                        P.OwnedBy.Stone += MineProduction[P.Terrain] * P.StructureLevel;
-                        P.OwnedBy.Metal += MineProduction[P.Terrain] * P.StructureLevel;
-                    }
-                    else if (P.Structure == "Farm")
-                    {
-                        P.OwnedBy.Food += FarmProduction[P.Terrain] * P.StructureLevel;
-                    }
-                    else if (P.Structure == "Forester")
-                    {
-                        P.OwnedBy.Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
-                    }
-                    else if (P.Structure == "Fort")
-                    {
-                        if (!P.OwnedBy.Standing.Retreating && !P.OwnedBy.Standing.Sieging)
-                        {
-                            P.OwnedBy.Standing.Infantry += 50 * P.StructureLevel;
-                            P.OwnedBy.Standing.Archers += 25 * P.StructureLevel;
-                            P.OwnedBy.Standing.Cavalry += 25 * P.StructureLevel;
-                        }
-                    }
-                }
-            }
             foreach (Country c in Countries)
             {
-                c.NextTurn(MapArray, Countries, CountryIndexes, Player, TerrainCosts);
+                if (c.Name != "Unowned")
+                {
+                    c.NextTurn(MapArray, Countries, CountryIndexes, Player, TerrainCosts, MineProduction, FarmProduction, ForesterProduction);
+                }
             }
         }
 

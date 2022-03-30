@@ -104,114 +104,61 @@ namespace A_Level_Computing_Project
         public int[] FindBestDirection(Province Destination, Province[,] MapArray)
         {
             List<int> Options = new List<int>();
-            if (Destination.X == X)
+            int DirectMovement = 0;
+            if (Destination.X == X && Destination.Y > Y)
             {
-                if (Destination.Y > Y)
-                {
-                    Options.Add(3);
-                    Options.Add(4);
-                    Options.Add(2);
-                    Options.Add(5);
-                    Options.Add(1);
-                    Options.Add(0);
-                }
-                else if (Destination.Y < Y)
-                {
-                    Options.Add(0);
-                    Options.Add(1);
-                    Options.Add(5);
-                    Options.Add(2);
-                    Options.Add(4);
-                    Options.Add(3);
-                }
+                DirectMovement = 3;
             }
-            else if (Destination.X > X)
+            else if (Destination.X == X && Destination.Y < Y)
             {
-                if (Destination.Y > Y)
-                {
-                    Options.Add(2);
-                    Options.Add(3);
-                    Options.Add(1);
-                    Options.Add(4);
-                    Options.Add(0);
-                    Options.Add(5);
-                }
-                else if (Destination.Y < Y)
-                {
-                    Options.Add(1);
-                    Options.Add(2);
-                    Options.Add(0);
-                    Options.Add(3);
-                    Options.Add(5);
-                    Options.Add(4);
-                }
-                else if (Destination.Y == Y)
-                {
-                    if (X % 2 == 0)
-                    {
-                        Options.Add(2);
-                        Options.Add(3);
-                        Options.Add(1);
-                        Options.Add(4);
-                        Options.Add(0);
-                        Options.Add(5);
-                    }
-                    else if (X % 2 == 1)
-                    {
-                        Options.Add(1);
-                        Options.Add(2);
-                        Options.Add(0);
-                        Options.Add(3);
-                        Options.Add(5);
-                        Options.Add(4);
-                    }
-                }
+                DirectMovement = 0;
             }
-            else if (Destination.X < X)
+            else if ((Destination.X > X && Destination.Y > Y) || (Destination.X > X && Destination.Y == Y && X % 2 == 0))
             {
-                if (Destination.Y > Y)
+                DirectMovement = 2;
+            }
+            else if ((Destination.X > X && Destination.Y < Y) || (Destination.X > X && Destination.Y == Y && X % 2 == 1))
+            {
+                DirectMovement = 1;
+            }
+            else if ((Destination.X < X && Destination.Y > Y) || (Destination.X < X && Destination.Y == Y && X % 2 == 0))
+            {
+                DirectMovement = 4;
+            }
+            else if ((Destination.X < X && Destination.Y < Y) || (Destination.X < X && Destination.Y == Y && X % 2 == 1))
+            {
+                DirectMovement = 5;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                Random rnd = new Random();
+                if (rnd.Next(2) == 0)
                 {
-                    Options.Add(4);
-                    Options.Add(5);
-                    Options.Add(3);
-                    Options.Add(0);
-                    Options.Add(2);
-                    Options.Add(1);
+                    Options.Add(DirectMovement + i);
+                    Options.Add(DirectMovement - i);
                 }
-                else if (Destination.Y < Y)
+                if (rnd.Next(2) == 1)
                 {
-                    Options.Add(5);
-                    Options.Add(0);
-                    Options.Add(4);
-                    Options.Add(1);
-                    Options.Add(3);
-                    Options.Add(2);
-                }
-                else if (Destination.Y == Y)
-                {
-                    if (X % 2 == 0)
-                    {
-                        Options.Add(4);
-                        Options.Add(5);
-                        Options.Add(3);
-                        Options.Add(0);
-                        Options.Add(2);
-                        Options.Add(1);
-                    }
-                    else if (X % 2 == 1)
-                    {
-                        Options.Add(5);
-                        Options.Add(0);
-                        Options.Add(4);
-                        Options.Add(1);
-                        Options.Add(3);
-                        Options.Add(2);
-                    }
+                    Options.Add(DirectMovement - i);
+                    Options.Add(DirectMovement + i);
                 }
             }
 
+            for(int i = 0; i < Options.Count; i++)
+            {
+                if (Options[i] > 5)
+                {
+                    Options[i] -= 6;
+                }
+                else if (Options[i] < 0)
+                {
+                    Options[i] += 6;
+                }
+            }
+            
             List<int> OptionsToRemove = new List<int>();
-            for (int i = 0; i < 6; i++)
+            foreach (int i in Options)
             {
                 if (AdjacentTo[i, 0] < 0 || AdjacentTo[i, 0] > 23 || AdjacentTo[i, 1] < 0 || AdjacentTo[i, 1] > 17)
                 {

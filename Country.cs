@@ -71,16 +71,17 @@ namespace A_Level_Computing_Project
             Name = "Unowned";
         }
 
-        public void NextTurn(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes, int Player, Dictionary<string, int> TerrainCosts)
+        public void NextTurn(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes, int Player, Dictionary<string, int> TerrainCosts, Dictionary<string, int> MineProduction, Dictionary<string, int> FarmProduction, Dictionary<string, int> ForesterProduction)
         {
             Standing.Moved = false;
             if (Standing.Retreating)
             {
                 Standing.Retreat(MapArray, Countries, CountryIndexes);
             }
-            else if (Standing.Sieging)
+
+            if (Standing.Sieging)
             {
-                Standing.Siege(MapArray, Countries, CountryIndexes);
+                Standing.Siege(MapArray, Countries, CountryIndexes, TerrainCosts);
             }
 
             if (Levy != null)
@@ -91,13 +92,58 @@ namespace A_Level_Computing_Project
                     Levy.Retreat(MapArray, Countries, CountryIndexes);
                 }
             }
+            else
+            {
+                Gold += 50;
+                Metal += 50;
+                Stone += 50;
+                Wood += 50;
+                Food += 50;
+                if (!Standing.Retreating && !Standing.Sieging)
+                {
+                    Standing.Infantry += 50;
+                }
+            }
 
             if (IsAI)
             {
                 int[] MoveLocation = MapArray[Standing.X, Standing.Y].FindBestDirection(MapArray[Countries[Player].Standing.X, Countries[Player].Standing.Y], MapArray);
-                if (!(MoveLocation[0] == 0 && MoveLocation[1] == 0) && MapArray[MoveLocation[0], MoveLocation[1]].OwnedBy == this)
+                if (!(MoveLocation[0] == 0 && MoveLocation[1] == 0) && !(MoveLocation[0] == Standing.X && MoveLocation[1] == Standing.Y) && MapArray[MoveLocation[0], MoveLocation[1]].OwnedBy == this)
                 {
                     Standing.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
+                }
+            }
+
+            foreach (Province P in MapArray)
+            {
+                if (P.OwnedBy == this && Levy == null)
+                {
+                    if (P.Structure == "Settlement")
+                    {
+                        Gold += 100 * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Mine")
+                    {
+                        Stone += MineProduction[P.Terrain] * P.StructureLevel;
+                        Metal += MineProduction[P.Terrain] * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Farm")
+                    {
+                        Food += FarmProduction[P.Terrain] * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Forester")
+                    {
+                        Wood += ForesterProduction[P.Terrain] * P.StructureLevel;
+                    }
+                    else if (P.Structure == "Fort")
+                    {
+                        if (!Standing.Retreating && !Standing.Sieging)
+                        {
+                            Standing.Infantry += 50 * P.StructureLevel;
+                            Standing.Archers += 25 * P.StructureLevel;
+                            Standing.Cavalry += 25 * P.StructureLevel;
+                        }
+                    }
                 }
             }
         }
