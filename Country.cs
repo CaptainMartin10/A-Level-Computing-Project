@@ -153,7 +153,7 @@ namespace A_Level_Computing_Project
             int LevyArmySize = 0;
             foreach (Province Hex in MapArray)
             {
-                if (Hex.OwnedBy == Countries[Player])
+                if (Hex.OwnedBy == this)
                 {
                     if (Hex.Structure == "Empty")
                     {
@@ -171,26 +171,27 @@ namespace A_Level_Computing_Project
             }
             int ArmyX = 0;
             int ArmyY = 0;
-            if (MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].ArmyInside == null)
+            if (MapArray[CapitalX, CapitalY].ArmyInside == null)
             {
-                ArmyX = Countries[Player].CapitalX;
-                ArmyY = Countries[Player].CapitalY;
+                ArmyX = CapitalX;
+                ArmyY = CapitalY;
             }
             else
             {
                 for (int i = 5; i >= 0; i--)
                 {
-                    if (MapArray[MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 0], MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 1]].ArmyInside == null)
+                    if (MapArray[MapArray[CapitalX, CapitalY].AdjacentTo[i, 0], MapArray[CapitalX, CapitalY].AdjacentTo[i, 1]].ArmyInside == null)
                     {
-                        ArmyX = MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 0];
-                        ArmyY = MapArray[Countries[Player].CapitalX, Countries[Player].CapitalY].AdjacentTo[i, 1];
+                        ArmyX = MapArray[CapitalX, CapitalY].AdjacentTo[i, 0];
+                        ArmyY = MapArray[CapitalX, CapitalY].AdjacentTo[i, 1];
                     }
                 }
             }
+
             if (ArmyX != 0 || ArmyY != 0)
             {
-                Countries[Player].Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Countries[Player].Name, true, false);
-                MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = Countries[Player].Levy;
+                Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Name, true, false);
+                MapArray[Levy.X, Levy.Y].ArmyInside = Levy;
             }
         }
     }

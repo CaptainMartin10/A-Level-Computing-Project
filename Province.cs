@@ -138,7 +138,7 @@ namespace A_Level_Computing_Project
                     Options.Add(DirectMovement + i);
                     Options.Add(DirectMovement - i);
                 }
-                if (rnd.Next(2) == 1)
+                else
                 {
                     Options.Add(DirectMovement - i);
                     Options.Add(DirectMovement + i);
