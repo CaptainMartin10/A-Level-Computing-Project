@@ -472,25 +472,63 @@ namespace A_Level_Computing_Project
             {
                 _spriteBatch.Draw(MarketMenu, new Vector2(0, 117), Color.White);
 
-                _spriteBatch.DrawString(MenuFont, "Purchase 75 Gold for:", new Vector2(134, 122), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 75 Food for:", new Vector2(134, 208), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 75 Wood for:", new Vector2(134, 294), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 75 Stone for:", new Vector2(134, 380), Color.White);
-                _spriteBatch.DrawString(MenuFont, "Purchase 75 Metal for:", new Vector2(134, 466), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Buy 75 Gold for:", new Vector2(165, 122), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Buy 75 Food for:", new Vector2(165, 208), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Buy 75 Wood for:", new Vector2(165, 294), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Buy 75 Stone for:", new Vector2(165, 380), Color.White);
+                _spriteBatch.DrawString(MenuFont, "Buy 75 Metal for:", new Vector2(165, 466), Color.White);
 
                 for (int i = 0; i < 5; i++)
                 {
-                    _spriteBatch.DrawString(MenuFont, "100 G", new Vector2(9, 162 + (i * 86)), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "100 F", new Vector2(134, 162 + (i * 86)), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "100 W", new Vector2(259, 162 + (i * 86)), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "100 S", new Vector2(384, 162 + (i * 86)), Color.White);
-                    _spriteBatch.DrawString(MenuFont, "100 M", new Vector2(509, 162 + (i * 86)), Color.White);
+                    if (i != 0)
+                    {
+                        _spriteBatch.DrawString(MenuFont, "100 Gold", new Vector2(9, 162 + (i * 86)), Color.White);
+                    }
+                    if (i != 1)
+                    {
+                        if (i < 1)
+                        {
+                            _spriteBatch.DrawString(MenuFont, "100 Food", new Vector2(9, 162 + (i * 86)), Color.White);
+                        }
+                        else if (i > 1)
+                        {
+                            _spriteBatch.DrawString(MenuFont, "100 Food", new Vector2(165, 162 + (i * 86)), Color.White);
+                        }
+                    }
+                    if (i != 2)
+                    {
+                        if (i < 2)
+                        {
+                            _spriteBatch.DrawString(MenuFont, "100 Wood", new Vector2(165, 162 + (i * 86)), Color.White);
+                        }
+                        else if (i > 2)
+                        {
+                            _spriteBatch.DrawString(MenuFont, "100 Wood", new Vector2(321, 162 + (i * 86)), Color.White);
+                        }
+                    }
+                    if (i != 3)
+                    {
+                        if (i < 3)
+                        {
+                            _spriteBatch.DrawString(MenuFont, "100 Stone", new Vector2(321, 162 + (i * 86)), Color.White);
+                        }
+                        else if (i > 3)
+                        {
+                            _spriteBatch.DrawString(MenuFont, "100 Stone", new Vector2(478, 162 + (i * 86)), Color.White);
+                        }
+                    }
+                    if (i != 4)
+                    {
+                        _spriteBatch.DrawString(MenuFont, "100 Metal", new Vector2(478, 162 + (i * 86)), Color.White);
+                    }
+
                 }
             }
 
             _spriteBatch.End();
 
             base.Draw(gameTime);
+
         }
 
         protected void CheckGameMenu(Point MousePoint)
@@ -828,79 +866,113 @@ namespace A_Level_Computing_Project
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        for (int j = 0; j < 5; j++)
+                        bool Purchased = false;
+                        Rectangle PurchaseButton1 = new Rectangle(6, 163 + (i * 86), 152, 36);
+                        Rectangle PurchaseButton2 = new Rectangle(162, 163 + (i * 86), 152, 36);
+                        Rectangle PurchaseButton3 = new Rectangle(318, 163 + (i * 86), 152, 36);
+                        Rectangle PurchaseButton4 = new Rectangle(474, 163 + (i * 86), 152, 36);
+                        if (PurchaseButton1.Contains(MousePoint))
                         {
-                            bool Purchased = false;
-                            Rectangle PurchaseButton = new Rectangle(6 + (i * 125), 163 + (j * 86), 121, 36);
-                            if (PurchaseButton.Contains(MousePoint))
+                            if (i > 0)
                             {
-                                if (i == 0)
+                                if (Countries[Player].CanAfford(100, 0, 0, 0, 0))
                                 {
-                                    if (Countries[Player].CanAfford(75, 0, 0, 0, 0))
-                                    {
-                                        Countries[Player].Pay(75, 0, 0, 0, 0);
-                                        Purchased = true;
-                                    }
-                                }
-                                else if (i == 1)
-                                {
-                                    if (Countries[Player].CanAfford(0, 0, 0, 75, 0))
-                                    {
-                                        Countries[Player].Pay(0, 0, 0, 75, 0);
-                                        Purchased = true;
-                                    }
-                                }
-                                else if (i == 2)
-                                {
-                                    if (Countries[Player].CanAfford(0, 75, 0, 0, 0))
-                                    {
-                                        Countries[Player].Pay(0, 75, 0, 0, 0);
-                                        Purchased = true;
-                                    }
-                                }
-                                else if (i == 3)
-                                {
-                                    if (Countries[Player].CanAfford(0, 0, 75, 0, 0))
-                                    {
-                                        Countries[Player].Pay(0, 0, 75, 0, 0);
-                                        Purchased = true;
-                                    }
-                                }
-                                else if (i == 4)
-                                {
-                                    if (Countries[Player].CanAfford(0, 0, 0, 0, 75))
-                                    {
-                                        Countries[Player].Pay(0, 0, 0, 0, 75);
-                                        Purchased = true;
-                                    }
+                                    Countries[Player].Pay(100, 0, 0, 0, 0);
+                                    Purchased = true;
                                 }
                             }
-
-                            if (Purchased)
+                            else
                             {
-                                if (j == 0)
+                                if (Countries[Player].CanAfford(0, 0, 0, 100, 0))
                                 {
-                                    Countries[Player].Gold += 100;
-                                }
-                                else if (j == 1)
-                                {
-                                    Countries[Player].Food += 100;
-                                }
-                                else if (j == 2)
-                                {
-                                    Countries[Player].Wood += 100;
-                                }
-                                else if (j == 3)
-                                {
-                                    Countries[Player].Stone += 100;
-                                }
-                                else if (j == 4)
-                                {
-                                    Countries[Player].Metal += 100;
+                                    Countries[Player].Pay(0, 0, 0, 100, 0);
+                                    Purchased = true;
                                 }
                             }
-
                         }
+                        else if (PurchaseButton2.Contains(MousePoint))
+                        {
+                            if (i > 1)
+                            {
+                                if (Countries[Player].CanAfford(0, 0, 0, 100, 0))
+                                {
+                                    Countries[Player].Pay(0, 0, 0, 100, 0);
+                                    Purchased = true;
+                                }
+                            }
+                            else
+                            {
+                                if (Countries[Player].CanAfford(0, 100, 0, 0, 0))
+                                {
+                                    Countries[Player].Pay(0, 100, 0, 0, 0);
+                                    Purchased = true;
+                                }
+                            }
+                        }
+                        else if (PurchaseButton3.Contains(MousePoint))
+                        {
+                            if (i > 2)
+                            {
+                                if (Countries[Player].CanAfford(0, 100, 0, 0, 0))
+                                {
+                                    Countries[Player].Pay(0, 100, 0, 0, 0);
+                                    Purchased = true;
+                                }
+                            }
+                            else
+                            {
+                                if (Countries[Player].CanAfford(0, 0, 100, 0, 0))
+                                {
+                                    Countries[Player].Pay(0, 0, 100, 0, 0);
+                                    Purchased = true;
+                                }
+                            }
+                        }
+                        else if (PurchaseButton4.Contains(MousePoint))
+                        {
+                            if (i > 3)
+                            {
+                                if (Countries[Player].CanAfford(0, 0, 100, 0, 0))
+                                {
+                                    Countries[Player].Pay(0, 0, 100, 0, 0);
+                                    Purchased = true;
+                                }
+                            }
+                            else
+                            {
+                                if (Countries[Player].CanAfford(0, 0, 0, 0, 100))
+                                {
+                                    Countries[Player].Pay(0, 0, 0, 0, 100);
+                                    Purchased = true;
+                                }
+                            }
+                        }
+
+                        if (Purchased)
+                        {
+                            if (i == 0)
+                            {
+                                Countries[Player].Gold += 75;
+                            }
+                            else if (i == 1)
+                            {
+                                Countries[Player].Food += 75;
+                            }
+                            else if (i == 2)
+                            {
+                                Countries[Player].Wood += 75;
+                            }
+                            else if (i == 3)
+                            {
+                                Countries[Player].Stone += 75;
+                            }
+                            else if (i == 4)
+                            {
+                                Countries[Player].Metal += 75;
+                            }
+                        }
+
+
                     }
                 }
             }
@@ -1307,5 +1379,6 @@ namespace A_Level_Computing_Project
                 SavesEP = Saves.Count - 1;
             }
         }
+
     }
 }
