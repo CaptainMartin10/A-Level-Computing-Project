@@ -971,8 +971,6 @@ namespace A_Level_Computing_Project
                                 Countries[Player].Metal += 75;
                             }
                         }
-
-
                     }
                 }
             }
