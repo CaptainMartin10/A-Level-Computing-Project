@@ -242,26 +242,20 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public void Retreat(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes)
+        public void Retreat(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes, Dictionary<string, int> TerrainCosts)
         {
             int DX = Countries[CountryIndexes[OwnedBy]].CapitalX;
             int DY = Countries[CountryIndexes[OwnedBy]].CapitalY;
             int[] BestDArray = MapArray[X, Y].FindBestDirection(MapArray[DX, DY], MapArray);
 
+            if (!(BestDArray[0] == 0 && BestDArray[1] == 0) && !(BestDArray[0] == X && BestDArray[1] == Y))
+            {
+                Move(MapArray, Countries, TerrainCosts, BestDArray, CountryIndexes);
+            }
+
             if (DX == BestDArray[0] && DY == BestDArray[1])
             {
                 Retreating = false;
-            }
-
-            if (!(BestDArray[0] == 0 && BestDArray[1] == 0) && !(BestDArray[0] == X && BestDArray[1] == Y))
-            {
-                MapArray[BestDArray[0], BestDArray[1]].ArmyInside = this;
-                int TempX = X;
-                int TempY = Y;
-                X = BestDArray[0];
-                Y = BestDArray[1];
-                MapArray[TempX, TempY].ArmyInside = null;
-                Moved = true;
             }
         }
     }

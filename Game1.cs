@@ -576,7 +576,7 @@ namespace A_Level_Computing_Project
 
                 else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy == null)
                 {
-                    Countries[Player].RaiseLevyArmy(MapArray, Countries, Player);
+                    Countries[Player].RaiseLevyArmy(MapArray);
                 }
 
                 else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy != null)

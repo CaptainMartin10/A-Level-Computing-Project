@@ -76,7 +76,7 @@ namespace A_Level_Computing_Project
             Standing.Moved = false;
             if (Standing.Retreating)
             {
-                Standing.Retreat(MapArray, Countries, CountryIndexes);
+                Standing.Retreat(MapArray, Countries, CountryIndexes, TerrainCosts);
             }
 
             if (Standing.Sieging)
@@ -89,7 +89,7 @@ namespace A_Level_Computing_Project
                 Levy.Moved = false;
                 if (Levy.Retreating)
                 {
-                    Levy.Retreat(MapArray, Countries, CountryIndexes);
+                    Levy.Retreat(MapArray, Countries, CountryIndexes, TerrainCosts);
                 }
             }
             else
@@ -148,7 +148,7 @@ namespace A_Level_Computing_Project
             }
         }
 
-        public void RaiseLevyArmy(Province[,] MapArray, Country[] Countries, int Player)
+        public void RaiseLevyArmy(Province[,] MapArray)
         {
             int LevyArmySize = 0;
             foreach (Province Hex in MapArray)
