@@ -160,7 +160,6 @@ namespace A_Level_Computing_Project
 
             //loads the initial new save
             string Save = Path.GetFullPath("Saves/NewSave.txt");
-            Save = Save.Remove(Save.Length - 41, 24);
             LoadSave(Save);
         }
 
@@ -1078,7 +1077,6 @@ namespace A_Level_Computing_Project
         {
             //gemnerates file name
             string Save = Path.GetFullPath("Saves/NewSave.txt");
-            Save = Save.Remove(Save.Length - 41, 24);
             Save = Save.Remove(Save.Length - 11, 11);
             string Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
             Date = Date.Replace('/', '_');
@@ -1250,6 +1248,15 @@ namespace A_Level_Computing_Project
                         line = line.Insert(34, "0");
                     }
 
+                    if (c.Standing.Retreating)
+                    {
+                        line += " True";
+                    }
+                    else if (!c.Standing.Retreating)
+                    {
+                        line += "False";
+                    }
+
                     sw.WriteLine(line);
                 }
 
@@ -1371,7 +1378,6 @@ namespace A_Level_Computing_Project
         {
             //gets path to saves folder
             string SavesPath = Path.GetFullPath("Saves/NewSave.txt");
-            SavesPath = SavesPath.Remove(SavesPath.Length - 41, 24);
             SavesPath = SavesPath.Remove(SavesPath.Length - 11, 11);
 
             //gets list of all valid saves
