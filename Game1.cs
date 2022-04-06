@@ -37,8 +37,7 @@ namespace A_Level_Computing_Project
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
+            //defines window size
             _graphics.PreferredBackBufferWidth = 1167;
             _graphics.PreferredBackBufferHeight = 666;
             _graphics.ApplyChanges();
@@ -50,21 +49,18 @@ namespace A_Level_Computing_Project
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-
+            //loads sprites
             Background = Content.Load<Texture2D>("Background");
             Fort = Content.Load<Texture2D>("Fort");
             Settlement = Content.Load<Texture2D>("Settlement");
             Farm = Content.Load<Texture2D>("Farm");
             Forester = Content.Load<Texture2D>("Forester");
             Mine = Content.Load<Texture2D>("Mine");
-
             BuildStructureMenu = Content.Load<Texture2D>("Structure Menu");
             PauseMenu = Content.Load<Texture2D>("Pause Menu");
             CountryMenu = Content.Load<Texture2D>("Country Menu");
             LoadMenu = Content.Load<Texture2D>("Load Menu");
             MarketMenu = Content.Load<Texture2D>("Market Menu");
-
             Unowned = Content.Load<Texture2D>("Blank Tile");
             Lindon = Content.Load<Texture2D>("Lindon Tile");
             BlueMountainsNorth = Content.Load<Texture2D>("Blue Mountains North Tile");
@@ -76,7 +72,6 @@ namespace A_Level_Computing_Project
             Dunland = Content.Load<Texture2D>("Dunland Tile");
             Isengard = Content.Load<Texture2D>("Isengard Tile");
             Gundabad = Content.Load<Texture2D>("Gundabad Tile");
-
             ArmyMovement = Content.Load<Texture2D>("Army Movement");
             LindonArmy = Content.Load<Texture2D>("Lindon Army");
             BlueMountainsNorthArmy = Content.Load<Texture2D>("Blue Mountains North Army");
@@ -89,8 +84,10 @@ namespace A_Level_Computing_Project
             IsengardArmy = Content.Load<Texture2D>("Isengard Army");
             GundabadArmy = Content.Load<Texture2D>("Gundabad Army");
 
+            //loads spritefont
             MenuFont = Content.Load<SpriteFont>("MenuFont");
 
+            //defines all dictionaries
             FarmProduction.Add("Grassland", 100);
             FarmProduction.Add("Hills", 75);
             FarmProduction.Add("Forest", 75);
@@ -100,7 +97,6 @@ namespace A_Level_Computing_Project
             FarmProduction.Add("Mountains", 25);
             FarmProduction.Add("Wasteland", 0);
             FarmProduction.Add("Marshland", 25);
-
             ForesterProduction.Add("Grassland", 50);
             ForesterProduction.Add("Hills", 25);
             ForesterProduction.Add("Forest", 100);
@@ -110,7 +106,6 @@ namespace A_Level_Computing_Project
             ForesterProduction.Add("Mountains", 0);
             ForesterProduction.Add("Wasteland", 0);
             ForesterProduction.Add("Marshland", 0);
-
             MineProduction.Add("Grassland", 25);
             MineProduction.Add("Hills", 50);
             MineProduction.Add("Forest", 25);
@@ -120,7 +115,6 @@ namespace A_Level_Computing_Project
             MineProduction.Add("Mountains", 100);
             MineProduction.Add("Wasteland", 50);
             MineProduction.Add("Marshland", 0);
-
             TerrainCosts.Add("Grassland", 1);
             TerrainCosts.Add("Hills", 2);
             TerrainCosts.Add("Forest", 1);
@@ -131,7 +125,6 @@ namespace A_Level_Computing_Project
             TerrainCosts.Add("Wasteland", 2);
             TerrainCosts.Add("Marshland", 3);
             TerrainCosts.Add("Shallow Sea", 2);
-
             OwnedMapMode.Add("Unowned", Unowned);
             OwnedMapMode.Add("Lindon", Lindon);
             OwnedMapMode.Add("Blue Mountains North", BlueMountainsNorth);
@@ -143,7 +136,6 @@ namespace A_Level_Computing_Project
             OwnedMapMode.Add("Dunland", Dunland);
             OwnedMapMode.Add("Isengard", Isengard);
             OwnedMapMode.Add("Gundabad", Gundabad);
-
             ArmyTextures.Add("Lindon", LindonArmy);
             ArmyTextures.Add("Blue Mountains North", BlueMountainsNorthArmy);
             ArmyTextures.Add("Blue Mountains South", BlueMountainsSouthArmy);
@@ -154,7 +146,6 @@ namespace A_Level_Computing_Project
             ArmyTextures.Add("Dunland", DunlandArmy);
             ArmyTextures.Add("Isengard", IsengardArmy);
             ArmyTextures.Add("Gundabad", GundabadArmy);
-
             CountryIndexes.Add("Unowned", 0);
             CountryIndexes.Add("Lindon", 1);
             CountryIndexes.Add("Blue Mountains North", 2);
@@ -167,6 +158,7 @@ namespace A_Level_Computing_Project
             CountryIndexes.Add("Isengard", 9);
             CountryIndexes.Add("Gundabad", 10);
 
+            //loads the initial new save
             string Save = Path.GetFullPath("Saves/NewSave.txt");
             Save = Save.Remove(Save.Length - 41, 24);
             LoadSave(Save);
@@ -174,42 +166,38 @@ namespace A_Level_Computing_Project
 
         protected override void Update(GameTime gameTime)
         {
-            // TODO: Add your update logic here
-
+            //gets current mouse and keyboard state
             CurrentMouseState = Mouse.GetState();
             Point MousePoint = new Point(CurrentMouseState.X, CurrentMouseState.Y);
             CurrentKeyboardState = Keyboard.GetState();
 
+            //checks for each menu string
             if (Menu == "Game")
             {
                 CheckGameMenu(MousePoint);
             }
-
             else if (Menu == "Build Structure")
             {
                 CheckBuildStructureMenu(MousePoint);
             }
-
             else if (Menu == "Pause")
             {
                 CheckPauseMenu(MousePoint);
             }
-
             else if (Menu == "Pick Country")
             {
                 CheckPickCountryMenu(MousePoint);
             }
-
             else if (Menu == "Load Game")
             {
                 CheckLoadGameMenu(MousePoint);
             }
-
             else if (Menu == "Market")
             {
                 CheckMarketMenu(MousePoint);
             }
 
+            //sets last mouse and keyboard state to current mouse and keyboard state
             LastMouseState = CurrentMouseState;
             LastKeyboardState = CurrentKeyboardState;
 
@@ -218,13 +206,15 @@ namespace A_Level_Computing_Project
 
         protected override void Draw(GameTime gameTime)
         {
+            //clears screen
             GraphicsDevice.Clear(Color.White);
-
-            // TODO: Add your drawing code here
-
+            
             _spriteBatch.Begin();
+
+            //draws background image
             _spriteBatch.Draw(Background, new Vector2(0, 0), Color.White);
 
+            //draws coloured tiles if mapmode is set to ShowOwned
             if (Mapmode == "ShowOwned")
             {
                 foreach (Province Hex in MapArray)
@@ -240,6 +230,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //draws white phantom armies if player has own army selected 
             if (Selected == "Standing" || Selected == "Levy")
             {
                 if (MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name)
@@ -261,6 +252,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //draws armies
             foreach (Country C in Countries)
             {
                 if (C.Name != "Unowned")
@@ -288,6 +280,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //draws structures
             foreach (Province Hex in MapArray)
             {
                 if (Hex.Structure == "Fort")
@@ -347,6 +340,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //writes to main info panel
             _spriteBatch.DrawString(MenuFont, "Player: " + Countries[Player].Name, new Vector2(666, 5), Color.White);
             _spriteBatch.DrawString(MenuFont, "Gold: " + Countries[Player].Gold, new Vector2(666, 45), Color.White);
             _spriteBatch.DrawString(MenuFont, "Food: " + Countries[Player].Food, new Vector2(666, 85), Color.White);
@@ -355,6 +349,7 @@ namespace A_Level_Computing_Project
             _spriteBatch.DrawString(MenuFont, "Metal: " + Countries[Player].Metal, new Vector2(666, 205), Color.White);
             _spriteBatch.DrawString(MenuFont, "Standing Army Location: " + Countries[Player].Standing.X + " , " + Countries[Player].Standing.Y, new Vector2(666, 245), Color.White);
 
+            //writes to levy army box
             if (Countries[Player].Levy != null)
             {
                 _spriteBatch.DrawString(MenuFont, "Dismiss Levy Army at: " + Countries[Player].Levy.X + " , " + Countries[Player].Levy.Y, new Vector2(666, 285), Color.White);
@@ -364,9 +359,11 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Raise Levy Army", new Vector2(666, 285), Color.White);
             }
 
+            //writes to button panel
             _spriteBatch.DrawString(MenuFont, "Next Turn", new Vector2(666, 331), Color.White);
             _spriteBatch.DrawString(MenuFont, "Market", new Vector2(666, 377), Color.White);
 
+            //writes to selected info panel
             if (Selected == "Province")
             {
                 _spriteBatch.DrawString(MenuFont, "Province Coordinates: " + SelectedX + " , " + SelectedY, new Vector2(666, 423), Color.White);
@@ -437,11 +434,11 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Cavalry: " + MapArray[SelectedX, SelectedY].ArmyInside.Cavalry, new Vector2(666, 623), Color.White);
             }
 
+            //draws extra menu if necessary
             if (Menu == "Build Structure")
             {
                 _spriteBatch.Draw(BuildStructureMenu, new Vector2(215, 306), Color.White);
             }
-
             if (Menu == "Pause")
             {
                 _spriteBatch.Draw(PauseMenu, new Vector2(237, 248), Color.White);
@@ -451,12 +448,10 @@ namespace A_Level_Computing_Project
                 _spriteBatch.DrawString(MenuFont, "Save Game", new Vector2(246, 333), Color.White);
                 _spriteBatch.DrawString(MenuFont, "Exit Game", new Vector2(246, 373), Color.White);
             }
-
             if (Menu == "Pick Country")
             {
                 _spriteBatch.Draw(CountryMenu, new Vector2(257, 219), Color.White);
             }
-
             if (Menu == "Load Game")
             {
                 _spriteBatch.Draw(LoadMenu, new Vector2(54, 235), Color.White);
@@ -467,7 +462,6 @@ namespace A_Level_Computing_Project
                 }
 
             }
-
             if (Menu == "Market")
             {
                 _spriteBatch.Draw(MarketMenu, new Vector2(0, 117), Color.White);
@@ -533,8 +527,10 @@ namespace A_Level_Computing_Project
 
         protected void CheckGameMenu(Point MousePoint)
         {
+            //checks for left click
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
+                //defines buttons
                 Rectangle NextTurnButton = new Rectangle(663, 332, 498, 36);
                 Rectangle OpenMarketButton = new Rectangle(663, 378, 498, 36);
                 Rectangle GainLandButton = new Rectangle(663, 464, 498, 36);
@@ -542,43 +538,37 @@ namespace A_Level_Computing_Project
                 Rectangle UpgradeStrucutreButton = new Rectangle(663, 624, 498, 36);
                 Rectangle RaiseLevyArmyButton = new Rectangle(663, 286, 498, 36);
 
+                //checks for clicks on on-screen button panel
                 if (NextTurnButton.Contains(MousePoint))
                 {
                     NextTurn();
                 }
-
                 else if (OpenMarketButton.Contains(MousePoint))
                 {
                     Menu = "Market";
                 }
-
                 else if (GainLandButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].CanColonise(MapArray, Countries, Player) && Countries[Player].CanAfford(200, 200, 200, 200, 200))
                 {
                     Countries[Player].Pay(200, 200, 200, 200, 200);
                     MapArray[SelectedX, SelectedY].OwnedBy = Countries[Player];
                 }
-
                 else if (GainLandButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].CanAnnex(MapArray, Countries, Player))
                 {
                     MapArray[SelectedX, SelectedY].ArmyInside.Sieging = true;
                 }
-
                 else if (BuildStructureButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure == "Empty")
                 {
                     Menu = "Build Structure";
                 }
-
                 else if (UpgradeStrucutreButton.Contains(MousePoint) && MapArray[SelectedX, SelectedY].OwnedBy == Countries[Player] && MapArray[SelectedX, SelectedY].Structure != "Empty" && MapArray[SelectedX, SelectedY].StructureLevel < 5 && Countries[Player].CanAfford(100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1), 100 * (MapArray[SelectedX, SelectedY].StructureLevel + 1)))
                 {
                     MapArray[SelectedX, SelectedY].StructureLevel += 1;
                     Countries[Player].Pay(100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel, 100 * MapArray[SelectedX, SelectedY].StructureLevel);
                 }
-
                 else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy == null)
                 {
                     Countries[Player].RaiseLevyArmy(MapArray);
                 }
-
                 else if (RaiseLevyArmyButton.Contains(MousePoint) && Countries[Player].Levy != null)
                 {
                     MapArray[Countries[Player].Levy.X, Countries[Player].Levy.Y].ArmyInside = null;
@@ -588,6 +578,7 @@ namespace A_Level_Computing_Project
 
                 else
                 {
+                    //checks if a phantom army has been selected
                     if ((Selected == "Standing" || Selected == "Levy") && MapArray[SelectedX, SelectedY].ArmyInside != null && MapArray[SelectedX, SelectedY].ArmyInside.OwnedBy == Countries[Player].Name && !MapArray[SelectedX, SelectedY].ArmyInside.Retreating && !MapArray[SelectedX, SelectedY].ArmyInside.Sieging)
                     {
                         int[] MoveLocation = MapArray[SelectedX, SelectedY].ArmyInside.PickMoveLocation(SelectedX, SelectedY, MousePoint, MapArray);
@@ -604,6 +595,7 @@ namespace A_Level_Computing_Project
                         }
                     }
 
+                    //checks if a province has been selected
                     foreach (Province Hex in MapArray)
                     {
                         if (Hex.ContainsMousePointer(MousePoint))
@@ -621,6 +613,7 @@ namespace A_Level_Computing_Project
                         }
                     }
 
+                    //checks if an army has been selected
                     foreach (Country C in Countries)
                     {
                         if (C.Name != "Unowned" && C.Standing.ContainsMousePointer(MousePoint))
@@ -640,6 +633,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //checks for keyboard presses
             else if (!CurrentKeyboardState.IsKeyDown(Keys.M) && LastKeyboardState.IsKeyDown(Keys.M))
             {
                 if (Mapmode == "Regular")
@@ -651,12 +645,10 @@ namespace A_Level_Computing_Project
                     Mapmode = "Regular";
                 }
             }
-
             else if (!CurrentKeyboardState.IsKeyDown(Keys.Enter) && LastKeyboardState.IsKeyDown(Keys.Enter))
             {
                 NextTurn();
             }
-
             else if (!CurrentKeyboardState.IsKeyDown(Keys.Escape) && LastKeyboardState.IsKeyDown(Keys.Escape))
             {
                 Menu = "Pause";
@@ -667,12 +659,15 @@ namespace A_Level_Computing_Project
         {
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
+                //defines buttons
                 Rectangle BuildSettlement = new Rectangle(221, 312, 40, 40);
                 Rectangle BuildFort = new Rectangle(265, 312, 40, 40);
                 Rectangle BuildFarm = new Rectangle(309, 312, 40, 40);
                 Rectangle BuildMine = new Rectangle(353, 312, 40, 40);
                 Rectangle BuildForester = new Rectangle(397, 312, 40, 40);
                 Rectangle CloseBuildMenu = new Rectangle(447, 312, 14, 14);
+
+                //checks each button for click
                 if (BuildSettlement.Contains(MousePoint) && Countries[Player].CanAfford(100, 100, 100, 100, 100))
                 {
                     MapArray[SelectedX, SelectedY].Structure = "Settlement";
@@ -723,11 +718,14 @@ namespace A_Level_Computing_Project
         {
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
+                //defines buttons
                 Rectangle NewGameButton = new Rectangle(243, 254, 168, 36);
                 Rectangle LoadGameButton = new Rectangle(243, 294, 168, 36);
                 Rectangle SaveGameButton = new Rectangle(243, 334, 168, 36);
                 Rectangle ExitGameButton = new Rectangle(243, 374, 168, 36);
                 Rectangle CloseMenuButton = new Rectangle(425, 254, 14, 14);
+
+                //checks for button clicks
                 if (NewGameButton.Contains(MousePoint))
                 {
                     Menu = "Pick Country";
@@ -761,8 +759,11 @@ namespace A_Level_Computing_Project
         {
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
+                //defines buttons
                 Rectangle BackButton = new Rectangle(263, 225, 14, 14);
                 Rectangle CloseCountryMenu = new Rectangle(381, 225, 14, 14);
+
+                //checks for button clicks
                 if (BackButton.Contains(MousePoint))
                 {
                     Menu = "Pause";
@@ -771,9 +772,10 @@ namespace A_Level_Computing_Project
                 {
                     Menu = "Game";
                 }
+
                 else
                 {
-                    Rectangle[] CountryOptions = new Rectangle[10];
+                    //generates 10 buttons, each correesponding to an int i from 0 to 9, checks each for click
                     for (int i = 0; i < 10; i++)
                     {
                         int X;
@@ -788,8 +790,8 @@ namespace A_Level_Computing_Project
                             X = 331;
                             Y = ((((i - 1) / 2) % 5) * 44) + 225;
                         }
-                        CountryOptions[i] = new Rectangle(X, Y, 40, 40);
-                        if (CountryOptions[i].Contains(MousePoint))
+                        Rectangle CountryOption = new Rectangle(X, Y, 40, 40);
+                        if (CountryOption.Contains(MousePoint))
                         {
                             Player = i + 1;
                             string Save = Path.GetFullPath("Saves/NewSave.txt");
@@ -810,10 +812,13 @@ namespace A_Level_Computing_Project
         {
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
+                //defines buttons
                 Rectangle BackButton = new Rectangle(60, 241, 14, 14);
                 Rectangle CloseLoadMenu = new Rectangle(582, 241, 14, 14);
                 Rectangle UpButton = new Rectangle(558, 241, 14, 14);
                 Rectangle DownButton = new Rectangle(558, 411, 14, 14);
+
+                //checks for button clicks
                 if (BackButton.Contains(MousePoint))
                 {
                     Menu = "Pause";
@@ -832,8 +837,10 @@ namespace A_Level_Computing_Project
                     SavesFP++;
                     SavesEP++;
                 }
+
                 else
                 {
+                    //generates button for each save that is shown on-screen, checks for click
                     int ListPosition = 0;
                     for (int i = SavesFP; i <= SavesEP; i++)
                     {
@@ -857,13 +864,16 @@ namespace A_Level_Computing_Project
         {
             if (CurrentMouseState.LeftButton != ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Pressed)
             {
+                //defines button and checks for click
                 Rectangle CloseMarketButton = new Rectangle(637, 123, 14, 14);
                 if (CloseMarketButton.Contains(MousePoint))
                 {
                     Menu = "Game";
                 }
+
                 else
                 {
+                    //defines 4 buttons for each resource, checks for click
                     for (int i = 0; i < 5; i++)
                     {
                         bool Purchased = false;
@@ -985,8 +995,10 @@ namespace A_Level_Computing_Project
             using (StreamReader sr = new StreamReader(Save))
             {
                 string line;
+                //runs through each line in file
                 while ((line = sr.ReadLine()) != null)
                 {
+                    //if line length corresponds to a correct length, read the line and generate the object it describes
                     if (line.Length == 35)
                     {
                         int X = Convert.ToInt32(line.Substring(0, 2));
@@ -1064,6 +1076,7 @@ namespace A_Level_Computing_Project
 
         protected void SaveGame()
         {
+            //gemnerates file name
             string Save = Path.GetFullPath("Saves/NewSave.txt");
             Save = Save.Remove(Save.Length - 41, 24);
             Save = Save.Remove(Save.Length - 11, 11);
@@ -1071,6 +1084,8 @@ namespace A_Level_Computing_Project
             Date = Date.Replace('/', '_');
             Date = Date.Replace(':', '.');
             Save += Countries[Player].CountryCode + "(" + Date + ").txt";
+
+            //writes each object in game to file
             using (StreamWriter sw = new StreamWriter(Save))
             {
                 foreach (Country c in Countries)
@@ -1342,6 +1357,7 @@ namespace A_Level_Computing_Project
 
         protected void NextTurn()
         {
+            //runs NextTurn method for each country that isnt unowned
             foreach (Country c in Countries)
             {
                 if (c.Name != "Unowned")
@@ -1353,10 +1369,12 @@ namespace A_Level_Computing_Project
 
         protected void RefreshSavesList()
         {
+            //gets path to saves folder
             string SavesPath = Path.GetFullPath("Saves/NewSave.txt");
             SavesPath = SavesPath.Remove(SavesPath.Length - 41, 24);
             SavesPath = SavesPath.Remove(SavesPath.Length - 11, 11);
 
+            //gets list of all valid saves
             Saves.Clear();
             string[] TempSaves = Directory.GetFiles(SavesPath);
             foreach (string s in TempSaves)
@@ -1367,6 +1385,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //sets front and end counters
             SavesFP = 0;
             if (Saves.Count > 5)
             {
@@ -1377,6 +1396,5 @@ namespace A_Level_Computing_Project
                 SavesEP = Saves.Count - 1;
             }
         }
-
     }
 }

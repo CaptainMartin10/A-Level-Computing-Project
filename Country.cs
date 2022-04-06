@@ -29,6 +29,7 @@ namespace A_Level_Computing_Project
 
         public bool CanAfford(int ReqGold, int ReqWood, int ReqStone, int ReqFood, int ReqMetal)
         {
+            //checks that resource number are higher than what is required
             if (Gold >= ReqGold && Wood >= ReqWood && Stone >= ReqStone && Food >= ReqFood && Metal >= ReqMetal)
             {
                 return true;
@@ -50,6 +51,7 @@ namespace A_Level_Computing_Project
 
         public bool OwnsLand(Province[,] MapArray)
         {
+            //checks each province for its ownership
             foreach (Province p in MapArray)
             {
                 if (p.OwnedBy == this && CapitalX != p.X && CapitalY != p.Y)
@@ -74,16 +76,16 @@ namespace A_Level_Computing_Project
         public void NextTurn(Province[,] MapArray, Country[] Countries, Dictionary<string, int> CountryIndexes, int Player, Dictionary<string, int> TerrainCosts, Dictionary<string, int> MineProduction, Dictionary<string, int> FarmProduction, Dictionary<string, int> ForesterProduction)
         {
             Standing.Moved = false;
+
+            //retreats/sieges with armies that need to
             if (Standing.Retreating)
             {
                 Standing.Retreat(MapArray, Countries, CountryIndexes, TerrainCosts);
             }
-
             if (Standing.Sieging)
             {
                 Standing.Siege(MapArray, Countries, CountryIndexes, TerrainCosts);
             }
-
             if (Levy != null)
             {
                 Levy.Moved = false;
@@ -92,6 +94,8 @@ namespace A_Level_Computing_Project
                     Levy.Retreat(MapArray, Countries, CountryIndexes, TerrainCosts);
                 }
             }
+
+            //gives base income
             else
             {
                 Gold += 50;
@@ -105,6 +109,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //moves army if AI
             if (IsAI)
             {
                 int[] MoveLocation = MapArray[Standing.X, Standing.Y].FindBestDirection(MapArray[Countries[Player].Standing.X, Countries[Player].Standing.Y], MapArray);
@@ -114,6 +119,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //gives income based on structure ownership
             foreach (Province P in MapArray)
             {
                 if (P.OwnedBy == this && Levy == null)
@@ -151,6 +157,8 @@ namespace A_Level_Computing_Project
         public void RaiseLevyArmy(Province[,] MapArray)
         {
             int LevyArmySize = 0;
+
+            //adds to LevyARmySize for each tile owned by the country
             foreach (Province Hex in MapArray)
             {
                 if (Hex.OwnedBy == this)
@@ -169,8 +177,11 @@ namespace A_Level_Computing_Project
                     }
                 }
             }
+
             int ArmyX = 0;
             int ArmyY = 0;
+
+            //finds a suitable location to place army
             if (MapArray[CapitalX, CapitalY].ArmyInside == null)
             {
                 ArmyX = CapitalX;
@@ -188,6 +199,7 @@ namespace A_Level_Computing_Project
                 }
             }
 
+            //places army
             if (ArmyX != 0 || ArmyY != 0)
             {
                 Levy = new LevyArmy(ArmyX, ArmyY, LevyArmySize, Name, true, false);
