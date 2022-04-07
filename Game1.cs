@@ -13,7 +13,7 @@ namespace A_Level_Computing_Project
         private SpriteBatch _spriteBatch;
         public Province[,] MapArray = new Province[24, 18];
         public Country[] Countries = new Country[11];
-        public int SelectedX, SelectedY, Player = 4, SavesFP, SavesEP;
+        public int SelectedX, SelectedY, Player = 8, SavesFP, SavesEP;
         public string Menu = "Game", Mapmode = "Regular", Selected = "Province";
         public List<string> Saves = new List<string>();
         public SpriteFont MenuFont;
