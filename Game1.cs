@@ -1075,7 +1075,7 @@ namespace A_Level_Computing_Project
 
         protected void SaveGame()
         {
-            //gemnerates file name
+            //generates file name
             string Save = Path.GetFullPath("Saves/NewSave.txt");
             Save = Save.Remove(Save.Length - 11, 11);
             string Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
