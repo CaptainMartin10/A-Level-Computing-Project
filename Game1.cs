@@ -794,7 +794,6 @@ namespace A_Level_Computing_Project
                         {
                             Player = i + 1;
                             string Save = Path.GetFullPath("Saves/NewSave.txt");
-                            Save = Save.Remove(Save.Length - 41, 24);
                             LoadSave(Save);
                             Menu = "Game";
                         }
