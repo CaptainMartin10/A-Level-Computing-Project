@@ -587,7 +587,7 @@ namespace A_Level_Computing_Project
                             {
                                 MapArray[SelectedX, SelectedY].ArmyInside.Move(MapArray, Countries, TerrainCosts, MoveLocation, CountryIndexes);
                             }
-                            else if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside != null && !MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside.Retreating)
+                            else if (MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside != null && !MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside.Retreating && MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside.OwnedBy != Countries[Player].Name)
                             {
                                 MapArray[SelectedX, SelectedY].ArmyInside.Attack(MapArray[MoveLocation[0], MoveLocation[1]].ArmyInside, MapArray, Countries, TerrainCosts, CountryIndexes);
                             }
@@ -1021,7 +1021,7 @@ namespace A_Level_Computing_Project
                         int Metal = Convert.ToInt32(line.Substring(50, 6));
                         string CountryCode = line.Substring(56, 3);
 
-                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal, CountryCode);
+                        Countries[ID] = new Country(true, Name, CX, CY, Gold, Wood, Stone, Food, Metal, CountryCode, ID);
                     }
                     else if (line.Length == 42)
                     {
@@ -1089,7 +1089,7 @@ namespace A_Level_Computing_Project
                 {
                     string line = "";
 
-                    line += Convert.ToString(CountryIndexes[c.Name]);
+                    line += Convert.ToString(c.ID);
                     if (line.Length == 1)
                     {
                         line = line.Insert(0, "0");
@@ -1187,7 +1187,7 @@ namespace A_Level_Computing_Project
                 {
                     string line = "";
 
-                    line += Convert.ToString(CountryIndexes[c.Name]);
+                    line += Convert.ToString(c.ID);
                     if (line.Length == 1)
                     {
                         line = line.Insert(0, "0");
@@ -1265,7 +1265,7 @@ namespace A_Level_Computing_Project
                     {
                         string line = "";
 
-                        line += Convert.ToString(CountryIndexes[c.Name]);
+                        line += Convert.ToString(c.ID);
                         if (line.Length == 1)
                         {
                             line = line.Insert(0, "0");
